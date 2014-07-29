@@ -15,8 +15,8 @@ class TexturePropertiesLoader
 	var loader:Loader;
 	public var width:Int;
 	public var height:Int;
-	private var file:File;
-	public var onComplete:File->Void;
+	public var file:File;
+	public var onComplete:TexturePropertiesLoader->Void;
 	
 	private function onLoaderComplete( e:Event )
 	{
@@ -24,7 +24,7 @@ class TexturePropertiesLoader
 		height = Std.int( loader.height);
 		
 		if( isPowerOfTwo(width) && isPowerOfTwo(height))
-			onComplete( file );
+			onComplete( this );
 		else
 			Debug.Log("Non power of 2");
 	}
@@ -36,7 +36,7 @@ class TexturePropertiesLoader
 	{
 		return (n & (n - 1)) == 0;
 	}
-	public function new( file:File, onComplete:File->Void ) 
+	public function new( file:File, onComplete:TexturePropertiesLoader->Void ) 
 	{
 		this.file = file;
 		this.onComplete = onComplete;

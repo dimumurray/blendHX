@@ -102,7 +102,7 @@ class Progressbar extends Sprite
 		}
 		else
 		{
-			if(jobsDone == totalJobs)
+			if(jobsDone >= totalJobs)
 			{
 				if(onFinish != null )onFinish();
 				hide();

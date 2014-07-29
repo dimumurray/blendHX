@@ -1,4 +1,6 @@
 package com.blendhx.editor;
+import com.blendhx.editor.panels.AssetsPanel;
+import flash.errors.Error;
 import com.blendhx.editor.spaces.Space;
 import com.blendhx.core.components.GameObject;
 
@@ -78,9 +80,18 @@ class RightClickMenu
 	
 	private static function deleteSelectedFile( fileItem:FileItem, _ )
 	{
-		var file:File = AssetsPanel.currentDirectory.resolvePath( fileItem.fileName )  ;
-		
-		if (file.exists)
+		var file:File = AssetsPanel.currentDirectory.resolvePath( fileItem.fileName );
+		//file.addEventListener();
+			
+		if(file.isDirectory)
+		{
+			try{
+				file.deleteDirectory(false);
+				AssetsPanel.getInstance().populate();
+			}
+			catch(e:Error){Debug.Log(e.message);}
+		}
+		else
 			IO.DeleteFile(file);
 	}
 	

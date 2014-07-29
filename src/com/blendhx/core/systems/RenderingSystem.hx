@@ -105,6 +105,8 @@ class RenderingSystem extends EventDispatcher implements ISystem
 			mesh = meshRenderers[i].mesh;
 			if(mesh == null)
 				continue;
+			if(meshRenderers[i].material == null)
+				continue;
 			shader = meshRenderers[i].material.shader;
 			if(shader == null)
 				continue;

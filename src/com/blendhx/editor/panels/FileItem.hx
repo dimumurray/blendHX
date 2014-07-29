@@ -86,7 +86,8 @@ class FileItem extends DragableItem
 		if( targetFileItem != null && (type == FileType.FOLDER || type == FileType.BACK))	
 		{
 			var targetFile:File = AssetsPanel.currentDirectory.resolvePath(targetFileItem.fileName);
-			
+			if(targetFile.isDirectory)
+				return;
 			var destinationFolder:File;
 			
 			if(type == FileType.FOLDER)

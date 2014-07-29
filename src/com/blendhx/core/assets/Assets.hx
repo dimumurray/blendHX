@@ -21,7 +21,7 @@ class Assets
 	public static var projectDirectory:File;
 	public static var sourceDirectory:File;
 	public static var casheDirectory:File;
-	private static var xml:Xml;
+	public static var xml:Xml;
 	
 	public static function SetProjectDirectory(projectDirectory:File)
 	{
@@ -31,9 +31,6 @@ class Assets
 	}
 	private static function loadCasheXML()
 	{
-		Progressbar.getInstance().show(false, "Loading", onAssetsReady);
-		Progressbar.getInstance().totalJobs = 11;
-		
 		var ldr:URLLoader = new URLLoader();
 		ldr.addEventListener(Event.COMPLETE, loadXMLComplete);
 		ldr.addEventListener(IOErrorEvent.IO_ERROR, loadXMLError);	
@@ -44,7 +41,12 @@ class Assets
 	{
 		xml = Xml.parse(e.target.data);
 		var fast = new Fast(xml.firstElement());
+		var length:UInt=9;
 		
+		Progressbar.getInstance().show(false, "Loading", onAssetsReady);
+		
+		Progressbar.getInstance().totalJobs = length;
+			
 	 	loadTextures( fast.node.textures );
 		loadMeshes( fast.node.meshes );
 		loadMaterials( fast.node.materials );
@@ -52,44 +54,21 @@ class Assets
 	}
 	public static function MoveAsset(sourceURL:String, destinationURL:String)
 	{
-		var fast = new Fast(xml.firstElement());
 		
-		for( nodes in fast.elements) 
-		{
-			for( node in nodes.elements) 
-			{
-				if(node.att.localURL == sourceURL)
-				{
-					node.att.localURL = destinationURL;
-					
-					for (material in materials)
-						if (material.sourceURL == sourceURL)
-						material.sourceURL = destinationURL;
-					for (texture in textures)
-						if (texture.sourceURL == sourceURL)
-							texture.sourceURL = destinationURL;
-					for (mesh in meshes)
-						if (mesh.sourceURL == sourceURL)
-							mesh.sourceURL = destinationURL;
-					
-					IO.WriteXML(xml)
-					return;
-				}
-			}
-		}
+		for (material in materials)
+			if (material.sourceURL == sourceURL)
+			material.sourceURL = destinationURL;
+		for (texture in textures)
+			if (texture.sourceURL == sourceURL)
+				texture.sourceURL = destinationURL;
+		for (mesh in meshes)
+			if (mesh.sourceURL == sourceURL)
+				mesh.sourceURL = destinationURL;
 		
-		
-	
-		Debug.Log("File "+sourceURL+" is not in assets catalouge! Consider reimporting it.");
-	}
-
-	private static function createMaterialNodeInXML( material:Material )
-	{
-		var fast = new Fast(xml.firstElement());
-		
-		//fast.node.materials.
-		
-		//IO.WriteXML( xml );	
+		var newXMLString:String =  com.blendhx.editor.data.AS3XMLHelper.MoveAssetInXML(xml.toString(), sourceURL, destinationURL);
+		xml = Xml.parse( newXMLString );
+		IO.WriteXML(xml);
+		//Debug.Log("File "+sourceURL+" is not in assets catalouge! Consider reimporting it.");
 		
 	}
 

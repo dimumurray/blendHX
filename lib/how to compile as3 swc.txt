@@ -1,0 +1,1 @@
+-output AS3Helpers.swc -source-path+="D:\Documents\Projects\blendHX\lib" -include-classes+=com.blendhx.editor.data.AS3XMLHelper  -external-library-path playerglobal.swc

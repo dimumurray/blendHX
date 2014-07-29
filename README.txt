@@ -1,3 +1,5 @@
+monthday tasks
+
 716	panel components pool
 716	panel update values of selected game objects
 716	renderer system abstraction change from individual Renderer componet
@@ -19,28 +21,29 @@
 728	texture import
 728	mesh import
 728	new material creation
-	application menu bar
+	asset delete from assets.xml
 	new script asset creation
-	texture asset properties panel
-	mesh asset properties panel
 	add scripts from assets panel
 	script properties panel
 	compile shaders and user haxe scripts
-	new prefab creation
-	prefab instantiation
 	parent transformation
 	grid floor wireframe shader
 	re parent game objects
 	re name game objects
-	move up/down components
+	re name assets
+	hierarchy panel re parenting support
+	application menu bar
 	editor gizmos functionality
+	assets uniques cashe name
 	space masking panels
 	space scroll bar
 	global panels click and focus manager
-	hierarchy panel re parenting support
 	GC review
 	----------v.5 preview
 	
+	prefab
+	texture asset properties panel
+	mesh asset properties panel
 	undo/redo
 	ray tracing
 	editor ray trace pick object

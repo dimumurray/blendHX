@@ -14,6 +14,7 @@
 -lib format
 -swf-lib lib/ObjParser.swc
 -swf-lib lib/adobeUtils.swc
+-swf-lib lib/AS3Helpers.swc
 -lib air3
 
 

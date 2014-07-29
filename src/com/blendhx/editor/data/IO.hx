@@ -1,4 +1,5 @@
 package com.blendhx.editor.data;
+import com.blendhx.core.assets.TextureLoader;
 import flash.Lib;
 import flash.display.BitmapData;
 import flash.display.Loader;
@@ -65,6 +66,10 @@ class IO
 
 		Assets.materials.push(material);
 		AssetsPanel.getInstance().populate();
+		
+		var newXMLString:String =  com.blendhx.editor.data.AS3XMLHelper.AddMaterial(Assets.xml.toString(), sourceURL, casheURL);
+		Assets.xml = Xml.parse( newXMLString );
+		IO.WriteXML(Assets.xml);
 	}
 	
 	public static function NewFolder()
@@ -129,6 +134,13 @@ class IO
 		var casheURL:String = file.name.substr( 0, file.name.length - 3) +"mesh";
 		new MeshLoader(sourceURL, casheURL, onMeshReady);
 		
+		var newXMLString:String =  com.blendhx.editor.data.AS3XMLHelper.AddMesh(Assets.xml.toString(), sourceURL, casheURL);
+		Assets.xml = Xml.parse( newXMLString );
+		IO.WriteXML(Assets.xml);
+		
+		var mesh:Mesh = LoadMesh(sourceURL, casheURL);
+		Assets.meshes.push( mesh );
+		mesh.uploadBuffers();
 		AssetsPanel.getInstance().populate();
 	}
 	public static function ImportPNG( file:File )
@@ -191,8 +203,9 @@ class IO
 		return mesh;
 	}
 	
-	private static function convertToATF( file:File )
+	private static function convertToATF( texturePropertiesLoader:TexturePropertiesLoader )
 	{
+		var file:File = texturePropertiesLoader.file;
 		var sourceFolderFile:File =  AssetsPanel.currentDirectory.resolvePath(file.name);
 		file.copyTo(sourceFolderFile);
 		
@@ -217,6 +230,13 @@ class IO
 		
 		var process:Process = new Process();
 		process.startProcess(args, atfTool);
+		
+		var newXMLString:String =  com.blendhx.editor.data.AS3XMLHelper.AddTexture(Assets.xml.toString(), sourceURL, casheURL+ ".atf", texturePropertiesLoader.width, texturePropertiesLoader.height);
+		Assets.xml = Xml.parse( newXMLString );
+		IO.WriteXML(Assets.xml);
+		
+		var textureLoader:TextureLoader = new TextureLoader( sourceURL, casheURL, texturePropertiesLoader.width, texturePropertiesLoader.height, null);
+		Assets.textures.push( textureLoader );
 	}
 	
 	private static function onMeshReady( mesh:Mesh )
