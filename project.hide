@@ -1,0 +1,346 @@
+{
+     "type" : 0
+    ,"target" : 0
+    ,"name" : "HaxeStage3D"
+    ,"main" : null
+    ,"projectPackage" : ""
+    ,"company" : ""
+    ,"license" : "GPL"
+    ,"url" : ""
+    ,"targetData" : [
+         {
+             "pathToHxml" : "flash.hxml"
+            ,"runActionType" : 2
+            ,"runActionText" : "c:\\Users\\mehdadoo\\Documents\\AIRSDK_Compiler\\bin\\adl.exe bin\\descriptor.xml -profile extendedDesktop"
+        }
+        ,{
+             "pathToHxml" : "javascript.hxml"
+            ,"runActionType" : 1
+            ,"runActionText" : "bin\\index.html"
+        }
+        ,{
+             "pathToHxml" : "neko.hxml"
+            ,"runActionType" : 2
+            ,"runActionText" : "neko bin/HaxeStage3D.n"
+        }
+        ,{
+             "pathToHxml" : "php.hxml"
+        }
+        ,{
+             "pathToHxml" : "cpp.hxml"
+            ,"runActionType" : 2
+            ,"runActionText" : "bin/HaxeStage3D-debug.exe"
+        }
+        ,{
+             "pathToHxml" : "java.hxml"
+        }
+        ,{
+             "pathToHxml" : "csharp.hxml"
+        }
+        ,{
+             "pathToHxml" : "python.hxml"
+            ,"runActionType" : 2
+            ,"runActionText" : "python bin/HaxeStage3D.py"
+        }
+    ]
+    ,"files" : [
+         {
+             "path" : "src\\ir\\mehdadoo\\blendHX\\editor\\panels\\AssetsPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 123
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\editor\\panels\\FileItem.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 101
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\editor\\uicomponents\\Button.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 25
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\editor\\panels\\HierarchyPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 131
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\editor\\panels\\UtilityPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 100
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\core\\components\\Component.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 18
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\core\\components\\Mesh.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 6
+        }
+        ,{
+             "path" : "src\\ir\\mehdadoo\\blendHX\\core\\MeshAsset.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 0
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\Space.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 112
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\ViewportSpace.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 49
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 80
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\Assets.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 120
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\MaterialPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 104
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\Material.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 30
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 94
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\AssetsPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 121
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\FileItem.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 182
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\Mesh.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 25
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\MeshLoader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 39
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\UtilityPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 110
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\Debug.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 33
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\BottomSpaceHeaderPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 67
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\data\\IO.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 128
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\RegisterClassAlias.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 25
+        }
+        ,{
+             "path" : "src\\Main.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 99
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\components\\Camera.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 9
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\data\\Process.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 52
+        }
+        ,{
+             "path" : "bin\\descriptor.xml"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 10
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\TextureLoader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 53
+        }
+        ,{
+             "path" : "src\\shaders\\UnlitShader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 30
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\systems\\RenderingSystem.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 103
+        }
+        ,{
+             "path" : "src\\shaders\\DefaultShader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 20
+        }
+    ]
+    ,"activeFile" : "src\\com\\blendhx\\core\\assets\\TextureLoader.hx"
+    ,"openFLTarget" : null
+    ,"openFLBuildMode" : "Debug"
+    ,"runActionType" : null
+    ,"runActionText" : null
+    ,"buildActionCommand" : null
+    ,"hiddenItems" : [
+
+    ]
+    ,"showHiddenItems" : false
+}
