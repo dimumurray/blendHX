@@ -58,7 +58,15 @@ class BottomSpaceHeaderPanel extends HorizontalPanel
 	private function importFile(e:Event)
 	{
 		var file:File = e.target;
-		IO.ImportFile(file);
+		
+		switch (file.extension)
+		{
+			case "png":
+				IO.ImportPNG(file);
+			case "obj":
+				IO.ImportOBJ(file);
+			default:
+		}	
 	}
 	
 	private function openCreateMenu()

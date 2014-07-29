@@ -5,7 +5,7 @@ import flash.Lib;
 import com.blendhx.editor.uicomponents.Label;
 import flash.display.Graphics;
 import com.blendhx.editor.panels.Panel;
-
+import com.blendhx.editor.Progressbar;
 import com.blendhx.editor.panels.*;
 import com.blendhx.editor.uicomponents.*;
 import com.blendhx.editor.panels.HorizontalPanel;
@@ -19,7 +19,8 @@ class HeaderSpace extends Space
 	var transofmrGizmosPanel:Panel;
 	var playerControl:Panel;
 	var menuBar:Panel;
-	var info:Panel;
+	//var info:Panel;
+	var progressBar:Progressbar;
     	
 	public function new()
 	{
@@ -28,11 +29,12 @@ class HeaderSpace extends Space
 		menuBar = new Menu();
 		playerControl = new HorizontalPanel();
 		transofmrGizmosPanel = new HorizontalPanel();
-		info = new HorizontalPanel();
+		//info = new HorizontalPanel();
+		progressBar = Progressbar.getInstance();
 		
 		transofmrGizmosPanel._width = 100;
 		playerControl._width = 70;
-		info._width = 97;
+		//info._width = 95;
 		
 		new ImageButton(ImageButton.ROTATE, "", 1, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_LEFT);
 		new ImageButton(ImageButton.TRANSFORM, "", 2, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_NONE);
@@ -41,14 +43,15 @@ class HeaderSpace extends Space
 		new ImageButton(ImageButton.PLAY, "", 1, 2, 3,  doNothing, playerControl, Button.ROUND_LEFT);
 		new ImageButton(ImageButton.REFRESH, "", 2, 2, 3,  doNothing, playerControl, Button.ROUND_RIGHT);
 		
-		new Label("   v0.5 preview", 1, 1, 3, info);
+		//new Label("   v0.5 preview", 1, 1, 3, info);
 		//new ImageButton(ImageButton.FULL_SCREEN, "", 4, 4, 3,  doNothing, info);
-		info.addChild( new Bitmap( new Images.AppIcon(0, 0) ) ).y = 4;
+		//info.addChild( new Bitmap( new Images.AppIcon(0, 0) ) ).y = 4;
 		
 		addPanel(playerControl);
 		addPanel(menuBar);
 		addPanel(transofmrGizmosPanel);
-		addPanel(info);
+		//addPanel(info);
+		addChild(progressBar);
 	}
 	
 	private function doNothing() {}
@@ -72,11 +75,13 @@ class HeaderSpace extends Space
 		playerControl._width = 70;
 		playerControl.x = Space.GetSpace(Space.VIEWPORT)._width / 2 + Space.GetSpace(Space.VIEWPORT).x  - (transofmrGizmosPanel._width / 2) ;
 		playerControl.resize();
-		
-		info.x = Lib.current.stage.stageWidth - info._width + 7;
+		//progressBar.hide();
+		progressBar.x = Lib.current.stage.stageWidth - progressBar._width + 2 - Panel.padding;
+	
+		//info.x = progressBar.x - info._width;
 	}
 
-override public function drawGraphics()
+	override public function drawGraphics()
 	{
 		var g:Graphics = graphics;
 		g.clear();

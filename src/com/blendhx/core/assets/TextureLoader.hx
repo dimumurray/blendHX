@@ -54,6 +54,7 @@ class TextureLoader
 	private function onError(e:ErrorEvent)
 	{
 		Debug.Log(casheURL + ": " + e.text);
+		onTextureReady(null);
 	}
 	
 	private function wellNowTryUploading(event:Event)

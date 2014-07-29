@@ -5,6 +5,7 @@ import flash.errors.Error;
 
 import com.blendhx.editor.Selection;
 import com.blendhx.core.*;
+import com.blendhx.core.assets.*;
 import com.blendhx.core.components.GameObject;
 import com.blendhx.editor.assets.*;
 import com.blendhx.editor.uicomponents.*;
@@ -99,14 +100,23 @@ class FileItem extends DragableItem
 				targetFile.moveTo(destinationFolder, false);
 			}
 			catch(e:Error)
+			{
 				Debug.Log(e.message);
+				return;
+			}
 				
-			
+			Assets.MoveAsset( getLocalURL(targetFile), getLocalURL(destinationFolder) );
+				
 			AssetsPanel.getInstance().populate();
 		}
 			
 	}
-
+	
+	private inline static function getLocalURL(file:File):String
+	{
+		return StringTools.urlDecode(file.url.substring(Assets.sourceDirectory.url.length+1));
+	}
+	
 	public function onDoubleClick(e:MouseEvent)
 	{
 	}

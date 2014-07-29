@@ -40,7 +40,6 @@ class Process extends EventDispatcher
 
 		try 
 		{
-			Debug.Log("starting process");
 			process.start(nativeProcessStartupInfo);
 		} catch (e:IllegalOperationError) {
 			Debug.Log("Illegal Operation: " + e.toString());
@@ -53,14 +52,20 @@ class Process extends EventDispatcher
 	
 	public function onProcessExit(e:NativeProcessExitEvent):Void
 	{
-		NativeApplication.nativeApplication.activeWindow.notifyUser(NotificationType.INFORMATIONAL);
-		//dispatchEvent(new Event(AntivirusEvent.SCAN_EXIT));
-		Debug.Log("onProcessExit code: "+e.exitCode);
+		try
+		{
+			NativeApplication.nativeApplication.activeWindow.notifyUser(NotificationType.INFORMATIONAL);
+		}
+		catch(e:Dynamic)
+		{
+		}
+		
+		com.blendhx.editor.Progressbar.getInstance().hide();
 	}
 
 	public function onProcessOutputData(e:ProgressEvent):Void
 	{
-		Debug.Log("onProcessOutputData: "+process.standardOutput.readUTFBytes(process.standardOutput.bytesAvailable));
+		//Debug.Log("onProcessOutputData: "+process.standardOutput.readUTFBytes(process.standardOutput.bytesAvailable));
 	}
 
 	public function onProcessErrorData(e:ProgressEvent):Void
@@ -74,6 +79,7 @@ class Process extends EventDispatcher
 			
 		}
 		var errorData:String = process.standardError.readUTFBytes(process.standardError.bytesAvailable);
+		com.blendhx.editor.Progressbar.getInstance().hide();
 		Debug.Log("process error:"+errorData);
 	}
 

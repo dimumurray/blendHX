@@ -22,3 +22,6 @@ class ButtonImages extends flash.display.BitmapData {}
 
 @:bitmap("com/blendhx/editor/assets/appIcon.png")
 class AppIcon extends flash.display.BitmapData {}
+
+@:bitmap("com/blendhx/editor/assets/progressbar.png")
+class Progressbar extends flash.display.BitmapData {}
