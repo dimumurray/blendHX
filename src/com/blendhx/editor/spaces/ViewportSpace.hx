@@ -21,7 +21,6 @@ import flash.text.TextFormatAlign;
 class ViewportSpace extends Space
 {
 	public var triangles:UInt=0;
-	private var fps_label:FPS;
  	private var triangles_label:SimpleTextField;
   	
 	public function new()
@@ -29,10 +28,6 @@ class ViewportSpace extends Space
 		super();
 		type = Space.VIEWPORT;
 		
-		//fps and triangles debug display
-		fps_label = new FPS();
-		fps_label.textColor = 0xaaaaaa;
-		addChild(fps_label);
 		
 		/*triangles_label = new SimpleTextField(TextFormatAlign.LEFT);
 		triangles_label.y = 15;

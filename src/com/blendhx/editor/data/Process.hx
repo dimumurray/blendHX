@@ -21,6 +21,7 @@ class Process extends EventDispatcher
 {
 	public var process:NativeProcess;
 	public var name:String;
+	public var onComplete:Void->Void;
 
 	public function new()
 	{
@@ -60,6 +61,9 @@ class Process extends EventDispatcher
 		{
 		}
 		
+		if (onComplete != null)
+			onComplete();
+
 		com.blendhx.editor.Progressbar.getInstance().hide();
 	}
 

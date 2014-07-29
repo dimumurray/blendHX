@@ -42,6 +42,13 @@ class IO
 		else
 			file.moveToTrash();
 		
+		
+		var newXMLString:String =  com.blendhx.editor.data.AS3XMLHelper.Remove(Assets.xml.toString(), getLocalURL( file ) );
+		Assets.xml = Xml.parse( newXMLString );
+		IO.WriteXML(Assets.xml); 
+		
+		Assets.RemoveAsset(getLocalURL( file ));
+			
 		AssetsPanel.getInstance().populate();
 
 	}
@@ -152,6 +159,7 @@ class IO
 			Debug.Log("File already exists");
 			return;
 		}
+			
 		new TexturePropertiesLoader(file, convertToATF);
 	}
 	
@@ -229,13 +237,19 @@ class IO
 		com.blendhx.editor.Progressbar.getInstance().show(true, "Encoding ATF");
 		
 		var process:Process = new Process();
+		process.onComplete = textureLoaded;
 		process.startProcess(args, atfTool);
 		
 		var newXMLString:String =  com.blendhx.editor.data.AS3XMLHelper.AddTexture(Assets.xml.toString(), sourceURL, casheURL+ ".atf", texturePropertiesLoader.width, texturePropertiesLoader.height);
 		Assets.xml = Xml.parse( newXMLString );
 		IO.WriteXML(Assets.xml);
 		
-		var textureLoader:TextureLoader = new TextureLoader( sourceURL, casheURL, texturePropertiesLoader.width, texturePropertiesLoader.height, null);
+		textureLoader = new TextureLoader( sourceURL, casheURL+ ".atf", texturePropertiesLoader.width, texturePropertiesLoader.height, null);
+	}
+	static var textureLoader:TextureLoader;
+	private static function textureLoaded( )
+	{
+		textureLoader.load();
 		Assets.textures.push( textureLoader );
 	}
 	

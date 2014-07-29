@@ -71,6 +71,21 @@ class Assets
 		//Debug.Log("File "+sourceURL+" is not in assets catalouge! Consider reimporting it.");
 		
 	}
+	
+	public static function RemoveAsset(sourceURL:String)
+	{
+		
+		for (material in materials)
+			if (material.sourceURL == sourceURL)
+				materials.remove(material);
+		for (texture in textures)
+			if (texture.sourceURL == sourceURL)
+				textures.remove(texture);
+		for (mesh in meshes)
+			if (mesh.sourceURL == sourceURL)
+				meshes.remove(mesh);
+		
+	}
 
 	private static function loadTextures(texturesXML:Fast)
 	{
@@ -84,6 +99,7 @@ class Assets
 			var casheURL:String = textureXML.innerData;
 		
 			textureLoader = new TextureLoader( localURL, casheURL, width, height, onTextureReady);
+			textureLoader.load();
 			Assets.textures.push( textureLoader );
 		}
 	}

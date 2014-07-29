@@ -3,6 +3,23 @@ package com.blendhx.editor.data
 
 	public class AS3XMLHelper
 	{
+		public static function Remove( xmlString:String, sourceURL:String ):String
+		{
+			var myXML:XML = new XML( xmlString );
+			for(var i:int=0; i<myXML.materials.material.length(); i++)
+				if( myXML.materials.material[i].@localURL == sourceURL)
+					delete myXML.materials.material[i];
+					
+			for(i=0; i<myXML.meshes.mesh.length(); i++)
+				if( myXML.meshes.mesh[i].@localURL == sourceURL)
+					delete myXML.meshes.mesh[i];
+					
+			for(i=0; i<myXML.textures.texture.length(); i++)
+				if( myXML.textures.texture[i].@localURL == sourceURL)
+					delete myXML.textures.texture[i];
+					
+			return myXML.toString();
+		}
 		public static function MoveAssetInXML( xmlString:String, sourceURL:String, newURL:String ):String
 		{
 			var myXML:XML = new XML( xmlString );

@@ -21,7 +21,8 @@ monthday tasks
 728	texture import
 728	mesh import
 728	new material creation
-	asset delete from assets.xml
+729	asset delete from assets.xml
+730	texture asset import into Assets class
 	new script asset creation
 	add scripts from assets panel
 	script properties panel

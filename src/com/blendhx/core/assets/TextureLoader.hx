@@ -34,8 +34,6 @@ class TextureLoader
 		this.width = width;
 		this.height = height;
 		this.onTextureReady = onTextureReady;
-		
-		load();
 	}
 	
 	public function load()
@@ -63,6 +61,7 @@ class TextureLoader
 
 		bytes = urlLoader.data;
 		texture = context3D.createTexture(width, height, Context3DTextureFormat.COMPRESSED, false);
+		if(onTextureReady!= null)
 		texture.addEventListener(Event.TEXTURE_READY, onTextureReady);
 		texture.addEventListener(ErrorEvent.ERROR, onError);
 		

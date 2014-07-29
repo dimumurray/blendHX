@@ -1,4 +1,5 @@
 package com.blendhx.editor.spaces;
+import flash.text.TextFieldAutoSize;
 import flash.display.Bitmap;
 import com.blendhx.editor.assets.*;
 import flash.Lib;
@@ -19,6 +20,7 @@ class HeaderSpace extends Space
 	var transofmrGizmosPanel:Panel;
 	var playerControl:Panel;
 	var menuBar:Panel;
+	var fps_label:FPS;
 	//var info:Panel;
 	var progressBar:Progressbar;
     	
@@ -29,8 +31,15 @@ class HeaderSpace extends Space
 		menuBar = new Menu();
 		playerControl = new HorizontalPanel();
 		transofmrGizmosPanel = new HorizontalPanel();
+		
 		//info = new HorizontalPanel();
 		progressBar = Progressbar.getInstance();
+		
+		/*fps_label = new FPS();
+		fps_label.autoSize = TextFieldAutoSize.RIGHT;
+		fps_label.y = 3;
+		fps_label.textColor = 0x555555;*/
+		
 		
 		transofmrGizmosPanel._width = 100;
 		playerControl._width = 70;
@@ -52,6 +61,7 @@ class HeaderSpace extends Space
 		addPanel(transofmrGizmosPanel);
 		//addPanel(info);
 		addChild(progressBar);
+		//addChild(fps_label);
 	}
 	
 	private function doNothing() {}
@@ -75,10 +85,9 @@ class HeaderSpace extends Space
 		playerControl._width = 70;
 		playerControl.x = Space.GetSpace(Space.VIEWPORT)._width / 2 + Space.GetSpace(Space.VIEWPORT).x  - (transofmrGizmosPanel._width / 2) ;
 		playerControl.resize();
-		//progressBar.hide();
 		progressBar.x = Lib.current.stage.stageWidth - progressBar._width + 2 - Panel.padding;
 	
-		//info.x = progressBar.x - info._width;
+		//fps_label.x = progressBar.x - fps_label.width;
 	}
 
 	override public function drawGraphics()

@@ -123,7 +123,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 81
+            ,"activeLine" : 98
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\data\\IO.hx"
@@ -132,7 +132,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 230
+            ,"activeLine" : 242
         }
         ,{
              "path" : "src\\Main.hx"
@@ -231,7 +231,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 89
+            ,"activeLine" : 80
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
@@ -240,7 +240,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 43
+            ,"activeLine" : 89
         }
         ,{
              "path" : "README.txt"
@@ -249,10 +249,46 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 28
+            ,"activeLine" : 24
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\TextureLoader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 46
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\data\\Process.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 62
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\ViewportSpace.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 34
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 58
         }
     ]
-    ,"activeFile" : "README.txt"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null
