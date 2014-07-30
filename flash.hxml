@@ -12,9 +12,7 @@
 -dce full
 #Libraries
 -lib format
--swf-lib lib/ObjParser.swc
--swf-lib lib/adobeUtils.swc
--swf-lib lib/AS3Helpers.swc
+-swf-lib lib/AS3Classes.swc
 -lib air3
 
 

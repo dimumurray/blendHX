@@ -12,7 +12,7 @@ import flash.display3D.Context3D;
 import flash.Vector;
 import flash.display3D.IndexBuffer3D;
 import flash.display3D.VertexBuffer3D;
-import core.parsers.ObjParser;
+import com.blendhx.editor.data.ObjParser;
 import flash.events.Event;
 
 class MeshLoader

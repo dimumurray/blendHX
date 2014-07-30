@@ -249,7 +249,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 24
+            ,"activeLine" : 16
         }
         ,{
              "path" : "src\\com\\blendhx\\core\\assets\\TextureLoader.hx"
@@ -276,7 +276,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 34
+            ,"activeLine" : 27
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
@@ -287,8 +287,26 @@
             ]
             ,"activeLine" : 58
         }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\MeshLoader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 14
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\Material.hx"
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\MaterialPanel.hx"
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\BottomSpace.hx"
+        }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
+    ,"activeFile" : "src\\com\\blendhx\\core\\assets\\MeshLoader.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null
