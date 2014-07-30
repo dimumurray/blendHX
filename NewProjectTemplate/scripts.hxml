@@ -1,0 +1,25 @@
+#integrate files to classpath
+-cp include
+-cp source
+
+--macro include('scripts')
+--macro include('shaders')
+
+-main UserScripts
+
+#Flash target
+-swf cashe/scripts.swf
+-swf-version 12
+
+#Libraries
+-lib format
+-swf-lib include/AS3Classes.swc
+-lib air3
+#Add debug information
+-debug
+
+#dead code elimination : remove unused code
+#"-dce no" : do not remove unused code
+#"-dce std" : remove unused code in the std lib (default)
+#"-dce full" : remove all unused code
+-dce no
