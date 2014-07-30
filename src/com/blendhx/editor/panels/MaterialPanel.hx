@@ -14,7 +14,6 @@ import com.blendhx.editor.spaces.Space;
 
 import com.blendhx.editor.data.IO;
 
-import shaders.UnlitShader;
 import hxsl.Shader;
 
 /**

@@ -1,5 +1,11 @@
 package com.blendhx.core.assets;
-import shaders.UnlitShader;
+import flash.utils.ByteArray;
+import flash.net.URLLoaderDataFormat;
+import flash.system.SecurityDomain;
+import flash.display.LoaderInfo;
+import flash.system.ApplicationDomain;
+import flash.system.LoaderContext;
+import flash.display.Loader;
 import haxe.xml.Fast;
 import com.blendhx.editor.Progressbar;
 import com.blendhx.editor.data.IO;
@@ -155,10 +161,41 @@ class Assets
 	public static function Load() 
 	{
 		init();
-		
-		loadCasheXML();
+		loadScripts();
 	}
 	
+	private static function loadScripts()
+	{	
+		var uldr : URLLoader = new URLLoader();
+		var request:URLRequest = new URLRequest( casheDirectory.resolvePath( "scripts.swf" ).nativePath );
+		
+		uldr.dataFormat = URLLoaderDataFormat.BINARY;
+		uldr.addEventListener(Event.COMPLETE, onBytesComplete);
+		uldr.addEventListener(IOErrorEvent.IO_ERROR, onScriptsNotFound);
+		uldr.load( request );
+	}
+	private static function onScriptsNotFound(_)
+	{
+		Debug.Log("Problem loading user scripts");
+	}
+
+	private static function onBytesComplete(e : Event)
+	{
+		var bytes : ByteArray = cast (e.target, URLLoader).data;
+		var loader:Loader = new Loader();
+		var ldrC : LoaderContext = new LoaderContext();
+		
+		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, scriptsLoaded);
+		ldrC.applicationDomain = ApplicationDomain.currentDomain;
+		ldrC.allowCodeImport = true;
+		loader.loadBytes(bytes, ldrC);
+	}
+
+	private static function scriptsLoaded(_)
+	{
+		loadCasheXML();
+	}
+
 	public static function onTextureReady(_)
 	{	
 		Progressbar.getInstance().jobsDone ++;

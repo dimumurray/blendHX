@@ -11,7 +11,7 @@
          {
              "pathToHxml" : "flash.hxml"
             ,"runActionType" : 2
-            ,"runActionText" : "c:\\Users\\mehdadoo\\Documents\\AIRSDK_Compiler\\bin\\adl.exe bin\\descriptor.xml -profile extendedDesktop"
+            ,"runActionText" : "adl.exe bin\\descriptor.xml -profile extendedDesktop"
         }
         ,{
              "pathToHxml" : "javascript.hxml"
@@ -117,196 +117,16 @@
             ,"activeLine" : 0
         }
         ,{
-             "path" : "src\\com\\blendhx\\core\\assets\\Assets.hx"
+             "path" : "src\\scripts\\TransformJiggle.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 98
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\data\\IO.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 242
-        }
-        ,{
-             "path" : "src\\Main.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 74
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\FileItem.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 98
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\UtilityPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 84
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\data\\TexturePropertiesLoader.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 13
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\BottomSpaceHeaderPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 60
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\AssetsPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 0
-        }
-        ,{
-             "path" : "flash.hxml"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 13
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Component.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 0
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\MeshRenderer.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 36
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\systems\\RenderingSystem.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 96
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\Progressbar.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 80
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 89
-        }
-        ,{
-             "path" : "README.txt"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 16
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\assets\\TextureLoader.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 46
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\data\\Process.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 62
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\spaces\\ViewportSpace.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 27
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 58
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\assets\\MeshLoader.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 14
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\assets\\Material.hx"
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\MaterialPanel.hx"
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\spaces\\BottomSpace.hx"
+            ,"activeLine" : 6
         }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\core\\assets\\MeshLoader.hx"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\data\\CompilerProcess.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

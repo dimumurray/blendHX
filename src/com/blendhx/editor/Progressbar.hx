@@ -18,6 +18,7 @@ class Progressbar extends Sprite
 {
 	private static var instance:Progressbar;
 	
+	public var text:String="";
 	private var graphic:Sprite;
 	public var percent:Float = 0;
 	public var isEndLess:Bool;
@@ -124,6 +125,7 @@ class Progressbar extends Sprite
 		addEventListener( Event.ENTER_FRAME, update);
 		
 		label.text = text;
+		this.text = text;
 		addChild(graphic);
 		
 		Space.Resize();

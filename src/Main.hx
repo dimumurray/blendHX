@@ -1,7 +1,5 @@
 package;
-import shaders.UnlitShader;
 
-import scripts.*;
 import com.blendhx.editor.*;
 import com.blendhx.editor.panels.*;
 import com.blendhx.editor.spaces.*;
@@ -45,7 +43,7 @@ class Main extends GameObject
 	
 	private function loadProject()
 	{
-		Assets.SetProjectDirectory( File.desktopDirectory.resolvePath("New Project") );
+		Assets.SetProjectDirectory( File.desktopDirectory.resolvePath("NewProject") );
 	}
 
     function initStage()
@@ -96,7 +94,7 @@ class Main extends GameObject
     	var t:Transform = cameraGO.getChild(Transform);
     	t.appendTranslation(0, 0, 6);
     	cameraGO.addChild(camera);
-    	cameraGO.addChild(new CameraRotate());
+
 
     	scene.editorObjects.addChild(cameraGO);
 		

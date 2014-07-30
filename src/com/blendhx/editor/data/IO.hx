@@ -14,7 +14,6 @@ import com.blendhx.core.assets.Material;
 import com.blendhx.editor.panels.AssetsPanel;
 import hxsl.Shader;
 import haxe.ds.StringMap;
-import shaders.UnlitShader;
 
 import flash.utils.CompressionAlgorithm;
 import flash.filesystem.File;
@@ -52,6 +51,8 @@ class IO
 		AssetsPanel.getInstance().populate();
 
 	}
+
+	
 	public static function NewMaterial()
 	{
 		var newMaterial:File =  AssetsPanel.currentDirectory.resolvePath("material.mat");
@@ -169,11 +170,12 @@ class IO
 		var loadFile:File = Assets.casheDirectory.resolvePath( casheURL );
 		
 		
-		if(!loadFile.exists)
+		if(!loadFile.exists )
 		{
 			Debug.Log("Material not found: "+loadFile.nativePath);
 			return null;
 		}
+		
 		
 		var stream = new FileStream();
 		stream.open(loadFile, FileMode.READ);
@@ -196,6 +198,8 @@ class IO
 			return null;
 		}
 		
+		
+		
 		var stream = new FileStream();
 		stream.open(loadFile, FileMode.READ);
 		var bytes:ByteArray = new ByteArray();
@@ -211,8 +215,15 @@ class IO
 		return mesh;
 	}
 	
-	private static function convertToATF( texturePropertiesLoader:TexturePropertiesLoader )
+	private static function convertToATF( texturePropertiesLoader:TexturePropertiesLoader ):Void
 	{
+		
+		if( Process.getInstance().isRunning() )
+		{
+			Debug.Log("There is another process running");
+			return null;
+		}
+		
 		var file:File = texturePropertiesLoader.file;
 		var sourceFolderFile:File =  AssetsPanel.currentDirectory.resolvePath(file.name);
 		file.copyTo(sourceFolderFile);
@@ -236,7 +247,7 @@ class IO
 		
 		com.blendhx.editor.Progressbar.getInstance().show(true, "Encoding ATF");
 		
-		var process:Process = new Process();
+		var process:Process = Process.getInstance();
 		process.onComplete = textureLoaded;
 		process.startProcess(args, atfTool);
 		

@@ -17,12 +17,26 @@ import flash.display.Stage;
 import flash.desktop.NotificationType;
 import flash.Vector;
 
+import com.blendhx.editor.Progressbar;
+
 class Process extends EventDispatcher
 {
 	public var process:NativeProcess;
 	public var name:String;
 	public var onComplete:Void->Void;
-
+	public var onOutput:String->Void;
+	
+	
+	private static var instance:Process;
+	
+	public static inline function getInstance()
+  	{
+    	if (instance == null)
+          return instance = new Process();
+      	else
+          return instance;
+  	}	
+	
 	public function new()
 	{
 		super();
@@ -33,6 +47,11 @@ class Process extends EventDispatcher
 	}
 	public function startProcess(args:Vector<String>, file:File)
 	{
+		if (isRunning())
+		{
+			Debug.Log("There is another process running");
+			return;
+		}
 
 		var nativeProcessStartupInfo:NativeProcessStartupInfo = new NativeProcessStartupInfo();
 		nativeProcessStartupInfo.arguments = args;
@@ -44,32 +63,29 @@ class Process extends EventDispatcher
 			process.start(nativeProcessStartupInfo);
 		} catch (e:IllegalOperationError) {
 			Debug.Log("Illegal Operation: " + e.toString());
+			cleanup();
 		} catch (ae:ArgumentError) {
 			Debug.Log("Argument Error: " + ae.toString());
+			cleanup();
 		} catch (e:Error) {
 			Debug.Log("Try Error: " + e.toString());
+			cleanup();
 		}
 	}
 	
 	public function onProcessExit(e:NativeProcessExitEvent):Void
 	{
-		try
-		{
-			NativeApplication.nativeApplication.activeWindow.notifyUser(NotificationType.INFORMATIONAL);
-		}
-		catch(e:Dynamic)
-		{
-		}
-		
 		if (onComplete != null)
 			onComplete();
 
-		com.blendhx.editor.Progressbar.getInstance().hide();
+		cleanup();
 	}
 
 	public function onProcessOutputData(e:ProgressEvent):Void
 	{
-		//Debug.Log("onProcessOutputData: "+process.standardOutput.readUTFBytes(process.standardOutput.bytesAvailable));
+		var output:String = process.standardOutput.readUTFBytes(process.standardOutput.bytesAvailable);
+		if (onOutput != null)
+			onOutput(  output  );
 	}
 
 	public function onProcessErrorData(e:ProgressEvent):Void
@@ -83,10 +99,17 @@ class Process extends EventDispatcher
 			
 		}
 		var errorData:String = process.standardError.readUTFBytes(process.standardError.bytesAvailable);
-		com.blendhx.editor.Progressbar.getInstance().hide();
 		Debug.Log("process error:"+errorData);
+		cleanup();
 	}
-
+	
+	private function cleanup()
+	{
+		Progressbar.getInstance().hide();
+		onOutput = null;
+		onComplete = null;
+	}
+	
 	public function isRunning():Bool
 	{
 		return process.running;

@@ -5,7 +5,6 @@ import com.blendhx.editor.Selection;
 import com.blendhx.editor.uicomponents.*;
 import com.blendhx.editor.spaces.Space;
 import com.blendhx.core.components.MeshRenderer;
-import shaders.UnlitShader;
 import hxsl.Shader;
 
 /**

@@ -33,12 +33,12 @@ class Debug
 			tf.align = TextFormatAlign.LEFT;
 			t.autoSize = TextFieldAutoSize.LEFT;
 			tf.font = "Segoe UI";
-			tf.color = 0x444444;
+			tf.color = 0x666666;
 			t.defaultTextFormat = tf;
 			t.width = 170;
 			t.height = 150;
 			t.selectable = false;
-			t.y = Space.GetSpace(Space.HEADER)._height + 15;
+			t.y = Space.GetSpace(Space.HEADER)._height;
 			t.text = "";
 			Lib.current.stage.addChild(t);
 		}

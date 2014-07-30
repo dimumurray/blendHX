@@ -50,7 +50,7 @@ class HeaderSpace extends Space
 		new ImageButton(ImageButton.SCALE, "", 3, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_RIGHT);
 		
 		new ImageButton(ImageButton.PLAY, "", 1, 2, 3,  doNothing, playerControl, Button.ROUND_LEFT);
-		new ImageButton(ImageButton.REFRESH, "", 2, 2, 3,  doNothing, playerControl, Button.ROUND_RIGHT);
+		new ImageButton(ImageButton.REFRESH, "", 2, 2, 3,  compileScripts, playerControl, Button.ROUND_RIGHT);
 		
 		//new Label("   v0.5 preview", 1, 1, 3, info);
 		//new ImageButton(ImageButton.FULL_SCREEN, "", 4, 4, 3,  doNothing, info);
@@ -69,6 +69,11 @@ class HeaderSpace extends Space
 	override public function resize()
 	{
 		super.resize();
+	}
+	
+	private function compileScripts()
+	{
+		com.blendhx.editor.data.CompilerProcess.Compile();
 	}
 	
 	override public function resizePanels()

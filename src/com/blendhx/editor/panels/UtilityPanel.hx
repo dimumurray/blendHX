@@ -9,8 +9,6 @@ import com.blendhx.editor.spaces.Space;
 import com.blendhx.editor.uicomponents.*;
 import com.blendhx.core.components.*;
 import com.blendhx.core.Scene;
-import shaders.*;
-import scripts.*;
 
 import flash.net.FileFilter;
 import flash.net.URLRequest;

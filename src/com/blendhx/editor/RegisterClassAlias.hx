@@ -12,7 +12,6 @@ class RegisterClassAlias
 	public static function Register() 
 	{
 		haxe.remoting.AMFConnection.registerClassAlias("haxe.ds.StringMap", haxe.ds.StringMap);
-		haxe.remoting.AMFConnection.registerClassAlias("shaders.UnlitShader", shaders.UnlitShader);
 		
 		haxe.remoting.AMFConnection.registerClassAlias("com.blendhx.core.assets.Material", Material);
 		haxe.remoting.AMFConnection.registerClassAlias("com.blendhx.core.assets.Mesh", Mesh);

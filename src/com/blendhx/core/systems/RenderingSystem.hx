@@ -3,7 +3,6 @@ package com.blendhx.core.systems;
 import com.blendhx.core.assets.Mesh;
 import com.blendhx.core.components.*;
 import com.blendhx.editor.Debug;
-import shaders.UnlitShader;
 import hxsl.Shader;
 
 import flash.events.ErrorEvent;
@@ -19,9 +18,7 @@ import flash.display.Stage3D;
 import flash.display.Stage;
 import flash.display3D.Context3DBlendFactor;
 import flash.Lib;
-
-import shaders.DefaultShader;
-
+import com.blendhx.core.shaders.DefaultShader;
 
 
 
