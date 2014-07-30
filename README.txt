@@ -36,12 +36,13 @@ monthday tasks
 	application menu bar
 	editor gizmos functionality
 	assets uniques cashe name
-	space masking panels
-	space scroll bar
-	global panels click and focus manager
 	GC review
 	----------v.5 preview
 	
+	editor assets and object management review
+	space masking panels
+	space scroll bar
+	global panels click and focus manager
 	prefab
 	texture asset properties panel
 	mesh asset properties panel
