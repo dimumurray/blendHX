@@ -1,3 +1,5 @@
+This project is highly experimental at the moment
+
 monthday tasks
 
 716	panel components pool
@@ -34,11 +36,12 @@ monthday tasks
 	re name assets
 	hierarchy panel re parenting support
 	application menu bar
-	editor gizmos functionality
 	assets uniques cashe name
 	GC review
 	----------v.5 preview
 	
+	editor gizmos
+	console space
 	editor assets and object management review
 	space masking panels
 	space scroll bar
