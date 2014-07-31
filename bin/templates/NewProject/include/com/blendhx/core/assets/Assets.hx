@@ -1,5 +1,4 @@
 package com.blendhx.core.assets;
-import com.blendhx.editor.data.UserScripts;
 import flash.utils.ByteArray;
 import flash.net.URLLoaderDataFormat;
 import flash.system.SecurityDomain;
@@ -162,11 +161,10 @@ class Assets
 	public static function Load() 
 	{
 		init();
-		UserScripts.onScriptsLoaded = loadStartupUserScripts;
-		UserScripts.loadScripts();
+		loadScripts();
 	}
 	
-	public static function loadStartupUserScripts()
+	public static function loadScripts()
 	{	
 		
 		var uldr : URLLoader = new URLLoader();
@@ -189,7 +187,7 @@ class Assets
 		var ldrC : LoaderContext = new LoaderContext();
 		
 		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, scriptsLoaded);
-		ldrC.applicationDomain = ApplicationDomain.currentDomain;
+		ldrC.applicationDomain = new ApplicationDomain(  ApplicationDomain.currentDomain );
 		ldrC.allowCodeImport = true;
 		loader.loadBytes(bytes, ldrC);
 	}

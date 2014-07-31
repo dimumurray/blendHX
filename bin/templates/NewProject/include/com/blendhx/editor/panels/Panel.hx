@@ -88,7 +88,7 @@ class Panel extends Sprite
 	private function drawRemoveButton()
 	{
 		
-		if(hostComponent != null && closeButton == null && !AS3DefenitionHelper.ObjectIsOfType(hostComponent, Transform) )
+		if(hostComponent != null && closeButton == null && AS3DefenitionHelper.ObjectIsOfType(hostComponent, Transform) )
 			closeButton = new RemoveButton(removeHostComponent, this);
 		
 		if(closeButton!= null)

@@ -125,8 +125,116 @@
             ]
             ,"activeLine" : 6
         }
+        ,{
+             "path" : "c:\\Users\\mehdadoo\\AppData\\Local\\HIDE\\.HIDE\\editor.json"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 1
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\Assets.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 166
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 89
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\AddComponentPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 17
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 82
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\PanelPool.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 0
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\HierarchyPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 25
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\PropertiesSpace.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 43
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\Panel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 101
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\assets\\Material.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 40
+        }
+        ,{
+             "path" : "src\\hxsl\\Shader.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 346
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\systems\\RenderingSystem.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 39
+        }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\data\\CompilerProcess.hx"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

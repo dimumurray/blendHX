@@ -54,7 +54,7 @@ class Main extends GameObject
     	stage.addEventListener(Event.RESIZE, onApplicationResize);
     }
 
-    function initSpaces()
+    function initSpaces():Void
     {
 		
     	var rightSpace:Space = Space.GetSpace(Space.PROPERTIES);
