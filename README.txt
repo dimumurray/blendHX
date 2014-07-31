@@ -26,9 +26,9 @@ monthday tasks
 729	asset delete from assets.xml
 730	texture asset import into Assets class
 	new script asset creation
-	add scripts from assets panel
+731	add scripts from assets panel
 	script properties panel
-	compile shaders and user haxe scripts
+731	compile shaders and user haxe scripts
 	parent transformation
 	grid floor wireframe shader
 	re parent game objects
