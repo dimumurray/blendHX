@@ -1,8 +1,10 @@
 package com.blendhx.editor.panels;
+import flash.text.TextFieldAutoSize;
 import flash.system.ApplicationDomain;
 
 import com.blendhx.core.components.GameObject;
 import com.blendhx.editor.uicomponents.Button;
+import com.blendhx.editor.uicomponents.TextInput;
 import com.blendhx.editor.data.AS3DefenitionHelper;
 import com.blendhx.editor.Selection;
 import com.blendhx.core.*;
@@ -23,6 +25,8 @@ class HierarchyPanel extends Panel
 	private var hierarchyItemPool:Array<HierarchyItem>;
 	public static var identWidth:Float = 20;
 	public static var padding:Float = 20;
+	private var renameInput:TextInput;
+	private var rightClickedGameobject:GameObject;
 	
 	public static inline function getInstance():HierarchyPanel
   	{
@@ -43,7 +47,42 @@ class HierarchyPanel extends Panel
 		drawGraphics();
 	}
 	
+	public function renameGameObject(hierarchyItem:HierarchyItem)
+	{
+		rightClickedGameobject = hierarchyItem.gameobject;
+		
+		if(renameInput == null)
+		{
+			renameInput = new TextInput("", 999, 999, 0, removeRenameBox, this);
+			elements.remove(renameInput);
+		}
 	
+		addChild(renameInput);
+		renameInput.label.autoSize = TextFieldAutoSize.LEFT;
+		renameInput.setValue( rightClickedGameobject.name );
+		renameInput.onMouseDown(null);
+		
+		renameInput.label.setSelection(0, rightClickedGameobject.name.length);
+		renameInput.x = 2;
+		renameInput.y = hierarchyItem.y;
+		renameInput._height = 19;
+		renameInput._width = _width - 4;
+		renameInput.resize();
+	}
+	public function removeRenameBox()
+	{
+		
+		try
+		{
+			removeChild(renameInput);
+		}
+		catch(e:Dynamic)
+		{
+			return;
+		}
+		rightClickedGameobject.name = renameInput.value;
+		populate();
+	}
 	
 	public function clearItems() 
 	{

@@ -29,12 +29,11 @@ monthday tasks
 731	compile shaders and user haxe scripts
 801	re name assets
 801	new script asset creation
-	re name game objects
+801	re name game objects
 	edit mode/play mode
 	script properties panel
 	parent transformation
 	grid floor wireframe shader
-	re parent game objects
 	hierarchy panel re parenting support
 	application menu bar
 	assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)

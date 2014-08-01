@@ -66,14 +66,26 @@ class UserScripts
 		uldr.addEventListener(IOErrorEvent.IO_ERROR, onScriptsNotFound);
 		uldr.load( request );
 	}
-	private static function onScriptsNotFound(_)
+	private static function onScriptsNotFound(e:IOErrorEvent)
 	{
+		var uldr : URLLoader = cast (e.target, URLLoader);
+		uldr.removeEventListener(Event.COMPLETE, onBytesComplete);
+		uldr.removeEventListener(IOErrorEvent.IO_ERROR, onScriptsNotFound);
+		
+		if ( onScriptsLoaded != null)
+			onScriptsLoaded();
+		onScriptsLoaded = null;
+		
 		Debug.Log("Problem loading user scripts");
 	}
 
 	private static function onBytesComplete(e : Event)
 	{
-		var bytes : ByteArray = cast (e.target, URLLoader).data;
+		var uldr : URLLoader = cast (e.target, URLLoader);
+		uldr.removeEventListener(Event.COMPLETE, onBytesComplete);
+		uldr.removeEventListener(IOErrorEvent.IO_ERROR, onScriptsNotFound);
+		
+		var bytes : ByteArray = uldr.data;
 		var loader:Loader = new Loader();
 		var ldrC : LoaderContext = new LoaderContext();
 		userScriptsDomain = new ApplicationDomain(  ApplicationDomain.currentDomain );
@@ -84,11 +96,13 @@ class UserScripts
 		loader.loadBytes(bytes, ldrC);
 	}
 
-	private static function scriptsLoaded(_)
+	private static function scriptsLoaded( e:Event )
 	{
+		cast (e.target, LoaderInfo).loader.removeEventListener(Event.COMPLETE, scriptsLoaded);
+		
 		if ( onScriptsLoaded != null)
 			onScriptsLoaded();
-
+		onScriptsLoaded = null;
 	}
 	
 	public static function GetComponent( classURL:String ):Component

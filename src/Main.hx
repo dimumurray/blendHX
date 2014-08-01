@@ -83,23 +83,10 @@ class Main extends GameObject
     function onContext3DCreate(_):Void
     {
     	stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
-    	initCamera();
+    	Scene.getInstance().init();
+		HierarchyPanel.getInstance().populate();
+		Space.Resize();
     	loadAssets();
-    }
-
-    function initCamera():Void
-    {
-    	var cameraGO:GameObject = new GameObject("Editor Camera");
-		var camera:Camera = new Camera();
-    	var t:Transform = cameraGO.getChild(Transform);
-    	t.appendTranslation(0, 0, 6);
-    	cameraGO.addChild(camera);
-
-
-    	scene.editorObjects.addChild(cameraGO);
-		
-		renderingSystem.camera = camera;
-    	Space.Resize();
     }
 
     function loadAssets():Void
@@ -109,7 +96,10 @@ class Main extends GameObject
     }
 
     function onAssetsReady():Void
-    { }
+    {
+		Scene.getInstance().createDefaultSceneObjects();
+		HierarchyPanel.getInstance().populate();
+	}
 
     function onApplicationResize(e:Event)
     {

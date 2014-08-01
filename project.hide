@@ -150,7 +150,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 116
+            ,"activeLine" : 68
         }
         ,{
              "path" : "src\\com\\blendhx\\core\\assets\\Assets.hx"
@@ -159,7 +159,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 48
+            ,"activeLine" : 54
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
@@ -186,7 +186,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 173
+            ,"activeLine" : 95
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\panels\\FileItem.hx"
@@ -204,7 +204,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 14
+            ,"activeLine" : 15
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\uicomponents\\TextInput.hx"
@@ -213,7 +213,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 98
+            ,"activeLine" : 56
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
@@ -222,10 +222,85 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 95
+            ,"activeLine" : 134
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\HierarchyPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 177
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\HierarchyItem.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 24
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\Panel.hx"
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\AddComponentPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 7
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\UtilityPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 43
+        }
+        ,{
+             "path" : "src\\Main.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 97
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\MaterialPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 57
+        }
+        ,{
+             "path" : "README.txt"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 33
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\Scene.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 46
         }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
+    ,"activeFile" : "src\\com\\blendhx\\core\\Scene.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

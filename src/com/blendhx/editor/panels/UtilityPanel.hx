@@ -34,12 +34,10 @@ class UtilityPanel extends Panel
 	{
 		super("Utility", Space.SPACE_WIDTH);
 
-		var createObjects:Button = new Button("Create Objects", 1, 3, 35, doCreateObjects, this, Button.ROUND_LEFT);
-		var saveObjects:Button = new Button("Save Objects", 2, 3, 35,  saveFile, this, Button.ROUND_NONE);
-		var loadObjects:Button = new Button("Load Objects", 3,3, 35, startLoadingObjects, this, Button.ROUND_RIGHT);
+		var saveObjects:Button = new Button("Save Objects", 1, 2, 35,  saveFile, this, Button.ROUND_LEFT);
+		var loadObjects:Button = new Button("Load Objects", 2, 2, 35, startLoadingObjects, this, Button.ROUND_RIGHT);
 		//var unsetObjects:Button = new Button("Unset Objects", 1, 2, 125, unset, this);
 		//var initObjects:Button = new Button("Init Objects", 2, 2, 125, init, this);
-		var traceObjects:Button = new Button("Update Hierarchy", 1, 1, 65, populateHierarchyPanel, this);
 	}	
 	
 	private function saveFile()
@@ -47,7 +45,7 @@ class UtilityPanel extends Panel
 		
 		var bytes:ByteArray = new ByteArray();
 		
-		bytes.writeObject(Scene.getInstance().objects);
+		bytes.writeObject(Scene.getInstance().sceneObjects);
 		bytes.position = 0;
 
 		var saveFile:FileReference = new FileReference();
@@ -81,40 +79,13 @@ class UtilityPanel extends Panel
 		var bytes:ByteArray = urlLoader.data;
 		var objects:GameObject = bytes.readObject();
 		Scene.getInstance().addChild(objects);
-		Scene.getInstance().objects = objects;
+		Scene.getInstance().sceneObjects = objects;
 		objects.init();
-		populateHierarchyPanel();
+		HierarchyPanel.getInstance().populate();
 	}
 	
 	function doCreateObjects():Void
 	{
-		var objects:GameObject = new GameObject("Objects");
-		
-		var g:GameObject;
-		var mesh:Mesh;
-		var material:Material;
-		var renderer:MeshRenderer;
-		
-		g = new GameObject("house");
-		renderer = new MeshRenderer();
-		renderer.meshFileName = "meshes/house.obj";
-		renderer.materialFileName = "materials/head.mat";
-		g.addChild(  renderer );
-		
-		objects.addChild(g);
-		
-		
-		Scene.getInstance().addChild(objects);
-		Scene.getInstance().objects = objects;
-		populateHierarchyPanel();
-	}
 
-	
-	private function populateHierarchyPanel():Void
-	{
-		hierarchyPanel = HierarchyPanel.getInstance();
-		hierarchyPanel.populate();
 	}
-	
-	var hierarchyPanel:HierarchyPanel;	
 }

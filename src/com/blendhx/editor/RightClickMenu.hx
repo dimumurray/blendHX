@@ -55,11 +55,13 @@ class RightClickMenu
 		menu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
-	public static function GameObjectMenu(gameObject:GameObject)
+	public static function GameObjectMenu(hierarchyItem:HierarchyItem)
 	{
+		var gameObject:GameObject = hierarchyItem.gameobject;
 		var menu:NativeMenu = new NativeMenu();
 		
 		menu.addItem( new NativeMenuItem("New" )).addEventListener(Event.SELECT, createGameObject.bind(gameObject));
+		menu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameGameObject.bind(hierarchyItem));
 		menu.addItem( new NativeMenuItem("Delete Selected")).addEventListener(Event.SELECT, removeSelectedGameObject.bind(gameObject));
 		
 		menu.addItem( new NativeMenuItem("", true) );
@@ -128,6 +130,11 @@ class RightClickMenu
 		gameObject.addChild( new GameObject() );
 		HierarchyPanel.getInstance().populate();
 	}
+	private static function renameGameObject(hierarchyItem:HierarchyItem, _) 
+	{
+		HierarchyPanel.getInstance().renameGameObject( hierarchyItem );
+	}
+
 	private static function removeSelectedGameObject(gameObject:GameObject, _) 
 	{
 		gameObject.parent.removeChild(gameObject);

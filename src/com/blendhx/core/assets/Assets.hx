@@ -24,7 +24,6 @@ class Assets
 	public static var meshes:Array<Mesh>;
 	public static var materials:Array<Material>;
 	public static var onAssetsReady:Void->Void;
-	public static var onMeshesReady:Void->Void;
 	public static var projectDirectory:File;
 	public static var sourceDirectory:File;
 	public static var casheDirectory:File;
@@ -48,8 +47,7 @@ class Assets
 	{
 		xml = Xml.parse(e.target.data);
 		var fast = new Fast(xml.firstElement());
-		var length:UInt=9;
-		
+		var length:UInt=11;
 		Progressbar.getInstance().show(false, "Loading", onAssetsReady);
 		
 		Progressbar.getInstance().totalJobs = length;
@@ -181,7 +179,8 @@ class Assets
 			}
 
 		}
-		Debug.Log("Texture " + sourceURL +" not found.");
+		if(sourceURL != "" && sourceURL != "null")
+			Debug.Log("Texture " + sourceURL +" not found.");
 		return null;
 
 	}
@@ -196,8 +195,8 @@ class Assets
 			}
 
 		}
-	
-		Debug.Log("Mesh " + sourceURL +" not found.");
+		if(sourceURL != "" && sourceURL != "null")
+			Debug.Log("Mesh " + sourceURL +" not found.");
 
 		return null;
 
@@ -213,8 +212,8 @@ class Assets
 			}
 
 		}
-	
-		Debug.Log("Material " + sourceURL +" not found.");
+		if(sourceURL != "" && sourceURL != "null")
+			Debug.Log("Material " + sourceURL +" not found.");
 		return null;
 
 	}
