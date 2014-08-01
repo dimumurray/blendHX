@@ -150,10 +150,19 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 104
+            ,"activeLine" : 99
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\spaces\\Space.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 110
         }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\spaces\\Space.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null
