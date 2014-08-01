@@ -41,7 +41,6 @@ class RenderingSystem extends EventDispatcher implements ISystem
 	private var shaderError:String;
 
 	
-	
 	public static inline function getInstance()
   	{
     	if (instance == null)
@@ -64,14 +63,13 @@ class RenderingSystem extends EventDispatcher implements ISystem
 	
 	public function init()
 	{
-		
 		Lib.current.stage.stage3Ds[0].addEventListener(Event.CONTEXT3D_CREATE, initContext3D);
 		Lib.current.stage.stage3Ds[0].addEventListener(ErrorEvent.ERROR, context3DError);
 		Lib.current.stage.stage3Ds[0].requestContext3D();
 	}
 	private function context3DError(e:ErrorEvent)
 	{
-		trace(e.text);
+		Debug.Log(e.text);
 	}
 	
 	private function initContext3D(e:Event)
@@ -99,19 +97,19 @@ class RenderingSystem extends EventDispatcher implements ISystem
 		
 		context3D.clear(0.22, 0.22, 0.22, 1.0);
 		
-		for (i in 0...meshRenderers.length)
+		for (meshRenderer in meshRenderers)
 		{
-			transform = meshRenderers[i].transform;
-			mesh = meshRenderers[i].mesh;
+			transform = meshRenderer.transform;
+			mesh = meshRenderer.mesh;
 			 
-			if(meshRenderers[i].enabled == false)
+			if(meshRenderer.enabled == false)
 				continue;
 			if(mesh == null)
 				continue;
-			if(meshRenderers[i].material == null)
+			if(meshRenderer.material == null)
 				shader = defaultShader;
 			else
-				shader = meshRenderers[i].material.shader;
+				shader = meshRenderer.material.shader;
 			
 			shader.updateMatrix(transform.matrix, camera.getViewProjection());
 			shader.bind(context3D, mesh.vertexBuffer);
@@ -138,9 +136,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
 				
 			shader.unbind(context3D);
 		}
-	
-		context3D.present();
-			 
+		context3D.present(); 
 	}
 
 	public function registerMeshRenderer(meshRenderer:MeshRenderer) 

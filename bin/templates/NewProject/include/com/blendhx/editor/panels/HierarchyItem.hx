@@ -85,7 +85,7 @@ class HierarchyItem extends DragableItem
 	public function onRightClick(e:MouseEvent)
 	{
 		isPoterntialyDragging = false;
-		RightClickMenu.GameObjectMenu(this.gameobject);
+		RightClickMenu.GameObjectMenu(this);
 		Selection.ClearDragObject(null);
 	}
 	

@@ -4,10 +4,6 @@ import com.blendhx.core.assets.*;
 import flash.geom.Matrix3D;
 import hxsl.Shader;
 
-/**
-* @author 
- */
-
 class DefaultShader extends Shader
 {
 	override public function initProperties()
@@ -17,7 +13,6 @@ class DefaultShader extends Shader
 	
 	override public function updateProperties(values:Array<Dynamic>)
 	{
-		
 	}
 	
 	override public function updateMatrix(modelMatrix:Matrix3D, cameraMatrix:Matrix3D)
@@ -26,8 +21,10 @@ class DefaultShader extends Shader
 		projectionMatrix = cameraMatrix;
 	}
 	
-	static var SRC = {
-		var input : {
+	static var SRC = 
+	{
+		var input : 
+		{
 			pos : Float3
 		};
 		
@@ -40,7 +37,6 @@ class DefaultShader extends Shader
 		{
 			out =  [0.5, 0.5, 0.5, 1.0];
 		}
-		
 	};
 
 }

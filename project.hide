@@ -144,106 +144,16 @@
             ,"activeLine" : 4
         }
         ,{
-             "path" : "src\\com\\blendhx\\core\\components\\GameObject.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 39
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Camera.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 45
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Component.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 19
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\MeshRenderer.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 46
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Transform.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 10
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\HierarchyPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 186
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 139
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\UtilityPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 74
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\Scene.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 42
-        }
-        ,{
              "path" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 36
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\systems\\RenderingSystem.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 113
+            ,"activeLine" : 104
         }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\core\\components\\Transform.hx"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

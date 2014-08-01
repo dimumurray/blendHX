@@ -15,6 +15,8 @@ import flash.display3D.VertexBuffer3D;
 import com.blendhx.editor.data.ObjParser;
 import flash.events.Event;
 
+//manages parsing OBJ's
+//instantiated only by IO.ImportOBJ() and never used again
 class MeshLoader
 {	
 	public var casheURL:String;
@@ -54,7 +56,8 @@ class MeshLoader
 		mesh.triangles = Std.int( meshIndexData.length/3);
 		
 		onMeshReady(mesh);
-		//uploadBuffers();
+		
+		destroy();
 	}
 	private function parseObj(bytes:ByteArray):Void
 	{
@@ -65,6 +68,16 @@ class MeshLoader
 	
 	private function onIOError(e:IOErrorEvent):Void
 	{
+		destroy();
 		Debug.Log(e.text);
+	}
+	
+	private function destroy()
+	{
+		urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);
+		urlLoader.removeEventListener(IOErrorEvent.IO_ERROR, onIOError);
+		urlLoader.data = null;
+		urlLoader = null;
+		onMeshReady = null;
 	}
 }

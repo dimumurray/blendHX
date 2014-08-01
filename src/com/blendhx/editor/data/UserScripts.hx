@@ -15,6 +15,7 @@ import flash.Vector;
 import flash.events.Event;
 import flash.events.IOErrorEvent;
 
+import com.blendhx.core.Utils;
 import com.blendhx.core.components.Component;
 import com.blendhx.core.assets.Assets;
 import com.blendhx.editor.data.Process;
@@ -107,7 +108,7 @@ class UserScripts
 	
 	public static function GetComponent( classURL:String ):Component
 	{
-		var componentClass:Class<Dynamic> = userScriptsDomain.getDefinition( GetClassNameFromURL( classURL ) ); 
+		var componentClass:Class<Dynamic> = userScriptsDomain.getDefinition( Utils.GetClassNameFromURL( classURL ) ); 
 		if(componentClass == null)
 		{
 			Debug.Log("Script defenition not found. Consider re compiling");
@@ -119,7 +120,7 @@ class UserScripts
 			return null;
 		}
 		
-		var className:String = GetClassNameFromURL( classURL );
+		var className:String = Utils.GetClassNameFromURL( classURL );
 		var component:Component = cast(AS3DefenitionHelper.Instantiate(userScriptsDomain, className, Component), Component);
 		
 		return component;
@@ -127,7 +128,7 @@ class UserScripts
 	
 	public static function GetShader( classURL:String ):Shader
 	{
-		var className:String = GetClassNameFromURL( classURL );
+		var className:String = Utils.GetClassNameFromURL( classURL );
 		var shader:Shader;
 		
 		shader =  cast(AS3DefenitionHelper.Instantiate(userScriptsDomain, className, Shader), Shader);
@@ -143,12 +144,5 @@ class UserScripts
 		}
 		
 		return shader;
-	}
-	
-	private static function GetClassNameFromURL(url:String=""):String
-	{
-		var className:String = StringTools.replace(url, "/", ".");
-		className = className.substring(0, className.length - 3);
-		return className;
 	}
 }

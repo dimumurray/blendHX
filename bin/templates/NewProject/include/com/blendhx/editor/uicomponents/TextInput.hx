@@ -114,7 +114,7 @@ class TextInput extends UIElement
 		label.width = _width-40;
 		label.x = 20;
 		label.selectable = false;
-		label.height = 20;
+		label.height = _height;
 		label.type = TextFieldType.INPUT;
 
 		addChild(label);
@@ -129,10 +129,10 @@ class TextInput extends UIElement
 		var g:Graphics = graphics;
 		var m:Matrix = new Matrix();
 		g.clear();
-		m.createGradientBox(_width, 20, 90);
+		m.createGradientBox(_width, _height, 90);
 		g.beginGradientFill(GradientType.LINEAR, state, [1, 1], [1, 255], m);
 		g.lineStyle(1, 0x393939, 1, true);
-		g.drawRoundRect(0, 0, _width, 20, 10);
+		g.drawRoundRect(0, 0, _width, _height, 10);
 		g.endFill();
 	}
 }

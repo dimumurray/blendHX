@@ -8,6 +8,11 @@ import flash.Vector;
 import flash.utils.ByteArray;
 import flash.display3D.Context3D;
 
+/*
+Instance of the classes are accesible by Assets.GetMesh()
+They are created only by MeshLoader at the time of parsing OBJ
+*/
+
 class Mesh
 {
 	public var meshIndexData:Vector<UInt>;
@@ -36,6 +41,13 @@ class Mesh
 		indexBuffer = context3D.createIndexBuffer(meshIndexData.length);
 		indexBuffer.uploadFromVector(meshIndexData, 0, meshIndexData.length);
 	}
-
+	
+	public function destroy()
+	{
+		meshIndexData = null;
+		meshVertexData = null;
+		vertexBuffer.dispose();
+		indexBuffer.dispose();
+	}
 }
 		

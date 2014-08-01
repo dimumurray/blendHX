@@ -13,24 +13,20 @@ class Component
 	
 	public function update():Void
 	{
-		if (!enabled)
-			return;
 	}
 	public function init():Void
 	{
-		
 	}
-	public function unset():Void
-	{
-		
-	}
+	
 	public function destroy()
 	{
-		
 	}
-	public function setParent(_parent : GameObject)
+	//when component parent is changed, the transform component should as well be
+	public function setParent(parent : GameObject)
 	{
-		parent = _parent;
+		this.parent = parent;
+		if(parent == null)
+			return;
 		transform = parent.getChild(Transform);
 	}
 }
