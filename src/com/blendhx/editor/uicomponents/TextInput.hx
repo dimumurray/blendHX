@@ -1,4 +1,6 @@
 package com.blendhx.editor.uicomponents;
+import flash.events.TimerEvent;
+import flash.utils.Timer;
 
 import com.blendhx.editor.panels.Panel;
 import com.blendhx.core.*;
@@ -92,14 +94,25 @@ class TextInput extends UIElement
 	
 	public function onMouseDown(e:MouseEvent)
 	{
-		drawBox(click, null);
-		
 		flash.Lib.current.stage.focus = label;
 		editing = true;
 		label.text = value;
-		label.selectable = true;
 		label.setSelection(0, label.length);
 		drawBox(click, null);
+		
+		//to avoid textField right click menu to popup, add a timer to do make text selectable few moments later
+		var t:Timer = new Timer(0.1, 1);
+		t.addEventListener(TimerEvent.TIMER, setLabelToSelectable);
+		t.start();
+	}
+	//we can now make the text selectable safely. if we did it earlier, a nasty system context menu would pop up on Assets panel
+	private function setLabelToSelectable(e:TimerEvent)
+	{
+		var t:Timer = cast(e.target, Timer);
+		t.removeEventListener(TimerEvent.TIMER, setLabelToSelectable);
+		t.stop();
+		t = null;
+		label.selectable = true;
 	}
 	
 	public function updateValue(_)
