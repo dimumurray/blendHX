@@ -25,24 +25,27 @@ monthday tasks
 728	new material creation
 729	asset delete from assets.xml
 730	texture asset import into Assets class
-	new script asset creation
 731	add scripts from assets panel
-	script properties panel
 731	compile shaders and user haxe scripts
+801	re name assets
+801	new script asset creation
+	re name game objects
+	edit mode/play mode
+	script properties panel
 	parent transformation
 	grid floor wireframe shader
 	re parent game objects
-	re name game objects
-	re name assets
 	hierarchy panel re parenting support
 	application menu bar
-	assets uniques cashe name
-	GC review
+	assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
+	code review:GC
 	----------v.5 preview
 	
+	fix:new project space charachter in address causes compile scripts bug
+	hierarchy panel collapse children
 	editor gizmos
 	console space
-	editor assets and object management review
+	code review:editor assets and object management
 	space masking panels
 	space scroll bar
 	global panels click and focus manager

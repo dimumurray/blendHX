@@ -47,7 +47,7 @@ class UnlitColorShader extends Shader
 		{
 			var temp:Float4;
 			temp = [color.r, color.g, color2.b, color2.a];
-			out =  diffuseTexture.get(vuv, wrap) * temp;
+			out =  diffuseTexture.get(vuv, wrap, dxt1) * temp;
 		}
 		
 	};

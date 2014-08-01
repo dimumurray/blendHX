@@ -36,6 +36,7 @@ class RightClickMenu
 		var menu:NativeMenu = new NativeMenu();
 		
 		menu.addItem( new NativeMenuItem("Open" )).addEventListener(Event.SELECT, openFile.bind(fileItem) );
+		menu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameFile.bind(fileItem) );
 		menu.addItem( new NativeMenuItem("Delete")).addEventListener(Event.SELECT, deleteSelectedFile.bind(fileItem) );
 		
 		menu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
@@ -47,8 +48,8 @@ class RightClickMenu
 		
 		menu.addItem( new NativeMenuItem("New Folder" )).addEventListener(Event.SELECT, newFolder);
 		menu.addItem( new NativeMenuItem("Material")).addEventListener(Event.SELECT, newMaterial);
-		menu.addItem( new NativeMenuItem("Shader")).enabled = false;
-		menu.addItem( new NativeMenuItem("Haxe Component")).enabled = false;
+		menu.addItem( new NativeMenuItem("Shader")).addEventListener(Event.SELECT, newShader);
+		menu.addItem( new NativeMenuItem("Haxe Component")).addEventListener(Event.SELECT, newScript);
 		menu.addItem( new NativeMenuItem("ActionScript Component")).enabled = false;
 		
 		menu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
@@ -99,6 +100,10 @@ class RightClickMenu
 	{
 		fileItem.onClick(fileItem);
 	}
+	private static function renameFile( fileItem:FileItem, _ )
+	{
+		AssetsPanel.getInstance().renameFile(fileItem);
+	}
 	
 	private static function newFolder(_)
 	{
@@ -107,6 +112,15 @@ class RightClickMenu
 	private static function newMaterial(_)
 	{
 		IO.NewMaterial();
+	}
+
+	private static function newShader(_)
+	{
+		IO.NewShader();
+	}
+	private static function newScript(_)
+	{
+		IO.NewScript();
 	}
 	
 	private static function createGameObject(gameObject:GameObject, _) 

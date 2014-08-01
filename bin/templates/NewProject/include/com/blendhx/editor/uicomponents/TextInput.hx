@@ -23,7 +23,7 @@ import flash.display.Sprite;
  */
 class TextInput extends UIElement
 {
-	private var label:SimpleTextField;
+	public var label:SimpleTextField;
 	private var normal:Array<UInt> = [0xa1a1a1, 0xb1b1b1];
 	private var over:Array<UInt> = [0xb0b0b0, 0xc0c0c0];
 	private var click:Array<UInt> = [0x868686, 0x969696];
@@ -63,13 +63,16 @@ class TextInput extends UIElement
 	
 	override public function resize()
 	{
-		x = getPositionX(slice, slices);
-		
-		_width = getWidth(slices);
+		if(slices!= UIElement.NO_SLICE)
+		{
+			x = getPositionX(slice, slices);
+			_width = getWidth(slices);
+		}
+			
 		drawBox(normal, null);
 		
-		label.width = _width-40;
-		label.x = 20;
+		label.width = _width-10;
+		label.x = 5;
 		updateValue(null);
 		
 	}
@@ -83,6 +86,7 @@ class TextInput extends UIElement
 			drawBox(normal, null);
 			label.selectable = false;
 			label.setSelection(0, 0);
+			onChange();
 		}
 	}
 	
@@ -94,14 +98,13 @@ class TextInput extends UIElement
 		editing = true;
 		label.text = value;
 		label.selectable = true;
-		//label.setSelection(0, label.length);
+		label.setSelection(0, label.length);
 		drawBox(click, null);
 	}
 	
 	public function updateValue(_)
 	{
 		value = label.text;
-		onChange();
 	}
 	
 	

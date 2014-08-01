@@ -49,9 +49,7 @@ class IO
 		Assets.RemoveAsset(getLocalURL( file ));
 			
 		AssetsPanel.getInstance().populate();
-
 	}
-
 	
 	public static function NewMaterial()
 	{
@@ -92,7 +90,32 @@ class IO
 		newFolder.createDirectory();
 		AssetsPanel.getInstance().populate();
 	}
-	
+	public static function NewShader()
+	{
+		var newShader:File =  AssetsPanel.currentDirectory.resolvePath("Shader.hx");
+		var i:UInt = 1;
+		while( newShader.exists )
+		{
+			newShader = AssetsPanel.currentDirectory.resolvePath("Shader"+i+".hx");
+			i++;
+		}
+		var templateScript:File = File.applicationDirectory.resolvePath("templates/Shader.hx");
+		templateScript.copyTo(newShader);
+		AssetsPanel.getInstance().populate();
+	}
+	public static function NewScript()
+	{
+		var newScript:File =  AssetsPanel.currentDirectory.resolvePath("Script.hx");
+		var i:UInt = 1;
+		while( newScript.exists )
+		{
+			newScript = AssetsPanel.currentDirectory.resolvePath("Script"+i+".hx");
+			i++;
+		}
+		var templateScript:File = File.applicationDirectory.resolvePath("templates/Script.hx");
+		templateScript.copyTo(newScript);
+		AssetsPanel.getInstance().populate();
+	}
 	public static function WriteMaterial( material:Material )
 	{
 		var shader:Dynamic = material.shader;

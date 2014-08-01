@@ -18,11 +18,11 @@ class AddComponentPanel extends Panel
     public function new()
     {
     	super("Add Script", Space.SPACE_WIDTH);
-    	new Label("Script Name:", 1, 1, 30, this);
+    	new Label("Script file:", 1, 1, 30, this);
 		
-    	className = new ObjectInput(FileType.SCRIPT, 1, 2, 50, doNothing, this);
+    	className = new ObjectInput(FileType.SCRIPT, 1, 1, 50, doNothing, this);
 		
-    	new Button("Add", 2, 2, 50, addComponent, this);
+    	new Button("Add", 1, 1, 80, addComponent, this);
     }
 
     public function doNothing()
@@ -30,6 +30,10 @@ class AddComponentPanel extends Panel
 
     public function addComponent()
     {
+		if ( className.value == null)
+			return;
+		
+		
 		var component:Component = UserScripts.GetComponent( className.value );
 		if (component == null)
 			return;

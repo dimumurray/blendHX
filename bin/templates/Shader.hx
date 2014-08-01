@@ -2,7 +2,7 @@ package shaders;
 
 import flash.geom.Matrix3D;
 
-class Shader extends hxsl.Shader
+class %name% extends hxsl.Shader
 {
 	override public function initProperties()
 	{

@@ -139,7 +139,7 @@ class FileItem extends DragableItem
 		if(!selected)
 			Selection.Select( this );
 		selected = true;
-		
+		AssetsPanel.getInstance().removeRenameBox();
 		//drawing orange box beneath
 		var g:Graphics = mouseOverIndicator.graphics;
 		g.clear();

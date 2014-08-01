@@ -32,6 +32,8 @@ import com.blendhx.core.shaders.DefaultShader;
 class UserScripts
 {
 	
+	public static var onScriptsLoaded:Void->Void;
+	
 	private static var userScriptsDomain:ApplicationDomain = new ApplicationDomain();
 	
 	public static function Compile():Void
@@ -56,7 +58,6 @@ class UserScripts
 	
 	public static function loadScripts()
 	{	
-		
 		var uldr : URLLoader = new URLLoader();
 		var request:URLRequest = new URLRequest( Assets.casheDirectory.resolvePath( "scripts.swf" ).nativePath );
 		
@@ -85,7 +86,9 @@ class UserScripts
 
 	private static function scriptsLoaded(_)
 	{
-		Debug.Log("User scripts loaded");
+		if ( onScriptsLoaded != null)
+			onScriptsLoaded();
+
 	}
 	
 	public static function GetComponent( classURL:String ):Component
@@ -128,7 +131,7 @@ class UserScripts
 		return shader;
 	}
 	
-	private static function GetClassNameFromURL(url:String):String
+	private static function GetClassNameFromURL(url:String=""):String
 	{
 		var className:String = StringTools.replace(url, "/", ".");
 		className = className.substring(0, className.length - 3);

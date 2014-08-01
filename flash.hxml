@@ -1,6 +1,5 @@
 #integrate files to classpath
 -cp src
---macro include('shaders')
 #this class wil be used as entry point for your app.
 -main Main
 
@@ -9,7 +8,6 @@
 -swf-version 12
 -swf-header 1200:700:60:373737
 
--dce full
 #Libraries
 -lib format
 -swf-lib lib/AS3Classes.swc

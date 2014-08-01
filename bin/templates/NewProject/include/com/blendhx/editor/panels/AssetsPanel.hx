@@ -1,4 +1,6 @@
 package com.blendhx.editor.panels;
+import flash.text.TextFieldAutoSize;
+import com.blendhx.editor.uicomponents.TextInput;
 import com.blendhx.core.assets.Assets;
 
 import flash.errors.IllegalOperationError;
@@ -28,11 +30,13 @@ class AssetsPanel extends Panel
 	public static var colomns:Int = 0;
 	
 	public static  var currentDirectory:File;
+	private static var instance:AssetsPanel;
 	
 	public var fileItems:Array<FileItem>;
 	private var fileItemPool:Array<FileItem>;
+	private var renameInput:TextInput;
+	private var rightClickedFile:File;
 	
-	private static var instance:AssetsPanel;
 	public static inline function getInstance()
   	{
     	if (instance == null)
@@ -40,7 +44,60 @@ class AssetsPanel extends Panel
       	else
           return instance;
   	}	
+	public function renameFile(fileItem:FileItem)
+	{
+		rightClickedFile = AssetsPanel.currentDirectory.resolvePath( fileItem.fileName );
+		
+		if(renameInput == null)
+		{
+			renameInput = new TextInput("", 999, 999, 0, removeRenameBox, this);
+			elements.remove(renameInput);
+		}
 	
+		addChild(renameInput);
+		renameInput.label.autoSize = TextFieldAutoSize.LEFT;
+		renameInput.setValue( fileItem.fileName );
+		renameInput.onMouseDown(null);
+		
+		var lastIndex:Int = fileItem.fileName.indexOf(".");
+		if(lastIndex <= 0) 
+			lastIndex = fileItem.fileName.length;
+		
+		renameInput.label.setSelection(0, lastIndex);
+		renameInput.x = fileItem.x + 18;
+		renameInput.y = fileItem.y;
+		renameInput._width = AssetsPanel.colomnWidth - 30;
+		renameInput.resize();
+	}
+	public function removeRenameBox()
+	{
+		
+		try
+		{
+			removeChild(renameInput);
+		}
+		catch(e:Dynamic)
+		{
+			return;
+		}
+			
+		var renamedFile:File = rightClickedFile.parent.resolvePath( renameInput.value );
+
+		if( rightClickedFile.isDirectory && rightClickedFile.getDirectoryListing().length>0)
+			return;
+		else if (renamedFile.exists)
+			Debug.Log("A file with the new name already exists");
+		else
+		{
+			Assets.MoveAsset( getLocalURL(rightClickedFile), getLocalURL(renamedFile) );
+			rightClickedFile.moveTo(renamedFile);
+			AssetsPanel.getInstance().populate();
+		}
+	}
+	private inline function getLocalURL(file:File):String
+	{
+		return StringTools.urlDecode(file.url.substring(Assets.sourceDirectory.url.length+1));
+	}
 	public function new() 
 	{
 		super("File Browser", Space.SPACE_WIDTH);
@@ -81,6 +138,7 @@ class AssetsPanel extends Panel
 	public function populate()
 	{
 		clearItems();
+		removeRenameBox();
 		
 		var files:Array<File> = currentDirectory.getDirectoryListing();
 		var fileItem:FileItem;
@@ -117,10 +175,7 @@ class AssetsPanel extends Panel
 			}
 		}
 	}
-	private inline function getLocalURL(file:File):String
-	{
-		return StringTools.urlDecode( file.url.substring(Assets.sourceDirectory.url.length+1) );
-	}
+
 	private function onItemClick(fileItem:FileItem)
 	{
 		

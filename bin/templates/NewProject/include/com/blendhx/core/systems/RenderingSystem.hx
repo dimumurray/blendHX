@@ -3,6 +3,8 @@ package com.blendhx.core.systems;
 import com.blendhx.core.assets.Mesh;
 import com.blendhx.core.components.*;
 import com.blendhx.editor.Debug;
+import com.blendhx.core.shaders.DefaultShader;
+
 import hxsl.Shader;
 
 import flash.events.ErrorEvent;
@@ -18,8 +20,7 @@ import flash.display.Stage3D;
 import flash.display.Stage;
 import flash.display3D.Context3DBlendFactor;
 import flash.Lib;
-import com.blendhx.core.shaders.DefaultShader;
-
+import flash.system.ApplicationDomain;
 
 
 /**
@@ -37,6 +38,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
 	private var meshes:Array<Mesh>;
 	private var shaders:Array<Shader>;
 	private var defaultShader:DefaultShader;
+	private var shaderError:String;
 
 	
 	
@@ -53,6 +55,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
 		super();
 		
 		defaultShader = new DefaultShader();
+		defaultShader.create(ApplicationDomain.currentDomain);
 		meshRenderers = new Array<MeshRenderer>();
 		transforms = new Array<Transform>();
 		meshes = new Array<Mesh>();
@@ -118,6 +121,13 @@ class RenderingSystem extends EventDispatcher implements ISystem
 			}
 			catch(e:Error)
 			{
+				if (shaderError != e.message)
+				{
+					shaderError = e.message;
+					Debug.Log(shaderError);
+				}
+
+				
 				//fallback
 				shader.unbind(context3D);
 				shader = defaultShader;

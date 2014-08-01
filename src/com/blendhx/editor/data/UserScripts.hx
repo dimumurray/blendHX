@@ -58,7 +58,6 @@ class UserScripts
 	
 	public static function loadScripts()
 	{	
-		
 		var uldr : URLLoader = new URLLoader();
 		var request:URLRequest = new URLRequest( Assets.casheDirectory.resolvePath( "scripts.swf" ).nativePath );
 		
@@ -132,7 +131,7 @@ class UserScripts
 		return shader;
 	}
 	
-	private static function GetClassNameFromURL(url:String):String
+	private static function GetClassNameFromURL(url:String=""):String
 	{
 		var className:String = StringTools.replace(url, "/", ".");
 		className = className.substring(0, className.length - 3);

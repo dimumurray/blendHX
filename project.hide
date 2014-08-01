@@ -135,13 +135,13 @@
             ,"activeLine" : 1
         }
         ,{
-             "path" : "src\\com\\blendhx\\core\\assets\\Assets.hx"
+             "path" : "c:\\Users\\mehdadoo\\AppData\\Local\\HIDE\\.HIDE\\settings.json"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 166
+            ,"activeLine" : 4
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
@@ -150,91 +150,82 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 89
+            ,"activeLine" : 116
         }
         ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\AddComponentPanel.hx"
+             "path" : "src\\com\\blendhx\\core\\assets\\Assets.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 17
+            ,"activeLine" : 48
         }
         ,{
-             "path" : "src\\com\\blendhx\\editor\\spaces\\HeaderSpace.hx"
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 82
+            ,"activeLine" : 124
         }
         ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\PanelPool.hx"
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\SimpleTextField.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 0
+            ,"activeLine" : 12
         }
         ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\HierarchyPanel.hx"
+             "path" : "src\\com\\blendhx\\editor\\panels\\AssetsPanel.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 25
+            ,"activeLine" : 173
         }
         ,{
-             "path" : "src\\com\\blendhx\\editor\\spaces\\PropertiesSpace.hx"
+             "path" : "src\\com\\blendhx\\editor\\panels\\FileItem.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 43
+            ,"activeLine" : 118
         }
         ,{
-             "path" : "src\\com\\blendhx\\editor\\panels\\Panel.hx"
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\UIElement.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 101
+            ,"activeLine" : 14
         }
         ,{
-             "path" : "src\\com\\blendhx\\core\\assets\\Material.hx"
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\TextInput.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 40
+            ,"activeLine" : 98
         }
         ,{
-             "path" : "src\\hxsl\\Shader.hx"
+             "path" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 346
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\systems\\RenderingSystem.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 39
+            ,"activeLine" : 95
         }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\data\\UserScripts.hx"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\RightClickMenu.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

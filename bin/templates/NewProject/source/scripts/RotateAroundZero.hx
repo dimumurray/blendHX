@@ -6,7 +6,7 @@ import flash.geom.Vector3D;
 /**
 * @author 
  */
-class TransformJiggle extends Component
+class RotateAroundZero extends Component
 {
 	override public function update():Void
 	{
@@ -14,6 +14,8 @@ class TransformJiggle extends Component
 			return;
 		
 		transform.matrix.identity();
-		transform.matrix.appendTranslation(Math.random()/10,Math.random()/10,Math.random()/10);
+		transform.matrix.appendRotation(flash.Lib.getTimer()/50, Vector3D.Y_AXIS);
+		transform.matrix.appendRotation(-15, Vector3D.X_AXIS);
+		transform.matrix.appendTranslation(0,0,3);
 	}
 }

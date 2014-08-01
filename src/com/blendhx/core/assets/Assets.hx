@@ -61,7 +61,6 @@ class Assets
 	}
 	public static function MoveAsset(sourceURL:String, destinationURL:String)
 	{
-		
 		for (material in materials)
 			if (material.sourceURL == sourceURL)
 			material.sourceURL = destinationURL;
@@ -162,41 +161,8 @@ class Assets
 	public static function Load() 
 	{
 		init();
-		UserScripts.onScriptsLoaded = loadStartupUserScripts;
+		UserScripts.onScriptsLoaded = loadCasheXML;
 		UserScripts.loadScripts();
-	}
-	
-	public static function loadStartupUserScripts()
-	{	
-		
-		var uldr : URLLoader = new URLLoader();
-		var request:URLRequest = new URLRequest( casheDirectory.resolvePath( "scripts.swf" ).nativePath );
-		
-		uldr.dataFormat = URLLoaderDataFormat.BINARY;
-		uldr.addEventListener(Event.COMPLETE, onBytesComplete);
-		uldr.addEventListener(IOErrorEvent.IO_ERROR, onScriptsNotFound);
-		uldr.load( request );
-	}
-	private static function onScriptsNotFound(_)
-	{
-		Debug.Log("Problem loading user scripts");
-	}
-
-	private static function onBytesComplete(e : Event)
-	{
-		var bytes : ByteArray = cast (e.target, URLLoader).data;
-		var loader:Loader = new Loader();
-		var ldrC : LoaderContext = new LoaderContext();
-		
-		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, scriptsLoaded);
-		ldrC.applicationDomain = ApplicationDomain.currentDomain;
-		ldrC.allowCodeImport = true;
-		loader.loadBytes(bytes, ldrC);
-	}
-
-	private static function scriptsLoaded(_)
-	{
-		loadCasheXML();
 	}
 
 	public static function onTextureReady(_)

@@ -12,11 +12,13 @@ class UIElement extends Sprite
 {
 	public var slice:UInt;
 	public var slices:UInt;
-	public var _width:Float;
+	public var _width:Float=0;
 	public var _height:Float = 20;
 	public var paddingX:UInt = 10;
 	public var panel:Panel;
 	public var value:Dynamic;
+	
+	public static var NO_SLICE:UInt = 999;
 	
 	public function new(slice:UInt, slices:UInt) 
 	{

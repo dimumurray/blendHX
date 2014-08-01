@@ -14,7 +14,7 @@ import flash.text.TextFieldAutoSize;
 class SimpleTextField extends TextField
 {
 	
-	public function new(_align:TextFormatAlign, _text:String="text",_x:Float=0, _y:Float=0, _selectable:Bool=false)
+	public function new(_align:TextFormatAlign, _text:String="",_x:Float=0, _y:Float=0, _selectable:Bool=false)
 	{
 		super();
 
