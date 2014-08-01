@@ -34,7 +34,7 @@ class UserScripts
 	
 	public static var onScriptsLoaded:Void->Void;
 	
-	private static var userScriptsDomain:ApplicationDomain = new ApplicationDomain();
+	public static var userScriptsDomain:ApplicationDomain = new ApplicationDomain();
 	
 	public static function Compile():Void
 	{

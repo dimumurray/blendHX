@@ -41,8 +41,6 @@ class PropertiesSpace extends Space
 	private function populateWithAssetPanels()
 	{
 		removePanels();
-		addPanel( PanelPool.Get( "Utility" ) );
-		
 		switch (Selection.GetSelectedFileItem().type )
 		{
 			case FileType.MATERIAL:

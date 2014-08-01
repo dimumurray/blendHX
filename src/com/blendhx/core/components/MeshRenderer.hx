@@ -18,8 +18,10 @@ class MeshRenderer extends Component
 	public var materialFileName:String="";
 	public var meshFileName:String="";
 	
-	
-	
+	public function new()
+	{
+		name = "Transform";
+	}
 	override public function setParent(_parent : GameObject)
 	{
 		super.setParent(_parent);
@@ -45,6 +47,8 @@ class MeshRenderer extends Component
 	
 	override public function destroy()
 	{
+		material = null;
+		mesh = null;
 		RenderingSystem.getInstance().unregisterMeshRenderer(this);
 	}
 }

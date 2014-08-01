@@ -18,6 +18,7 @@ class Camera extends Component
 	
 	public function new() 
 	{
+		name = "Camera";
 		viewProjection = new Matrix3D();
 		projection = new PerspectiveMatrix3D();
 		projection.perspectiveFieldOfViewLH(fov*Math.PI/180, aspectRatio, near, far);
@@ -37,6 +38,11 @@ class Camera extends Component
 		viewProjection.append(transform.matrix);
 		viewProjection.append(projection);
 		return viewProjection;
+	}
+	override public function destroy()
+	{
+		projection = null;
+		viewProjection = null;
 	}
 
 

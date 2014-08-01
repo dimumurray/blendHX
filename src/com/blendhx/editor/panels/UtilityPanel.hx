@@ -75,13 +75,13 @@ class UtilityPanel extends Panel
 
 	private function loadCompleteHandler(event:Event)
 	{
-		urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);
+		/*urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);
 		var bytes:ByteArray = urlLoader.data;
 		var objects:GameObject = bytes.readObject();
 		Scene.getInstance().addChild(objects);
 		Scene.getInstance().sceneObjects = objects;
 		objects.init();
-		HierarchyPanel.getInstance().populate();
+		HierarchyPanel.getInstance().populate();*/
 	}
 	
 	function doCreateObjects():Void

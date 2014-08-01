@@ -42,13 +42,13 @@ class Scene extends GameObject
 		editorObjects = new GameObject("Editor");
 		cameraGO = new GameObject("Editor Camera");
 		camera = new Camera();
+		cameraGO.addChild(camera);
     	transform = cameraGO.getChild(Transform);
     	transform.appendTranslation(0, -1, 6);
 		
 		
 		
 		addChild(editorObjects);
-    	cameraGO.addChild(camera);
     	editorObjects.addChild(cameraGO);
 		
 		RenderingSystem.getInstance().camera = camera;

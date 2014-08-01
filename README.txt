@@ -30,24 +30,27 @@ monthday tasks
 801	re name assets
 801	new script asset creation
 801	re name game objects
-	edit mode/play mode
-	script properties panel
-	parent transformation
-	grid floor wireframe shader
+	code review:GC
 	hierarchy panel re parenting support
+	editor camera
+	parent transformation
+	edit mode/play mode
+	grid floor wireframe shader
+	script properties panel
 	application menu bar
 	assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
-	code review:GC
-	----------v.5 preview
-	
 	fix:new project space charachter in address causes compile scripts bug
 	hierarchy panel collapse children
-	editor gizmos
 	console space
+	global panels click and focus manager
 	code review:editor assets and object management
+	editor test and bug fixes
+	
+	----------v.5 preview
+	
 	space masking panels
 	space scroll bar
-	global panels click and focus manager
+	editor gizmos
 	prefab
 	texture asset properties panel
 	mesh asset properties panel

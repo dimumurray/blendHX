@@ -1,26 +1,26 @@
 package com.blendhx.editor.data;
-import com.blendhx.core.assets.TextureLoader;
+
 import flash.Lib;
 import flash.display.BitmapData;
 import flash.display.Loader;
 import flash.utils.Endian;
 import flash.Vector;
-
-import com.blendhx.core.assets.Mesh;
-import com.blendhx.editor.data.Process;
-import com.blendhx.core.assets.Assets;
-import com.blendhx.core.assets.MeshLoader;
-import com.blendhx.core.assets.Material;
-import com.blendhx.editor.panels.AssetsPanel;
-import hxsl.Shader;
-import haxe.ds.StringMap;
-
 import flash.utils.CompressionAlgorithm;
 import flash.filesystem.File;
 import flash.filesystem.*;
 import flash.utils.ByteArray;
 import flash.net.FileReference;
 import flash.events.Event;
+
+import com.blendhx.core.assets.TextureLoader;
+import com.blendhx.core.assets.Mesh;
+import com.blendhx.core.assets.Assets;
+import com.blendhx.core.assets.MeshLoader;
+import com.blendhx.core.assets.Material;
+import com.blendhx.editor.panels.AssetsPanel;
+import com.blendhx.editor.data.Process;
+import hxsl.Shader;
+import haxe.ds.StringMap;
 
 /**
 
