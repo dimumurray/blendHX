@@ -31,15 +31,18 @@ class RightClickMenu
 	
 	//the gameobject in the heirarchy which is righ clicked
 	private static var richClickedHierarchyItem:HierarchyItem;
+	private static var richClickedFileItem:FileItem;
 	
 	public static function FileItem(fileItem:FileItem)
 	{
+		richClickedFileItem = fileItem;
+		
 		if( fileItemMenu == null )
 		{
 			fileItemMenu = new NativeMenu();
-			fileItemMenu.addItem( new NativeMenuItem("Open" )).addEventListener(Event.SELECT, openFile.bind(fileItem) );
-			fileItemMenu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameFile.bind(fileItem) );
-			fileItemMenu.addItem( new NativeMenuItem("Delete")).addEventListener(Event.SELECT, deleteSelectedFile.bind(fileItem) );
+			fileItemMenu.addItem( new NativeMenuItem("Open" )).addEventListener(Event.SELECT, openFile );
+			fileItemMenu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameFile );
+			fileItemMenu.addItem( new NativeMenuItem("Delete")).addEventListener(Event.SELECT, deleteSelectedFile );
 		}
 		
 		fileItemMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
@@ -90,8 +93,9 @@ class RightClickMenu
 		gameObjectMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
-	private static function deleteSelectedFile( fileItem:FileItem, _ )
+	private static function deleteSelectedFile( _ )
 	{
+		var fileItem:FileItem = richClickedFileItem;
 		var file:File = AssetsPanel.currentDirectory.resolvePath( fileItem.fileName );
 		//file.addEventListener();
 			
@@ -107,12 +111,14 @@ class RightClickMenu
 			IO.DeleteFile(file);
 	}
 	
-	private static function openFile( fileItem:FileItem, _ )
+	private static function openFile( _ )
 	{
+		var fileItem:FileItem = richClickedFileItem;
 		fileItem.onClick(fileItem);
 	}
-	private static function renameFile( fileItem:FileItem, _ )
+	private static function renameFile( _ )
 	{
+		var fileItem:FileItem = richClickedFileItem;
 		AssetsPanel.getInstance().renameFile(fileItem);
 	}
 	

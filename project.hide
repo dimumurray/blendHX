@@ -143,8 +143,17 @@
             ]
             ,"activeLine" : 4
         }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\components\\GameObject.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 68
+        }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\panels\\AssetsPanel.hx"
+    ,"activeFile" : "src\\com\\blendhx\\core\\components\\GameObject.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

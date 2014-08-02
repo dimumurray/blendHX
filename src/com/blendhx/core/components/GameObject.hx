@@ -38,16 +38,17 @@ class GameObject extends Component
 	//add a child only if there isn't one already added with the same Type. There can't be two children of the same type in one Gameobject
 	public function addChild(child:Component)
 	{
-		//if the new child is a gameObject, then add it anyway
+		var childClass:Class<Dynamic> = GetClassFromAnyDomain(child);
+		var existingChildClass:Class<Dynamic> = null;
+		
 		if ( !AS3DefenitionHelper.ObjectIsOfType(child, GameObject) )
 		{
-			var childClass:Class<Dynamic> = AS3DefenitionHelper.getClass(ApplicationDomain.currentDomain, child);
 			for (existingChild in children)
 			{
-				//if there is a child with the same class type, return
-				var existingChildClass:Class<Dynamic> =  AS3DefenitionHelper.getClass(ApplicationDomain.currentDomain, existingChild);
+				existingChildClass =  GetClassFromAnyDomain(existingChild);
 				if( childClass ==  existingChildClass )
 				{
+					
 					Debug.Log("You can't add same component twice");
 					child.destroy();
 					return;
@@ -69,17 +70,33 @@ class GameObject extends Component
 	//giving a reference to a child of a certain type
 	public function getChild( componentType:Class<Dynamic> ):Dynamic
 	{
-		var className:String = Type.getClassName(componentType);
 		for (child in children)
 		{
-			var childClassName:String = Type.getClassName(Type.getClass(child));
-			var childSuperClassName:String = Type.getClassName(Type.getSuperClass(Type.getClass(child)));
-			//if child is a of a certain component type, or if i's parent is of a certain component type
-			if( childClassName ==  className || childSuperClassName ==  className)
+			var childClass:Class<Dynamic> = GetClassFromAnyDomain(child);
+		
+			if( childClass ==  componentType)
 			{
 				return child;
 			}
 		}
+
 		return null;
+	}
+		
+	private static function GetClassFromAnyDomain(component:Dynamic):Class<Dynamic>
+	{
+		var classType:Class<Dynamic> = null;
+		
+		
+		var searchingDomain:ApplicationDomain = ApplicationDomain.currentDomain;
+		classType = AS3DefenitionHelper.getClass(searchingDomain, component);
+		
+		if(classType == null)
+		{
+			searchingDomain = UserScripts.userScriptsDomain;
+			classType = AS3DefenitionHelper.getClass(searchingDomain, component);
+		}
+			
+		return classType;
 	}
 }

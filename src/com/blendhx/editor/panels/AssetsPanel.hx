@@ -85,6 +85,8 @@ class AssetsPanel extends Panel
 
 		if( rightClickedFile.isDirectory && rightClickedFile.getDirectoryListing().length>0)
 			return;
+		else if( getLocalURL(rightClickedFile) ==  getLocalURL(renamedFile)  )
+			return;
 		else if (renamedFile.exists)
 			Debug.Log("A file with the new name already exists");
 		else
