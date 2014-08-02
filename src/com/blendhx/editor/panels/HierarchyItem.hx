@@ -82,6 +82,28 @@ class HierarchyItem extends DragableItem
 		drawGraphics();
 	}
 	
+	override private function reparentTarget(e:MouseEvent):Void
+	{
+		var targetGameObject:GameObject = null;
+		if( Selection.dragObject!= null && Type.getClass(Selection.dragObject) == HierarchyItem)
+			targetGameObject = Selection.dragObject.dragValue;
+		else
+			return;
+		
+		//you can reparent a parent to a child! lol
+		var parent:GameObject = gameobject.parent;
+		while(parent!=null)
+		{
+			if(parent == targetGameObject)
+				return;
+			parent = parent.parent;
+		}
+		
+		targetGameObject.parent.removeChild(targetGameObject);
+		gameobject.addChild(targetGameObject);
+		HierarchyPanel.getInstance().populate();
+	}
+	
 	public function onRightClick(e:MouseEvent)
 	{
 		isPoterntialyDragging = false;
