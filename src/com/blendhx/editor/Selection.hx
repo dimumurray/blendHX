@@ -14,10 +14,10 @@ import com.blendhx.core.components.GameObject;
 import com.blendhx.editor.panels.DragableItem;
 import com.blendhx.editor.panels.FileItem;
 import com.blendhx.editor.panels.HierarchyItem;
-/**
 
- * GPL
-
+/*
+nothing much going on
+static class used for getting dragabble objects and selected fileitems or hierarchy items
  */
 class Selection
 {
@@ -87,6 +87,7 @@ class Selection
 		
 	}
 	
+	//create the drag graphic under mouse
 	public static function CreateDragGraphic()
 	{
 		var bitmapData:BitmapData;
@@ -127,20 +128,16 @@ class Selection
 	public static function GetSelectedGameObject():GameObject
 	{
 		if( isHierarchyItem() )
-		{
 			return hierarchyItem.gameobject;
-		}
-			
-		trace("No GameObject is selected");
+					
+		Debug.Log("No GameObject is selected");
 		return null;
 	}
 	
 	public static function GetSelectedFileItem():FileItem
 	{
 		if( isFileItem() )
-		{
 			return fileItem;
-		}
 			
 		return null;
 	}
@@ -150,7 +147,7 @@ class Selection
 		if(hierarchyItem != null)
 			return hierarchyItem;
 		
-		trace("No hierarchy item is selected");
+		Debug.Log("No hierarchy item is selected");
 		return null;
 	}
 

@@ -86,5 +86,19 @@ class Checkbox extends UIElement
 		if(panel != null)
 			super.resize();
 	}
+	
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(32) );
+		removeEventListener(MouseEvent.MOUSE_UP, drawBox.bind(32) );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(0) );
+		removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+		
+		removeChild(label);
+		label = null;
+		onChange = null;
+		
+		super.destroy();
+	}
 
 }

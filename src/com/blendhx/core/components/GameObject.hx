@@ -49,11 +49,12 @@ class GameObject extends Component
 				if( childClass ==  existingChildClass )
 				{
 					Debug.Log("You can't add same component twice");
+					child.destroy();
 					return;
 				}
 			}
 		}
-	
+		
 		children.push(child);
 		child.setParent(this);
 	}

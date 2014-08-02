@@ -82,4 +82,22 @@ class MenuButton extends UIElement
 		g.drawRoundRect(0, 0, _width, 20, 12);
 		g.endFill();
 	}
+	
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
+		
+		removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+		
+		removeChild(label);
+		
+		label = null;
+		onClick = null;
+		normal = null;
+		over = null;
+		over = click;
+		
+		super.destroy();
+	}
 }

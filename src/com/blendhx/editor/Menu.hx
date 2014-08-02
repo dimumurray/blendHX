@@ -10,9 +10,8 @@ import flash.display.NativeWindow;
 import flash.display.NativeMenu;
 import flash.display.NativeMenuItem;
 import flash.events.Event;
-/**
+/*
 
- * GPL
 
  */
 class Menu extends HorizontalPanel

@@ -30,7 +30,7 @@ monthday tasks
 801	re name assets
 801	new script asset creation
 801	re name game objects
-	code review:GC
+802	code review:GC
 	hierarchy panel re parenting support
 	editor camera
 	parent transformation

@@ -93,8 +93,7 @@ class Space extends Sprite
 	}
 	
 
-	//upon resizing the stage, Space static Resize methos calls each individual instance methods as follows
-	// this method should be rewritten to account other spaces custom dimensions
+	//upon resizing the stage, Space static Resize method calls each individual instance methods as follows
 	public function resize()
 	{
 		var stageWidth:Float = stage.stageWidth;

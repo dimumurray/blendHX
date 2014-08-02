@@ -25,60 +25,69 @@ class RightClickMenu
 {
 	
 	private static var components:Array<String> = ["Mesh Renderer", "Camera", "RigidBody", "Collidor", "Lamp", "Audio"];
+	private static var fileItemMenu:NativeMenu;
+	private static var assetsPanelCreateMenu:NativeMenu;
+	private static var gameObjectMenu:NativeMenu;
 	
-	public function new() 
-	{
-		
-	}
+	//the gameobject in the heirarchy which is righ clicked
+	private static var richClickedHierarchyItem:HierarchyItem;
 	
 	public static function FileItem(fileItem:FileItem)
 	{
-		var menu:NativeMenu = new NativeMenu();
+		if( fileItemMenu == null )
+		{
+			fileItemMenu = new NativeMenu();
+			fileItemMenu.addItem( new NativeMenuItem("Open" )).addEventListener(Event.SELECT, openFile.bind(fileItem) );
+			fileItemMenu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameFile.bind(fileItem) );
+			fileItemMenu.addItem( new NativeMenuItem("Delete")).addEventListener(Event.SELECT, deleteSelectedFile.bind(fileItem) );
+		}
 		
-		menu.addItem( new NativeMenuItem("Open" )).addEventListener(Event.SELECT, openFile.bind(fileItem) );
-		menu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameFile.bind(fileItem) );
-		menu.addItem( new NativeMenuItem("Delete")).addEventListener(Event.SELECT, deleteSelectedFile.bind(fileItem) );
-		
-		menu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
+		fileItemMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
 	public static function AssetsPanelCreateMenu()
 	{
-		var menu:NativeMenu = new NativeMenu();
-		
-		menu.addItem( new NativeMenuItem("New Folder" )).addEventListener(Event.SELECT, newFolder);
-		menu.addItem( new NativeMenuItem("Material")).addEventListener(Event.SELECT, newMaterial);
-		menu.addItem( new NativeMenuItem("Shader")).addEventListener(Event.SELECT, newShader);
-		menu.addItem( new NativeMenuItem("Haxe Component")).addEventListener(Event.SELECT, newScript);
-		menu.addItem( new NativeMenuItem("ActionScript Component")).enabled = false;
-		
-		menu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
+		if( assetsPanelCreateMenu == null)
+		{
+			assetsPanelCreateMenu = new NativeMenu();
+			assetsPanelCreateMenu.addItem( new NativeMenuItem("New Folder" )).addEventListener(Event.SELECT, newFolder);
+			assetsPanelCreateMenu.addItem( new NativeMenuItem("Material")).addEventListener(Event.SELECT, newMaterial);
+			assetsPanelCreateMenu.addItem( new NativeMenuItem("Shader")).addEventListener(Event.SELECT, newShader);
+			assetsPanelCreateMenu.addItem( new NativeMenuItem("Haxe Component")).addEventListener(Event.SELECT, newScript);
+			assetsPanelCreateMenu.addItem( new NativeMenuItem("ActionScript Component")).enabled = false;
+		}
+			
+		assetsPanelCreateMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
 	public static function GameObjectMenu(hierarchyItem:HierarchyItem)
 	{
-		var gameObject:GameObject = hierarchyItem.gameobject;
-		var menu:NativeMenu = new NativeMenu();
 		
-		menu.addItem( new NativeMenuItem("New" )).addEventListener(Event.SELECT, createGameObject.bind(gameObject));
-		menu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameGameObject.bind(hierarchyItem));
-		menu.addItem( new NativeMenuItem("Delete Selected")).addEventListener(Event.SELECT, removeSelectedGameObject.bind(gameObject));
+		richClickedHierarchyItem = hierarchyItem;
 		
-		menu.addItem( new NativeMenuItem("", true) );
-		menu.addItem( new NativeMenuItem("Add Component") ).enabled = false;
-		menu.addItem( new NativeMenuItem("", true) );
-		
-		for(component in components)
+		if(gameObjectMenu == null)
 		{
-			var item:NativeMenuItem = menu.addItem( new NativeMenuItem(component) );
-		
-			item.addEventListener(Event.SELECT, addComponent.bind(component, gameObject));
-			if(component != "Camera" && component != "Mesh Renderer")
-				item.enabled = false;
+			var selectedGameObject:GameObject = hierarchyItem.gameobject;
+			
+			gameObjectMenu = new NativeMenu();
+			gameObjectMenu.addItem( new NativeMenuItem("New" )).addEventListener(Event.SELECT, createGameObject);
+			gameObjectMenu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameGameObject);
+			gameObjectMenu.addItem( new NativeMenuItem("Delete Selected")).addEventListener(Event.SELECT, removeSelectedGameObject);
+			gameObjectMenu.addItem( new NativeMenuItem("", true) );
+			gameObjectMenu.addItem( new NativeMenuItem("Add Component") ).enabled = false;
+			gameObjectMenu.addItem( new NativeMenuItem("", true) );
+			
+			for(component in components)
+			{
+				var item:NativeMenuItem = gameObjectMenu.addItem( new NativeMenuItem(component) );
+
+				item.addEventListener(Event.SELECT, addComponent.bind(component));
+				if(component != "Camera" && component != "Mesh Renderer")
+					item.enabled = false;
+			}
 		}
 	
-	
-		menu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
+		gameObjectMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
 	private static function deleteSelectedFile( fileItem:FileItem, _ )
@@ -125,27 +134,31 @@ class RightClickMenu
 		IO.NewScript();
 	}
 	
-	private static function createGameObject(gameObject:GameObject, _) 
+	private static function createGameObject(_) 
 	{
+		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
 		gameObject.addChild( new GameObject() );
 		HierarchyPanel.getInstance().populate();
 	}
-	private static function renameGameObject(hierarchyItem:HierarchyItem, _) 
+	private static function renameGameObject(_) 
 	{
-		HierarchyPanel.getInstance().renameGameObject( hierarchyItem );
+		HierarchyPanel.getInstance().renameGameObject( richClickedHierarchyItem );
 	}
 
-	private static function removeSelectedGameObject(gameObject:GameObject, _) 
+	private static function removeSelectedGameObject(_) 
 	{
+		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
 		gameObject.parent.removeChild(gameObject);
 		gameObject.destroy();
 		HierarchyPanel.getInstance().populate();
 	}
 	
 	
-	private static function addComponent(componentName:String, gameObject:GameObject, _)
+	private static function addComponent(componentName:String, _)
 	{
-		var component:Component;
+		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
+		
+		var component:Component = null;
 			
 		switch (componentName)
 		{
@@ -154,10 +167,10 @@ class RightClickMenu
 			case "Mesh Renderer":
 				component = new MeshRenderer();
 			default:
-				component = new Camera();
+				return;
 		}
-    	
-    	gameObject.addChild(component);
+		
+		gameObject.addChild(component);
 		HierarchyPanel.getInstance().populate();
     	Space.Resize();
 	}

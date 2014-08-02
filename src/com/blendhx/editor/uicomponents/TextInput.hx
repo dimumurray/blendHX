@@ -20,17 +20,20 @@ import flash.display.Graphics;
 import flash.text.TextField;
 import flash.display.Sprite;
 
-/**
-* @author 
+/*
+a text input in fact is used for entering String values by user, why should i document this?
  */
 class TextInput extends UIElement
 {
+	//the text field
 	public var label:SimpleTextField;
+	//the state colors
 	private var normal:Array<UInt> = [0xa1a1a1, 0xb1b1b1];
 	private var over:Array<UInt> = [0xb0b0b0, 0xc0c0c0];
 	private var click:Array<UInt> = [0x868686, 0x969696];
+	//call back function to inform of a change to value caused by user
 	private var onChange:Void->Void;
-	
+	//wheather or not user is editing the text
 	private var editing:Bool;
 	
 	public function new(_text:String, slice:UInt, slices:UInt, _y:Float, _onChange:Void->Void, _panel:Panel) 
@@ -41,9 +44,12 @@ class TextInput extends UIElement
 		onChange = _onChange;
 		y = _y;
 		
+		//add this to the list of UIElements of the parent panel
 		_panel.addUIElement(this);
 		
+		//create text field
 		drawText();
+		//resize element once frist
 		resize();
 		
 		addEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
@@ -55,6 +61,8 @@ class TextInput extends UIElement
 		
 		updateValue(null);
 	}
+	
+	//a little setter of the value
 	override public function setValue(param:Dynamic)
 	{
 		if(param == null)
@@ -63,6 +71,7 @@ class TextInput extends UIElement
 		label.text = value;
 	}
 	
+	//su upon resize, redraw the box
 	override public function resize()
 	{
 		if(slices!= UIElement.NO_SLICE)
@@ -76,9 +85,8 @@ class TextInput extends UIElement
 		label.width = _width-10;
 		label.x = 5;
 		updateValue(null);
-		
 	}
-
+	// when Enter is pressed, lock the element and fix the types string as the value
 	private function onKeyDown(e:KeyboardEvent)
 	{
 		if (e.keyCode == Keyboard.ENTER)
@@ -92,6 +100,7 @@ class TextInput extends UIElement
 		}
 	}
 	
+	//let the user edit the value by clicking the component
 	public function onMouseDown(e:MouseEvent)
 	{
 		flash.Lib.current.stage.focus = label;
@@ -120,7 +129,7 @@ class TextInput extends UIElement
 		value = label.text;
 	}
 	
-	
+	//creating the textfield
 	private inline function drawText()
 	{
 		label = new SimpleTextField(TextFormatAlign.CENTER, value);
@@ -132,6 +141,7 @@ class TextInput extends UIElement
 
 		addChild(label);
 	}
+	//redrawing the pretty box beneath
 	private inline function drawBox(state:Array<UInt>, e:MouseEvent)
 	{
 		if (editing)
@@ -147,5 +157,25 @@ class TextInput extends UIElement
 		g.lineStyle(1, 0x393939, 1, true);
 		g.drawRoundRect(0, 0, _width, _height, 10);
 		g.endFill();
+	}
+	
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
+		removeEventListener(MouseEvent.MOUSE_UP,drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+		removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		label.removeEventListener(Event.CHANGE, updateValue);
+		
+		removeChild(label);
+		
+		onChange = null;
+		label = null;
+		normal = null;
+		over = null;
+		click = null;
+	
+		super.destroy();
 	}
 }

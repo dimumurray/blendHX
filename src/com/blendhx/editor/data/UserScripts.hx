@@ -95,6 +95,9 @@ class UserScripts
 		ldrC.applicationDomain = userScriptsDomain;
 		ldrC.allowCodeImport = true;
 		loader.loadBytes(bytes, ldrC);
+		
+		uldr.data = null;
+		uldr = null;
 	}
 
 	private static function scriptsLoaded( e:Event )
