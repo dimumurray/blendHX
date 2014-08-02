@@ -36,7 +36,7 @@ class ObjectInput extends UIElement
 	private var type:UInt;
 	
 	private var hostObject:DragableItem;
-	private var text:String;
+	private var text:String="";
 	
 	private var icon:Sprite;
 	
