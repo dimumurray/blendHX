@@ -77,6 +77,7 @@ class Selection
 	
 	public static function SetDragObject(dragObject:Dynamic)
 	{
+		
 		if( !Lib.current.stage.hasEventListener(MouseEvent.MOUSE_UP) )
 			Lib.current.stage.addEventListener(MouseEvent.MOUSE_UP, ClearDragObject);
 		

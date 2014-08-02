@@ -39,4 +39,8 @@ class DragableItem extends Sprite
 	private function reparentTarget(e:MouseEvent):Void
 	{
 	}
+	override public function toString():String
+	{
+		return dragType +", "+dragText +", "+dragValue;
+	}
 }

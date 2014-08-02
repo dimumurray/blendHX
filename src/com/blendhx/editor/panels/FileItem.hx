@@ -44,7 +44,7 @@ class FileItem extends DragableItem
 	private var selected:Bool = false;
 	
 	
-	public function new( fileName:String="file", extension:String="",  onClick:FileItem->Void = null) 
+	public function new( fileName:String="file", extension:String="",  localURL:String="null", onClick:FileItem->Void = null) 
 	{
 		super();
 		
@@ -67,7 +67,7 @@ class FileItem extends DragableItem
 		addChild(textField);
 		addChild(icon);
 		
-		init(fileName, extension);
+		init(fileName, extension, localURL);
 		
 		this.mouseChildren = false;
 		this.doubleClickEnabled = true;
@@ -181,9 +181,10 @@ class FileItem extends DragableItem
 	}
 	
 	
-	public function init( fileName:String, extension:String = "" ) 
+	public function init( fileName:String, extension:String = "" ,localURL:String="null") 
 	{
 		this.fileName = fileName;
+		this.localURL = localURL;
 		textField.text = fileName;
 		
 		selected = false;
@@ -196,7 +197,7 @@ class FileItem extends DragableItem
 		this.dragValue = localURL;
 		this.dragText = fileName;
 		this.dragType = type;
-		
+
 		mouseOverIndicator.graphics.clear();
 	}
 	

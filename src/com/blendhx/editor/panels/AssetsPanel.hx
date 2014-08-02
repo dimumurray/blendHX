@@ -118,18 +118,18 @@ class AssetsPanel extends Panel
 	
 		fileItems = [];
 	}
-	private function getItemFromPool(fileName:String, extension:String,  onClick:FileItem->Void)
+	private function getItemFromPool(fileName:String, extension:String, localURL:String,  onClick:FileItem->Void)
 	{
 		var item:FileItem;
 			
 		if( fileItemPool[fileItems.length] == null)
 		{
-			item = new FileItem(fileName, extension, onItemClick); 
+			item = new FileItem(fileName, extension, localURL, onItemClick); 
 			fileItemPool.push(item);
 		}
 		
 		item = fileItemPool[fileItems.length];
-		item.init(fileName, extension);
+		item.init(fileName, extension, localURL);
 		fileItems.push(item);
 		return item;
 			
@@ -148,7 +148,7 @@ class AssetsPanel extends Panel
 		
 		if (currentDirectory.nativePath !=  Assets.sourceDirectory.nativePath)
 		{
-			fileItem = getItemFromPool("...", "back", onItemClick);
+			fileItem = getItemFromPool("...", "back", "null", onItemClick);
 			
 			fileItem.x = colomn * colomnWidth + padding/2;
 			fileItem.y = row * padding + 1;
@@ -161,8 +161,7 @@ class AssetsPanel extends Panel
 		for(file in files)
 		{
 			
-			fileItem = getItemFromPool(file.name, file.extension, onItemClick);
-			fileItem.localURL = getLocalURL(file);
+			fileItem = getItemFromPool(file.name, file.extension, getLocalURL(file), onItemClick);
 			addChild( fileItem );
 			fileItem.x = colomn * colomnWidth + padding/2;
 			fileItem.y = row * padding + 2;

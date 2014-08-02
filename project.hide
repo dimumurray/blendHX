@@ -168,7 +168,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 0
+            ,"activeLine" : 27
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\panels\\HierarchyItem.hx"
@@ -195,7 +195,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 126
+            ,"activeLine" : 191
         }
         ,{
              "path" : "src\\com\\blendhx\\editor\\panels\\AssetsPanel.hx"
@@ -215,8 +215,35 @@
             ]
             ,"activeLine" : 94
         }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 70
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\Selection.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 67
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\assets\\FileType.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 6
+        }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\editor\\uicomponents\\TextInput.hx"
+    ,"activeFile" : "src\\com\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

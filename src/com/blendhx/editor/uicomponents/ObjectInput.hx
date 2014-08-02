@@ -36,6 +36,7 @@ class ObjectInput extends UIElement
 	private var type:UInt;
 	
 	private var hostObject:DragableItem;
+	private var text:String;
 	
 	public function new(type:UInt, slice:UInt, slices:UInt, _y:Float, onChange:Void->Void, _panel:Panel) 
 	{
@@ -59,14 +60,18 @@ class ObjectInput extends UIElement
 		
 		if(hostObject == null)
 			hostObject = new DragableItem();
+		
+		this.mouseChildren = false;
 	}
 	override public function setValue(param:Dynamic)
 	{
+		trace("set");
 		if(param == null) param = "";
 		if(hostObject.dragText == "")
 			hostObject.dragText = param.toString();
 		
 		value = param;
+		text = param.toString();
 		label.text = param.toString();
 		onChange();
 	}
@@ -84,8 +89,7 @@ class ObjectInput extends UIElement
 	
 	public function onMouseOut(e:MouseEvent)
 	{
-			
-		label.text = hostObject.dragText;
+		label.text = text;
 		drawBox(normal, null);
 	}	
 	
