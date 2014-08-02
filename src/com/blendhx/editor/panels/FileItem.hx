@@ -1,4 +1,5 @@
 package com.blendhx.editor.panels;
+import flash.system.ApplicationDomain;
 import flash.events.Event;
 import flash.events.ErrorEvent;
 import flash.errors.Error;
@@ -80,7 +81,7 @@ class FileItem extends DragableItem
 	override private function reparentTarget(e:MouseEvent):Void
 	{
 		var targetFileItem:FileItem = null;
-		if( Selection.dragObject!= null)
+		if( Selection.dragObject!= null && Type.getClass(Selection.dragObject) == FileItem)
 			targetFileItem = cast(Selection.dragObject, FileItem );
 		
 		if( targetFileItem != null && (type == FileType.FOLDER || type == FileType.BACK))	
