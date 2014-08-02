@@ -154,6 +154,8 @@ class RightClickMenu
 	private static function removeSelectedGameObject(_) 
 	{
 		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
+		if(gameObject.name == "Editor Camera" || gameObject.name == "Editor" || gameObject.name == "Objects" || gameObject.name == "Scene")
+			return;
 		gameObject.parent.removeChild(gameObject);
 		gameObject.destroy();
 		HierarchyPanel.getInstance().populate();

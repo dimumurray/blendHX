@@ -2,6 +2,7 @@ package com.blendhx.editor.panels;
 import flash.text.TextFieldAutoSize;
 import flash.system.ApplicationDomain;
 
+import com.blendhx.core.Utils;
 import com.blendhx.core.components.GameObject;
 import com.blendhx.editor.uicomponents.Button;
 import com.blendhx.editor.uicomponents.TextInput;
@@ -13,6 +14,7 @@ import com.blendhx.editor.panels.*;
 import com.blendhx.core.components.*;
 import flash.events.Event;
 import flash.display.Graphics;
+
 
 /**
 * @author 
@@ -50,6 +52,9 @@ class HierarchyPanel extends Panel
 	public function renameGameObject(hierarchyItem:HierarchyItem)
 	{
 		rightClickedGameobject = hierarchyItem.gameobject;
+		
+		if(rightClickedGameobject.name == "Editor" || rightClickedGameobject.name == "Objects")
+			return;
 		
 		if(renameInput == null)
 		{
@@ -194,7 +199,7 @@ class HierarchyPanel extends Panel
 			//setting parent for next tree items
 			if(gameObject.children.length>=2)
 			{
-				switch (Type.getClass(gameObject.children[1]))
+				switch ( Utils.GetClassFromAnyDomain( gameObject.children[1] ) )
 				{
 					case Camera:
 						item.type = HierarchyItem.CAMERA;

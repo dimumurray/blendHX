@@ -1,8 +1,8 @@
 package com.blendhx.core.components;
-import flash.system.ApplicationDomain;
-import com.blendhx.editor.data.UserScripts;
-import com.blendhx.editor.Debug;
+
 import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.Debug;
+import com.blendhx.core.Utils;
 /*
 Gameobjects contain components, a simple composition pattern
  */
@@ -38,14 +38,14 @@ class GameObject extends Component
 	//add a child only if there isn't one already added with the same Type. There can't be two children of the same type in one Gameobject
 	public function addChild(child:Component)
 	{
-		var childClass:Class<Dynamic> = GetClassFromAnyDomain(child);
+		var childClass:Class<Dynamic> = Utils.GetClassFromAnyDomain(child);
 		var existingChildClass:Class<Dynamic> = null;
 		
 		if ( !AS3DefenitionHelper.ObjectIsOfType(child, GameObject) )
 		{
 			for (existingChild in children)
 			{
-				existingChildClass =  GetClassFromAnyDomain(existingChild);
+				existingChildClass =  Utils.GetClassFromAnyDomain(existingChild);
 				if( childClass ==  existingChildClass )
 				{
 					
@@ -72,7 +72,7 @@ class GameObject extends Component
 	{
 		for (child in children)
 		{
-			var childClass:Class<Dynamic> = GetClassFromAnyDomain(child);
+			var childClass:Class<Dynamic> = Utils.GetClassFromAnyDomain(child);
 		
 			if( childClass ==  componentType)
 			{
@@ -81,22 +81,5 @@ class GameObject extends Component
 		}
 
 		return null;
-	}
-		
-	private static function GetClassFromAnyDomain(component:Dynamic):Class<Dynamic>
-	{
-		var classType:Class<Dynamic> = null;
-		
-		
-		var searchingDomain:ApplicationDomain = ApplicationDomain.currentDomain;
-		classType = AS3DefenitionHelper.getClass(searchingDomain, component);
-		
-		if(classType == null)
-		{
-			searchingDomain = UserScripts.userScriptsDomain;
-			classType = AS3DefenitionHelper.getClass(searchingDomain, component);
-		}
-			
-		return classType;
 	}
 }
