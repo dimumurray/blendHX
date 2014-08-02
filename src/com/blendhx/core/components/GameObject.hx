@@ -1,6 +1,6 @@
 package com.blendhx.core.components;
 
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 import com.blendhx.editor.Debug;
 import com.blendhx.core.Utils;
 /*
@@ -41,7 +41,7 @@ class GameObject extends Component
 		var childClass:Class<Dynamic> = Utils.GetClassFromAnyDomain(child);
 		var existingChildClass:Class<Dynamic> = null;
 		
-		if ( !AS3DefenitionHelper.ObjectIsOfType(child, GameObject) )
+		if ( !AS3DefinitionHelper.ObjectIsOfType(child, GameObject) )
 		{
 			for (existingChild in children)
 			{

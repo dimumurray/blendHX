@@ -1,7 +1,7 @@
 package com.blendhx.core;
 
 import flash.system.ApplicationDomain;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 import com.blendhx.editor.data.UserScripts;
 
 class Utils
@@ -19,12 +19,12 @@ class Utils
 		
 		
 		var searchingDomain:ApplicationDomain = ApplicationDomain.currentDomain;
-		classType = AS3DefenitionHelper.getClass(searchingDomain, component);
+		classType = AS3DefinitionHelper.getClass(searchingDomain, component);
 		
 		if(classType == null)
 		{
 			searchingDomain = UserScripts.userScriptsDomain;
-			classType = AS3DefenitionHelper.getClass(searchingDomain, component);
+			classType = AS3DefinitionHelper.getClass(searchingDomain, component);
 		}
 			
 		return classType;

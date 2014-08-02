@@ -2,7 +2,7 @@ package com.blendhx.core.components;
 import flash.system.ApplicationDomain;
 import com.blendhx.editor.data.UserScripts;
 import com.blendhx.editor.Debug;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 /*
 Gameobjects contain components, a simple composition pattern
  */
@@ -39,13 +39,13 @@ class GameObject extends Component
 	public function addChild(child:Component)
 	{
 		//if the new child is a gameObject, then add it anyway
-		if ( !AS3DefenitionHelper.ObjectIsOfType(child, GameObject) )
+		if ( !AS3DefinitionHelper.ObjectIsOfType(child, GameObject) )
 		{
-			var childClass:Class<Dynamic> = AS3DefenitionHelper.getClass(ApplicationDomain.currentDomain, child);
+			var childClass:Class<Dynamic> = AS3DefinitionHelper.getClass(ApplicationDomain.currentDomain, child);
 			for (existingChild in children)
 			{
 				//if there is a child with the same class type, return
-				var existingChildClass:Class<Dynamic> =  AS3DefenitionHelper.getClass(ApplicationDomain.currentDomain, existingChild);
+				var existingChildClass:Class<Dynamic> =  AS3DefinitionHelper.getClass(ApplicationDomain.currentDomain, existingChild);
 				if( childClass ==  existingChildClass )
 				{
 					Debug.Log("You can't add same component twice");

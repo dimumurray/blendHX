@@ -3,7 +3,7 @@ package com.blendhx.core.assets;
 import com.blendhx.core.Utils;
 import com.blendhx.editor.Debug;
 import com.blendhx.editor.data.UserScripts;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 import hxsl.Shader;
 
 /*
@@ -34,7 +34,7 @@ class Material
 	
 	public function init()
 	{
-		//get shader defenition from loaded scripts.swf
+		//get shader definition from loaded scripts.swf
 		checkShader();
 		
 		updateShaderProperties();
@@ -43,7 +43,7 @@ class Material
 	private function checkShader()
 	{
 		var shaderClassName:String = Utils.GetClassNameFromURL(shaderURL);
-		if(shader == null || AS3DefenitionHelper.getClassName(shader)  != shaderClassName)
+		if(shader == null || AS3DefinitionHelper.getClassName(shader)  != shaderClassName)
 		{
 			shader = UserScripts.GetShader( shaderURL );
 		}

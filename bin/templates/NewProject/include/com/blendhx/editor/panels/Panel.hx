@@ -11,7 +11,7 @@ import flash.events.MouseEvent;
 import flash.display.Graphics;
 import flash.text.TextFormatAlign;
 import flash.display.Sprite;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 
 /**
 * @author 
@@ -88,7 +88,7 @@ class Panel extends Sprite
 	private function drawRemoveButton()
 	{
 		
-		if(hostComponent != null && closeButton == null && !AS3DefenitionHelper.ObjectIsOfType(hostComponent, Transform) )
+		if(hostComponent != null && closeButton == null && !AS3DefinitionHelper.ObjectIsOfType(hostComponent, Transform) )
 			closeButton = new RemoveButton(removeHostComponent, this);
 		
 		if(closeButton!= null)

@@ -9,7 +9,7 @@ import com.blendhx.editor.panels.UtilityPanel;
 import com.blendhx.editor.panels.*;
 import com.blendhx.editor.panels.PanelPool;
 import com.blendhx.editor.uicomponents.*;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 
 /**
 
@@ -61,7 +61,7 @@ class PropertiesSpace extends Space
 			var className:String = "";
 			try
 			{
-				className = AS3DefenitionHelper.getClassName(component);
+				className = AS3DefinitionHelper.getClassName(component);
 			}
 			catch(e:Dynamic)
 			{}

@@ -21,7 +21,7 @@ import com.blendhx.core.assets.Assets;
 import com.blendhx.editor.data.Process;
 import com.blendhx.editor.Debug;
 import com.blendhx.editor.Progressbar;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 import com.blendhx.core.shaders.DefaultShader;
 
 
@@ -111,7 +111,7 @@ class UserScripts
 		var componentClass:Class<Dynamic> = userScriptsDomain.getDefinition( Utils.GetClassNameFromURL( classURL ) ); 
 		if(componentClass == null)
 		{
-			Debug.Log("Script defenition not found. Consider re compiling");
+			Debug.Log("Script definition not found. Consider re compiling");
 			return null;
 		}
 		else if(Type.getSuperClass(componentClass) != Component)
@@ -121,7 +121,7 @@ class UserScripts
 		}
 		
 		var className:String = Utils.GetClassNameFromURL( classURL );
-		var component:Component = cast(AS3DefenitionHelper.Instantiate(userScriptsDomain, className, Component), Component);
+		var component:Component = cast(AS3DefinitionHelper.Instantiate(userScriptsDomain, className, Component), Component);
 		
 		return component;
 	}
@@ -131,7 +131,7 @@ class UserScripts
 		var className:String = Utils.GetClassNameFromURL( classURL );
 		var shader:Shader;
 		
-		shader =  cast(AS3DefenitionHelper.Instantiate(userScriptsDomain, className, Shader), Shader);
+		shader =  cast(AS3DefinitionHelper.Instantiate(userScriptsDomain, className, Shader), Shader);
 		
 		if(shader == null)
 		{

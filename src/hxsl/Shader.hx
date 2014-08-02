@@ -28,7 +28,7 @@ import flash.geom.Matrix3D;
 
 import hxsl.Data;
 import haxe.ds.Vector;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 /**
 	A ShaderInstance is a compiled version of a shader for a given set of parameters.
 **/
@@ -347,7 +347,7 @@ class Shader{
 	}
 	public function create(domain:ApplicationDomain) 
 	{
-		var c : { HXSL : String, GLOBALS : ShaderGlobals } = cast AS3DefenitionHelper.getClass(domain, this );  // Type.getClass(this);
+		var c : { HXSL : String, GLOBALS : ShaderGlobals } = cast AS3DefinitionHelper.getClass(domain, this );  // Type.getClass(this);
 		globals = c.GLOBALS;
 		if( globals == null ) {
 			globals = new ShaderGlobals(c.HXSL);

@@ -6,7 +6,7 @@ package com.blendhx.editor.data
 	import flash.utils.getDefinitionByName;
 	
 	
-	public class AS3DefenitionHelper
+	public class AS3DefinitionHelper
 	{
 		public static function Instantiate( domain:ApplicationDomain, className:String, desiredClass:*  ):*
 		{

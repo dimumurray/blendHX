@@ -5,7 +5,7 @@ import flash.system.ApplicationDomain;
 import com.blendhx.core.components.GameObject;
 import com.blendhx.editor.uicomponents.Button;
 import com.blendhx.editor.uicomponents.TextInput;
-import com.blendhx.editor.data.AS3DefenitionHelper;
+import com.blendhx.editor.data.AS3DefinitionHelper;
 import com.blendhx.editor.Selection;
 import com.blendhx.core.*;
 import com.blendhx.editor.spaces.*;
@@ -183,8 +183,8 @@ class HierarchyPanel extends Panel
 	{
 		var deep:UInt = 1;
 		//proceed if object is of type GameObject
-		//trace( AS3DefenitionHelper.ObjectIsOfType(gameObject, GameObject) );  //. flash.utils.getDefenitionByName();
-		if ( AS3DefenitionHelper.ObjectIsOfType(gameObject, GameObject) )
+		//trace( AS3DefinitionHelper.ObjectIsOfType(gameObject, GameObject) );  //. flash.utils.getDefinitionByName();
+		if ( AS3DefinitionHelper.ObjectIsOfType(gameObject, GameObject) )
 		{
 			//puhsing the item into the hierarch
 			var item:HierarchyItem = push( cast(gameObject, GameObject), depth );
