@@ -8,6 +8,7 @@ Gameobjects contain components, a simple composition pattern
  */
 class GameObject extends Component
 {
+	public var collapsedInEditor:Bool = false;
 	//basic initializations
 	public function new(name:String = "GameObject") 
 	{

@@ -64,6 +64,7 @@ class Scene extends GameObject
 		sceneObjects = new GameObject("Objects");
 		
 		house = new GameObject("house");
+		sceneObjects.collapsedInEditor = true;
 		renderer = new MeshRenderer();
 		renderer.meshFileName = "meshes/house.obj";
 		renderer.materialFileName = "materials/house.mat";

@@ -14,7 +14,7 @@ monthday tasks
 718	create/delete new empty game object
 719	assets panel
 723	add components from menu to selected game object
-723	material assets re defenition
+723	material assets re definition
 724	assign mesh to components panel
 724	assign texture to components panel
 725	material asset properties panel
@@ -31,7 +31,8 @@ monthday tasks
 801	new script asset creation
 801	re name game objects
 802	code review:GC
-	hierarchy panel re parenting support
+802	hierarchy panel re parenting support
+802	hierarchy panel collapse object
 	editor camera
 	parent transformation
 	edit mode/play mode

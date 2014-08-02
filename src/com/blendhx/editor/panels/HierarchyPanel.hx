@@ -215,12 +215,17 @@ class HierarchyPanel extends Panel
 			
 			for (child in gameObject.children)
 			{
+				if(item.gameobject.collapsedInEditor == true)
+					continue;
+			
 				if (pushIntoHierarchy(child, deep + depth) == true)
 					item.hasChildren = true;
 				else if(item.hasChildren == true)
 					item.hasChildren = true;
 				else 
 					item.hasChildren = false;
+			
+				
 			}
 			
 			// means gameobject that we push has children gameobjects
