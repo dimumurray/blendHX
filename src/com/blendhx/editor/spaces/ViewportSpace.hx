@@ -48,7 +48,7 @@ class ViewportSpace extends Space
 		if(context3D!=null)
 			context3D.configureBackBuffer(Std.int(_width), Std.int(_height), 4, true);
 		
-		var camera:Camera = RenderingSystem.getInstance().camera;
+		var camera:Camera = Scene.getInstance().activeCamera;
 		if(camera!=null)
 			camera.resize(Std.int(_width), Std.int(_height));
 	}

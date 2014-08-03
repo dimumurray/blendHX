@@ -22,33 +22,42 @@ class MeshRenderer extends Component
 	{
 		name = "Transform";
 	}
-	override public function setParent(_parent : GameObject)
-	{
-		super.setParent(_parent);
-		init();
-		register();
-	}
 	
-	override public function init()
+	override public function initilize()
 	{
 		mesh = Assets.GetMesh( meshFileName );
 		material = Assets.GetMaterial( materialFileName );
 		
 		if(mesh != null && material != null)
 			material.init();
-	}
-	
-	private function register()
-	{
-		transform = parent.getChild(Transform);
 		
 		RenderingSystem.getInstance().registerMeshRenderer(this);
 	}
 	
-	override public function destroy()
+	override public function clone():Dynamic
+	{
+		var copy:MeshRenderer = new MeshRenderer();
+		copy.enabled = enabled;
+		copy.name = name;
+		copy.materialFileName = materialFileName;
+		copy.meshFileName = meshFileName;
+		
+		return copy;
+	}
+	
+	override public function uninitilize()
 	{
 		material = null;
 		mesh = null;
+		
 		RenderingSystem.getInstance().unregisterMeshRenderer(this);
+	}
+	
+	override public function destroy()
+	{
+		super.destroy();
+		material = null;
+		mesh = null;
+		
 	}
 }

@@ -14,12 +14,23 @@ class Transform extends Component
 		name = "Camera";
 		matrix = new Matrix3D();
 	}
-	public function appendTranslation(_x:Float, _y:Float, _z:Float):Void
+	override public function clone():Dynamic
 	{
-		matrix.prependTranslation(_x, _y, _z);
+		var copy:Transform = new Transform();
+		copy.enabled = enabled;
+		copy.name = name;
+		copy.matrix = matrix.clone();
+		
+		return copy;
 	}
 	override public function destroy()
 	{
+		super.destroy();
 		matrix = null;
+	}
+	
+	public function appendTranslation(_x:Float, _y:Float, _z:Float):Void
+	{
+		matrix.prependTranslation(_x, _y, _z);
 	}
 }

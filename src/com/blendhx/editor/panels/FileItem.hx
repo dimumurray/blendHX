@@ -7,7 +7,7 @@ import flash.errors.Error;
 import com.blendhx.editor.Selection;
 import com.blendhx.core.*;
 import com.blendhx.core.assets.*;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.assets.*;
 import com.blendhx.editor.uicomponents.*;
 import com.blendhx.editor.panels.*;

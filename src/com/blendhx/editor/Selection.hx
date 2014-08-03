@@ -10,7 +10,7 @@ import flash.Lib;
 import flash.events.MouseEvent;
 import com.blendhx.editor.assets.FileType;
 import com.blendhx.editor.spaces.Space;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.panels.DragableItem;
 import com.blendhx.editor.panels.FileItem;
 import com.blendhx.editor.panels.HierarchyItem;
@@ -125,12 +125,12 @@ class Selection
 		return false;
 	}
 	
-	public static function GetSelectedGameObject():GameObject
+	public static function GetSelectedEntity():Entity
 	{
 		if( isHierarchyItem() )
-			return hierarchyItem.gameobject;
+			return hierarchyItem.entity;
 					
-		Debug.Log("No GameObject is selected");
+		Debug.Log("No Entity is selected");
 		return null;
 	}
 	

@@ -2,7 +2,7 @@ package com.blendhx.editor.panels;
 
 import com.blendhx.core.assets.*;
 import com.blendhx.core.components.MeshRenderer;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 
 import com.blendhx.editor.panels.*;
 import com.blendhx.editor.spaces.Space;
@@ -77,7 +77,7 @@ class UtilityPanel extends Panel
 	{
 		/*urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);
 		var bytes:ByteArray = urlLoader.data;
-		var objects:GameObject = bytes.readObject();
+		var objects:Entity = bytes.readObject();
 		Scene.getInstance().addChild(objects);
 		Scene.getInstance().sceneObjects = objects;
 		objects.init();

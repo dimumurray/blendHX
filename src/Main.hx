@@ -17,7 +17,7 @@ import flash.display.Stage;
 import flash.display.StageScaleMode;
 import flash.events.Event;
 
-class Main extends GameObject
+class Main extends Entity
 {
     var stage:Stage;
     var scene:Scene;
@@ -83,7 +83,7 @@ class Main extends GameObject
     function onContext3DCreate(_):Void
     {
     	stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
-    	Scene.getInstance().init();
+    	Scene.getInstance().initilize();
 		HierarchyPanel.getInstance().populate();
 		Space.Resize();
     	loadAssets();
@@ -108,7 +108,11 @@ class Main extends GameObject
 
     function onEnterFrame(_):Void
     {
-    	scene.update();
+		if(scene.isEditMode() )
+			scene.editorObjects.update();
+		else 
+			scene.playModeSceneObjects.update();
+
     	renderingSystem.update();
     }
 }

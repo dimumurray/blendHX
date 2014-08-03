@@ -41,13 +41,13 @@ class MeshRendererPanel extends Panel
 		if ( !Selection.isHierarchyItem() )
 			return;
 
-		var renderer:MeshRenderer = Selection.GetSelectedGameObject().getChild(MeshRenderer);
+		var renderer:MeshRenderer = Selection.GetSelectedEntity().getChild(MeshRenderer);
 		if (renderer==null)
 			return;
 		
 		renderer.meshFileName = mesh_input.value;
 		renderer.materialFileName = material_input.value;
-		renderer.init();
+		renderer.initilize();
 	}
 	
 	
@@ -56,7 +56,7 @@ class MeshRendererPanel extends Panel
 		if ( !Selection.isHierarchyItem() )
 			return;
 
-		var renderer:MeshRenderer = Selection.GetSelectedGameObject().getChild(MeshRenderer);
+		var renderer:MeshRenderer = Selection.GetSelectedEntity().getChild(MeshRenderer);
 		if (renderer==null)
 			return;
 		

@@ -1,5 +1,5 @@
 package com.blendhx.editor.uicomponents;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.assets.*;
 
 import com.blendhx.editor.panels.HierarchyItem;

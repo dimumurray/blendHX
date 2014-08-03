@@ -2,7 +2,7 @@ package com.blendhx.editor;
 import com.blendhx.editor.panels.AssetsPanel;
 import flash.errors.Error;
 import com.blendhx.editor.spaces.Space;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 
 import flash.events.Event;
 import flash.Lib;
@@ -27,9 +27,9 @@ class RightClickMenu
 	private static var components:Array<String> = ["Mesh Renderer", "Camera", "RigidBody", "Collidor", "Lamp", "Audio"];
 	private static var fileItemMenu:NativeMenu;
 	private static var assetsPanelCreateMenu:NativeMenu;
-	private static var gameObjectMenu:NativeMenu;
+	private static var entityMenu:NativeMenu;
 	
-	//the gameobject in the heirarchy which is righ clicked
+	//the entity in the heirarchy which is righ clicked
 	private static var richClickedHierarchyItem:HierarchyItem;
 	private static var richClickedFileItem:FileItem;
 	
@@ -63,26 +63,26 @@ class RightClickMenu
 		assetsPanelCreateMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
-	public static function GameObjectMenu(hierarchyItem:HierarchyItem)
+	public static function EntityMenu(hierarchyItem:HierarchyItem)
 	{
 		
 		richClickedHierarchyItem = hierarchyItem;
 		
-		if(gameObjectMenu == null)
+		if(entityMenu == null)
 		{
-			var selectedGameObject:GameObject = hierarchyItem.gameobject;
+			var selectedEntity:Entity = hierarchyItem.entity;
 			
-			gameObjectMenu = new NativeMenu();
-			gameObjectMenu.addItem( new NativeMenuItem("New" )).addEventListener(Event.SELECT, createGameObject);
-			gameObjectMenu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameGameObject);
-			gameObjectMenu.addItem( new NativeMenuItem("Delete Selected")).addEventListener(Event.SELECT, removeSelectedGameObject);
-			gameObjectMenu.addItem( new NativeMenuItem("", true) );
-			gameObjectMenu.addItem( new NativeMenuItem("Add Component") ).enabled = false;
-			gameObjectMenu.addItem( new NativeMenuItem("", true) );
+			entityMenu = new NativeMenu();
+			entityMenu.addItem( new NativeMenuItem("New" )).addEventListener(Event.SELECT, createEntity);
+			entityMenu.addItem( new NativeMenuItem("Rename" )).addEventListener(Event.SELECT, renameEntity);
+			entityMenu.addItem( new NativeMenuItem("Delete Selected")).addEventListener(Event.SELECT, removeSelectedEntity);
+			entityMenu.addItem( new NativeMenuItem("", true) );
+			entityMenu.addItem( new NativeMenuItem("Add Component") ).enabled = false;
+			entityMenu.addItem( new NativeMenuItem("", true) );
 			
 			for(component in components)
 			{
-				var item:NativeMenuItem = gameObjectMenu.addItem( new NativeMenuItem(component) );
+				var item:NativeMenuItem = entityMenu.addItem( new NativeMenuItem(component) );
 
 				item.addEventListener(Event.SELECT, addComponent.bind(component));
 				if(component != "Camera" && component != "Mesh Renderer")
@@ -90,7 +90,7 @@ class RightClickMenu
 			}
 		}
 	
-		gameObjectMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
+		entityMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
 	}
 	
 	private static function deleteSelectedFile( _ )
@@ -140,31 +140,31 @@ class RightClickMenu
 		IO.NewScript();
 	}
 	
-	private static function createGameObject(_) 
+	private static function createEntity(_) 
 	{
-		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
-		gameObject.addChild( new GameObject() );
+		var entity:Entity = richClickedHierarchyItem.entity;
+		entity.addChild( new Entity() );
 		HierarchyPanel.getInstance().populate();
 	}
-	private static function renameGameObject(_) 
+	private static function renameEntity(_) 
 	{
-		HierarchyPanel.getInstance().renameGameObject( richClickedHierarchyItem );
+		HierarchyPanel.getInstance().renameEntity( richClickedHierarchyItem );
 	}
 
-	private static function removeSelectedGameObject(_) 
+	private static function removeSelectedEntity(_) 
 	{
-		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
-		if(gameObject.name == "Editor Camera" || gameObject.name == "Editor" || gameObject.name == "Objects" || gameObject.name == "Scene")
+		var entity:Entity = richClickedHierarchyItem.entity;
+		if(entity.name == "Editor Camera" || entity.name == "Editor" || entity.name == "Objects" || entity.name == "Scene")
 			return;
-		gameObject.parent.removeChild(gameObject);
-		gameObject.destroy();
+		entity.parent.removeChild(entity);
+		entity.destroy();
 		HierarchyPanel.getInstance().populate();
 	}
 	
 	
 	private static function addComponent(componentName:String, _)
 	{
-		var gameObject:GameObject = richClickedHierarchyItem.gameobject;
+		var entity:Entity = richClickedHierarchyItem.entity;
 		
 		var component:Component = null;
 			
@@ -178,7 +178,7 @@ class RightClickMenu
 				return;
 		}
 		
-		gameObject.addChild(component);
+		entity.addChild(component);
 		HierarchyPanel.getInstance().populate();
     	Space.Resize();
 	}

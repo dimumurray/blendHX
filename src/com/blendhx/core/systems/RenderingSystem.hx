@@ -1,4 +1,5 @@
 package com.blendhx.core.systems;
+import com.blendhx.core.components.Camera;
 
 import com.blendhx.core.assets.Mesh;
 import com.blendhx.core.components.*;
@@ -31,12 +32,10 @@ class RenderingSystem extends EventDispatcher implements ISystem
 	private static var instance:RenderingSystem;
 	
 	public var context3D:Context3D;
-	public var camera:Camera;
+	
 	
 	private var meshRenderers:Array<MeshRenderer>;
-	private var transforms:Array<Transform>;
-	private var meshes:Array<Mesh>;
-	private var shaders:Array<Shader>;
+	
 	private var defaultShader:DefaultShader;
 	private var shaderError:String;
 
@@ -56,9 +55,6 @@ class RenderingSystem extends EventDispatcher implements ISystem
 		defaultShader = new DefaultShader();
 		defaultShader.create(ApplicationDomain.currentDomain);
 		meshRenderers = new Array<MeshRenderer>();
-		transforms = new Array<Transform>();
-		meshes = new Array<Mesh>();
-		shaders = new Array<Shader>();
 	}
 	
 	public function init()
@@ -94,6 +90,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
 		var transform:Transform;
 		var mesh:Mesh;
 		var shader:Shader;
+		var camera:Camera = Scene.getInstance().activeCamera;
 		
 		context3D.clear(0.22, 0.22, 0.22, 1.0);
 		
@@ -141,6 +138,9 @@ class RenderingSystem extends EventDispatcher implements ISystem
 
 	public function registerMeshRenderer(meshRenderer:MeshRenderer) 
 	{
+		for(m in meshRenderers)
+			if(m == meshRenderer)
+				return;
 		meshRenderers.push(meshRenderer);
 	}
 

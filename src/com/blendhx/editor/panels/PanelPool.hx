@@ -14,7 +14,7 @@ class PanelPool
 
 	public static function Get( name:String ):Panel
 	{
-		if(name == "GameObject")
+		if(name == "Entity")
 			return null;
 		
 		if( panels == null)

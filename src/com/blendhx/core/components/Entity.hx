@@ -4,20 +4,27 @@ import com.blendhx.editor.data.AS3DefinitionHelper;
 import com.blendhx.editor.Debug;
 import com.blendhx.core.Utils;
 /*
-Gameobjects contain components, a simple composition pattern
+Entitys contain components, a simple composition pattern
  */
-class GameObject extends Component
+class Entity extends Component
 {
 	public var collapsedInEditor:Bool = false;
 	//basic initializations
-	public function new(name:String = "GameObject") 
+	public function new(name:String = "Entity") 
 	{
 		children = new Array<Component>();
 		//there always need to be a transform component, because it's used so much
 		addChild( new Transform() );
 		this.name = name;
 	}
-	// calls child components update, if gameobject is enabled
+	
+	override public function initilize():Void
+	{
+		for (child in children)
+			 child.initilize();
+	}
+	
+	// calls child components update, if entity is enabled
 	override public function update():Void
 	{
 		if (!enabled)
@@ -27,22 +34,45 @@ class GameObject extends Component
 			if(child.enabled)
 			 	child.update();
 	}
+
+	override public function uninitilize():Void
+	{
+		for (child in children)
+			 child.uninitilize();
+	}
+	
+	override public function clone():Dynamic
+	{
+		var copy:Entity = new Entity();
+		copy.enabled = enabled;
+		copy.name = name;
+		copy.collapsedInEditor = collapsedInEditor;
+		for(child in children)
+			copy.addChild( child.clone() );
+		
+		return copy;
+	}
+	
 	
 	//upon destruction, call components to destroy
 	override public function destroy()
 	{
+		super.destroy();
 		for (child in children)
+		{
+			child.setParent(null);
 			child.destroy();
+		}
 		children = [];
 		transform = null;
 	}
-	//add a child only if there isn't one already added with the same Type. There can't be two children of the same type in one Gameobject
+	//add a child only if there isn't one already added with the same Type. There can't be two children of the same type in one Entity
 	public function addChild(child:Component)
 	{
 		var childClass:Class<Dynamic> = Utils.GetClassFromAnyDomain(child);
 		var existingChildClass:Class<Dynamic> = null;
 		
-		if ( !AS3DefinitionHelper.ObjectIsOfType(child, GameObject) )
+		if ( !AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
 		{
 			for (existingChild in children)
 			{
@@ -50,10 +80,13 @@ class GameObject extends Component
 				if( childClass ==  existingChildClass )
 				{
 					
-					Debug.Log("You can't add same component twice");
+					Debug.Log("You can't add same component twice: "+this.name +","+ existingChild +", "+ child);
 					child.destroy();
 					return;
 				}
+				//if child is already added
+				if(existingChild == child)
+					return;
 			}
 		}
 		

@@ -3,7 +3,7 @@ import flash.text.TextFieldAutoSize;
 import flash.system.ApplicationDomain;
 
 import com.blendhx.core.Utils;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.uicomponents.Button;
 import com.blendhx.editor.uicomponents.TextInput;
 import com.blendhx.editor.data.AS3DefinitionHelper;
@@ -28,7 +28,7 @@ class HierarchyPanel extends Panel
 	public static var identWidth:Float = 20;
 	public static var padding:Float = 20;
 	private var renameInput:TextInput;
-	private var rightClickedGameobject:GameObject;
+	private var rightClickedEntity:Entity;
 	
 	public static inline function getInstance():HierarchyPanel
   	{
@@ -49,11 +49,11 @@ class HierarchyPanel extends Panel
 		drawGraphics();
 	}
 	
-	public function renameGameObject(hierarchyItem:HierarchyItem)
+	public function renameEntity(hierarchyItem:HierarchyItem)
 	{
-		rightClickedGameobject = hierarchyItem.gameobject;
+		rightClickedEntity = hierarchyItem.entity;
 		
-		if(rightClickedGameobject.name == "Editor" || rightClickedGameobject.name == "Objects")
+		if(rightClickedEntity.name == "Editor" || rightClickedEntity.name == "Objects")
 			return;
 		
 		if(renameInput == null)
@@ -64,10 +64,10 @@ class HierarchyPanel extends Panel
 	
 		addChild(renameInput);
 		renameInput.label.autoSize = TextFieldAutoSize.LEFT;
-		renameInput.setValue( rightClickedGameobject.name );
+		renameInput.setValue( rightClickedEntity.name );
 		renameInput.onMouseDown(null);
 		
-		renameInput.label.setSelection(0, rightClickedGameobject.name.length);
+		renameInput.label.setSelection(0, rightClickedEntity.name.length);
 		renameInput.x = 2;
 		renameInput.y = hierarchyItem.y;
 		renameInput._height = 19;
@@ -85,7 +85,7 @@ class HierarchyPanel extends Panel
 		{
 			return;
 		}
-		rightClickedGameobject.name = renameInput.value;
+		rightClickedEntity.name = renameInput.value;
 		populate();
 	}
 	
@@ -99,25 +99,25 @@ class HierarchyPanel extends Panel
 	
 		hierarchyItems = [];
 	}
-	private function getItemFromPool(gameObject:GameObject, depth:UInt)
+	private function getItemFromPool(entity:Entity, depth:UInt)
 	{
 		var item:HierarchyItem;
 			
 		if( hierarchyItemPool[hierarchyItems.length] == null)
 		{
-			item = new HierarchyItem(gameObject, depth);
+			item = new HierarchyItem(entity, depth);
 			hierarchyItemPool.push(item);
 		}
 		
 		item = hierarchyItemPool[hierarchyItems.length];
-		item.init(gameObject, depth);
+		item.init(entity, depth);
 		
 		return item;
 			
 	}
-	public function push(gameObject:GameObject, depth:UInt):HierarchyItem
+	public function push(entity:Entity, depth:UInt):HierarchyItem
 	{
-		var item:HierarchyItem = getItemFromPool(gameObject, depth);
+		var item:HierarchyItem = getItemFromPool(entity, depth);
 		item.y = hierarchyItems.length * padding + 2;
 		
 		hierarchyItems.push( item );
@@ -184,22 +184,22 @@ class HierarchyPanel extends Panel
 	var lastParent:Array<HierarchyItem> = new Array<HierarchyItem>();
 
 
-	private function pushIntoHierarchy(gameObject:Component, depth:UInt = 0):Bool
+	private function pushIntoHierarchy(entity:Component, depth:UInt = 0):Bool
 	{
 		var deep:UInt = 1;
-		//proceed if object is of type GameObject
-		//trace( AS3DefinitionHelper.ObjectIsOfType(gameObject, GameObject) );  //. flash.utils.getDefinitionByName();
-		if ( AS3DefinitionHelper.ObjectIsOfType(gameObject, GameObject) )
+		//proceed if object is of type Entity
+		//trace( AS3DefinitionHelper.ObjectIsOfType(entity, Entity) );  //. flash.utils.getDefinitionByName();
+		if ( AS3DefinitionHelper.ObjectIsOfType(entity, Entity) )
 		{
 			//puhsing the item into the hierarch
-			var item:HierarchyItem = push( cast(gameObject, GameObject), depth );
+			var item:HierarchyItem = push( cast(entity, Entity), depth );
 			item.numberInHierarchy = hierarchyItems.length;
 			item.parentInHierarchy = lastParent[depth-1];
 			
 			//setting parent for next tree items
-			if(gameObject.children.length>=2)
+			if(entity.children.length>=2)
 			{
-				switch ( Utils.GetClassFromAnyDomain( gameObject.children[1] ) )
+				switch ( Utils.GetClassFromAnyDomain( entity.children[1] ) )
 				{
 					case Camera:
 						item.type = HierarchyItem.CAMERA;
@@ -213,9 +213,9 @@ class HierarchyPanel extends Panel
 			}
 			
 			
-			for (child in gameObject.children)
+			for (child in entity.children)
 			{
-				if(item.gameobject.collapsedInEditor == true)
+				if(item.entity.collapsedInEditor == true)
 					continue;
 			
 				if (pushIntoHierarchy(child, deep + depth) == true)
@@ -228,12 +228,12 @@ class HierarchyPanel extends Panel
 				
 			}
 			
-			// means gameobject that we push has children gameobjects
+			// means entity that we push has children entitys
 			return true;
 		}
 		else 
 		{
-			// means gameobject that we push has no children gameobjects
+			// means entity that we push has no children entitys
 			return false;
 		}
 	}

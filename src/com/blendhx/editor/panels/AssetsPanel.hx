@@ -6,7 +6,7 @@ import com.blendhx.core.assets.Assets;
 import flash.errors.IllegalOperationError;
 import flash.errors.Error;
 import flash.events.ErrorEvent;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.uicomponents.Button;
 import com.blendhx.editor.assets.FileType;
 

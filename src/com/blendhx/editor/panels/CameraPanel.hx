@@ -34,7 +34,7 @@ class CameraPanel extends Panel
 		if ( !Selection.isHierarchyItem() )
 			return;
 
-		var camera:Camera = Selection.GetSelectedGameObject().getChild(Camera);
+		var camera:Camera = Selection.GetSelectedEntity().getChild(Camera);
 		if (camera==null)
 			return;
 		
@@ -49,7 +49,7 @@ class CameraPanel extends Panel
 		if ( !Selection.isHierarchyItem() )
 			return;
 
-		var camera:Camera = Selection.GetSelectedGameObject().getChild(Camera);
+		var camera:Camera = Selection.GetSelectedEntity().getChild(Camera);
 		if (camera==null)
 			return;
 		

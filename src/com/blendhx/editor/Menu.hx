@@ -52,28 +52,28 @@ class Menu extends HorizontalPanel
 		command.data = "New Project";
 		command.addEventListener(Event.SELECT, newProject);
 		
-		var gameObjectMenu:NativeMenu = new NativeMenu();
+		var entityMenu:NativeMenu = new NativeMenu();
 		
-		command = gameObjectMenu.addItem( new NativeMenuItem("New" ));
-		command.data = "new gameobject";
+		command = entityMenu.addItem( new NativeMenuItem("New" ));
+		command.data = "new entity";
 		
 		
-		command = gameObjectMenu.addItem( new NativeMenuItem("Delete Selected" ));
-		command.data = "delete gameobject";
+		command = entityMenu.addItem( new NativeMenuItem("Delete Selected" ));
+		command.data = "delete entity";
 
 		
-		gameObjectMenu.addItem( new NativeMenuItem("", true) );
-		gameObjectMenu.addItem( new NativeMenuItem("Add Component") ).enabled = false;
+		entityMenu.addItem( new NativeMenuItem("", true) );
+		entityMenu.addItem( new NativeMenuItem("Add Component") ).enabled = false;
 		
 		for(component in components)
 		{
-			command = gameObjectMenu.addItem( new NativeMenuItem(component) );
+			command = entityMenu.addItem( new NativeMenuItem(component) );
 			command.data = component;
 			//command.addEventListener(Event.SELECT, addComponent);
 		}
 		
 		menu.addSubmenu(fileMenu ,"File");
-		menu.addSubmenu(gameObjectMenu ,"GameObject");
+		menu.addSubmenu(entityMenu ,"Entity");
 		return menu;
 	}
 

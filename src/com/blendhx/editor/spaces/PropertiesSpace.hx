@@ -55,7 +55,7 @@ class PropertiesSpace extends Space
 	{
 		removePanels();
 		
-		var components:Array<Component> = Selection.GetSelectedGameObject().children;
+		var components:Array<Component> = Selection.GetSelectedEntity().children;
 		for (component in components)
 		{
 			var className:String = "";

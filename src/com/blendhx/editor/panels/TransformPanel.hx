@@ -57,7 +57,7 @@ class TransformPanel extends Panel
 		if ( !Selection.isHierarchyItem() )
 			return;
 
-		var m:Matrix3D = Selection.GetSelectedGameObject().getChild(Transform).matrix;
+		var m:Matrix3D = Selection.GetSelectedEntity().getChild(Transform).matrix;
 		m.position = new Vector3D(location_x.value, location_y.value, location_z.value);
 	}
 	private function updateValues() 
@@ -65,7 +65,7 @@ class TransformPanel extends Panel
 		if ( !Selection.isHierarchyItem() )
 			return;
 
-		var transform:Transform = Selection.GetSelectedGameObject().getChild(Transform);
+		var transform:Transform = Selection.GetSelectedEntity().getChild(Transform);
 		hostComponent = transform;
 		
 		var m:Matrix3D = transform.matrix;

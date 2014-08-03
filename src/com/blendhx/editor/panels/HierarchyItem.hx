@@ -5,7 +5,7 @@ import flash.text.TextFieldAutoSize;
 
 
 import com.blendhx.core.*;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.Selection;
 import com.blendhx.editor.assets.*;
 import com.blendhx.editor.uicomponents.*;
@@ -24,7 +24,7 @@ import flash.events.MouseEvent;
 
 class HierarchyItem extends DragableItem
 {
-	public var gameobject:GameObject;
+	public var entity:Entity;
 	public var parentInHierarchy:HierarchyItem;
 	public var numberInHierarchy:UInt;
 	public var depth:UInt;
@@ -43,7 +43,7 @@ class HierarchyItem extends DragableItem
 	private var textField:SimpleTextField;
 	
 	
-	public function new(gameobject:GameObject, depth:UInt) 
+	public function new(entity:Entity, depth:UInt) 
 	{
 		super();
 		
@@ -58,7 +58,7 @@ class HierarchyItem extends DragableItem
 		addChild(icon);
 		addChild(collapseSprite);
 		
-		init(gameobject, depth);
+		init(entity, depth);
 		
 		addEventListener(MouseEvent.CLICK, select);
 		addEventListener(MouseEvent.RIGHT_MOUSE_DOWN, onRightClick);
@@ -67,20 +67,20 @@ class HierarchyItem extends DragableItem
 	
 	
 	
-	public function init(gameobject:GameObject, depth:UInt) 
+	public function init(entity:Entity, depth:UInt) 
 	{
 		x = HierarchyPanel.identWidth;
 		
-		textField.text = gameobject.name;
+		textField.text = entity.name;
 		textField.height = 20;
-		this.gameobject = gameobject;
+		this.entity = entity;
 		this.depth = depth;
 		textField.x = HierarchyPanel.identWidth + (depth * HierarchyPanel.identWidth);
 		hasChildren = false;
 		type = HierarchyItem.TRANSFORM;
 		
-		this.dragValue = gameobject;
-		this.dragText = gameobject.name;
+		this.dragValue = entity;
+		this.dragText = entity.name;
 		this.dragType = FileType.GAMEOBJECT;
 		
 		drawGraphics();
@@ -88,30 +88,30 @@ class HierarchyItem extends DragableItem
 	
 	override private function reparentTarget(e:MouseEvent):Void
 	{
-		var targetGameObject:GameObject = null;
+		var targetEntity:Entity = null;
 		if( Selection.dragObject!= null && Type.getClass(Selection.dragObject) == HierarchyItem)
-			targetGameObject = Selection.dragObject.dragValue;
+			targetEntity = Selection.dragObject.dragValue;
 		else
 			return;
 		
 		//you can reparent a parent to a child! lol
-		var parent:GameObject = gameobject.parent;
+		var parent:Entity = entity.parent;
 		while(parent!=null)
 		{
-			if(parent == targetGameObject)
+			if(parent == targetEntity)
 				return;
 			parent = parent.parent;
 		}
 		
-		targetGameObject.parent.removeChild(targetGameObject);
-		gameobject.addChild(targetGameObject);
+		targetEntity.parent.removeChild(targetEntity);
+		entity.addChild(targetEntity);
 		HierarchyPanel.getInstance().populate();
 	}
 	
 	public function onRightClick(e:MouseEvent)
 	{
 		isPoterntialyDragging = false;
-		RightClickMenu.GameObjectMenu(this);
+		RightClickMenu.EntityMenu(this);
 		Selection.ClearDragObject(null);
 	}
 	
@@ -181,16 +181,16 @@ class HierarchyItem extends DragableItem
 	
 	private function drawCollapseGraphic()
 	{
-		var numberOfChildrenThatAreGameObjects:UInt = 0;
+		var numberOfChildrenThatAreEntitys:UInt = 0;
 		
 		var g:Graphics = collapseSprite.graphics;
 		g.clear();
 		
-		for(child in gameobject.children)
-			if (com.blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, GameObject) )
-				numberOfChildrenThatAreGameObjects++;
+		for(child in entity.children)
+			if (com.blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
+				numberOfChildrenThatAreEntitys++;
 		
-		if(numberOfChildrenThatAreGameObjects == 0)
+		if(numberOfChildrenThatAreEntitys == 0)
 			return;
 		
 		//draw collapse thing
@@ -219,21 +219,21 @@ class HierarchyItem extends DragableItem
 	private function onCollapseClick(_)
 	{
 		
-		var hasGameObjectAsChild:Bool = false;
+		var hasEntityAsChild:Bool = false;
 		
-		for(child in gameobject.children)
+		for(child in entity.children)
 		{
-			if (com.blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, GameObject) )
+			if (com.blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
 			{
-				hasGameObjectAsChild = true;
+				hasEntityAsChild = true;
 				break;
 			}
 		}
 		
-		if(hasGameObjectAsChild  && gameobject.collapsedInEditor == true)
-			gameobject.collapsedInEditor = false;
+		if(hasEntityAsChild  && entity.collapsedInEditor == true)
+			entity.collapsedInEditor = false;
 		else 
-			gameobject.collapsedInEditor = true;
+			entity.collapsedInEditor = true;
 		
 		
 		HierarchyPanel.getInstance().populate();

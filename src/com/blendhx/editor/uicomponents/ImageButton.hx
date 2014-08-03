@@ -30,6 +30,7 @@ class ImageButton extends UIElement
 	public static var CONSOLE_PANEL:UInt = 8;
 	public static var ASSETS_PANEL:UInt = 9;
 	public static var FULL_SCREEN:UInt = 10;
+	public static var STOP:UInt = 11;
 	
 	public static var Images:BitmapData = new Images.ButtonImages(0, 0);
 	private var icon:Sprite;
