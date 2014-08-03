@@ -1,4 +1,6 @@
 package com.blendhx.editor.spaces;
+import com.blendhx.editor.uicomponents.ImageButton;
+import com.blendhx.core.Scene;
 import flash.text.TextFieldAutoSize;
 import flash.display.Bitmap;
 import com.blendhx.editor.assets.*;
@@ -23,6 +25,9 @@ class HeaderSpace extends Space
 	var fps_label:FPS;
 	//var info:Panel;
 	var progressBar:Progressbar;
+	
+	var playButton:ImageButton;
+	var stopButton:ImageButton;
     	
 	public function new()
 	{
@@ -49,7 +54,10 @@ class HeaderSpace extends Space
 		new ImageButton(ImageButton.TRANSFORM, "", 2, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_NONE);
 		new ImageButton(ImageButton.SCALE, "", 3, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_RIGHT);
 		
-		new ImageButton(ImageButton.PLAY, "", 1, 2, 3,  doNothing, playerControl, Button.ROUND_LEFT);
+		stopButton = new ImageButton(ImageButton.STOP, "", 1, 2, 3,  gotoEditMode, playerControl, Button.ROUND_LEFT);
+		
+		playButton = new ImageButton(ImageButton.PLAY, "", 1, 2, 3,  gotoPlayMode, playerControl, Button.ROUND_LEFT);
+		
 		new ImageButton(ImageButton.REFRESH, "", 2, 2, 3,  compileScripts, playerControl, Button.ROUND_RIGHT);
 		
 		//new Label("   v0.5 preview", 1, 1, 3, info);
@@ -65,6 +73,23 @@ class HeaderSpace extends Space
 	}
 	
 	private function doNothing() {}
+	
+	private function gotoPlayMode() 
+	{
+		playerControl.addUIElement(stopButton);
+		
+		Scene.getInstance().gotoPlayMode();
+		Space.Resize();
+	}
+	
+	private function gotoEditMode() 
+	{
+		playerControl.addUIElement(playButton);
+		
+		Scene.getInstance().gotoEditMode();
+		Space.Resize();
+	}
+	
 	// override to update component panels specific to this space
 	override public function resize()
 	{

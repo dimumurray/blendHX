@@ -25,6 +25,15 @@ class Label extends UIElement
 		addChild(label);
 		
 		_panel.addUIElement(this);
-	}	
+	}
+	
+	
+	override public function destroy()
+	{
+		removeChild(label);
+		label = null;
+		
+		super.destroy();
+	}
 	
 }

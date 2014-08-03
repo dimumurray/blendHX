@@ -1,4 +1,5 @@
 package com.blendhx.editor.panels;
+import flash.system.ApplicationDomain;
 import flash.events.Event;
 import flash.events.ErrorEvent;
 import flash.errors.Error;
@@ -6,7 +7,7 @@ import flash.errors.Error;
 import com.blendhx.editor.Selection;
 import com.blendhx.core.*;
 import com.blendhx.core.assets.*;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.assets.*;
 import com.blendhx.editor.uicomponents.*;
 import com.blendhx.editor.panels.*;
@@ -44,7 +45,7 @@ class FileItem extends DragableItem
 	private var selected:Bool = false;
 	
 	
-	public function new( fileName:String="file", extension:String="",  onClick:FileItem->Void = null) 
+	public function new( fileName:String="file", extension:String="",  localURL:String="null", onClick:FileItem->Void = null) 
 	{
 		super();
 		
@@ -67,7 +68,7 @@ class FileItem extends DragableItem
 		addChild(textField);
 		addChild(icon);
 		
-		init(fileName, extension);
+		init(fileName, extension, localURL);
 		
 		this.mouseChildren = false;
 		this.doubleClickEnabled = true;
@@ -80,7 +81,7 @@ class FileItem extends DragableItem
 	override private function reparentTarget(e:MouseEvent):Void
 	{
 		var targetFileItem:FileItem = null;
-		if( Selection.dragObject!= null)
+		if( Selection.dragObject!= null && Type.getClass(Selection.dragObject) == FileItem)
 			targetFileItem = cast(Selection.dragObject, FileItem );
 		
 		if( targetFileItem != null && (type == FileType.FOLDER || type == FileType.BACK))	
@@ -123,7 +124,9 @@ class FileItem extends DragableItem
 	}
 	public function onRightClick(e:MouseEvent)
 	{
+		isPoterntialyDragging = false;
 		RightClickMenu.FileItem(this);
+		Selection.ClearDragObject(null);
 	}
 	
 	public function select(e:MouseEvent)
@@ -179,9 +182,10 @@ class FileItem extends DragableItem
 	}
 	
 	
-	public function init( fileName:String, extension:String = "" ) 
+	public function init( fileName:String, extension:String = "" ,localURL:String="null") 
 	{
 		this.fileName = fileName;
+		this.localURL = localURL;
 		textField.text = fileName;
 		
 		selected = false;
@@ -194,7 +198,7 @@ class FileItem extends DragableItem
 		this.dragValue = localURL;
 		this.dragText = fileName;
 		this.dragType = type;
-		
+
 		mouseOverIndicator.graphics.clear();
 	}
 	

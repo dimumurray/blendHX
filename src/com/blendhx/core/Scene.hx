@@ -50,8 +50,8 @@ class Scene extends Entity
 		
 		if(playModeSceneObjects!= null)
 		{
-			removeChild(playModeSceneObjects);
-			playModeSceneObjects.destroy();
+			//removeChild(playModeSceneObjects);
+			//playModeSceneObjects.destroy();
 		}
 			
 		HierarchyPanel.getInstance().populate();
@@ -62,11 +62,11 @@ class Scene extends Entity
 	public function gotoPlayMode()
 	{
 		activeCamera = gameCamera;
-		removeChild(sceneObjects);
-		sceneObjects.uninitilize();
-			
-		playModeSceneObjects = cast sceneObjects.clone();
-		addChild(playModeSceneObjects);
+		//removeChild(sceneObjects);
+		//sceneObjects.uninitilize();
+			playModeSceneObjects = sceneObjects;
+		//playModeSceneObjects = cast sceneObjects.clone();
+		//addChild(playModeSceneObjects);
 		
 		HierarchyPanel.getInstance().populate();
 	}
@@ -87,7 +87,7 @@ class Scene extends Entity
 		camera = new Camera();
 		cameraGO.addChild(camera);
     	transform = cameraGO.getChild(Transform);
-    	transform.appendTranslation(0, -1, 6);
+    	//transform.appendTranslation(0, -1, 6);
 		
 		addChild(editorObjects);
     	editorObjects.addChild(cameraGO);
@@ -120,7 +120,7 @@ class Scene extends Entity
 		cameraGO.addChild(camera);
 		gameCamera = camera;
 		transform = cameraGO.getChild(Transform);
-    	transform.appendTranslation(0, -1, 6);
+    	//transform.appendTranslation(0, -1, 6);
     	
 		
 		

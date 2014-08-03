@@ -1,4 +1,8 @@
 package com.blendhx.core;
+import flash.system.System;
+import flash.utils.ByteArray;
+import com.blendhx.editor.panels.HierarchyPanel;
+import com.blendhx.editor.data.UserScripts;
 import flash.geom.Vector3D;
 
 import com.blendhx.core.systems.RenderingSystem;
@@ -8,12 +12,17 @@ import com.blendhx.core.assets.*;
 /**
  * GPL
  */
-class Scene extends GameObject
+class Scene extends Entity
 {
 	private static var instance:Scene;
 	
-	public var editorObjects:GameObject;
-	public var sceneObjects:GameObject;
+	public var editorObjects:Entity;
+	public var sceneObjects:Entity = new Entity("Objects");
+	private var editorCamera:Camera;
+	public var gameCamera:Camera;
+	public var activeCamera:Camera;
+	
+	public var playModeSceneObjects:Entity;
 	
 	public static inline function getInstance()
   	{
@@ -28,48 +37,94 @@ class Scene extends GameObject
 		super("Scene");
 	}
 	
-	override public function init():Void
+	override public function initilize():Void
     {
 		createEditorObjects();
+		gotoEditMode();
 	}
 	
+	public function gotoEditMode()
+	{
+		activeCamera = editorCamera;
+		addChild(sceneObjects);
+		
+		if(playModeSceneObjects!= null)
+		{
+			//removeChild(playModeSceneObjects);
+			//playModeSceneObjects.destroy();
+		}
+			
+		HierarchyPanel.getInstance().populate();
+		
+		System.pauseForGCIfCollectionImminent();
+	}
+	
+	public function gotoPlayMode()
+	{
+		activeCamera = gameCamera;
+		//removeChild(sceneObjects);
+		//sceneObjects.uninitilize();
+			playModeSceneObjects = sceneObjects;
+		//playModeSceneObjects = cast sceneObjects.clone();
+		//addChild(playModeSceneObjects);
+		
+		HierarchyPanel.getInstance().populate();
+	}
+	public function isEditMode():Bool
+	{
+		return activeCamera == editorCamera;
+	}
 	private function createEditorObjects()
 	{
-		var cameraGO:GameObject;
+		var cameraGO:Entity;
 		var camera:Camera;
     	var transform:Transform;
 		
-		editorObjects = new GameObject("Editor");
-		cameraGO = new GameObject("Editor Camera");
+		editorObjects = new Entity("Editor");
+		editorObjects.collapsedInEditor = true;
+		
+		cameraGO = new Entity("Editor Camera");
 		camera = new Camera();
 		cameraGO.addChild(camera);
     	transform = cameraGO.getChild(Transform);
-    	transform.appendTranslation(0, -1, 6);
-		
-		
+    	//transform.appendTranslation(0, -1, 6);
 		
 		addChild(editorObjects);
     	editorObjects.addChild(cameraGO);
 		
-		RenderingSystem.getInstance().camera = camera;
+		editorCamera = camera;
 	}
 	
 	public function createDefaultSceneObjects()
 	{
-		var house:GameObject;
+		var house:Entity;
 		var mesh:Mesh;
 		var material:Material;
 		var renderer:MeshRenderer;
 		
-		sceneObjects = new GameObject("Objects");
-		
-		house = new GameObject("house");
+		house = new Entity("house");
 		renderer = new MeshRenderer();
 		renderer.meshFileName = "meshes/house.obj";
 		renderer.materialFileName = "materials/house.mat";
 		house.addChild(  renderer );
+		//var script:Component = UserScripts.GetComponent("scripts/RotateAroundY.hx");
+		//house.addChild(  script );
 		
-		addChild(sceneObjects);
+		var cameraGO:Entity;
+		var camera:Camera;
+    	var transform:Transform;
+		
+		cameraGO = new Entity("Game Camera");
+		camera = new Camera();
+		camera.fov = 90;
+		cameraGO.addChild(camera);
+		gameCamera = camera;
+		transform = cameraGO.getChild(Transform);
+    	//transform.appendTranslation(0, -1, 6);
+    	
+		
+		
+		sceneObjects.addChild(cameraGO);
 		sceneObjects.addChild(house);
 	}
 }

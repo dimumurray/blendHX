@@ -17,8 +17,11 @@ import flash.display.Graphics;
 import flash.text.TextField;
 import flash.display.Sprite;
 
-/**
-* @author 
+/*
+so flexible numver input, in that it have many multiple visual representations based on Static valies set upon instantiation 
+passing static variables of NumberInput class as the last argument, will make the underlying box graphic to round differently
+}
+
  */
 class NumberInput extends UIElement
 {
@@ -30,6 +33,8 @@ class NumberInput extends UIElement
 	private var onChange:Void->Void;
 	private var editing:Bool;
 	private var rounding:Array<Float>;
+	
+	//each will make the UIElement look like differently, choose based on the position used among other UIElements
 	public static var ROUND_UP:Array<Float> = [13, 13, 0 , 0];
 	public static var ROUND_DOWN:Array<Float> = [0, 0, 13 , 13];
 	public static var ROUND_BOTH:Array<Float> = [20, 20, 20 , 20];
@@ -60,13 +65,14 @@ class NumberInput extends UIElement
 		updateValue();
 	}
 	
+	//a little value setter, and showing only 2 decimals of the float value
 	override public function setValue(param:Dynamic)
 	{
 		value = param;
 		label.text = text+": "+ Utils.PrintFloat( value, 2 );
 	}
 	
-
+	//re draw the graphics and resize the textfield
 	override public function resize()
 	{
 		x = getPositionX(slice, slices);
@@ -76,10 +82,8 @@ class NumberInput extends UIElement
 		
 		label.width = _width-40;
 		label.x = 20;
-		//updateValue();
-		
 	}
-
+	//when key is pressed and it's Enter, fix the value
 	private function onKeyDown(e:KeyboardEvent)
 	{
 		if (e.keyCode == Keyboard.ENTER)
@@ -92,11 +96,9 @@ class NumberInput extends UIElement
 		if (!editing)
 		{
 			updateValue();
-
 		}
-
-
 	}
+	//when mouse is down over this, if its presed at center, make the textfield inside editable, else increase or decrease value based on mouse position 
 	public function onMouseDown(e:MouseEvent)
 	{
 		drawBox(click, null);
@@ -128,6 +130,7 @@ class NumberInput extends UIElement
 		label.text = text+": "+ Utils.PrintFloat( value, 2 );
 		onChange();
 	}
+	//when text inside is changed, do some checking on the entered value
 	private function onTextChange(_)
 	{
 		var newValue:Float = Std.parseFloat(label.text);
@@ -137,6 +140,7 @@ class NumberInput extends UIElement
 		}
 
 	}
+	//creating the textfield at start up
 	private inline function drawText()
 	{
 		label = new SimpleTextField(TextFormatAlign.CENTER, text);
@@ -170,6 +174,7 @@ class NumberInput extends UIElement
 		}
 		
 	}
+	//drawing the increase and decrease graphics
 	private function drawHandles()
 	{
 		var g:Graphics = graphics;
@@ -184,5 +189,26 @@ class NumberInput extends UIElement
 		g.lineTo(_width-12, 6);
 		g.lineTo(_width-8, 10);
 		g.endFill();
+	}
+	//some clean up for GC
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
+		removeEventListener(MouseEvent.MOUSE_UP,drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+		removeEventListener(Event.CHANGE, onTextChange);
+		removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		
+		removeChild(label);
+		
+		label = null;
+		onChange = null;
+		normal = null;
+		over = null;
+		click = null;
+		rounding = null;
+		
+		super.destroy();
 	}
 }

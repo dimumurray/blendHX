@@ -24,7 +24,7 @@ class Space extends Sprite
 	public static var CONSOLE:UInt = 4;
 	public static var HEADER:UInt = 5;
 	
-	public static var SPACE_WIDTH:Float = 300;
+	public static var SPACE_WIDTH:Float = 250;
 	public static var SPACE_HEIGHT:Float = 170;
 	public static var Spaces:Array<Space> = new Array<Space>();
 	
@@ -93,8 +93,7 @@ class Space extends Sprite
 	}
 	
 
-	//upon resizing the stage, Space static Resize methos calls each individual instance methods as follows
-	// this method should be rewritten to account other spaces custom dimensions
+	//upon resizing the stage, Space static Resize method calls each individual instance methods as follows
 	public function resize()
 	{
 		var stageWidth:Float = stage.stageWidth;
@@ -108,7 +107,7 @@ class Space extends Sprite
 			case Space.HIERARCHY:
 				y = Spaces[Space.HEADER]._height;
 				x = -1;
-				_width = SPACE_WIDTH / (3/2);
+				_width = 200 ;
 				_height = stageHeight - Spaces[Space.BOTTOM]._height;
 			case Space.PROPERTIES:
 				_width = SPACE_WIDTH;
@@ -117,14 +116,14 @@ class Space extends Sprite
 				y = Spaces[Space.HEADER]._height;
 			case Space.BOTTOM:
 				x = -1;
-				_width = stageWidth - SPACE_WIDTH+1;
+				_width = stageWidth - SPACE_WIDTH + 1;
 				_height = SPACE_HEIGHT;
 				y = stageHeight - _height;
 			case Space.VIEWPORT:
 				_width = stageWidth - Spaces[Space.HIERARCHY]._width - Spaces[Space.PROPERTIES]._width;
 				_height = stageHeight - Spaces[Space.BOTTOM]._height - Spaces[Space.HEADER]._height;
 				y = Spaces[Space.HEADER]._height;
-				x = Spaces[Space.HIERARCHY]._width;
+				x = Spaces[Space.HIERARCHY]._width ;
 			default:
 				trace("No Space such as that exist in the application design. What are ou doing?");
 

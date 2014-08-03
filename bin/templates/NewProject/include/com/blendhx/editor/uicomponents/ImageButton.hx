@@ -30,6 +30,7 @@ class ImageButton extends UIElement
 	public static var CONSOLE_PANEL:UInt = 8;
 	public static var ASSETS_PANEL:UInt = 9;
 	public static var FULL_SCREEN:UInt = 10;
+	public static var STOP:UInt = 11;
 	
 	public static var Images:BitmapData = new Images.ButtonImages(0, 0);
 	private var icon:Sprite;
@@ -73,10 +74,8 @@ class ImageButton extends UIElement
 	
 	override public function resize()
 	{
-		
 		x = getPositionX(slice, slices);
 		_width = getWidth(slices);
-
 	}
 	
 	private inline function drawIcon(type:UInt)
@@ -136,5 +135,25 @@ class ImageButton extends UIElement
 			g.drawRect(-Panel.padding/2, 0, _width + Panel.padding, 20);
 			
 		g.endFill();
+	}
+	
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
+		removeEventListener(MouseEvent.MOUSE_UP,drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_DOWN, drawBox.bind(click));
+		
+		removeChild(icon);
+		removeChild(label);
+		icon = null;
+		label = null;
+		onClick = null;
+		rounding = null;
+		normal = null;
+		over = null;
+		click = null;
+		
+		super.destroy();
 	}
 }

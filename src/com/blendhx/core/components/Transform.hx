@@ -33,4 +33,24 @@ class Transform extends Component
 	{
 		matrix.prependTranslation(_x, _y, _z);
 	}
+	
+	public function getMatrix():Matrix3D
+	{
+		var parentGameobjectMatrix:Matrix3D = null;
+		var resolvedMatrix:Matrix3D = null;
+		if(parent.parent != null)
+			parentGameobjectMatrix = parent.parent.transform.getMatrix();
+		if(parentGameobjectMatrix != null)
+		{
+			resolvedMatrix = matrix.clone();
+			resolvedMatrix.appendTranslation(parentGameobjectMatrix.position.x, parentGameobjectMatrix.position.y,parentGameobjectMatrix.position.z);
+		
+		}
+		else
+			resolvedMatrix = matrix;
+											 
+		
+		
+		return resolvedMatrix;
+	}
 }

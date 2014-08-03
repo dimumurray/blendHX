@@ -97,4 +97,23 @@ class Button extends UIElement
 			
 		g.endFill();
 	}
+	
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
+		removeEventListener(MouseEvent.MOUSE_UP,drawBox.bind(over) );
+		removeEventListener(MouseEvent.MOUSE_DOWN, drawBox.bind(click));
+		
+		removeChild(label);
+		
+		label = null;
+		onClick = null;
+		normal = null;
+		over = null;
+		click = null;
+		rounding = null;
+		
+		super.destroy();
+	}
 }

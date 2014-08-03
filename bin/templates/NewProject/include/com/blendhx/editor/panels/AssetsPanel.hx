@@ -6,7 +6,7 @@ import com.blendhx.core.assets.Assets;
 import flash.errors.IllegalOperationError;
 import flash.errors.Error;
 import flash.events.ErrorEvent;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.uicomponents.Button;
 import com.blendhx.editor.assets.FileType;
 
@@ -85,6 +85,8 @@ class AssetsPanel extends Panel
 
 		if( rightClickedFile.isDirectory && rightClickedFile.getDirectoryListing().length>0)
 			return;
+		else if( getLocalURL(rightClickedFile) ==  getLocalURL(renamedFile)  )
+			return;
 		else if (renamedFile.exists)
 			Debug.Log("A file with the new name already exists");
 		else
@@ -118,18 +120,18 @@ class AssetsPanel extends Panel
 	
 		fileItems = [];
 	}
-	private function getItemFromPool(fileName:String, extension:String,  onClick:FileItem->Void)
+	private function getItemFromPool(fileName:String, extension:String, localURL:String,  onClick:FileItem->Void)
 	{
 		var item:FileItem;
 			
 		if( fileItemPool[fileItems.length] == null)
 		{
-			item = new FileItem(fileName, extension, onItemClick); 
+			item = new FileItem(fileName, extension, localURL, onItemClick); 
 			fileItemPool.push(item);
 		}
 		
 		item = fileItemPool[fileItems.length];
-		item.init(fileName, extension);
+		item.init(fileName, extension, localURL);
 		fileItems.push(item);
 		return item;
 			
@@ -148,7 +150,7 @@ class AssetsPanel extends Panel
 		
 		if (currentDirectory.nativePath !=  Assets.sourceDirectory.nativePath)
 		{
-			fileItem = getItemFromPool("...", "back", onItemClick);
+			fileItem = getItemFromPool("...", "back", "null", onItemClick);
 			
 			fileItem.x = colomn * colomnWidth + padding/2;
 			fileItem.y = row * padding + 1;
@@ -161,8 +163,7 @@ class AssetsPanel extends Panel
 		for(file in files)
 		{
 			
-			fileItem = getItemFromPool(file.name, file.extension, onItemClick);
-			fileItem.localURL = getLocalURL(file);
+			fileItem = getItemFromPool(file.name, file.extension, getLocalURL(file), onItemClick);
 			addChild( fileItem );
 			fileItem.x = colomn * colomnWidth + padding/2;
 			fileItem.y = row * padding + 2;

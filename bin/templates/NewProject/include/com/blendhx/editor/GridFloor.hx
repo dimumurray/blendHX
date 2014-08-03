@@ -7,7 +7,7 @@ import shaders.*;
 /**
 * @author 
  */
-class GridFloor extends GameObject
+class GridFloor extends Entity
 {
 	public function new() 
 	{

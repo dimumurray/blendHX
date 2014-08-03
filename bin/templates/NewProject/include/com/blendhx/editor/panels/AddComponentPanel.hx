@@ -38,7 +38,7 @@ class AddComponentPanel extends Panel
 		if (component == null)
 			return;
 
-    	Selection.GetSelectedGameObject().addChild(component);
+    	Selection.GetSelectedEntity().addChild(component);
 		HierarchyPanel.getInstance().populate();
     	Space.Resize();
     }

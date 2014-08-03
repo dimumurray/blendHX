@@ -24,7 +24,7 @@ class FPS extends SimpleTextField
 		timer.run = update;
 		text = "00";
 		
-		this.addEventListener (Event.ENTER_FRAME, onEnterFrame);
+		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 	}
 	
 	public function update():Void
@@ -40,4 +40,12 @@ class FPS extends SimpleTextField
 	{
 		frameCounter++;    
 	}
+	
+	public function destroy()
+	{
+		timer.stop();
+		timer = null;
+		removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+	}
+	
 }

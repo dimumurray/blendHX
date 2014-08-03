@@ -130,4 +130,6 @@ class Progressbar extends Sprite
 		
 		Space.Resize();
 	}
+	
+	
 }

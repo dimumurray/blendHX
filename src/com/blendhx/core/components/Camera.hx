@@ -58,7 +58,7 @@ class Camera extends Component
 	public function getViewProjection():Matrix3D
 	{
 		viewProjection.identity();
-		viewProjection.append(transform.matrix);
+		viewProjection.append(transform.getMatrix());
 		viewProjection.append(projection);
 		return viewProjection;
 	}

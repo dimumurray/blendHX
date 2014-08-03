@@ -5,7 +5,7 @@ import flash.text.TextFieldAutoSize;
 
 
 import com.blendhx.core.*;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.Selection;
 import com.blendhx.editor.assets.*;
 import com.blendhx.editor.uicomponents.*;
@@ -24,12 +24,13 @@ import flash.events.MouseEvent;
 
 class HierarchyItem extends DragableItem
 {
-	public var gameobject:GameObject;
+	public var entity:Entity;
 	public var parentInHierarchy:HierarchyItem;
 	public var numberInHierarchy:UInt;
 	public var depth:UInt;
 	public var hasChildren:Bool;
 	public var icon:Sprite;
+	private var collapseSprite:Sprite;
 	public var type:UInt;
 
 	public static var MESH:UInt = 32;
@@ -42,7 +43,7 @@ class HierarchyItem extends DragableItem
 	private var textField:SimpleTextField;
 	
 	
-	public function new(gameobject:GameObject, depth:UInt) 
+	public function new(entity:Entity, depth:UInt) 
 	{
 		super();
 		
@@ -50,49 +51,73 @@ class HierarchyItem extends DragableItem
 		textField.multiline = false;
 		
 		icon = new Sprite();
+		collapseSprite = new Sprite();
 		dragGraphic = new BitmapData(200,20, true,0x00FFFFFF);
 		
 		addChild(textField);
 		addChild(icon);
+		addChild(collapseSprite);
 		
-		init(gameobject, depth);
+		init(entity, depth);
 		
 		addEventListener(MouseEvent.CLICK, select);
 		addEventListener(MouseEvent.RIGHT_MOUSE_DOWN, onRightClick);
+		collapseSprite.addEventListener(MouseEvent.MOUSE_DOWN, onCollapseClick);
 	}
 	
 	
 	
-	public function init(gameobject:GameObject, depth:UInt) 
+	public function init(entity:Entity, depth:UInt) 
 	{
 		x = HierarchyPanel.identWidth;
 		
-		textField.text = gameobject.name;
+		textField.text = entity.name;
 		textField.height = 20;
-		this.gameobject = gameobject;
+		this.entity = entity;
 		this.depth = depth;
 		textField.x = HierarchyPanel.identWidth + (depth * HierarchyPanel.identWidth);
 		hasChildren = false;
 		type = HierarchyItem.TRANSFORM;
 		
-		this.dragValue = gameobject;
-		this.dragText = gameobject.name;
+		this.dragValue = entity;
+		this.dragText = entity.name;
 		this.dragType = FileType.GAMEOBJECT;
 		
 		drawGraphics();
 	}
 	
+	override private function reparentTarget(e:MouseEvent):Void
+	{
+		var targetEntity:Entity = null;
+		if( Selection.dragObject!= null && Type.getClass(Selection.dragObject) == HierarchyItem)
+			targetEntity = Selection.dragObject.dragValue;
+		else
+			return;
+		
+		//you can reparent a parent to a child! lol
+		var parent:Entity = entity.parent;
+		while(parent!=null)
+		{
+			if(parent == targetEntity)
+				return;
+			parent = parent.parent;
+		}
+		
+		targetEntity.parent.removeChild(targetEntity);
+		entity.addChild(targetEntity);
+		HierarchyPanel.getInstance().populate();
+	}
+	
 	public function onRightClick(e:MouseEvent)
 	{
 		isPoterntialyDragging = false;
-		RightClickMenu.GameObjectMenu(this);
+		RightClickMenu.EntityMenu(this);
 		Selection.ClearDragObject(null);
 	}
 	
 	public function select(e:MouseEvent)
 	{
 		Selection.Select( this );
-		
 		textField.textColor = 0xffffff;
 	}
 	
@@ -119,18 +144,7 @@ class HierarchyItem extends DragableItem
 			g.lineTo(textField.x - HierarchyPanel.identWidth, parentInHierarchy.y - y + HierarchyPanel.padding/2);
 		}
 		
-		if (hasChildren)
-		{
-			g.beginFill(0xd4d4d4, 1);
-			g.lineStyle(1, 0x222222, 1);
-			g.drawCircle(textField.x - HierarchyPanel.identWidth , HierarchyPanel.padding/2 + 0.5, 4);
-			g.endFill();
-			
-			g.lineStyle(1, 0x111111, 1);
-			g.moveTo(textField.x - HierarchyPanel.identWidth -2, HierarchyPanel.padding/2);
-			g.lineTo(textField.x - HierarchyPanel.identWidth +2, HierarchyPanel.padding/2);
-		}
-		
+		//draw is selected visual
 		if ( Selection.isHierarchyItem() && Selection.GetSelectedHierarchyItem() == this)
 		{
 			g.beginFill(0xec8e2a, .5);
@@ -138,10 +152,12 @@ class HierarchyItem extends DragableItem
 			g.drawCircle(textField.x , HierarchyPanel.padding/2, 9);
 			g.endFill();
 		}
-			
+		
+		drawCollapseGraphic();
+		
+		//draw icon thing	
 		var matrix:Matrix = new Matrix();
   		matrix.translate(-type, HierarchyPanel.padding/2);
-		
 		g = icon.graphics;
 		g.clear();
 		g.beginBitmapFill(HierarchyItem.Images, matrix);
@@ -149,16 +165,77 @@ class HierarchyItem extends DragableItem
 		g.endFill();
 		icon.x = textField.x - 8;
 		icon.y = 0 - HierarchyPanel.padding/2 + 2;
-		
 		textField.x += 9;
 		
-		matrix.identity();
 		
+		//create drawGraphics graphic for later use bu Selection class
+		matrix.identity();
 		dragGraphic.fillRect(dragGraphic.rect, 0x00000000);
 		matrix.translate(HierarchyPanel.padding/2, -HierarchyPanel.padding/2);
 		dragGraphic.draw(icon, matrix);
 		matrix.translate(HierarchyPanel.padding/2 + 8, HierarchyPanel.padding/2);
 		dragGraphic.draw(textField, matrix);
+		
+		
 	}
 	
+	private function drawCollapseGraphic()
+	{
+		var numberOfChildrenThatAreEntitys:UInt = 0;
+		
+		var g:Graphics = collapseSprite.graphics;
+		g.clear();
+		
+		for(child in entity.children)
+			if (com.blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
+				numberOfChildrenThatAreEntitys++;
+		
+		if(numberOfChildrenThatAreEntitys == 0)
+			return;
+		
+		//draw collapse thing
+		var g:Graphics = collapseSprite.graphics;
+		collapseSprite.x = textField.x - HierarchyPanel.identWidth;
+		collapseSprite.y = HierarchyPanel.padding/2;
+		g.clear();
+		
+		g.beginFill(0xd4d4d4, 1);
+		g.lineStyle(1, 0x222222, 1);
+		g.drawCircle(.5 , .5, 4);
+		g.endFill();
+		
+		g.lineStyle(1, 0x111111, 1);
+		
+		g.moveTo(-2, 0);
+		g.lineTo(3, 0);
+		
+		if (!hasChildren)
+		{
+			g.moveTo(0, -2);
+			g.lineTo(0, 3);
+		}	
+	}
+	
+	private function onCollapseClick(_)
+	{
+		
+		var hasEntityAsChild:Bool = false;
+		
+		for(child in entity.children)
+		{
+			if (com.blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
+			{
+				hasEntityAsChild = true;
+				break;
+			}
+		}
+		
+		if(hasEntityAsChild  && entity.collapsedInEditor == true)
+			entity.collapsedInEditor = false;
+		else 
+			entity.collapsedInEditor = true;
+		
+		
+		HierarchyPanel.getInstance().populate();
+	}
 }

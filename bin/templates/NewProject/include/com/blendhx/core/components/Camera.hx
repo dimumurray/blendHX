@@ -24,6 +24,29 @@ class Camera extends Component
 		projection.perspectiveFieldOfViewLH(fov*Math.PI/180, aspectRatio, near, far);
 	}
 	
+	override public function clone():Dynamic
+	{
+		var copy:Camera = new Camera();
+		copy.enabled = enabled;
+		copy.name = name;
+		copy.projection = new PerspectiveMatrix3D( projection.rawData );
+		copy.aspectRatio = aspectRatio;
+		copy.fov = fov;
+		copy.near = near;
+		copy.far = far;
+		copy.viewProjection = viewProjection.clone();
+		
+		return copy;
+	}
+	
+	override public function destroy()
+	{
+		super.destroy();
+		projection = null;
+		viewProjection = null;
+	}
+	
+	
 	public function resize(width:Int=0, height:Int=0)
 	{
 		if( height > 0 && width > 0)
@@ -35,15 +58,11 @@ class Camera extends Component
 	public function getViewProjection():Matrix3D
 	{
 		viewProjection.identity();
-		viewProjection.append(transform.matrix);
+		viewProjection.append(transform.getMatrix());
 		viewProjection.append(projection);
 		return viewProjection;
 	}
-	override public function destroy()
-	{
-		projection = null;
-		viewProjection = null;
-	}
+	
 
 
 }

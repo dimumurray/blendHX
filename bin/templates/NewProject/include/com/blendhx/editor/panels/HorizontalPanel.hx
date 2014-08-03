@@ -7,7 +7,7 @@ class HorizontalPanel extends Panel
 {
 	public function new() 
 	{
-		super("Gizmos", Space.SPACE_WIDTH);
+		super("Gizmos", 300);
 	}	
 	
 	

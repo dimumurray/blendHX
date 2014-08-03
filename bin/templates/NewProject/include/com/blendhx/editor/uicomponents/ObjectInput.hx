@@ -1,5 +1,5 @@
 package com.blendhx.editor.uicomponents;
-import com.blendhx.core.components.GameObject;
+import com.blendhx.core.components.Entity;
 import com.blendhx.editor.assets.*;
 
 import com.blendhx.editor.panels.HierarchyItem;
@@ -22,8 +22,8 @@ import flash.display.Graphics;
 import flash.text.TextField;
 import flash.display.Sprite;
 
-/**
-* @author 
+/*
+This special UIElement let's user drag and drop Draggable items as the value
  */
 class ObjectInput extends UIElement
 {
@@ -36,6 +36,9 @@ class ObjectInput extends UIElement
 	private var type:UInt;
 	
 	private var hostObject:DragableItem;
+	private var text:String="";
+	
+	private var icon:Sprite;
 	
 	public function new(type:UInt, slice:UInt, slices:UInt, _y:Float, onChange:Void->Void, _panel:Panel) 
 	{
@@ -54,12 +57,14 @@ class ObjectInput extends UIElement
 		addEventListener(MouseEvent.MOUSE_OVER, onMouseOver );
 		addEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
 		addEventListener(MouseEvent.MOUSE_UP, onMouseUp );
-		addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 		addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
 		
 		if(hostObject == null)
 			hostObject = new DragableItem();
+		
+		this.mouseChildren = false;
 	}
+	// setter of the value
 	override public function setValue(param:Dynamic)
 	{
 		if(param == null) param = "";
@@ -67,6 +72,7 @@ class ObjectInput extends UIElement
 			hostObject.dragText = param.toString();
 		
 		value = param;
+		text = param.toString();
 		label.text = param.toString();
 		onChange();
 	}
@@ -81,14 +87,13 @@ class ObjectInput extends UIElement
 		label.width = _width-40;
 		label.x = 20;
 	}
-	
+	//when mouse is out, show the value of the element as the text
 	public function onMouseOut(e:MouseEvent)
 	{
-			
-		label.text = hostObject.dragText;
+		label.text = text;
 		drawBox(normal, null);
 	}	
-	
+	//when mouse is hovered over, check to see if there is a Dragable object dragged over, and if the draggable has the same type as this uiElement, temporarily show it's textValue
 	public function onMouseOver(e:MouseEvent)
 	{
 		if(e.buttonDown == true && Selection.dragObject != null && Selection.dragObject.dragType == type)
@@ -97,7 +102,7 @@ class ObjectInput extends UIElement
 		drawBox(over, null);
 		
 	}
-	
+	//if there is a draggable item released over, fix it's dragValue as the value of this UIElement
 	public function onMouseUp(e:MouseEvent)
 	{
 		if( Selection.dragObject == null || Selection.dragObject.dragType != type)
@@ -108,17 +113,9 @@ class ObjectInput extends UIElement
 		label.text = hostObject.dragText;
 		drawBox(over, null);
 	}
+
 	
-	public function onMouseDown(e:MouseEvent)
-	{
-	}
-	
-	public function updateValue(_)
-	{
-		
-	}
-	
-	
+	//ceate the text field at element start up
 	private inline function drawText()
 	{
 		label = new SimpleTextField(TextFormatAlign.CENTER, value);
@@ -130,10 +127,10 @@ class ObjectInput extends UIElement
 
 		addChild(label);
 	}
-	
+	//on startup create the representing icon type
 	private inline function drawIcon()
 	{
-		var icon:Sprite = new Sprite();
+		icon = new Sprite();
 		var g:Graphics = icon.graphics;
 			
 		var matrix:Matrix = new Matrix();
@@ -145,7 +142,7 @@ class ObjectInput extends UIElement
 
 		addChild(icon);
 	}
-	
+	//redrawing the pretty box beneath
 	private inline function drawBox(state:Array<UInt>, _)
 	{
 		var g:Graphics = graphics;
@@ -156,5 +153,27 @@ class ObjectInput extends UIElement
 		g.lineStyle(1, 0x393939, 1, true);
 		g.drawRoundRect(0, 0, _width, 20, 10);
 		g.endFill();
+	}
+	
+	override public function destroy()
+	{
+		removeEventListener(MouseEvent.MOUSE_OVER, onMouseOver );
+		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
+		removeEventListener(MouseEvent.MOUSE_UP, onMouseUp );
+		removeEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+		
+		removeChild(icon);
+		removeChild(label);
+		
+		icon = null;
+		label = null;
+		
+		onChange = null;
+		hostObject = null;
+		
+		normal = null;
+		over = null;
+		
+		super.destroy();
 	}
 }

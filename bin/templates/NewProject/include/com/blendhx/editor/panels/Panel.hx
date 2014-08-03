@@ -131,7 +131,7 @@ class Panel extends Sprite
 		if(hostComponent == null)
 			return;
 		
-    	Selection.GetSelectedGameObject().removeChild(hostComponent);
+    	Selection.GetSelectedEntity().removeChild(hostComponent);
 		hostComponent.destroy();
 		HierarchyPanel.getInstance().populate();
     	Space.Resize();
