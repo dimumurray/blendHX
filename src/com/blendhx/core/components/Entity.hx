@@ -63,7 +63,7 @@ class Entity extends Component
 		super.destroy();
 		for (child in children)
 		{
-			child.setParent(null);
+			child.parent = null;
 			child.destroy();
 		}
 		children = [];
@@ -94,23 +94,22 @@ class Entity extends Component
 				return;
 		}
 		
-		
-
 		children.push(child);
-		child.setParent(this);
+		child.parent = this;
 	}
-		
-	override public function setParent(parent : Entity)
+	
+	override public function set_parent(value)
 	{
-		super.setParent(null);
-		this.parent = parent;
+		super.parent = null;
+		parent = value;
+		return parent;
 	}
 
 	//add a component to the children list, and also let component know that we are her parent
 	public function removeChild(child:Component)
 	{
 		children.remove(child);
-		child.setParent(null);
+		child.parent = null;
 	}
 	
 	//giving a reference to a child of a certain type

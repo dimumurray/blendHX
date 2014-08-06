@@ -6,7 +6,7 @@ package com.blendhx.core.components;
 class Component
 {
 	public var enabled:Bool = true;
-	public var parent:Entity;
+	
 	public var children: Array<Component>;
 	public var name:String = "Component";
 	public var transform:Transform;
@@ -21,11 +21,28 @@ class Component
 	public function clone():Dynamic{return null;}
 	
 	//when component parent is changed, the transform component should as well be
+	
+	@:isVar public var parent(get, set):Entity;
+	
+	public function get_parent() { return parent; }
+	public function set_parent(value)
+	{
+		parent = value;
+		if(parent != null)
+			transform = parent.getChild(Transform);
+        initilize();
+		
+		return parent;
+	}
+	
+
+	
+	/*
 	public function setParent(parent : Entity)
 	{
 		this.parent = parent;
 		if(parent != null)
 			transform = parent.getChild(Transform);
 		initilize();
-	}
+	}*/
 }
