@@ -10,7 +10,7 @@ class Component
 	public var children: Array<Component>;
 	public var name:String = "Component";
 	public var transform:Transform;
-	
+	@:isVar public var parent(get, set):Entity;
 	public function update():Void{}
 	public function initilize():Void{}
 	public function uninitilize():Void{}
@@ -22,7 +22,7 @@ class Component
 	
 	//when component parent is changed, the transform component should as well be
 	
-	@:isVar public var parent(get, set):Entity;
+	
 	
 	public function get_parent() { return parent; }
 	public function set_parent(value)

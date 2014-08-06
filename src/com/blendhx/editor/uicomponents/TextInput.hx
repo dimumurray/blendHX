@@ -63,12 +63,13 @@ class TextInput extends UIElement
 	}
 	
 	//a little setter of the value
-	override public function setValue(param:Dynamic)
+	override public function set_value(param:Dynamic) 
 	{
 		if(param == null)
 			param = "null";
 		value = param;
 		label.text = value;
+		return param; 
 	}
 	
 	//su upon resize, redraw the box

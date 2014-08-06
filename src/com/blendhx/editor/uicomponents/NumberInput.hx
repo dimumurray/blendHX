@@ -66,10 +66,12 @@ class NumberInput extends UIElement
 	}
 	
 	//a little value setter, and showing only 2 decimals of the float value
-	override public function setValue(param:Dynamic)
+	override public function set_value(param:Dynamic) 
 	{
 		value = param;
-		label.text = text+": "+ Utils.PrintFloat( value, 2 );
+		if(label != null)
+			label.text = text+": "+ Utils.PrintFloat( param, 2 );
+		return param; 
 	}
 	
 	//re draw the graphics and resize the textfield

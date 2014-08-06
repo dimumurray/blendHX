@@ -74,7 +74,7 @@ class PropertiesSpace extends Space
 			if(panel != null)
 			{
 				panel.hostComponent = component;
-				panel.setEnabled(component.enabled);
+				panel.enabled = component.enabled;
 				addPanel(panel);
 			}
 		}

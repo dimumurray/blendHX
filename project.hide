@@ -159,7 +159,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 25
+            ,"activeLine" : 22
         }
         ,{
              "path" : "src\\com\\blendhx\\core\\components\\Entity.hx"
@@ -168,7 +168,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 68
+            ,"activeLine" : 73
         }
         ,{
              "path" : "src\\com\\blendhx\\core\\Scene.hx"
@@ -186,7 +186,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 98
+            ,"activeLine" : 88
         }
         ,{
              "path" : "src\\com\\blendhx\\core\\components\\Transform.hx"
@@ -195,7 +195,7 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 17
+            ,"activeLine" : 15
         }
         ,{
              "path" : "src\\com\\blendhx\\core\\components\\Camera.hx"
@@ -206,8 +206,17 @@
             ]
             ,"activeLine" : 43
         }
+        ,{
+             "path" : "README.txt"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 22
+        }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\core\\components\\Entity.hx"
+    ,"activeFile" : "src\\com\\blendhx\\core\\components\\Component.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

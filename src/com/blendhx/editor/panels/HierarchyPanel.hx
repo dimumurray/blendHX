@@ -64,7 +64,7 @@ class HierarchyPanel extends Panel
 	
 		addChild(renameInput);
 		renameInput.label.autoSize = TextFieldAutoSize.LEFT;
-		renameInput.setValue( rightClickedEntity.name );
+		renameInput.value = rightClickedEntity.name;
 		renameInput.onMouseDown(null);
 		
 		renameInput.label.setSelection(0, rightClickedEntity.name.length);

@@ -55,9 +55,9 @@ class CameraPanel extends Panel
 		
 		hostComponent = camera;
 		
-		fov_input.setValue ( camera.fov );
-		near_input.setValue ( camera.near );
-		far_input.setValue ( camera.far );
+		fov_input.value =  camera.fov;
+		near_input.value =  camera.near;
+		far_input.value =  camera.far;
 		
 	}
 	override public function resize()

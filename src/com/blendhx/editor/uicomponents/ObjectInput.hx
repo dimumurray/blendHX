@@ -65,7 +65,8 @@ class ObjectInput extends UIElement
 		this.mouseChildren = false;
 	}
 	// setter of the value
-	override public function setValue(param:Dynamic)
+	
+	override public function set_value(param:Dynamic) 
 	{
 		if(param == null) param = "";
 		if(hostObject.dragText == "")
@@ -75,6 +76,8 @@ class ObjectInput extends UIElement
 		text = param.toString();
 		label.text = param.toString();
 		onChange();
+		
+		return param; 
 	}
 	
 	override public function resize()
@@ -109,7 +112,7 @@ class ObjectInput extends UIElement
 			return;
 		
 		hostObject = Selection.dragObject;
-		setValue( hostObject.dragValue );
+		value =  hostObject.dragValue;
 		label.text = hostObject.dragText;
 		drawBox(over, null);
 	}

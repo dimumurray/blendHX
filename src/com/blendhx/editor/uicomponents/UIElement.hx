@@ -22,7 +22,7 @@ class UIElement extends Sprite
 	//the panel conraining this element
 	public var panel:Panel;
 	//the actual value of this element 
-	public var value:Dynamic;
+	@:isVar public var value(get, set):Dynamic;
 	
 	//if 999 is passed is the total number of slices, then this element will have no automatic horizontal positions and width set
 	public static var NO_SLICE:UInt = 999;
@@ -35,8 +35,11 @@ class UIElement extends Sprite
 	}
 	
 	//a setter in fact
-	public function setValue(param:Dynamic)
+	public function get_value() { return value; }
+	public function set_value(param:Dynamic) 
 	{
+		value = param;
+		return param; 
 	}
 	
 	//little function to tell how wide should this element be in contrast with other elements in the current horrizontal row

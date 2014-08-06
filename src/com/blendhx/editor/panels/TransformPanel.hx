@@ -70,9 +70,9 @@ class TransformPanel extends Panel
 		
 		var m:Matrix3D = transform.matrix;
 
-		location_x.setValue ( m.position.x );
-		location_y.setValue ( m.position.y );
-		location_z.setValue ( m.position.z );
+		location_x.value =  m.position.x;
+		location_y.value =  m.position.y;
+		location_z.value =  m.position.z;
 	}
 	override public function resize()
 	{

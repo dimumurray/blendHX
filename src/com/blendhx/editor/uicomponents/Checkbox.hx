@@ -41,7 +41,7 @@ class Checkbox extends UIElement
 		if(panel != null)_panel.addUIElement(this);
 		
 		drawText();
-		setValue(false);
+		value = false;
 		resize();
 		
 		addEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(32) );
@@ -50,11 +50,11 @@ class Checkbox extends UIElement
 		addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 	}
 	
-	
-	override public function setValue(param:Dynamic)
+	override public function set_value(param:Dynamic) 
 	{
 		value = param;
 		drawBox(0, null);
+		return param; 
 	}
 	
 	public function onMouseDown(e:MouseEvent)

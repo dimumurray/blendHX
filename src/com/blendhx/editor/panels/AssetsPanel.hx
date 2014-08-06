@@ -56,7 +56,7 @@ class AssetsPanel extends Panel
 	
 		addChild(renameInput);
 		renameInput.label.autoSize = TextFieldAutoSize.LEFT;
-		renameInput.setValue( fileItem.fileName );
+		renameInput.value =  fileItem.fileName ;
 		renameInput.onMouseDown(null);
 		
 		var lastIndex:Int = fileItem.fileName.indexOf(".");

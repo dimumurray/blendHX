@@ -106,12 +106,12 @@ class MaterialPanel extends Panel
 
 	private function updateValues() 
 	{
-		shader_input.setValue ( hostMaterial.shaderURL );
+		shader_input.value = hostMaterial.shaderURL;
 		
 		var editorProperties:Array<String> = hostMaterial.shader.editorProperties;
 		var length:Int = Std.int( editorProperties.length / 2 );
 		for (i in 0...length)
-			property_inputs[i*2+1].setValue ( hostMaterial.properties.get( editorProperties[i*2] ) );
+			property_inputs[i*2+1].value = hostMaterial.properties.get( editorProperties[i*2] );
 	}
 
 	override public function resize()

@@ -62,8 +62,8 @@ class MeshRendererPanel extends Panel
 		
 		hostComponent = renderer;
 		
-		mesh_input.setValue ( renderer.meshFileName );
-		material_input.setValue ( renderer.materialFileName );
+		mesh_input.value = renderer.meshFileName ;
+		material_input.value =  renderer.materialFileName ;
 	}
 	
 	override public function resize()

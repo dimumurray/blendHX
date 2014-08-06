@@ -18,18 +18,24 @@ import com.blendhx.editor.data.AS3DefinitionHelper;
  */
 class Panel extends Sprite
 {
-	public var _width:Float=40;
-	public var _height:Float=30;
-	private var title:String;
-	public var checkBox:Checkbox;
 	public static var padding:Float = 10;
-	public var elements:Array<UIElement> = new Array<UIElement>();
+	
+	private var title:String;
 	private var handle:Sprite;
 	private var minimizeHotspot:Sprite;
 	private var disableFadeOverlayGraphic:Sprite;
+	private var closeButton:RemoveButton;
+	
+	public var _width:Float=40;
+	public var _height:Float=30;
+	public var checkBox:Checkbox;
+	public var elements:Array<UIElement> = new Array<UIElement>();
 	public var shouldDrawCheckbox:Bool;
 	public var hostComponent:Component;
-	private var closeButton:RemoveButton;
+	public var enabled(get, set):Bool;
+	
+	
+	
 	
 	
 	public function new(title:String, _width:Float, shouldDrawCheckbox:Bool = false) 
@@ -72,7 +78,7 @@ class Panel extends Sprite
 		drawRemoveButton();
 		
 		if(hostComponent != null && shouldDrawCheckbox)
-			checkBox.setValue( hostComponent.enabled );
+			checkBox.value =  hostComponent.enabled ;
 		
 		
 		for (element in elements)
@@ -122,7 +128,7 @@ class Panel extends Sprite
 			return;
 		
 		hostComponent.enabled = checkBox.value;
-		setEnabled(checkBox.value);
+		enabled = checkBox.value;
 			
 	}
 	
@@ -217,8 +223,9 @@ class Panel extends Sprite
 			}
 		}
 	}
-		
-	public function setEnabled(param:Bool):Void
+	
+	public function get_enabled() { return false; }
+	public function set_enabled(param:Bool)
 	{
 		if(disableFadeOverlayGraphic == null)
 			disableFadeOverlayGraphic = new Sprite();
@@ -233,6 +240,8 @@ class Panel extends Sprite
 			
 		if(param)
 			g.clear();
+		
+		return param;
 	}
 
 }

@@ -33,19 +33,18 @@ monthday tasks
 802	code review:GC
 802	hierarchy panel re parenting support
 802	hierarchy panel collapse object
-	editor camera
+802	editor test and bug fixes
 	parent transformation
-	edit mode/play mode
-	grid floor wireframe shader
 	script properties panel
+	edit mode/play mode
+	editor camera
+	grid floor wireframe shader
 	application menu bar
 	assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
 	fix:new project space charachter in address causes compile scripts bug
-	hierarchy panel collapse children
 	console space
 	global panels click and focus manager
-	code review:editor assets and object management
-	editor test and bug fixes
+
 	
 	----------v.5 preview
 	
