@@ -28,7 +28,7 @@ import flash.geom.Matrix3D;
 
 import hxsl.Data;
 import haxe.ds.Vector;
-import com.blendhx.editor.data.AS3DefinitionHelper;
+import blendhx.editor.data.AS3DefinitionHelper;
 /**
 	A ShaderInstance is a compiled version of a shader for a given set of parameters.
 **/

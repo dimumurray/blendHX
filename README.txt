@@ -39,8 +39,9 @@ monthday tasks
 	editor camera
 	grid floor wireframe shader
 	application menu bar
-	assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
+	fix:assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
 	fix:new project space charachter in address causes compile scripts bug
+	fix:transform component and custom script are not initialized correctly, NaN in transform value
 	console space
 	global panels click and focus manager
 	transform component code review: parent calculation, local matrix calculation, localToGlobal, globalToLocal

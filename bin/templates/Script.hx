@@ -1,6 +1,6 @@
 package scripts;
 
-import com.blendhx.core.components.*;
+import blendhx.core.components.*;
 
 class %name% extends Component
 {

@@ -3,7 +3,7 @@
 	xmlns="http://ns.adobe.com/air/application/14.0"
 	minimumPatchLevel="0">
 <!-- AIR Application Descriptor File. See http://www.adobe.com/go/learn_air_1.0_application_descriptor_en. -->
-	<id>com.blendhx</id>
+	<id>blendhx</id>
 	<name>
 		<text xml:lang="en">blendHX</text>
 	</name>

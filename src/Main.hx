@@ -1,13 +1,13 @@
 package;
 
-import com.blendhx.editor.*;
-import com.blendhx.editor.panels.*;
-import com.blendhx.editor.spaces.*;
-import com.blendhx.editor.uicomponents.*;
-import com.blendhx.core.*;
-import com.blendhx.core.assets.*;
-import com.blendhx.core.systems.*;
-import com.blendhx.core.components.*;
+import blendhx.editor.*;
+import blendhx.editor.panels.*;
+import blendhx.editor.spaces.*;
+import blendhx.editor.uicomponents.*;
+import blendhx.core.*;
+import blendhx.core.assets.*;
+import blendhx.core.systems.*;
+import blendhx.core.components.*;
 
 import flash.system.Capabilities;
 import flash.desktop.NativeApplication;
