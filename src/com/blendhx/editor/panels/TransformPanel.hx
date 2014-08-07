@@ -1,4 +1,5 @@
 package com.blendhx.editor.panels;
+import flash.events.Event;
 import flash.Vector;
 
 import com.blendhx.editor.Selection;
@@ -45,17 +46,15 @@ class TransformPanel extends Panel
 		scale_x = new NumberInput("X", 3, 3 , 50,  setValues, this, NumberInput.ROUND_UP);
 		scale_y = new NumberInput("Y", 3, 3 , 70,  setValues, this, NumberInput.ROUND_NONE);
 		scale_z = new NumberInput("Z", 3, 3 , 90,  setValues, this, NumberInput.ROUND_DOWN);
-	}	
+		
+		addEventListener(Event.ENTER_FRAME, getValues);
+	}
 
-	private function doNothing() 
+	private function onChange()
 	{
+		getValues(null);
 	}
 	
-	public function traceMatrix() 
-	{
-		//var m:Matrix3D = cast (hostComponent, Transform).matrix;
-		//trace(m.decompose());
-	}
 	private function setValues() 
 	{
 		if ( !Selection.isHierarchyItem() )
@@ -75,8 +74,11 @@ class TransformPanel extends Panel
 		transform.scaleY = scale_y.value;
 		transform.scaleZ = scale_z.value;
 	}
-	private function getValues() 
+	private function getValues(_) 
 	{
+		if ( !Selection.isHierarchyItem() || hostComponent==null)
+			return;
+		
 		var transform:Transform = cast hostComponent;
 		
 		location_x.value =  transform.x;
@@ -98,7 +100,7 @@ class TransformPanel extends Panel
 		
 		super.resize();
 		hostComponent = Selection.GetSelectedEntity().getChild(Transform);
-		getValues();
+		getValues(null);
 		
 	}
 	

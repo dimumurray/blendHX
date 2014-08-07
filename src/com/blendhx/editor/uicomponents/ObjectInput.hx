@@ -68,7 +68,9 @@ class ObjectInput extends UIElement
 	
 	override public function set_value(param:Dynamic) 
 	{
-		if(param == null) param = "";
+		if(param == null)
+			return null;
+		
 		if(hostObject.dragText == "")
 			hostObject.dragText = param.toString();
 		

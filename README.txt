@@ -34,7 +34,6 @@ monthday tasks
 802	hierarchy panel re parenting support
 802	hierarchy panel collapse object
 802	editor test and bug fixes
-	parent transformation
 	script properties panel
 	edit mode/play mode
 	editor camera
@@ -44,7 +43,7 @@ monthday tasks
 	fix:new project space charachter in address causes compile scripts bug
 	console space
 	global panels click and focus manager
-
+	transform component calcualte bug, localToGlobal, globalToLocal
 	
 	----------v.5 preview
 	

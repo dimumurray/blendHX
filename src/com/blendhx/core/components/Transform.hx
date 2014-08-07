@@ -62,7 +62,7 @@ class Transform extends Component
 		if(param != rotationX)
 		{
 			hasChanged = true;
-			rotationX = (param + 365) % 365;
+			rotationX = (param + 360) % 360;
 		}
 		return param;
 	}
@@ -73,7 +73,7 @@ class Transform extends Component
 		if(param != rotationY)
 		{
 			hasChanged = true;
-			rotationY = (param + 365) % 365;
+			rotationY = (param + 360) % 360;
 		}
 		return param;
 	}
@@ -84,7 +84,7 @@ class Transform extends Component
 		if(param != rotationZ)
 		{
 			hasChanged = true;
-			rotationZ = (param + 365) % 365;
+			rotationZ = (param + 360) % 360;
 		}
 		return param;
 	}

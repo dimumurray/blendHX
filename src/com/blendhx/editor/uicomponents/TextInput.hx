@@ -40,6 +40,9 @@ class TextInput extends UIElement
 	{
 		super(slice, slices);
 		
+		//create text field
+		drawText();
+		
 		value = _text;
 		onChange = _onChange;
 		y = _y;
@@ -47,8 +50,7 @@ class TextInput extends UIElement
 		//add this to the list of UIElements of the parent panel
 		_panel.addUIElement(this);
 		
-		//create text field
-		drawText();
+		
 		//resize element once frist
 		resize();
 		
@@ -63,12 +65,17 @@ class TextInput extends UIElement
 	}
 	
 	//a little setter of the value
-	override public function set_value(param:Dynamic) 
+	override public function set_value(param:Dynamic):Dynamic
 	{
+		if(editing)
+			return null;
+		
 		if(param == null)
-			param = "null";
+			return null;
+		
 		value = param;
 		label.text = value;
+		
 		return param; 
 	}
 	
@@ -162,6 +169,8 @@ class TextInput extends UIElement
 	
 	override public function destroy()
 	{
+		super.destroy();
+		
 		removeEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
 		removeEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
 		removeEventListener(MouseEvent.MOUSE_UP,drawBox.bind(over) );
@@ -177,6 +186,6 @@ class TextInput extends UIElement
 		over = null;
 		click = null;
 	
-		super.destroy();
+		
 	}
 }

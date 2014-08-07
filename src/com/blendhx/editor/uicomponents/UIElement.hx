@@ -61,6 +61,6 @@ class UIElement extends Sprite
 	public function destroy()
 	{
 		panel = null;
-		value = null;
+		this.value = null;
 	}
 }

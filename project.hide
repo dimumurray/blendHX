@@ -153,70 +153,16 @@
             ,"activeLine" : 68
         }
         ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Component.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 22
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Entity.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 73
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\Scene.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 67
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\systems\\RenderingSystem.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 88
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Transform.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 15
-        }
-        ,{
-             "path" : "src\\com\\blendhx\\core\\components\\Camera.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 43
-        }
-        ,{
              "path" : "README.txt"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 22
+            ,"activeLine" : 51
         }
     ]
-    ,"activeFile" : "src\\com\\blendhx\\core\\components\\Component.hx"
+    ,"activeFile" : "README.txt"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

@@ -68,6 +68,9 @@ class NumberInput extends UIElement
 	//a little value setter, and showing only 2 decimals of the float value
 	override public function set_value(param:Dynamic) 
 	{
+		if(editing)
+			return null;
+		
 		value = param;
 		if(label != null)
 			label.text = text+": "+ Utils.PrintFloat( param, 2 );
@@ -129,17 +132,18 @@ class NumberInput extends UIElement
 	
 	public function updateValue()
 	{
+		var newValue:Float = Std.parseFloat(label.text);
+		if (Std.string(newValue)!="NaN")
+		{
+			value = newValue;
+		}
 		label.text = text+": "+ Utils.PrintFloat( value, 2 );
 		onChange();
 	}
 	//when text inside is changed, do some checking on the entered value
 	private function onTextChange(_)
 	{
-		var newValue:Float = Std.parseFloat(label.text);
-		if (Std.string(newValue)!="NaN")
-		{
-			value = newValue;
-		}
+		
 
 	}
 	//creating the textfield at start up
