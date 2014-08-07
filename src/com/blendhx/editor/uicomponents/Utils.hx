@@ -16,6 +16,8 @@ class Utils
 		}
 		else
 		{
+			if(Std.string(f) == "NaN")
+				return "0";
 			return Std.string(f);
 		}
 	}	

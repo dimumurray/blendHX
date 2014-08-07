@@ -30,7 +30,7 @@ class PanelPool
 		}
 		
 		if ( !panels.exists(name) )
-			panels.set( name, new Panel(name, Space.SPACE_WIDTH, true ) );
+			panels.set( name, new ComponentPanel(name) );
 			
 		return panels.get( name );
 	}	

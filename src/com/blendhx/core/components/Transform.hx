@@ -168,17 +168,17 @@ class Transform extends Component
 		if(hasChanged)
 			composeMatrix3D();
 			
-		var parentGameobjectTransform:Transform = null;
+		var parentENTITYTransform:Transform = null;
 		var resolvedMatrix:Matrix3D = null;
 		if(parent.parent != null)
-			parentGameobjectTransform = parent.parent.transform;
-		if(parentGameobjectTransform != null)
+			parentENTITYTransform = parent.parent.transform;
+		if(parentENTITYTransform != null)
 		{
 			resolvedMatrix = matrix.clone();
-			resolvedMatrix.appendRotation(parentGameobjectTransform.rotationX, Vector3D.X_AXIS);
-			resolvedMatrix.appendRotation(parentGameobjectTransform.rotationY, Vector3D.Y_AXIS);
-			resolvedMatrix.appendRotation(parentGameobjectTransform.rotationZ, Vector3D.Z_AXIS);
-			resolvedMatrix.appendTranslation(parentGameobjectTransform.x, parentGameobjectTransform.y,parentGameobjectTransform.z);
+			resolvedMatrix.appendRotation(parentENTITYTransform.rotationX, Vector3D.X_AXIS);
+			resolvedMatrix.appendRotation(parentENTITYTransform.rotationY, Vector3D.Y_AXIS);
+			resolvedMatrix.appendRotation(parentENTITYTransform.rotationZ, Vector3D.Z_AXIS);
+			resolvedMatrix.appendTranslation(parentENTITYTransform.x, parentENTITYTransform.y,parentENTITYTransform.z);
 		}
 		else
 			resolvedMatrix = matrix;

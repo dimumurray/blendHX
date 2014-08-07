@@ -12,6 +12,6 @@ class FileType
 	public static var AS:UInt = 7;
 	public static var MATERIAL:UInt = 8;
 	public static var MESH:UInt = 9;
-	public static var GAMEOBJECT:UInt = 10;
+	public static var ENTITY:UInt = 10;
 	
 }

@@ -36,14 +36,14 @@ class Transform extends Component
 	
 	public function getMatrix():Matrix3D
 	{
-		var parentGameobjectMatrix:Matrix3D = null;
+		var parentENTITYMatrix:Matrix3D = null;
 		var resolvedMatrix:Matrix3D = null;
 		if(parent.parent != null)
-			parentGameobjectMatrix = parent.parent.transform.getMatrix();
-		if(parentGameobjectMatrix != null)
+			parentENTITYMatrix = parent.parent.transform.getMatrix();
+		if(parentENTITYMatrix != null)
 		{
 			resolvedMatrix = matrix.clone();
-			resolvedMatrix.appendTranslation(parentGameobjectMatrix.position.x, parentGameobjectMatrix.position.y,parentGameobjectMatrix.position.z);
+			resolvedMatrix.appendTranslation(parentENTITYMatrix.position.x, parentENTITYMatrix.position.y,parentENTITYMatrix.position.z);
 		
 		}
 		else

@@ -33,7 +33,6 @@ class AddComponentPanel extends Panel
 		if ( className.value == null)
 			return;
 		
-		
 		var component:Component = UserScripts.GetComponent( className.value );
 		if (component == null)
 			return;

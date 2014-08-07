@@ -6,7 +6,7 @@ monthday tasks
 716	panel update values of selected game objects
 716	renderer system abstraction change from individual Renderer componet
 717	panel components enable/disable
-717	remove components from a gameobject
+717	remove components from a ENTITY
 717	panel components remove component support
 717	add components to the selected game object
 717	hierarchy item panel pool
@@ -18,7 +18,7 @@ monthday tasks
 724	assign mesh to components panel
 724	assign texture to components panel
 725	material asset properties panel
-726	assign gameobject from hierarchy to components panel
+726	assign ENTITY from hierarchy to components panel
 727	assets menu bar
 728	texture import
 728	mesh import

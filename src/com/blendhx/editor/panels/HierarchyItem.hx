@@ -81,7 +81,7 @@ class HierarchyItem extends DragableItem
 		
 		this.dragValue = entity;
 		this.dragText = entity.name;
-		this.dragType = FileType.GAMEOBJECT;
+		this.dragType = FileType.ENTITY;
 		
 		drawGraphics();
 	}

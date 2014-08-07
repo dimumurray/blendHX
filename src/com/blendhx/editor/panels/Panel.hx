@@ -66,6 +66,7 @@ class Panel extends Sprite
 	}
 	public function removeUIElement(element:UIElement)
 	{
+		
 		elements.remove(element);
 		removeChild(element);
 		element.destroy();

@@ -65,7 +65,6 @@ class ObjectInput extends UIElement
 		this.mouseChildren = false;
 	}
 	// setter of the value
-	
 	override public function set_value(param:Dynamic) 
 	{
 		if(param == null)
