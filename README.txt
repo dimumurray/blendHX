@@ -43,7 +43,7 @@ monthday tasks
 	fix:new project space charachter in address causes compile scripts bug
 	console space
 	global panels click and focus manager
-	transform component calcualte bug, localToGlobal, globalToLocal
+	transform component code review: parent calculation, local matrix calculation, localToGlobal, globalToLocal
 	
 	----------v.5 preview
 	

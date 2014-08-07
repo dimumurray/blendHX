@@ -66,7 +66,7 @@ class TransformPanel extends Panel
 		transform.y = location_y.value;
 		transform.z = location_z.value;
 		
-		transform.rotationX = rotation_z.value ;
+		transform.rotationX = rotation_x.value ;
 		transform.rotationY = rotation_y.value ;
 		transform.rotationZ = rotation_z.value ;
 		

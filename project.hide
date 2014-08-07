@@ -159,7 +159,52 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 51
+            ,"activeLine" : 49
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\panels\\TransformPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 74
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\NumberInput.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 118
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\TextInput.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 69
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\editor\\uicomponents\\UIElement.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 0
+        }
+        ,{
+             "path" : "src\\com\\blendhx\\core\\components\\Transform.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 79
         }
     ]
     ,"activeFile" : "README.txt"
