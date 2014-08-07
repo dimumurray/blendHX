@@ -47,18 +47,18 @@ class HeaderSpace extends Space
 		
 		
 		transofmrGizmosPanel._width = 100;
-		playerControl._width = 70;
+		playerControl._width = 160;
 		//info._width = 95;
 		
-		new ImageButton(ImageButton.ROTATE, "", 1, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_LEFT);
-		new ImageButton(ImageButton.TRANSFORM, "", 2, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_NONE);
-		new ImageButton(ImageButton.SCALE, "", 3, 3, 3,  doNothing, transofmrGizmosPanel, Button.ROUND_RIGHT);
+		new ImageButton(ImageButton.ROTATE, "", 1, 5, 3,  doNothing, playerControl, Button.ROUND_LEFT);
+		new ImageButton(ImageButton.TRANSFORM, "", 2, 5, 3,  doNothing, playerControl, Button.ROUND_NONE);
+		new ImageButton(ImageButton.SCALE, "", 3, 5, 3,  doNothing, playerControl, Button.ROUND_RIGHT);
 		
-		stopButton = new ImageButton(ImageButton.STOP, "", 1, 2, 3,  gotoEditMode, playerControl, Button.ROUND_LEFT);
+		stopButton = new ImageButton(ImageButton.STOP, "", 4, 5, 3,  gotoEditMode, playerControl, Button.ROUND_LEFT);
 		
-		playButton = new ImageButton(ImageButton.PLAY, "", 1, 2, 3,  gotoPlayMode, playerControl, Button.ROUND_LEFT);
+		playButton = new ImageButton(ImageButton.PLAY, "", 4, 5, 3,  gotoPlayMode, playerControl, Button.ROUND_LEFT);
 		
-		new ImageButton(ImageButton.REFRESH, "", 2, 2, 3,  compileScripts, playerControl, Button.ROUND_RIGHT);
+		new ImageButton(ImageButton.REFRESH, "", 5, 5, 3,  compileScripts, playerControl, Button.ROUND_RIGHT);
 		
 		//new Label("   v0.5 preview", 1, 1, 3, info);
 		//new ImageButton(ImageButton.FULL_SCREEN, "", 4, 4, 3,  doNothing, info);
@@ -112,8 +112,8 @@ class HeaderSpace extends Space
 		transofmrGizmosPanel.x = Space.GetSpace(Space.HIERARCHY)._width + Space.GetSpace(Space.VIEWPORT)._width - transofmrGizmosPanel._width + Panel.padding;
 		transofmrGizmosPanel.resize();
 		
-		playerControl._width = 70;
-		playerControl.x = Space.GetSpace(Space.VIEWPORT)._width / 2 + Space.GetSpace(Space.VIEWPORT).x  - (transofmrGizmosPanel._width / 2) ;
+		playerControl._width = 160;
+		playerControl.x = Space.GetSpace(Space.VIEWPORT)._width / 2 + Space.GetSpace(Space.VIEWPORT).x  - (playerControl._width / 2) ;
 		playerControl.resize();
 		progressBar.x = Lib.current.stage.stageWidth - progressBar._width + 2 - Panel.padding;
 	

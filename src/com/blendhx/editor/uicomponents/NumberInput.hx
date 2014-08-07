@@ -82,8 +82,8 @@ class NumberInput extends UIElement
 		_width = getWidth(slices);
 		drawBox(normal, null);
 		
-		label.width = _width-40;
-		label.x = 20;
+		label.width = _width-30;
+		label.x = 15;
 	}
 	//when key is pressed and it's Enter, fix the value
 	private function onKeyDown(e:KeyboardEvent)
@@ -146,8 +146,8 @@ class NumberInput extends UIElement
 	private inline function drawText()
 	{
 		label = new SimpleTextField(TextFormatAlign.CENTER, text);
-		label.width = _width-40;
-		label.x = 20;
+		label.width = _width-30;
+		label.x = 15;
 		label.selectable = true;
 		label.height = 20;
 		label.type = TextFieldType.INPUT;

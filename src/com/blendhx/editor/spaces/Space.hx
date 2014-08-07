@@ -24,7 +24,7 @@ class Space extends Sprite
 	public static var CONSOLE:UInt = 4;
 	public static var HEADER:UInt = 5;
 	
-	public static var SPACE_WIDTH:Float = 250;
+	public static var SPACE_WIDTH:Float = 300;
 	public static var SPACE_HEIGHT:Float = 170;
 	public static var Spaces:Array<Space> = new Array<Space>();
 	
