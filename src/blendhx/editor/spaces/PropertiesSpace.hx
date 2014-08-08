@@ -4,7 +4,6 @@ import blendhx.editor.assets.FileType;
 
 
 import blendhx.core.components.Component;
-import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.editor.panels.UtilityPanel;
 import blendhx.editor.panels.*;
 import blendhx.editor.panels.PanelPool;
@@ -56,29 +55,25 @@ class PropertiesSpace extends Space
 		addPanel( PanelPool.Get( "Utility" ) );
 		var components:Array<Dynamic> = Selection.GetSelectedEntity().children;
 		
-		try
+		
+		for (component in components)
 		{
-				for (component in components)
+			var className:String = "";
+			className = Std.string(component).split(" ")[1];
+			className = className.substring(0, className.length - 1);
+
+			var panel:Panel = PanelPool.Get( className );
+
+
+			if(panel != null)
 			{
-				var className:String = "";
-				className = Std.string(component).split(" ")[1];
-				className = className.substring(0, className.length - 1);
-
-				var panel:Panel = PanelPool.Get( className );
-
-
-				if(panel != null)
-				{
-					panel.hostComponent = cast component;
-					panel.enabled = component.enabled;
-					addPanel(panel);
-				}
+				panel.hostComponent = cast component;
+				panel.enabled = component.enabled;
+				addPanel(panel);
 			}
 		}
-		catch(e:Dynamic)
-		{
-			trace(e);
-		}
+	
+		
 
 		addPanel( PanelPool.Get( "AddComponent" ) );
 	}

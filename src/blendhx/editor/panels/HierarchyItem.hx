@@ -186,18 +186,14 @@ class HierarchyItem extends DragableItem
 		var g:Graphics = collapseSprite.graphics;
 		g.clear();
 		
-		try
+		
+		for(child in entity.children)
 		{
-			for(child in entity.children)
-			{
-				var isEntity:Bool = untyped __is__(child, Entity);
-				if ( isEntity )
-					numberOfChildrenThatAreEntitys++;
-			}
+			var isEntity:Bool = untyped __is__(child, Entity);
+			if ( isEntity )
+				numberOfChildrenThatAreEntitys++;
 		}
-		catch(e:Dynamic)
-		{
-		}
+		
 		
 		if(numberOfChildrenThatAreEntitys == 0)
 			return;

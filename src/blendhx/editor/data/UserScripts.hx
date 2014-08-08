@@ -104,6 +104,8 @@ class UserScripts
 	{
 		cast (e.target, LoaderInfo).loader.removeEventListener(Event.COMPLETE, scriptsLoaded);
 		
+		registerClassAliases();
+			
 		if ( onScriptsLoaded != null)
 			onScriptsLoaded();
 		onScriptsLoaded = null;
@@ -147,5 +149,19 @@ class UserScripts
 		}
 		
 		return shader;
+	}
+	
+	private static function registerClassAliases():Void
+	{
+		var classNames:Vector<String> = UserScripts.userScriptsDomain.getQualifiedDefinitionNames();
+		for(className in classNames)
+		{
+			var theClass = UserScripts.userScriptsDomain.getDefinition(className);
+			var baseClass = Type.getSuperClass( theClass );
+			if( Std.string(baseClass) == "[class Component]" || Std.string(baseClass) == "[class Shader]")
+			{
+				haxe.remoting.AMFConnection.registerClassAlias(className, theClass);
+			}
+		}
 	}
 }

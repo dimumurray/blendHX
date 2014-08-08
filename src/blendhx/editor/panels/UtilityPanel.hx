@@ -40,36 +40,24 @@ class UtilityPanel extends Panel
 
 		var saveObjects:Button = new Button("Save Objects", 1, 2, 35,  saveFile, this, Button.ROUND_LEFT);
 		var loadObjects:Button = new Button("Load Objects", 2, 2, 35, startLoadingObjects, this, Button.ROUND_RIGHT);
-		new Button("action", 1, 1, 65, action, this, Button.ROUND_BOTH);
-		//var unsetObjects:Button = new Button("Unset Objects", 1, 2, 125, unset, this);
 	}	
 	
-	private function action()
+	
+	private function saveFile()
 	{
 		var objects = Scene.getInstance().sceneObjects;
 		Scene.getInstance().removeChild(Scene.getInstance().sceneObjects);
+		
 		var bytes:ByteArray = new ByteArray();
 		bytes.writeObject(objects);
-		objects.destroy();
 		bytes.position = 0;
-		var o:Entity = bytes.readObject();
-		Scene.getInstance().sceneObjects = o;
-		Scene.getInstance().addChild(Scene.getInstance().sceneObjects);
-		o.initilize();
-		HierarchyPanel.getInstance().populate();
-	}
-	private function saveFile()
-	{
-		trace(Scene.getInstance().sceneObjects.children);
-		var objects = new Entity("fff");
-		var bytes:ByteArray = new ByteArray();
-		objects.uninitilize();
-		bytes.writeObject(objects);
-		bytes.position = 0;
-		objects.initilize();
 		var saveFile:FileReference = new FileReference();
 		saveFile.addEventListener(Event.COMPLETE, saveCompleteHandler);
 		saveFile.save(bytes, "data.bin");
+		
+		Scene.getInstance().addChild(objects);
+		objects.initilize();
+		bytes.clear();
 	}
 	
 	private function startLoadingObjects()
@@ -95,16 +83,18 @@ class UtilityPanel extends Panel
 	private function loadCompleteHandler(event:Event)
 	{
 		urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);
+		
+		var objects = Scene.getInstance().sceneObjects;
+		Scene.getInstance().removeChild(objects);
+		objects.destroy();
+		
+		var bytes:ByteArray = new ByteArray();
 		var bytes:ByteArray = urlLoader.data;
-		var objects:Entity = bytes.readObject();
-		Scene.getInstance().addChild(objects);
-		//Scene.getInstance().sceneObjects = objects;
-		objects.initilize();
+		
+		var o:Entity = bytes.readObject();
+		Scene.getInstance().sceneObjects = o;
+		Scene.getInstance().addChild(Scene.getInstance().sceneObjects);
+		o.initilize();
 		HierarchyPanel.getInstance().populate();
-	}
-	
-	function doCreateObjects():Void
-	{
-
 	}
 }

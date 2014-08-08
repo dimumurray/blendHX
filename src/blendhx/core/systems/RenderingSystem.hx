@@ -78,7 +78,6 @@ class RenderingSystem extends EventDispatcher implements ISystem
     public function update()
     {
     	if (context3D == null) return;
-		Debug.Clear();
 		
     	var transform:Transform;
     	var mesh:Mesh;
@@ -87,7 +86,6 @@ class RenderingSystem extends EventDispatcher implements ISystem
     	context3D.clear(0.22, 0.22, 0.22, 1.0);
     	for (meshRenderer in meshRenderers) 
 		{
-			Debug.Log(meshRenderer.parent.name);
     		transform = meshRenderer.transform;
     		mesh = meshRenderer.mesh;
     		if (meshRenderer.enabled == false) 

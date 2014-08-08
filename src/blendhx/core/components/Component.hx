@@ -3,7 +3,7 @@ package blendhx.core.components;
 /**
 * @author 
  */
-typedef ComponentTypeDef = 
+/*typedef ComponentTypedef = 
 {
 	public var editorProperties:Array<String>;
 	public var properties:Map<String, Dynamic>;
@@ -20,9 +20,8 @@ typedef ComponentTypeDef =
 	public function clone():Dynamic;
 	public function get_parent():Entity;
 	public function set_parent(value:Entity):Entity;
-	
-};
-
+}
+*/
 class Component
 {
 	public var editorProperties:Array<String> = [];

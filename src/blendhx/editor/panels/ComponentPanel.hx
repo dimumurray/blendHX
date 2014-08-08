@@ -1,6 +1,6 @@
 package blendhx.editor.panels;
 
-import blendhx.core.components.Component.ComponentTypeDef;
+import blendhx.core.components.Component;
 import blendhx.editor.uicomponents.UIElement;
 import blendhx.editor.uicomponents.TextInput;
 import blendhx.core.assets.Assets;
@@ -75,8 +75,9 @@ class ComponentPanel extends Panel
 				hostComponent.properties.set( hostComponent.editorProperties[i*2] , value );
 			values.push(value);
 		}
-		var component:ComponentTypeDef = hostComponent;
-		component.updateProperties(values);
+		var component:Component = cast hostComponent;
+		//Reflect.callMethod(component, updateProperties, [values]);
+		//component.updateProperties(values);
 	}
 	
 	

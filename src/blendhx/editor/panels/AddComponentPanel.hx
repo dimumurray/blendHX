@@ -1,5 +1,6 @@
 package blendhx.editor.panels;
-import haxe.rtti.CType;
+import flash.Vector;
+
 import flash.system.ApplicationDomain;
 import flash.Lib;
 
@@ -10,7 +11,7 @@ import blendhx.editor.uicomponents.*;
 import blendhx.editor.spaces.Space;
 import blendhx.editor.assets.FileType;
 import blendhx.editor.data.UserScripts;
-
+import blendhx.editor.data.AS3DefinitionHelper;
 
 class AddComponentPanel extends Panel
 {
@@ -35,10 +36,10 @@ class AddComponentPanel extends Panel
 			return;
 		
 		var component:Component = UserScripts.GetComponent( className.value );
-
+		
 		if (component == null)
 			return;
-
+		
     	Selection.GetSelectedEntity().addChild(component);
 		HierarchyPanel.getInstance().populate();
     	Space.Resize();

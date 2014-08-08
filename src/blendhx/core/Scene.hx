@@ -100,7 +100,7 @@ class Scene extends Entity
 	
 	public function createDefaultSceneObjects()
 	{
-		//return;
+		return;
 		var house:Entity;
 		var mesh:Mesh;
 		var material:Material;

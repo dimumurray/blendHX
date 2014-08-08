@@ -1,7 +1,6 @@
 package blendhx.editor.panels;
 import flash.text.TextFieldAutoSize;
 
-import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.core.components.Transform;
 import blendhx.core.components.Component;
 import blendhx.editor.Selection;
@@ -32,7 +31,7 @@ class Panel extends Sprite
 	public var checkBox:Checkbox;
 	public var elements:Array<UIElement> = new Array<UIElement>();
 	public var shouldDrawCheckbox:Bool;
-	public var hostComponent:ComponentTypeDef;
+	public var hostComponent:Component;
 	public var enabled(get, set):Bool;
 	
 	

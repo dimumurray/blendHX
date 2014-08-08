@@ -1,6 +1,5 @@
 package blendhx.core.components;
 
-import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.editor.Debug;
 /*
 Entitys contain components, a simple composition pattern
@@ -42,11 +41,7 @@ class Entity extends Component
 	override public function initilize():Void
 	{
 		for (child in children)
-			try
-			{
-				child.initilize();
-			}
-			catch(e:Dynamic){}
+			child.initilize();
 	}
 	
 	// calls child components update, if entity is enabled
