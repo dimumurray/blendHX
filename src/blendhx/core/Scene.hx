@@ -1,9 +1,11 @@
 package blendhx.core;
+
+#if flash
 import flash.system.System;
-import flash.utils.ByteArray;
+#end
+			
 import blendhx.editor.panels.HierarchyPanel;
 import blendhx.editor.data.UserScripts;
-import flash.geom.Vector3D;
 
 import blendhx.core.systems.RenderingSystem;
 import blendhx.core.components.*;
@@ -14,16 +16,16 @@ import blendhx.core.assets.*;
  */
 class Scene extends Entity
 {
-	private static var instance:Scene;
-	
 	public var editorObjects:Entity;
 	public var sceneObjects:Entity = new Entity("Objects");
+	public var playModeSceneObjects:Entity;
+	
 	private var editorCamera:Camera;
 	public var gameCamera:Camera;
 	public var activeCamera:Camera;
 	
-	public var playModeSceneObjects:Entity;
 	
+	private static var instance:Scene;
 	public static inline function getInstance()
   	{
     	if (instance == null)
@@ -55,8 +57,9 @@ class Scene extends Entity
 		}
 			
 		HierarchyPanel.getInstance().populate();
-		
+		#if flash
 		System.pauseForGCIfCollectionImminent();
+		#end
 	}
 	
 	public function gotoPlayMode()
@@ -64,7 +67,7 @@ class Scene extends Entity
 		activeCamera = gameCamera;
 		//removeChild(sceneObjects);
 		//sceneObjects.uninitilize();
-			playModeSceneObjects = sceneObjects;
+		playModeSceneObjects = sceneObjects;
 		//playModeSceneObjects = cast sceneObjects.clone();
 		//addChild(playModeSceneObjects);
 		
@@ -87,7 +90,7 @@ class Scene extends Entity
 		camera = new Camera();
 		cameraGO.addChild(camera);
     	transform = cameraGO.getChild(Transform);
-    	//transform.appendTranslation(0, -1, 6);
+    	transform.z = 6;
 		
 		addChild(editorObjects);
     	editorObjects.addChild(cameraGO);
@@ -97,6 +100,7 @@ class Scene extends Entity
 	
 	public function createDefaultSceneObjects()
 	{
+		//return;
 		var house:Entity;
 		var mesh:Mesh;
 		var material:Material;
@@ -118,9 +122,8 @@ class Scene extends Entity
 		camera = new Camera();
 		camera.fov = 90;
 		cameraGO.addChild(camera);
-		gameCamera = camera;
 		transform = cameraGO.getChild(Transform);
-    	//transform.appendTranslation(0, -1, 6);
+    	transform.z = 6;
     	
 		
 		

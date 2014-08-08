@@ -188,8 +188,8 @@ class HierarchyPanel extends Panel
 	{
 		var deep:UInt = 1;
 		//proceed if object is of type Entity
-		//trace( AS3DefinitionHelper.ObjectIsOfType(entity, Entity) );  //. flash.utils.getDefinitionByName();
-		if ( AS3DefinitionHelper.ObjectIsOfType(entity, Entity) )
+		var isEntity:Bool = untyped __is__(entity, Entity);
+		if ( isEntity )
 		{
 			//puhsing the item into the hierarch
 			var item:HierarchyItem = push( cast(entity, Entity), depth );
@@ -199,11 +199,12 @@ class HierarchyPanel extends Panel
 			//setting parent for next tree items
 			if(entity.children.length>=2)
 			{
-				switch ( Utils.GetClassFromAnyDomain( entity.children[1] ) )
+				var childClassName:String = Std.string( entity.children[1] );
+				switch (  childClassName  )
 				{
-					case Camera:
+					case "[object Camera]":
 						item.type = HierarchyItem.CAMERA;
-					case MeshRenderer:
+					case "[object MeshRenderer]":
 						item.type = HierarchyItem.MESH;
 					default:
 						item.type = HierarchyItem.TRANSFORM;
@@ -212,21 +213,23 @@ class HierarchyPanel extends Panel
 				lastParent[depth] = item;
 			}
 			
-			
-			for (child in entity.children)
+			try
 			{
-				if(item.entity.collapsedInEditor == true)
-					continue;
-			
-				if (pushIntoHierarchy(child, deep + depth) == true)
-					item.hasChildren = true;
-				else if(item.hasChildren == true)
-					item.hasChildren = true;
-				else 
-					item.hasChildren = false;
-			
-				
+				for (child in entity.children)
+				{
+					if(item.entity.collapsedInEditor == true)
+						continue;
+
+					if (pushIntoHierarchy(child, deep + depth) == true)
+						item.hasChildren = true;
+					else if(item.hasChildren == true)
+						item.hasChildren = true;
+					else 
+						item.hasChildren = false;
+				}
 			}
+			catch(e:Dynamic)
+			{}
 			
 			// means entity that we push has children entitys
 			return true;

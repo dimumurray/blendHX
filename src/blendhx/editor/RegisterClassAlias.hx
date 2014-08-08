@@ -23,7 +23,7 @@ class RegisterClassAlias
 		haxe.remoting.AMFConnection.registerClassAlias("blendhx.core.components.Transform", Transform);
 		haxe.remoting.AMFConnection.registerClassAlias("blendhx.core.components.Component", Component);
 		haxe.remoting.AMFConnection.registerClassAlias("blendhx.core.components.Camera", Camera);
-		haxe.remoting.AMFConnection.registerClassAlias("blendhx.core.components.Entity", blendhx.core.components.Entity);
+		haxe.remoting.AMFConnection.registerClassAlias("blendhx.core.components.Entity", Entity);
 		haxe.remoting.AMFConnection.registerClassAlias("blendhx.core.components.MeshRenderer", MeshRenderer);
 	}	
 }

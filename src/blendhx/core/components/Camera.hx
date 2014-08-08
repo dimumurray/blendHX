@@ -1,8 +1,6 @@
 package blendhx.core.components;
+import blendhx.core.Scene;
 
-import flash.display.Stage;
-import flash.geom.Vector3D;
-import flash.accessibility.Accessibility;
 import flash.geom.Matrix3D;
 import com.adobe.utils.PerspectiveMatrix3D;
 
@@ -23,7 +21,10 @@ class Camera extends Component
 		projection = new PerspectiveMatrix3D();
 		projection.perspectiveFieldOfViewLH(fov*Math.PI/180, aspectRatio, near, far);
 	}
-	
+	override public function initilize():Void
+	{
+		Scene.getInstance().gameCamera = this;
+	}
 	override public function clone():Dynamic
 	{
 		var copy:Camera = new Camera();

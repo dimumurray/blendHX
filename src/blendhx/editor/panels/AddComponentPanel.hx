@@ -1,4 +1,5 @@
 package blendhx.editor.panels;
+import haxe.rtti.CType;
 import flash.system.ApplicationDomain;
 import flash.Lib;
 
@@ -34,6 +35,7 @@ class AddComponentPanel extends Panel
 			return;
 		
 		var component:Component = UserScripts.GetComponent( className.value );
+
 		if (component == null)
 			return;
 

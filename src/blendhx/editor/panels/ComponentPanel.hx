@@ -1,5 +1,6 @@
 package blendhx.editor.panels;
 
+import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.editor.uicomponents.UIElement;
 import blendhx.editor.uicomponents.TextInput;
 import blendhx.core.assets.Assets;
@@ -23,7 +24,7 @@ class ComponentPanel extends Panel
 	
 	public function new(title:String) 
 	{
-		super(title, Space.SPACE_WIDTH);
+		super(title, Space.SPACE_WIDTH, true);
 	}
 	
 	public function createInputs()
@@ -74,17 +75,19 @@ class ComponentPanel extends Panel
 				hostComponent.properties.set( hostComponent.editorProperties[i*2] , value );
 			values.push(value);
 		}
-		hostComponent.updateProperties(values);
+		var component:ComponentTypeDef = hostComponent;
+		component.updateProperties(values);
 	}
 	
 	
 	private function updateValues() 
 	{
 		var editorProperties:Array<String> = hostComponent.editorProperties;
-		var length:Int = Std.int( editorProperties.length / 2 );
+		var length:Int = Std.int( property_inputs.length / 2 );
 		for (i in 0...length)
 		{
 			var value = hostComponent.properties.get( editorProperties[i*2] );
+			//trace(value);
 			property_inputs[i*2+1].value = value;
 		}
 	}

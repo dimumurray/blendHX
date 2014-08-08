@@ -186,9 +186,18 @@ class HierarchyItem extends DragableItem
 		var g:Graphics = collapseSprite.graphics;
 		g.clear();
 		
-		for(child in entity.children)
-			if (blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
-				numberOfChildrenThatAreEntitys++;
+		try
+		{
+			for(child in entity.children)
+			{
+				var isEntity:Bool = untyped __is__(child, Entity);
+				if ( isEntity )
+					numberOfChildrenThatAreEntitys++;
+			}
+		}
+		catch(e:Dynamic)
+		{
+		}
 		
 		if(numberOfChildrenThatAreEntitys == 0)
 			return;
@@ -218,12 +227,12 @@ class HierarchyItem extends DragableItem
 	
 	private function onCollapseClick(_)
 	{
-		
 		var hasEntityAsChild:Bool = false;
 		
 		for(child in entity.children)
 		{
-			if (blendhx.editor.data.AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
+			var isEntity:Bool = untyped __is__(child, Entity);
+			if (isEntity )
 			{
 				hasEntityAsChild = true;
 				break;

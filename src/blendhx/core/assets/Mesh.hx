@@ -1,12 +1,13 @@
 package blendhx.core.assets;
 
 import blendhx.core.systems.RenderingSystem;
-import blendhx.core.assets.*;
 import flash.display3D.IndexBuffer3D;
 import flash.display3D.VertexBuffer3D;
-import flash.Vector;
-import flash.utils.ByteArray;
 import flash.display3D.Context3D;
+import flash.utils.ByteArray;
+import flash.Vector;
+
+
 
 /*
 Instance of the classes are accesible by Assets.GetMesh()

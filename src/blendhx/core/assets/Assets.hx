@@ -1,22 +1,26 @@
 package blendhx.core.assets;
-import blendhx.editor.data.UserScripts;
-import flash.utils.ByteArray;
-import flash.net.URLLoaderDataFormat;
-import flash.system.SecurityDomain;
-import flash.display.LoaderInfo;
-import flash.system.ApplicationDomain;
-import flash.system.LoaderContext;
-import flash.display.Loader;
+
 import haxe.xml.Fast;
+
 import blendhx.editor.Progressbar;
 import blendhx.editor.data.IO;
+import blendhx.editor.data.UserScripts;
 import blendhx.editor.Debug;
-import flash.events.Event;
-import flash.events.IOErrorEvent;
+
+import flash.display.Loader;
+import flash.display.LoaderInfo;
 import flash.display3D.textures.Texture;
-import flash.filesystem.File;
+import flash.utils.ByteArray;
+import flash.net.URLLoaderDataFormat;
 import flash.net.URLRequest;
 import flash.net.URLLoader;
+import flash.system.SecurityDomain;
+import flash.system.ApplicationDomain;
+import flash.system.LoaderContext;
+import flash.events.Event;
+import flash.events.IOErrorEvent;
+import flash.filesystem.File;
+
 
 class Assets
 {
@@ -74,7 +78,7 @@ class Assets
 	{
 		xml = Xml.parse(e.target.data);
 		var fast = new Fast(xml.firstElement());
-		var length:UInt=8;
+		var length:UInt=10;
 		
 		//show the progressbar untill everything is laoded
 		Progressbar.getInstance().show(false, "Loading", onAssetsReady);

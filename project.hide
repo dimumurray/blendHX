@@ -144,52 +144,91 @@
             ,"activeLine" : 4
         }
         ,{
-             "path" : "README.txt"
+             "path" : "src\\blendhx\\editor\\spaces\\PropertiesSpace.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 32
+            ,"activeLine" : 56
         }
         ,{
-             "path" : "src\\blendhx\\editor\\data\\IO.hx"
+             "path" : "src\\blendhx\\core\\components\\Component.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 295
+            ,"activeLine" : 10
+        }
+        ,{
+             "path" : "src\\blendhx\\core\\components\\Entity.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 95
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\HierarchyPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 12
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\MeshRendererPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 60
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\CameraPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 54
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\ComponentPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 79
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\AddComponentPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 0
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\RightClickMenu.hx"
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\UtilityPanel.hx"
         }
         ,{
              "path" : "src\\blendhx\\core\\Scene.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 80
         }
         ,{
-             "path" : "src\\blendhx\\core\\assets\\Assets.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 76
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\BottomSpaceHeaderPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 66
+             "path" : "src\\blendhx\\editor\\panels\\HierarchyItem.hx"
         }
     ]
-    ,"activeFile" : "README.txt"
+    ,"activeFile" : "src\\blendhx\\core\\components\\Component.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

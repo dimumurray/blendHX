@@ -19,7 +19,6 @@ package blendhx.editor.data
 			{
 				return null;
 			}
-			
 		}
 		
 		
@@ -46,12 +45,6 @@ package blendhx.editor.data
      		return classType;
   		}
 		
-		public static function ObjectIsOfType( instance:*, desiredClass:*  ):Boolean
-		{
-			if(instance is desiredClass)
-				return true;
-			return false;
-		}
 		public static function getClassName( instance:* ):String
 		{
 			return flash.utils.getQualifiedClassName(instance);

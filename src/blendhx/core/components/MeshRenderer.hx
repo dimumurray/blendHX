@@ -1,12 +1,10 @@
 package blendhx.core.components;
 
-import blendhx.core.assets.*;
+import blendhx.core.assets.Assets;
+import blendhx.core.assets.Material;
+import blendhx.core.assets.Mesh;
 import blendhx.core.systems.RenderingSystem;
-import blendhx.editor.Debug;
-import flash.display3D.Context3DCompareMode;
-import shaders.*;
-import flash.display3D.Context3D;
-import hxsl.Shader;
+
 /**
 * @author 
  */
@@ -20,7 +18,7 @@ class MeshRenderer extends Component
 	
 	public function new()
 	{
-		name = "Transform";
+		name = "MeshRenderer";
 	}
 	
 	override public function initilize()
@@ -58,6 +56,5 @@ class MeshRenderer extends Component
 		super.destroy();
 		material = null;
 		mesh = null;
-		
 	}
 }

@@ -1,6 +1,7 @@
 package blendhx.editor.panels;
 import flash.text.TextFieldAutoSize;
 
+import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.core.components.Transform;
 import blendhx.core.components.Component;
 import blendhx.editor.Selection;
@@ -31,7 +32,7 @@ class Panel extends Sprite
 	public var checkBox:Checkbox;
 	public var elements:Array<UIElement> = new Array<UIElement>();
 	public var shouldDrawCheckbox:Bool;
-	public var hostComponent:Component;
+	public var hostComponent:ComponentTypeDef;
 	public var enabled(get, set):Bool;
 	
 	
@@ -94,8 +95,8 @@ class Panel extends Sprite
 	//UI Graphic creation private functions
 	private function drawRemoveButton()
 	{
-		
-		if(hostComponent != null && closeButton == null && !AS3DefinitionHelper.ObjectIsOfType(hostComponent, Transform) )
+		var isTransform:Bool = untyped __is__(hostComponent, Transform);
+		if(hostComponent != null && closeButton == null && !isTransform )
 			closeButton = new RemoveButton(removeHostComponent, this);
 		
 		if(closeButton!= null)
@@ -138,7 +139,8 @@ class Panel extends Sprite
 		if(hostComponent == null)
 			return;
 		
-    	Selection.GetSelectedEntity().removeChild(hostComponent);
+		var component:Component = cast hostComponent;
+    	Selection.GetSelectedEntity().removeChild(component);
 		hostComponent.destroy();
 		HierarchyPanel.getInstance().populate();
     	Space.Resize();

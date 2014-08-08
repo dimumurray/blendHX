@@ -60,7 +60,7 @@ class MeshRendererPanel extends Panel
 		if (renderer==null)
 			return;
 		
-		hostComponent = renderer;
+		hostComponent = cast renderer;
 		
 		mesh_input.value = renderer.meshFileName ;
 		material_input.value =  renderer.materialFileName ;

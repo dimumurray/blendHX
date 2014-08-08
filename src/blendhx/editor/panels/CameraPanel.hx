@@ -53,7 +53,7 @@ class CameraPanel extends Panel
 		if (camera==null)
 			return;
 		
-		hostComponent = camera;
+		hostComponent = cast camera;
 		
 		fov_input.value =  camera.fov;
 		near_input.value =  camera.near;

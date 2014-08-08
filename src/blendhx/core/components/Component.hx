@@ -3,6 +3,26 @@ package blendhx.core.components;
 /**
 * @author 
  */
+typedef ComponentTypeDef = 
+{
+	public var editorProperties:Array<String>;
+	public var properties:Map<String, Dynamic>;
+	public var enabled:Bool;
+	public var children: Array<Component>;
+	public var name:String;
+	public var transform:Transform;
+	public var parent:Entity;
+	public function updateProperties(values:Array<Dynamic>):Void;
+	public function update():Void;
+	public function initilize():Void;
+	public function uninitilize():Void;
+	public function destroy():Void;
+	public function clone():Dynamic;
+	public function get_parent():Entity;
+	public function set_parent(value:Entity):Entity;
+	
+};
+
 class Component
 {
 	public var editorProperties:Array<String> = [];
@@ -31,8 +51,10 @@ class Component
 	{
 		parent = value;
 		if(parent != null)
+		{
 			transform = parent.getChild(Transform);
-        initilize();
+			initilize();
+		}
 		
 		return parent;
 	}

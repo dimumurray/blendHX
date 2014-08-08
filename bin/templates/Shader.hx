@@ -1,8 +1,8 @@
-package shaders;
+package ::packageName::;
 
 import flash.geom.Matrix3D;
 
-class %name% extends hxsl.Shader
+class ::className:: extends hxsl.Shader
 {
 	override public function initProperties()
 	{

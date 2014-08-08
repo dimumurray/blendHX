@@ -1,11 +1,12 @@
 package blendhx.core.components;
 
-import blendhx.editor.data.AS3DefinitionHelper;
+import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.editor.Debug;
-import blendhx.core.Utils;
 /*
 Entitys contain components, a simple composition pattern
  */
+
+
 class Entity extends Component
 {
 	public static var entities:Array<Entity> = [];
@@ -41,7 +42,11 @@ class Entity extends Component
 	override public function initilize():Void
 	{
 		for (child in children)
-			 child.initilize();
+			try
+			{
+				child.initilize();
+			}
+			catch(e:Dynamic){}
 	}
 	
 	// calls child components update, if entity is enabled
@@ -90,15 +95,18 @@ class Entity extends Component
 	//add a child only if there isn't one already added with the same Type. There can't be two children of the same type in one Entity
 	public function addChild(child:Component)
 	{
-		var childClass:Class<Dynamic> = Utils.GetClassFromAnyDomain(child);
-		var existingChildClass:Class<Dynamic> = null;
+		
+		var childClass:String = Std.string( child );
+		var existingChildClass:String = null;
 		
 		
 		for (existingChild in children)
 		{
-			if ( !AS3DefinitionHelper.ObjectIsOfType(child, Entity) )
+			//if this object is not an entity, then we should check no to add the child if there's already a component of the same type added
+			var isEntity:Bool = untyped __is__(child, Entity);
+			if ( !isEntity )
 			{
-				existingChildClass =  Utils.GetClassFromAnyDomain(existingChild);
+				existingChildClass = Std.string( existingChild );
 				if( childClass ==  existingChildClass )
 				{
 					Debug.Log("You can't add same component twice: "+this.name +","+ existingChild +", "+ child);
@@ -128,16 +136,19 @@ class Entity extends Component
 	{
 		children.remove(child);
 		child.parent = null;
+		child.uninitilize();
 	}
 	
 	//giving a reference to a child of a certain type
 	public function getChild( componentType:Class<Dynamic> ):Dynamic
 	{
+		var componentTypeName:String = Std.string( componentType ).split(" ")[1];
+		
 		for (child in children)
 		{
-			var childClass:Class<Dynamic> = Utils.GetClassFromAnyDomain(child);
+			var childClassName:String = Std.string( child ).split(" ")[1];
 		
-			if( childClass ==  componentType)
+			if( childClassName ==  componentTypeName)
 			{
 				return child;
 			}

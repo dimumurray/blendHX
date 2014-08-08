@@ -1,2 +1,1 @@
-haxe flash.hxml
-start /d "bin" HaxeStage3D.swf
+haxe --connect 6000 flash.hxml

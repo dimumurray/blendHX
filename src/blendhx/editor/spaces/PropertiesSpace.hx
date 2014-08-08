@@ -4,7 +4,7 @@ import blendhx.editor.assets.FileType;
 
 
 import blendhx.core.components.Component;
-
+import blendhx.core.components.Component.ComponentTypeDef;
 import blendhx.editor.panels.UtilityPanel;
 import blendhx.editor.panels.*;
 import blendhx.editor.panels.PanelPool;
@@ -48,35 +48,36 @@ class PropertiesSpace extends Space
 			default:
 
 		}
-
 	}
 	
 	private function populateWithComponentPanels()
 	{
 		removePanels();
+		addPanel( PanelPool.Get( "Utility" ) );
+		var components:Array<Dynamic> = Selection.GetSelectedEntity().children;
 		
-		var components:Array<Component> = Selection.GetSelectedEntity().children;
-		for (component in components)
+		try
 		{
-			var className:String = "";
-			try
+				for (component in components)
 			{
-				className = AS3DefinitionHelper.getClassName(component);
+				var className:String = "";
+				className = Std.string(component).split(" ")[1];
+				className = className.substring(0, className.length - 1);
+
+				var panel:Panel = PanelPool.Get( className );
+
+
+				if(panel != null)
+				{
+					panel.hostComponent = cast component;
+					panel.enabled = component.enabled;
+					addPanel(panel);
+				}
 			}
-			catch(e:Dynamic)
-			{}
-				
-			className = className.substring(className.lastIndexOf("::")+2);
-			
-			var panel:Panel = PanelPool.Get( className );
-			
-		
-			if(panel != null)
-			{
-				panel.hostComponent = component;
-				panel.enabled = component.enabled;
-				addPanel(panel);
-			}
+		}
+		catch(e:Dynamic)
+		{
+			trace(e);
 		}
 
 		addPanel( PanelPool.Get( "AddComponent" ) );
