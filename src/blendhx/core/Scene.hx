@@ -3,7 +3,8 @@ package blendhx.core;
 #if flash
 import flash.system.System;
 #end
-			
+
+import blendhx.editor.GridFloor;
 import blendhx.editor.panels.HierarchyPanel;
 import blendhx.editor.data.UserScripts;
 
@@ -79,9 +80,11 @@ class Scene extends Entity
 	}
 	private function createEditorObjects()
 	{
+		
 		var cameraGO:Entity;
 		var camera:Camera;
     	var transform:Transform;
+		var gridGO:GridFloor;
 		
 		editorObjects = new Entity("Editor");
 		editorObjects.collapsedInEditor = true;
@@ -92,8 +95,12 @@ class Scene extends Entity
     	transform = cameraGO.getChild(Transform);
     	transform.z = 6;
 		
+		gridGO = new GridFloor();
+		
+		
 		addChild(editorObjects);
     	editorObjects.addChild(cameraGO);
+		editorObjects.addChild(gridGO);
 		
 		editorCamera = camera;
 	}

@@ -76,8 +76,7 @@ class ComponentPanel extends Panel
 			values.push(value);
 		}
 		var component:Component = cast hostComponent;
-		//Reflect.callMethod(component, updateProperties, [values]);
-		//component.updateProperties(values);
+		component.updateProperties(values);
 	}
 	
 	

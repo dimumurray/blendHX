@@ -1,31 +1,53 @@
 package blendhx.editor;
+import flash.geom.Vector3D;
+import flash.system.ApplicationDomain;
+import blendhx.core.assets.Assets;
 
-import blendhx.core.components.*;
+import blendhx.core.components.Entity;
+import blendhx.core.components.MeshRenderer;
+import blendhx.core.shaders.WireFrameShader;
+import blendhx.editor.GridFloorMesh;
+import blendhx.core.assets.Material;
+import blendhx.core.systems.RenderingSystem;
 
-import shaders.*;
 
 /**
 * @author 
  */
 class GridFloor extends Entity
 {
+	var gridRenderer:MeshRenderer;
+	var gridFloorMesh:GridFloorMesh;
+	var gridMaterial:Material;
+	var gridShader:WireFrameShader;
+	
 	public function new() 
 	{
 		super();
 		
-		/*name = "Grid Floor";
-		var mesh:Mesh = new Mesh();
-		mesh.meshAssetName = "plane.obj";
-		mesh.init();
+		name = "Grid Floor";
 		
-		var material:WireframeShader = new WireframeShader();
-		material.init();
+		gridRenderer = new MeshRenderer();
+		gridFloorMesh = new GridFloorMesh();
+		gridMaterial = new Material("grid", "grid");
+		gridShader = new WireFrameShader();
+		gridShader.create(ApplicationDomain.currentDomain);
 		
-		var transform:Transform = new Transform();
+		gridShader.lineColor = new Vector3D(.28, .28, .28, 1);
+		gridShader.lineWidth = new Vector3D(1 - 0.01, 0);
+		gridMaterial.shader = gridShader;
+		gridRenderer.material = gridMaterial;
+		gridRenderer.mesh = gridFloorMesh;
 		
-		addChild( transform );
-		addChild( material );
-		addChild( mesh );
-		addChild(  new MeshRenderer() );*/
-	}	
+		addChild(  gridRenderer );
+		initilize();
+	}
+	
+	override public function initilize():Void
+	{
+		gridMaterial.shader = gridShader;
+		gridRenderer.material = gridMaterial;
+		gridRenderer.mesh = gridFloorMesh;
+		RenderingSystem.getInstance().registerMeshRenderer(gridRenderer);
+	}
 }

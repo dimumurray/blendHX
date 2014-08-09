@@ -64,8 +64,8 @@ class RenderingSystem extends EventDispatcher implements ISystem
     	context3D.enableErrorChecking = true;
     	context3D.configureBackBuffer(640, 480, 4, true);
     	context3D.setDepthTest(true, Context3DCompareMode.LESS_EQUAL);
-    	context3D.setCulling(Context3DTriangleFace.BACK);
-    	context3D.setBlendFactors(Context3DBlendFactor.SOURCE_ALPHA, Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA);
+    	//context3D.setCulling(Context3DTriangleFace.BACK);
+    	//context3D.setBlendFactors(Context3DBlendFactor.SOURCE_ALPHA, Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA);
     	context3D.addEventListener(ErrorEvent.ERROR, onError);
     	dispatchEvent(new Event(Event.CONTEXT3D_CREATE));
     }
@@ -84,10 +84,14 @@ class RenderingSystem extends EventDispatcher implements ISystem
     	var shader:Shader;
     	var camera:Camera = Scene.getInstance().activeCamera;
     	context3D.clear(0.22, 0.22, 0.22, 1.0);
+		
     	for (meshRenderer in meshRenderers) 
 		{
     		transform = meshRenderer.transform;
     		mesh = meshRenderer.mesh;
+			 
+			
+		
     		if (meshRenderer.enabled == false) 
 				continue;
     		if (mesh == null) 
