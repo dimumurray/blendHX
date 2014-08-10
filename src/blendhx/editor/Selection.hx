@@ -31,6 +31,10 @@ class Selection
 	private static var dragSprite:Sprite;
 	private static var dragBitmap:Bitmap;
 	
+	public static function Initialize() 
+	{
+		Lib.current.stage.addEventListener(MouseEvent.MOUSE_UP, Clear);
+	}
 	public static function Select( object:Dynamic ) 
 	{
 		
@@ -68,7 +72,7 @@ class Selection
 
 
 	
-	public static function ClearDragObject( e:MouseEvent )
+	public static function Clear( e:MouseEvent )
 	{
 		if( Selection.dragObject != null )
 		{
@@ -78,7 +82,7 @@ class Selection
 		}
 		
 	
-		if(uiElement != null && e.target!= uiElement )
+		if(uiElement != null && e!= null &&e.target!= uiElement )
 		{
 			Debug.Log(e.target);
 			uiElement.unfocus();
@@ -89,12 +93,7 @@ class Selection
 	
 	public static function SetDragObject(dragObject:Dynamic)
 	{
-		
-		if( !Lib.current.stage.hasEventListener(MouseEvent.MOUSE_UP) )
-			Lib.current.stage.addEventListener(MouseEvent.MOUSE_UP, ClearDragObject);
-		
 		Selection.dragObject = dragObject;
-		
 		CreateDragGraphic();
 		
 	}

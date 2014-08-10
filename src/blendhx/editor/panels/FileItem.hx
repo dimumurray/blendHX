@@ -126,7 +126,7 @@ class FileItem extends DragableItem
 	{
 		isPoterntialyDragging = false;
 		RightClickMenu.FileItem(this);
-		Selection.ClearDragObject(null);
+		Selection.Clear(null);
 	}
 	
 	public function select(e:MouseEvent)

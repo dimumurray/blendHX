@@ -1,4 +1,5 @@
 package;
+import blendhx.editor.Selection;
 
 import blendhx.editor.*;
 import blendhx.editor.panels.*;
@@ -38,7 +39,7 @@ class Main extends Entity
     	initSpaces();
     	initRenderingSystem();
     	scene = Scene.getInstance();
-		
+		Selection.Initialize();
     }
 	
 	private function loadProject()

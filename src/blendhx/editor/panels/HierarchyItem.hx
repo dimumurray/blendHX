@@ -112,7 +112,7 @@ class HierarchyItem extends DragableItem
 	{
 		isPoterntialyDragging = false;
 		RightClickMenu.EntityMenu(this);
-		Selection.ClearDragObject(null);
+		Selection.Clear(null);
 	}
 	
 	public function select(e:MouseEvent)
