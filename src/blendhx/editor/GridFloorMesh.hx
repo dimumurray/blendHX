@@ -9,60 +9,45 @@ import blendhx.core.assets.Mesh;
 
 class GridFloorMesh extends Mesh
 {
-	var indexArray:Array<UInt> =  [
-            2,1,0, //front face
-            3,2,0,
-            4,7,5, //bottom face
-            7,6,5,
-            8,11,9, //back face
-            9,11,10,
-            12,15,13, //top face
-            13,15,14,
-            16,19,17, //left face
-            17,19,18,
-            20,23,21, //right face
-            21,23,22
-        ];
-	
-        var vertexArray:Array<Float> = [
-                // x,y,z    r,g,b,a
-                0,0,0, 1,0,0,0, //front face
-                0,1,0, 0,1,0,0, 
-                1,1,0, 0,0,1,0, 
-                1,0,0, 0,0,0,1, 
-                
-                0,0,0, 1,0,0,0,//bottom face
-                1,0,0, 0,1,0,0,
-                1,0,1, 0,0,1,0,
-                0,0,1, 0,0,0,1,
-                
-                0,0,1, 1,0,0,0,//back face
-                1,0,1, 0,1,0,0,
-                1,1,1, 0,0,1,0,
-                0,1,1, 0,0,0,1,
-                
-                0,1,1, 1,0,0,0,//top face
-                1,1,1, 0,1,0,0,
-                1,1,0, 0,0,1,0,
-                0,1,0, 0,0,0,1,
-                
-                0,1,1, 1,0,0,0,//left face
-                0,1,0, 0,1,0,0,
-                0,0,0, 0,0,1,0,
-                0,0,1, 0,0,0,1,
-                
-                1,1,0, 1,0,0,0,//right face
-                1,1,1, 0,1,0,0,
-                1,0,1, 0,0,1,0,
-                1,0,0, 0,0,0,1
-            ];
+	private var size:UInt = 20;
+	private var indexArray:Array<UInt> =  [];
+	private var vertexArray:Array<Float> = [];
 	
 	public function new()
 	{
 		super("grid", "grid");
+		createGrid();
 		meshIndexData = Vector.ofArray( indexArray );
 		meshVertexData = Vector.ofArray( vertexArray );
 		numVertexAttributes = 7;
 		uploadBuffers();
+	}
+	private function createGrid()
+	{
+		vertexArray = [];
+		indexArray = [];
+		var i:UInt = 0;
+		for(x in 0...size)
+		{
+			var x_half:Int = Std.int( x - size / 2 );
+			for(z in 0...size)
+			{ 
+				var z_half:Int = Std.int( z - size / 2 );
+				var face:Array<Float> = [
+					x_half,0,z_half, 1,0,0,0,
+					x_half+1,0,z_half, 0,1,0,0,
+					x_half+1,0,z_half+1, 0,0,1,0,
+					x_half,0,z_half+1, 0,0,0,1, 
+				];
+				vertexArray = vertexArray.concat( face );
+				
+				var index = [
+					i+2,i+1,i,
+            		i+3,i+2,i
+				];
+				indexArray = indexArray.concat( index );
+				i+=4;
+			}
+		}
 	}
 }

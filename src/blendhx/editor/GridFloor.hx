@@ -34,7 +34,7 @@ class GridFloor extends Entity
 		gridShader.create(ApplicationDomain.currentDomain);
 		
 		gridShader.lineColor = new Vector3D(.28, .28, .28, 1);
-		gridShader.lineWidth = new Vector3D(1 - 0.01, 0);
+		gridShader.lineWidth = new Vector3D(1 - 0.015, 0);
 		gridMaterial.shader = gridShader;
 		gridRenderer.material = gridMaterial;
 		gridRenderer.mesh = gridFloorMesh;

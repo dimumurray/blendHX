@@ -1,6 +1,7 @@
 package blendhx.editor.spaces;
-import blendhx.editor.panels.Panel;
 
+import blendhx.editor.panels.Panel;
+import blendhx.editor.panels.ConsolePanel;
 import blendhx.editor.panels.*;
 import blendhx.editor.uicomponents.*;
 import blendhx.editor.panels.HorizontalPanel;
@@ -11,27 +12,41 @@ import blendhx.editor.panels.HorizontalPanel;
  */
 class BottomSpace extends Space
 {	
-	var transofmrGizmosPanel:Panel;
-	var playerControl:Panel;
-	var menuBar:Panel;
-    
+	var header:BottomSpaceHeaderPanel;
 	var assetsPanel:Panel;
+	
+	private var consolePanel:ConsolePanel;
 	
 	public function new()
 	{
 		super();
 		
-		menuBar = new BottomSpaceHeaderPanel();
-
+		header = new BottomSpaceHeaderPanel();
+		header.switchSpaceCallback = this.switchSpaceCallback;
 		
+		consolePanel = ConsolePanel.getInstance();
 		assetsPanel = AssetsPanel.getInstance();
-		addPanel(  menuBar );
+		
+		addPanel( header );
 		addPanel( assetsPanel );
 		color = 0x454545;
-
 	}
 	
+	public function switchSpaceCallback( showConsole:Bool ):Void
+	{
+		if(showConsole)
+		{
+			removeChild(assetsPanel);
+			addChild(consolePanel);
+		}
+		else
+		{
+			removeChild(consolePanel);
+			addChild(assetsPanel);
+		}
+	}
 	private function doNothing() {}
+	
 	// override to update component panels specific to this space
 	override public function resize()
 	{
@@ -44,14 +59,18 @@ class BottomSpace extends Space
 		for (panel in panels)
 			panel.resize();
 
-		
 		assetsPanel._width = _width;
 		assetsPanel.y = 26;
 		assetsPanel._height = _height - 50;
 		assetsPanel.drawGraphics();
+		
+		consolePanel._width = _width;
+		consolePanel.y = 26;
+		consolePanel._height = _height - 26;
+		consolePanel.drawGraphics();
 	
-		menuBar._height = 26;
-		menuBar._width = _width;
-		menuBar.drawGraphics();
+		header._height = 26;
+		header._width = _width;
+		header.drawGraphics();
 	}
 }

@@ -35,9 +35,12 @@ class WireFrameShader extends Shader
 			vertexColor : Float4
 		};
 		var vertexColorVarying:Float4;
+		var depth:Float;
 		function vertex(transformationMatrix : M44, projectionMatrix : M44) 
 		{
-			out = input.pos.xyzw * transformationMatrix * projectionMatrix;
+			var final:Float4 = input.pos.xyzw * transformationMatrix * projectionMatrix;
+			out = final;
+			depth = final.z;
 			vertexColorVarying = input.vertexColor;
 		}
 		
@@ -49,7 +52,7 @@ class WireFrameShader extends Shader
 			temp.z = vertexColorVarying.z + vertexColorVarying.w;
 			temp.w = vertexColorVarying.w + vertexColorVarying.x;
 			
-			temp = temp - lineWidth.xxxx;
+			temp = temp - lineWidth.xxxx + ((depth - 10)/1000);
 			temp = temp.lt( lineWidth.yyyy );
 			
 			temp.x = temp.x * temp.y;

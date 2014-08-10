@@ -34,23 +34,23 @@ monthday tasks
 802	hierarchy panel re parenting support
 802	hierarchy panel collapse object
 802	editor test and bug fixes
-	script properties panel
-	edit mode/play mode
-	editor camera
-	grid floor wireframe shader
+806	script properties panel
+808	grid floor wireframe shader
+809	editor camera
+809	console space
+810	global panels click and focus manager
 	application menu bar
+	edit mode/play mode
 	fix:assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
 	fix:new project space charachter in address causes compile scripts bug
 	fix:transform component and custom script are not initialized correctly, NaN in transform value
-	console space
-	global panels click and focus manager
-	transform component code review: parent calculation, local matrix calculation, localToGlobal, globalToLocal
-	
 	----------v.5 preview
 	
+	fix:transform component code review: parent calculation, local matrix calculation, localToGlobal, globalToLocal. Hierarchy reparenting transform fix
 	space masking panels
 	space scroll bar
 	editor gizmos
+	start compile server
 	prefab
 	texture asset properties panel
 	mesh asset properties panel

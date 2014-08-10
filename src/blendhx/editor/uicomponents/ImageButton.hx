@@ -112,6 +112,9 @@ class ImageButton extends UIElement
 
 	public  function drawBox(state:Array<UInt>, _)
 	{
+		if(!enabled)
+			return;
+		
 		if (state == click)
 		{
 			onClick();

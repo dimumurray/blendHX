@@ -62,7 +62,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
     {
     	context3D = Lib.current.stage.stage3Ds[0].context3D;
     	context3D.enableErrorChecking = true;
-    	context3D.configureBackBuffer(640, 480, 4, true);
+    	context3D.configureBackBuffer(640, 480, 0, true);
     	context3D.setDepthTest(true, Context3DCompareMode.LESS_EQUAL);
     	//context3D.setCulling(Context3DTriangleFace.BACK);
     	//context3D.setBlendFactors(Context3DBlendFactor.SOURCE_ALPHA, Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA);

@@ -8,7 +8,7 @@ import flash.geom.Matrix3D;
  */
 class Transform extends Component
 {
-	private var matrix:Matrix3D;
+	public var matrix:Matrix3D;
 	private var hasChanged:Bool;
 	
 	@:isVar public var x(get, set):Float = 0;

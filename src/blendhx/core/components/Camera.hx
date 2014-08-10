@@ -1,4 +1,5 @@
 package blendhx.core.components;
+import flash.geom.Vector3D;
 import blendhx.core.Scene;
 
 import flash.geom.Matrix3D;
@@ -23,7 +24,8 @@ class Camera extends Component
 	}
 	override public function initilize():Void
 	{
-		Scene.getInstance().gameCamera = this;
+		if( Scene.getInstance().editorCamera != this )
+			Scene.getInstance().gameCamera = this;
 	}
 	override public function clone():Dynamic
 	{
@@ -59,11 +61,12 @@ class Camera extends Component
 	public function getViewProjection():Matrix3D
 	{
 		viewProjection.identity();
-		viewProjection.append(transform.getMatrix());
+		
+		viewProjection.append(transform.getMatrix() );
 		viewProjection.append(projection);
 		return viewProjection;
 	}
-	
+
 
 
 }
