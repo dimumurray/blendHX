@@ -15,8 +15,11 @@ class UIElement extends Sprite
 	//how many total uiElements are there gonna be in this horizonal row
 	public var slices:UInt;
 	
+	public var enabled:Bool = true;
+	
 	public var _width:Float=0;
 	public var _height:Float = 20;
+	
 	//the padding betweein two UIElements
 	public var paddingX:UInt = 10;
 	//the panel conraining this element
@@ -52,6 +55,20 @@ class UIElement extends Sprite
 	{
 		return (getWidth(slices)*(slice-1)) + (slice * paddingX);
 	}
+	
+	//fix the value, and unfocus from this element
+	public function focus():Void
+	{
+		if(Selection.uiElement != null)
+			Selection.uiElement.unfocus();
+			
+		Selection.uiElement = this;
+		
+	}
+	public function unfocus():Void
+	{
+	}
+	
 	//reset the positioning and scale
 	public function resize()
 	{

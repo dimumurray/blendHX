@@ -55,6 +55,7 @@ class NumberInput extends UIElement
 		drawText();
 		resize();
 		
+		this.mouseChildren = false;
 		addEventListener(MouseEvent.MOUSE_OVER, drawBox.bind(over) );
 		addEventListener(MouseEvent.MOUSE_OUT, drawBox.bind(normal) );
 		addEventListener(MouseEvent.MOUSE_UP,drawBox.bind(over) );
@@ -95,16 +96,36 @@ class NumberInput extends UIElement
 	{
 		if (e.keyCode == Keyboard.ENTER)
 		{
-			editing = false;
-			updateValue();
-			drawBox(normal, null);
-			label.selectable = false;
+			unfocus();
+			
 		}
 		if (!editing)
 		{
 			updateValue();
 		}
 	}
+	
+	override public function focus()
+	{
+		super.focus();
+		
+		flash.Lib.current.stage.focus = label;
+		editing = true;
+		label.text = Utils.PrintFloat(value, 2);
+		label.selectable = true;
+		label.setSelection(0, label.length);
+		drawBox(click, null);
+	}
+
+	override public function unfocus():Void
+	{
+		editing = false;
+		updateValue();
+		drawBox(normal, null);
+		label.selectable = false;
+	}
+	
+	
 	//when mouse is down over this, if its presed at center, make the textfield inside editable, else increase or decrease value based on mouse position 
 	public function onMouseDown(e:MouseEvent)
 	{
@@ -123,11 +144,7 @@ class NumberInput extends UIElement
 		}
 		else 
 		{
-			editing = true;
-			label.text = Utils.PrintFloat(value, 2);
-			label.selectable = true;
-			label.setSelection(0, label.length);
-			drawBox(click, null);
+			focus();
 		}
 
 	}

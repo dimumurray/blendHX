@@ -1,4 +1,5 @@
 package blendhx.editor;
+import blendhx.editor.uicomponents.UIElement;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.display.BitmapData;
@@ -21,9 +22,11 @@ static class used for getting dragabble objects and selected fileitems or hierar
  */
 class Selection
 {
+	public static var dragObject:DragableItem;
+	public static var uiElement:UIElement;
+	
 	private static var hierarchyItem:HierarchyItem;
 	private static var fileItem:FileItem;
-	public static var dragObject:DragableItem;
 	private static var instance:Selection;
 	private static var dragSprite:Sprite;
 	private static var dragBitmap:Bitmap;
@@ -65,7 +68,7 @@ class Selection
 
 
 	
-	public static function ClearDragObject(_)
+	public static function ClearDragObject( e:MouseEvent )
 	{
 		if( Selection.dragObject != null )
 		{
@@ -73,6 +76,15 @@ class Selection
 			dragSprite.stopDrag();
 			Lib.current.stage.removeChild(dragSprite);
 		}
+		
+	
+		if(uiElement != null && e.target!= uiElement )
+		{
+			Debug.Log(e.target);
+			uiElement.unfocus();
+			uiElement = null;
+		}
+		
 	}
 	
 	public static function SetDragObject(dragObject:Dynamic)

@@ -50,7 +50,7 @@ class TextInput extends UIElement
 		//add this to the list of UIElements of the parent panel
 		_panel.addUIElement(this);
 		
-		
+		this.mouseChildren = false;
 		//resize element once frist
 		resize();
 		
@@ -99,23 +99,33 @@ class TextInput extends UIElement
 	{
 		if (e.keyCode == Keyboard.ENTER)
 		{
-			editing = false;
-			updateValue(null);
-			drawBox(normal, null);
-			label.selectable = false;
-			label.setSelection(0, 0);
-			onChange();
+			unfocus();
 		}
 	}
 	
-	//let the user edit the value by clicking the component
-	public function onMouseDown(e:MouseEvent)
+	override public function focus()
 	{
+		super.focus();
 		flash.Lib.current.stage.focus = label;
 		editing = true;
 		label.text = value;
 		label.setSelection(0, label.length);
 		drawBox(click, null);
+	}
+	
+	override public function unfocus():Void
+	{
+		editing = false;
+		updateValue(null);
+		drawBox(normal, null);
+		label.selectable = false;
+		label.setSelection(0, 0);
+		onChange();
+	}
+	//let the user edit the value by clicking the component
+	public function onMouseDown(e:MouseEvent)
+	{
+		focus();
 		
 		//to avoid textField right click menu to popup, add a timer to do make text selectable few moments later
 		var t:Timer = new Timer(0.1, 1);
