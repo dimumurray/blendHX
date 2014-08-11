@@ -3,7 +3,7 @@
 	xmlns="http://ns.adobe.com/air/application/14.0"
 	minimumPatchLevel="0">
 <!-- AIR Application Descriptor File. See http://www.adobe.com/go/learn_air_1.0_application_descriptor_en. -->
-	<id>blendhx</id>
+	<id>blendHX</id>
 	<name>
 		<text xml:lang="en">blendHX</text>
 	</name>
@@ -39,5 +39,5 @@
 	</icon>
 	<customUpdateUI>false</customUpdateUI>
 	<allowBrowserInvocation>false</allowBrowserInvocation>
-	<supportedProfiles>desktop extendedDesktop</supportedProfiles>
+	<supportedProfiles>extendedDesktop</supportedProfiles>
 </application>
