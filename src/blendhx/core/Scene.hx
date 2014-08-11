@@ -100,7 +100,7 @@ class Scene extends Entity
 		camera = new Camera();
 		cameraEntity.addChild(camera);
     	transform = cameraEntity.getChild(Transform);
-    	transform.z = 4;
+    	transform.z = 7;
 		transform.rotationX = 330;
 		transform.rotationY = 30;
 		transform.rotationZ = 340;

@@ -144,58 +144,13 @@
             ,"activeLine" : 4
         }
         ,{
-             "path" : "src\\blendhx\\editor\\panels\\ConsolePanel.hx"
+             "path" : "src\\blendhx\\editor\\spaces\\HeaderSpace.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 40
-        }
-        ,{
-             "path" : "src\\Main.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 88
-        }
-        ,{
-             "path" : "README.txt"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 33
-        }
-        ,{
-             "path" : "src\\blendhx\\core\\assets\\Assets.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 172
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\data\\IO.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 314
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\AssetsPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 88
+            ,"activeLine" : 47
         }
         ,{
              "path" : "src\\blendhx\\editor\\RightClickMenu.hx"
@@ -204,7 +159,43 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 108
+            ,"activeLine" : 40
+        }
+        ,{
+             "path" : "src\\blendhx\\core\\assets\\Assets.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 70
+        }
+        ,{
+             "path" : "src\\Main.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 51
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\Project.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 59
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\panels\\AssetsPanel.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 133
         }
         ,{
              "path" : "src\\blendhx\\editor\\panels\\FileItem.hx"
@@ -213,19 +204,46 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 125
+            ,"activeLine" : 15
         }
         ,{
-             "path" : "src\\blendhx\\editor\\panels\\UtilityPanel.hx"
+             "path" : "src\\blendhx\\editor\\data\\UserScripts.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 68
+            ,"activeLine" : 59
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\scripts\\EditorCameraController.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 8
+        }
+        ,{
+             "path" : "src\\blendhx\\core\\Scene.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 102
+        }
+        ,{
+             "path" : "src\\blendhx\\editor\\spaces\\BottomSpace.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 45
         }
     ]
-    ,"activeFile" : "README.txt"
+    ,"activeFile" : "src\\blendhx\\editor\\Project.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

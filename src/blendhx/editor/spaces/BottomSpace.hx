@@ -43,6 +43,7 @@ class BottomSpace extends Space
 		{
 			removeChild(consolePanel);
 			addChild(assetsPanel);
+			Space.Resize();
 		}
 	}
 	private function doNothing() {}

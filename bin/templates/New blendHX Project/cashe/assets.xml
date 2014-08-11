@@ -1,0 +1,8 @@
+<assets>
+	<textures>
+	<texture localURL="textures/house.png" width="1024" height="1024">texture.atf</texture></textures>
+	<meshes>
+	<mesh localURL="meshes/house.obj">mesh.data</mesh></meshes>
+	<materials>
+	<material localURL="materials/house.mat">material.data</material></materials>
+</assets>

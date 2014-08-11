@@ -1,4 +1,5 @@
 package blendhx.editor;
+import flash.net.URLRequest;
 import blendhx.editor.panels.AssetsPanel;
 import flash.errors.Error;
 import blendhx.editor.spaces.Space;
@@ -16,6 +17,8 @@ import blendhx.core.components.*;
 import blendhx.editor.panels.*;
 import blendhx.editor.*;
 import blendhx.editor.data.IO;
+
+import blendhx.editor.Project;
 /**
 
  * GPL
@@ -28,11 +31,55 @@ class RightClickMenu
 	private static var fileItemMenu:NativeMenu;
 	private static var assetsPanelCreateMenu:NativeMenu;
 	private static var entityMenu:NativeMenu;
+	private static var helpMenu:NativeMenu;
+	private static var fileMenu:NativeMenu;
 	
 	//the entity in the heirarchy which is righ clicked
 	private static var richClickedHierarchyItem:HierarchyItem;
 	private static var richClickedFileItem:FileItem;
 	
+	public static function openFileMenu()
+	{
+		if( fileMenu == null )
+		{
+			fileMenu = new NativeMenu();
+			fileMenu.addItem( new NativeMenuItem("New project" )).addEventListener(Event.SELECT, Project.browseForNewProject );
+			fileMenu.addItem( new NativeMenuItem("Open project" )).addEventListener(Event.SELECT, Project.browseForOpen );
+			
+			fileMenu.addItem( new NativeMenuItem("Save" )).addEventListener(Event.SELECT, Project.saveScene );
+			fileMenu.addItem( new NativeMenuItem("", true) );
+			fileMenu.addItem( new NativeMenuItem("Open project directory" )).addEventListener(Event.SELECT, Project.openProjectDirectory );
+			fileMenu.addItem( new NativeMenuItem("", true) );
+			fileMenu.addItem( new NativeMenuItem("Exit" )).addEventListener(Event.SELECT, exitApplication );
+		}
+		
+		fileMenu.display(Lib.current.stage, 0, 26);
+	}
+	
+	public static function openHelpMenu()
+	{
+		if( helpMenu == null )
+		{
+			helpMenu = new NativeMenu();
+			helpMenu.addItem( new NativeMenuItem("open Github page" )).addEventListener(Event.SELECT, openGithubPage );
+			helpMenu.addItem( new NativeMenuItem("", true) );
+			helpMenu.addItem( new NativeMenuItem("blendHX v0.5 preview") ).enabled = false;
+		}
+		
+		helpMenu.display(Lib.current.stage, 50, 26);
+	}
+	
+	private static function exitApplication(_)
+	{
+		NativeApplication.nativeApplication.exit();
+	}
+	
+	private static function openGithubPage(_)
+	{
+		var urlRequest:URLRequest = new URLRequest( "https://github.com/mehdadoo/blendhx" );
+		Lib.getURL(urlRequest, "_blank");
+	}
+
 	public static function FileItem(fileItem:FileItem)
 	{
 		richClickedFileItem = fileItem;
@@ -60,7 +107,7 @@ class RightClickMenu
 			assetsPanelCreateMenu.addItem( new NativeMenuItem("ActionScript Component")).enabled = false;
 		}
 			
-		assetsPanelCreateMenu.display(Lib.current.stage, Lib.current.stage.mouseX, Lib.current.stage.mouseY);
+		assetsPanelCreateMenu.display(Lib.current.stage, 0, Space.GetSpace(Space.BOTTOM).y + 26);
 	}
 	
 	public static function EntityMenu(hierarchyItem:HierarchyItem)

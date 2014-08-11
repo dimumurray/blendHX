@@ -1,4 +1,6 @@
 package;
+import flash.utils.ByteArray;
+import blendhx.editor.panels.AssetsPanel;
 import blendhx.editor.Selection;
 
 import blendhx.editor.*;
@@ -9,6 +11,7 @@ import blendhx.core.*;
 import blendhx.core.assets.*;
 import blendhx.core.systems.*;
 import blendhx.core.components.*;
+import blendhx.editor.Project;
 
 import flash.system.Capabilities;
 import flash.desktop.NativeApplication;
@@ -35,7 +38,6 @@ class Main extends Entity
     	RegisterClassAlias.Register();
     	super();
     	initStage();
-		loadProject();
     	initSpaces();
     	initRenderingSystem();
     	scene = Scene.getInstance();
@@ -44,8 +46,15 @@ class Main extends Entity
 	
 	private function loadProject()
 	{
-		Assets.SetProjectDirectory( File.desktopDirectory.resolvePath("New Project") );
+		Project.loadProject( loadAssets );
 	}
+	
+	private function loadAssets()
+	{
+		Assets.onAssetsReady = onAssetsReady;
+    	Assets.Load();
+	}
+		
 
     function initStage()
     {
@@ -87,13 +96,8 @@ class Main extends Entity
     	Scene.getInstance().initilize();
 		HierarchyPanel.getInstance().populate();
 		Space.Resize();
-    	loadAssets();
-    }
-
-    function loadAssets():Void
-    {
-    	Assets.onAssetsReady = onAssetsReady;
-    	Assets.Load();
+		
+    	loadProject();
     }
 
     function onAssetsReady():Void
@@ -101,6 +105,8 @@ class Main extends Entity
 		trace("Assets Ready");
 		Scene.getInstance().createDefaultSceneObjects();
 		HierarchyPanel.getInstance().populate();
+		
+		Project.loadScene();
 	}
 
     function onApplicationResize(e:Event)
