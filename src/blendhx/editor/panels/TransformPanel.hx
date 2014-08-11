@@ -78,7 +78,7 @@ class TransformPanel extends Panel
 	{
 		if ( !Selection.isHierarchyItem() || hostComponent==null)
 			return;
-		
+
 		var transform:Transform = cast hostComponent;
 		
 		location_x.value =  transform.x;

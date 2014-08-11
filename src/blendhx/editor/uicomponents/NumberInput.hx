@@ -71,9 +71,8 @@ class NumberInput extends UIElement
 	{
 		if(editing)
 			return null;
-		
-		
 		value = param;
+		
 		
 		if(label != null)
 			label.text = text+": "+ Utils.PrintFloat( param, 2 );

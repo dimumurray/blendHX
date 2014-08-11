@@ -87,7 +87,7 @@ class MaterialPanel extends Panel
 		saveMaterial();
 			
 		createInputs();
-		updateValues();
+		getValues();
 	}
 	
 	private function saveMaterial() 
@@ -104,7 +104,7 @@ class MaterialPanel extends Panel
 		hostMaterial.init();
 	}
 
-	private function updateValues() 
+	private function getValues() 
 	{
 		shader_input.value = hostMaterial.shaderURL;
 		
@@ -116,10 +116,13 @@ class MaterialPanel extends Panel
 
 	override public function resize()
 	{
+		if (parent == null)
+			return;
+
 		super.resize();
 		
 		if( isNewMaterialSelected() )
-			updateValues();
+			getValues();
 	}
 
 	public function isNewMaterialSelected():Bool

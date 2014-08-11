@@ -25,6 +25,7 @@ class ComponentPanel extends Panel
 	public function new(title:String) 
 	{
 		super(title, Space.SPACE_WIDTH, true);
+		addEventListener(flash.events.Event.ENTER_FRAME, getValues);
 	}
 	
 	public function createInputs()
@@ -32,6 +33,7 @@ class ComponentPanel extends Panel
 		for (input in property_inputs)
 		{
 			removeUIElement(input);
+			_height = 0;
 		}
 		property_inputs = [];
 	
@@ -48,31 +50,39 @@ class ComponentPanel extends Panel
 			switch ( editorProperties[ (i*2) +1] )
 			{
 				case "Float":
-					input = new NumberInput(editorProperties[i*2], 2, 2, input_y, doNothing, this, NumberInput.ROUND_BOTH);
+					input = new NumberInput(editorProperties[i*2], 2, 2, input_y, setValues, this, NumberInput.ROUND_BOTH);
 				case "Entity":
-					input = new ObjectInput(FileType.ENTITY, 2, 2, input_y, doNothing, this);
+					input = new ObjectInput(FileType.ENTITY, 2, 2, input_y, setValues, this);
 				case "Color":
-					input = new TextInput( "0xffffff77", 2, 2, input_y, doNothing, this);
+					input = new TextInput( "0xffffff77", 2, 2, input_y, setValues, this);
 				case "String":
-					input = new TextInput( "text", 2, 2, input_y, doNothing, this);
+					input = new TextInput( "text", 2, 2, input_y, setValues, this);
 				default:
-					input = new TextInput( "UNKNOWN_INPUT",2, 2, input_y, doNothing, this);
+					input = new TextInput( "UNKNOWN_INPUT",2, 2, input_y, setValues, this);
 			}
 			input_y += 30;
 			property_inputs.push(input);
+			getValues(null);
 		}
 	}
 	
-	public function doNothing()
+	public function setValues()
 	{
+		if (parent == null || hostComponent==null )
+			return;
+		
+		var propertieslength:Int = Std.int( hostComponent.editorProperties.length / 2 );
 		var values:Array<Dynamic> = [];
 		var length:Int = Std.int( property_inputs.length / 2 );
 		
+		//when inputs are created, this is called unfairly, that shouldnt. we wont resume when loop at createInputs is still running
+		if( length != propertieslength)
+			return;
+			
 		for (i in 0...length)
 		{
 			var value = property_inputs[ (i*2) +1].value;
-			
-				hostComponent.properties.set( hostComponent.editorProperties[i*2] , value );
+			hostComponent.properties.set( hostComponent.editorProperties[i*2] , value );
 			values.push(value);
 		}
 		var component:Component = cast hostComponent;
@@ -80,22 +90,28 @@ class ComponentPanel extends Panel
 	}
 	
 	
-	private function updateValues() 
+	private function getValues(_) 
 	{
+		if (parent == null || hostComponent==null )
+			return;
+		
 		var editorProperties:Array<String> = hostComponent.editorProperties;
 		var length:Int = Std.int( property_inputs.length / 2 );
 		for (i in 0...length)
 		{
+			 
 			var value = hostComponent.properties.get( editorProperties[i*2] );
-			//trace(value);
 			property_inputs[i*2+1].value = value;
 		}
 	}
 
 	override public function resize()
 	{
+		if ( parent == null )
+			return;
+		
 		super.resize();
 		createInputs();
-		updateValues();
+		getValues(null);
 	}
 }

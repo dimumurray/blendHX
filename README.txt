@@ -40,8 +40,8 @@ monthday tasks
 809	console space
 810	global panels click and focus manager
 811	fix:assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
-812	fix:new project space charachter in address causes compile scripts bug
-	fix:transform component and custom script are not initialized correctly, NaN in transform value
+811	fix:new project space charachter in address causes compile scripts bug
+811	fix:transform component and custom script are not initialized correctly, NaN in transform value
 	application menu bar
 	edit mode/play mode
 	

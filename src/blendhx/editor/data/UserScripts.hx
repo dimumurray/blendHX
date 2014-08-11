@@ -119,7 +119,7 @@ class UserScripts
 		}
 		else if(Type.getSuperClass(componentClass) != Component)
 		{
-			trace("Applied script is not extending blendhx.Component");
+			trace("Applied script is not extending blendhx.core.components.Component");
 			return null;
 		}
 		

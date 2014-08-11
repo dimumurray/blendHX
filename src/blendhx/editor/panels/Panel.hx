@@ -35,9 +35,6 @@ class Panel extends Sprite
 	public var enabled(get, set):Bool;
 	
 	
-	
-	
-	
 	public function new(title:String, _width:Float, shouldDrawCheckbox:Bool = false) 
 	{
 		super();
