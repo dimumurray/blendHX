@@ -144,31 +144,22 @@
             ,"activeLine" : 4
         }
         ,{
-             "path" : "src\\blendhx\\editor\\spaces\\HeaderSpace.hx"
+             "path" : "src\\blendhx\\core\\Scene.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 47
+            ,"activeLine" : 113
         }
         ,{
-             "path" : "src\\blendhx\\editor\\RightClickMenu.hx"
+             "path" : "src\\blendhx\\core\\components\\Camera.hx"
             ,"useTabs" : true
             ,"indentSize" : 4
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 40
-        }
-        ,{
-             "path" : "src\\blendhx\\core\\assets\\Assets.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 70
+            ,"activeLine" : 38
         }
         ,{
              "path" : "src\\Main.hx"
@@ -177,73 +168,10 @@
             ,"foldedRegions" : [
 
             ]
-            ,"activeLine" : 51
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\Project.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 59
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\AssetsPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 133
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\FileItem.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 15
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\data\\UserScripts.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 59
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\scripts\\EditorCameraController.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 8
-        }
-        ,{
-             "path" : "src\\blendhx\\core\\Scene.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 102
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\spaces\\BottomSpace.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 45
+            ,"activeLine" : 0
         }
     ]
-    ,"activeFile" : "src\\blendhx\\editor\\Project.hx"
+    ,"activeFile" : "src\\blendhx\\core\\Scene.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

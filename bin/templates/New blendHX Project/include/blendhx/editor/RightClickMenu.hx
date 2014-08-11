@@ -43,10 +43,8 @@ class RightClickMenu
 		if( fileMenu == null )
 		{
 			fileMenu = new NativeMenu();
-			fileMenu.addItem( new NativeMenuItem("New project" )).addEventListener(Event.SELECT, openGithubPage );
+			fileMenu.addItem( new NativeMenuItem("New project" )).addEventListener(Event.SELECT, Project.browseForNewProject );
 			fileMenu.addItem( new NativeMenuItem("Open project" )).addEventListener(Event.SELECT, Project.browseForOpen );
-			
-			var saveItem:NativeMenuItem = new NativeMenuItem("Save");
 			
 			fileMenu.addItem( new NativeMenuItem("Save" )).addEventListener(Event.SELECT, Project.saveScene );
 			fileMenu.addItem( new NativeMenuItem("", true) );
@@ -75,6 +73,7 @@ class RightClickMenu
 	{
 		NativeApplication.nativeApplication.exit();
 	}
+	
 	
 	private static function openGithubPage(_)
 	{

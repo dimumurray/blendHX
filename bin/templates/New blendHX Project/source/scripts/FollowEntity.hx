@@ -24,7 +24,7 @@ class FollowEntity extends Component
 		{
 			transform.x += (targetEntity.transform.x - transform.x) / lag;
 			transform.y += (targetEntity.transform.y - transform.y) / lag;
-			transform.y += (targetEntity.transform.y - transform.y) / lag;
+			transform.z += (targetEntity.transform.z - transform.z) / lag;
 		}
 	}
 	

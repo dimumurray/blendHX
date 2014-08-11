@@ -1,0 +1,1 @@
+adt -package -tsa none -keystore england.p12 -storetype PKCS12 -target bundle blendHX.app descriptor.xml blendHX.swf icons apps templates

@@ -42,11 +42,13 @@ class Project
 			{
 				Assets.SetProjectDirectory( projectDirectory );
 				AssetsPanel.getInstance().populate();
+				
 				onProjectOpen();
 			}
 		}
 		else
 		{
+			
 			createNewProject();
 		}
 		
@@ -55,6 +57,8 @@ class Project
 	
 	private static function createNewProject()
 	{
+		Progressbar.getInstance().show(true, "Copying files");
+		
 		var projectDirectory:File;
 		var bytes:ByteArray;
 		
@@ -70,7 +74,7 @@ class Project
 		
 		newProjectTemplate.copyToAsync (projectDirectory, true);
 		Assets.SetProjectDirectory(projectDirectory);
-		Progressbar.getInstance().show(true, "Copying files");
+		
 	}
 	private static function onNewProjectCopied(e:Event)
 	{
@@ -152,7 +156,8 @@ class Project
 		bytes.position = 0;
 		EncryptedLocalStore.setItem("projectDirectory", bytes);
 		
-		NativeApplication.nativeApplication.exit();
+		
+		restartApplication();
 	}
 		
 	public static function setNewProjectDirectory(e:Event):Void
@@ -169,7 +174,7 @@ class Project
 			bytes.position = 0;
 			EncryptedLocalStore.setItem("projectDirectory", bytes);
 			
-			NativeApplication.nativeApplication.exit();
+			restartApplication();
 		}
 		else
 		{
@@ -182,7 +187,14 @@ class Project
 	{
 		Assets.projectDirectory.openWithDefaultApplication();
 	}
-
+	
+	private static function restartApplication()
+	{
+		NativeApplication.nativeApplication.exit();
+		var restartBat:File = File.applicationDirectory.resolvePath("apps/restart.bat");
+		restartBat.openWithDefaultApplication();
+	}
+	
 	private static function loadCompleteHandler(event:Event)
 	{
 		urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);

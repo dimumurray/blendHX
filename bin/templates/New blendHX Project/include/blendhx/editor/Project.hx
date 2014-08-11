@@ -42,11 +42,13 @@ class Project
 			{
 				Assets.SetProjectDirectory( projectDirectory );
 				AssetsPanel.getInstance().populate();
+				
 				onProjectOpen();
 			}
 		}
 		else
 		{
+			
 			createNewProject();
 		}
 		
@@ -55,6 +57,8 @@ class Project
 	
 	private static function createNewProject()
 	{
+		Progressbar.getInstance().show(true, "Copying files");
+		
 		var projectDirectory:File;
 		var bytes:ByteArray;
 		
@@ -67,17 +71,21 @@ class Project
 
 		var newProjectTemplate:File = File.applicationDirectory.resolvePath("templates/New blendHX Project");
 		newProjectTemplate.addEventListener(Event.COMPLETE, onNewProjectCopied);
-		Assets.SetProjectDirectory( projectDirectory );
-		newProjectTemplate.copyToAsync (projectDirectory, true);
 		
-		Progressbar.getInstance().show(true, "Copying files");
+		newProjectTemplate.copyToAsync (projectDirectory, true);
+		Assets.SetProjectDirectory(projectDirectory);
+		
 	}
-	private static function onNewProjectCopied(_)
+	private static function onNewProjectCopied(e:Event)
 	{
+		var file:File = e.target;
+		file.removeEventListener(Event.COMPLETE, onNewProjectCopied);
+		
 		Progressbar.getInstance().hide();
 		AssetsPanel.getInstance().populate();
 		onProjectOpen();
 	}
+	
 	public static function saveScene(_)
 	{
 		var objects = Scene.getInstance().sceneObjects;
@@ -123,9 +131,39 @@ class Project
 		file.addEventListener(Event.SELECT, setNewProjectDirectory);
 		file.browseForDirectory("Select a blendHX project directory");
 	}
+	public static function browseForNewProject(_):Void
+	{
+		var file:File = File.documentsDirectory;
+		file.addEventListener(Event.SELECT, onBrowseForNewProject);
+		file.browseForDirectory("Select an empty directory for a new blendHX project");
+	}
+	public static function onBrowseForNewProject(e:Event):Void
+	{
+		var file:File = e.target;
+		file.removeEventListener(Event.SELECT, onBrowseForNewProject);
+		
+		if(file.getDirectoryListing().length > 0)
+		{
+			trace("Directory is not empty");
+			return;
+		}
+
+		var newProjectTemplate:File = File.applicationDirectory.resolvePath("templates/New blendHX Project");
+		newProjectTemplate.copyTo(file, true);
+		
+		var bytes:ByteArray = new ByteArray();
+		bytes.writeObject(file.nativePath);
+		bytes.position = 0;
+		EncryptedLocalStore.setItem("projectDirectory", bytes);
+		
+		
+		restartApplication();
+	}
+		
 	public static function setNewProjectDirectory(e:Event):Void
 	{
 		var file:File = e.target;
+		file.removeEventListener(Event.SELECT, setNewProjectDirectory);
 		var casheDirectory:File = file.resolvePath("cashe");
 		var sourceDirectory:File = file.resolvePath("source");
 		
@@ -136,7 +174,7 @@ class Project
 			bytes.position = 0;
 			EncryptedLocalStore.setItem("projectDirectory", bytes);
 			
-			NativeApplication.nativeApplication.exit();
+			restartApplication();
 		}
 		else
 		{
@@ -149,7 +187,14 @@ class Project
 	{
 		Assets.projectDirectory.openWithDefaultApplication();
 	}
-
+	
+	private static function restartApplication()
+	{
+		NativeApplication.nativeApplication.exit();
+		var restartBat:File = File.applicationDirectory.resolvePath("apps/restart.bat");
+		restartBat.openWithDefaultApplication();
+	}
+	
 	private static function loadCompleteHandler(event:Event)
 	{
 		urlLoader.removeEventListener(Event.COMPLETE, loadCompleteHandler);

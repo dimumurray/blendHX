@@ -27,6 +27,11 @@ class Camera extends Component
 		if( Scene.getInstance().editorCamera != this )
 			Scene.getInstance().gameCamera = this;
 	}
+	override public function uninitilize():Void
+	{
+		if( Scene.getInstance().gameCamera == this )
+			Scene.getInstance().gameCamera = null;
+	}
 	override public function clone():Dynamic
 	{
 		var copy:Camera = new Camera();

@@ -14,7 +14,7 @@ import flash.events.MouseEvent;
 
 class EditorCameraController extends Component
 {
-	public var distance:Float = 4;
+	public var distance:Float = 7;
 	public var target:Vector3D = new Vector3D(0, 0, 0);
 	private var easeDiffVector:Vector3D = new Vector3D(0, 0, 0);
 	private var angleX:Float = 0;

@@ -74,6 +74,7 @@ class RightClickMenu
 		NativeApplication.nativeApplication.exit();
 	}
 	
+	
 	private static function openGithubPage(_)
 	{
 		var urlRequest:URLRequest = new URLRequest( "https://github.com/mehdadoo/blendhx" );

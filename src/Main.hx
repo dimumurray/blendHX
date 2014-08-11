@@ -96,13 +96,11 @@ class Main extends Entity
     	Scene.getInstance().initilize();
 		HierarchyPanel.getInstance().populate();
 		Space.Resize();
-		
     	loadProject();
     }
 
     function onAssetsReady():Void
     {
-		trace("Assets Ready");
 		Scene.getInstance().createDefaultSceneObjects();
 		HierarchyPanel.getInstance().populate();
 		

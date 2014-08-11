@@ -1,1 +1,1 @@
-timecmd.bat haxe scripts.hxml
+haxe scripts.hxml

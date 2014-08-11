@@ -1,4 +1,5 @@
 package blendhx.core;
+import flash.utils.ByteArray;
 
 #if flash
 import flash.system.System;
@@ -48,18 +49,19 @@ class Scene extends Entity
 	
 	public function gotoEditMode()
 	{
+		
+		editorObjects.initilize();
 		activeCamera = editorCamera;
 		
-		addChild(editorObjects);
-		editorObjects.initilize();
-		
 		addChild(sceneObjects);
-		
+		sceneObjects.initilize();
 		
 		if(playModeSceneObjects!= null)
 		{
-			//removeChild(playModeSceneObjects);
-			//playModeSceneObjects.destroy();
+			removeChild(playModeSceneObjects);
+			playModeSceneObjects.uninitilize;
+			playModeSceneObjects.destroy();
+			playModeSceneObjects = null;
 		}
 			
 		HierarchyPanel.getInstance().populate();
@@ -70,12 +72,21 @@ class Scene extends Entity
 	
 	public function gotoPlayMode()
 	{
+		editorObjects.uninitilize();
+		
+		removeChild(sceneObjects);
+		sceneObjects.uninitilize();
+		
+		var bytes:ByteArray = new ByteArray();
+		bytes.writeObject( sceneObjects );
+		bytes.position = 0;
+		playModeSceneObjects = bytes.readObject();
+		addChild(playModeSceneObjects);
+		playModeSceneObjects.initilize();
+		
 		activeCamera = gameCamera;
-		removeChild(editorObjects);
-		//sceneObjects.uninitilize();
-		playModeSceneObjects = sceneObjects;
-		//playModeSceneObjects = cast sceneObjects.clone();
-		//addChild(playModeSceneObjects);
+		
+		bytes = null;
 		
 		HierarchyPanel.getInstance().populate();
 	}
@@ -85,7 +96,6 @@ class Scene extends Entity
 	}
 	private function createEditorObjects()
 	{
-		//var cameraEntityContainter:Entity;
 		var cameraEntity:Entity;
 		var camera:Camera;
     	var transform:Transform;
@@ -94,7 +104,6 @@ class Scene extends Entity
 		editorObjects = new Entity("Editor");
 		editorObjects.collapsedInEditor = true;
 		
-		//cameraEntityContainter = new Entity("Camera Container");
 			
 		cameraEntity = new Entity("Editor Camera");
 		camera = new Camera();
@@ -109,8 +118,7 @@ class Scene extends Entity
 		
 		gridEntity = new GridFloor();
 		
-		addChild(editorObjects);
-		//cameraEntityContainter.addChild(cameraEntity);
+		
     	editorObjects.addChild(cameraEntity);
 		editorObjects.addChild(gridEntity);
 		

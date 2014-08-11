@@ -263,7 +263,7 @@ class IO
 		AssetsPanel.getInstance().populate();
 		
 		
-		var atfTool = File.applicationDirectory.resolvePath("png2atf.exe");
+		var atfTool = File.applicationDirectory.resolvePath("apps/png2atf.exe");
 		var args:Vector<String> = new Vector<String>();
 		args.push("-c");
 		args.push("d");
