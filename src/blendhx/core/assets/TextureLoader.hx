@@ -52,7 +52,7 @@ class TextureLoader
 		urlLoader.removeEventListener(Event.COMPLETE, wellNowTryUploading );
 		urlLoader.removeEventListener(IOErrorEvent.IO_ERROR, urlLoaderIOError);
 		urlLoader = null;
-		Debug.Log( e.text);
+		trace( e.text);
 	}
 	
 	
@@ -79,7 +79,7 @@ class TextureLoader
 	}	
 	private function onTextureUploadError(e:ErrorEvent)
 	{
-		Debug.Log(casheURL + ": " + e.text);
+		trace(casheURL + ": " + e.text);
 		if(onTextureReady!= null)
 			onTextureReady();
 		

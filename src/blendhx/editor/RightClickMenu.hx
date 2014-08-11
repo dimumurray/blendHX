@@ -97,7 +97,6 @@ class RightClickMenu
 	{
 		var fileItem:FileItem = richClickedFileItem;
 		var file:File = AssetsPanel.currentDirectory.resolvePath( fileItem.fileName );
-		//file.addEventListener();
 			
 		if(file.isDirectory)
 		{
@@ -105,7 +104,7 @@ class RightClickMenu
 				file.deleteDirectory(false);
 				AssetsPanel.getInstance().populate();
 			}
-			catch(e:Error){Debug.Log(e.message);}
+			catch(e:Error){trace(e.message);}
 		}
 		else
 			IO.DeleteFile(file);

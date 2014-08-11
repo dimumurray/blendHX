@@ -39,11 +39,12 @@ monthday tasks
 809	editor camera
 809	console space
 810	global panels click and focus manager
+811	fix:assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
+812	fix:new project space charachter in address causes compile scripts bug
+	fix:transform component and custom script are not initialized correctly, NaN in transform value
 	application menu bar
 	edit mode/play mode
-	fix:assets uniques cashe name(name conlict when creating new assets if already created assets are renamed)
-	fix:new project space charachter in address causes compile scripts bug
-	fix:transform component and custom script are not initialized correctly, NaN in transform value
+	
 	----------v.5 preview
 	
 	fix:transform component code review: parent calculation, local matrix calculation, localToGlobal, globalToLocal. Hierarchy reparenting transform fix

@@ -34,10 +34,18 @@ class IO
 		
 	}
 	
+	public static function DeleteCasheFile( casheURL:String )
+	{
+		var casheFile:File =  Assets.casheDirectory.resolvePath( casheURL );
+		if (casheFile.exists)
+			casheFile.moveToTrash();
+
+	}
+	
 	public static function DeleteFile( file:File )
 	{
 		if (file.isDirectory)
-			file.deleteDirectory(true);
+			file.deleteDirectory(false);
 		else
 			file.moveToTrash();
 		
@@ -62,7 +70,7 @@ class IO
 		}
 		
 		var sourceURL:String = getLocalURL(newMaterial);
-		var casheURL:String = newMaterial.name;
+		var casheURL:String = getUniqueCasheName("material", "data");
 		
 		var material:Material = new Material(sourceURL, casheURL);
 		material.shaderURL = "shaders/UnlitShader.hx";
@@ -156,13 +164,13 @@ class IO
 		
 		if(sourceFolderFile.exists)
 		{
-			Debug.Log("File already exists");
+			trace("File already exists");
 			return;
 		}
 		file.copyTo(sourceFolderFile);
 		
 		var sourceURL:String = getLocalURL( sourceFolderFile );
-		var casheURL:String = file.name.substr( 0, file.name.length - 3) +"mesh";
+		var casheURL:String = getUniqueCasheName("mesh", "data");
 		new MeshLoader(sourceURL, casheURL, onMeshReady);
 		
 		var newXMLString:String =  blendhx.editor.data.AS3XMLHelper.AddMesh(Assets.xml.toString(), sourceURL, casheURL);
@@ -178,7 +186,7 @@ class IO
 		
 		if(sourceFolderFile.exists)
 		{
-			Debug.Log("File already exists");
+			trace("File already exists");
 			return;
 		}
 			
@@ -193,7 +201,7 @@ class IO
 		
 		if(!loadFile.exists )
 		{
-			Debug.Log("Material not found: "+loadFile.nativePath);
+			trace("Material not found: "+loadFile.nativePath);
 			return null;
 		}
 		
@@ -215,7 +223,7 @@ class IO
 		
 		if(!loadFile.exists)
 		{
-			Debug.Log("Mesh not found: "+loadFile.nativePath);
+			trace("Mesh not found: "+loadFile.nativePath);
 			return null;
 		}
 		
@@ -241,7 +249,7 @@ class IO
 		
 		if( Process.getInstance().isRunning() )
 		{
-			Debug.Log("There is another process running");
+			trace("There is another process running");
 			return null;
 		}
 		
@@ -250,7 +258,7 @@ class IO
 		file.copyTo(sourceFolderFile);
 		
 		var sourceURL:String = getLocalURL( sourceFolderFile );
-		var casheURL:String = file.name;
+		var casheURL:String = getUniqueCasheName("texture", "atf");
 		
 		AssetsPanel.getInstance().populate();
 		
@@ -306,6 +314,17 @@ class IO
 	}
 	
 	
+	private static function getUniqueCasheName(prefix:String, extension:String):String
+	{
+		var newFile:File =  Assets.casheDirectory.resolvePath(prefix+"."+extension);
+		var i:UInt = 1;
+		while( newFile.exists )
+		{
+			newFile = Assets.casheDirectory.resolvePath(prefix+i+"."+extension);
+			i++;
+		}
+		return newFile.name;
+	}
 	
 	private inline static function getLocalURL(file:File):String
 	{

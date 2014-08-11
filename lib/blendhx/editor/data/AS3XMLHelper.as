@@ -3,6 +3,12 @@ package blendhx.editor.data
 
 	public class AS3XMLHelper
 	{
+		public static function GetAssetsLength( xmlString:String):int
+		{
+			var myXML:XML = new XML( xmlString );
+			return myXML.materials.material.length() + myXML.meshes.mesh.length() + myXML.textures.texture.length();
+		}
+		
 		public static function Remove( xmlString:String, sourceURL:String ):String
 		{
 			var myXML:XML = new XML( xmlString );

@@ -103,7 +103,7 @@ class FileItem extends DragableItem
 			}
 			catch(e:Error)
 			{
-				Debug.Log(e.message);
+				trace(e.message);
 				return;
 			}
 				

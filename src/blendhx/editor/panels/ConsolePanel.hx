@@ -30,6 +30,7 @@ class ConsolePanel extends Panel
 	{
 		super("Console", Space.SPACE_WIDTH);
 		initialize();
+		haxe.Log.trace = log;
 	}
 	
 	private function initialize()
@@ -46,7 +47,7 @@ class ConsolePanel extends Panel
 		t.height = _height;
 		t.selectable = true;
 		t.y = Space.GetSpace(Space.HEADER)._height;
-		t.text = "";
+		t.text = "Log console initialized. Use trace(object:Dynamic, color:UInt=0xa0a0a0) to use.\n";
 		addChild(t);
 		t.x = 5;
 		
@@ -57,9 +58,19 @@ class ConsolePanel extends Panel
 		log_textfield.text = "";
 	}
 	
-	public function log(object:Dynamic):Void
+	public function log( v : Dynamic, ?inf : haxe.PosInfos ):Void
 	{
-		log_textfield.appendText( Std.string (object) +'\n');
+		var oldtf:TextFormat = log_textfield.defaultTextFormat;
+		if(inf.customParams != null)
+		{
+			var newtf:TextFormat = new TextFormat();
+			newtf.font = "Segoe UI";
+			newtf.color = inf.customParams[0];
+			log_textfield.defaultTextFormat = newtf;
+		}
+			
+		log_textfield.appendText( inf.className+", line "+inf.lineNumber+": " +Std.string (v) +'\n');
+		log_textfield.defaultTextFormat = oldtf;
 	}
 	
 	override public function drawGraphics():Void

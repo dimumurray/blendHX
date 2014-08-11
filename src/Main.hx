@@ -44,7 +44,7 @@ class Main extends Entity
 	
 	private function loadProject()
 	{
-		Assets.SetProjectDirectory( File.desktopDirectory.resolvePath("NewProject") );
+		Assets.SetProjectDirectory( File.desktopDirectory.resolvePath("New Project") );
 	}
 
     function initStage()
@@ -98,6 +98,7 @@ class Main extends Entity
 
     function onAssetsReady():Void
     {
+		trace("Assets Ready");
 		Scene.getInstance().createDefaultSceneObjects();
 		HierarchyPanel.getInstance().populate();
 	}

@@ -19,7 +19,6 @@ import blendhx.core.Utils;
 import blendhx.core.components.Component;
 import blendhx.core.assets.Assets;
 import blendhx.editor.data.Process;
-import blendhx.editor.Debug;
 import blendhx.editor.Progressbar;
 import blendhx.editor.data.AS3DefinitionHelper;
 import blendhx.core.shaders.DefaultShader;
@@ -42,19 +41,18 @@ class UserScripts
 	
 		if( Process.getInstance().isRunning() )
 		{
-			Debug.Log("There is another process running");
+			trace("There is another process running");
 			return null;
 		}
 		
 		var file:File = Assets.projectDirectory.resolvePath( "compile.cmd" );
 		
 		var args:Vector<String> = new Vector<String>();
-		args.push(Assets.projectDirectory.nativePath);
 		Progressbar.getInstance().show(true, "Compiling");
 		
 		var process:Process = Process.getInstance();
 		process.onComplete = loadScripts;
-		process.startProcess(args, file);
+		process.startProcess(args, file, Assets.projectDirectory);
 	}
 	
 	public static function loadScripts()
@@ -77,7 +75,7 @@ class UserScripts
 			onScriptsLoaded();
 		onScriptsLoaded = null;
 		
-		Debug.Log("Problem loading user scripts");
+		trace("Problem loading user scripts");
 	}
 
 	private static function onBytesComplete(e : Event)
@@ -116,12 +114,12 @@ class UserScripts
 		var componentClass:Class<Dynamic> = userScriptsDomain.getDefinition( Utils.GetClassNameFromURL( classURL ) ); 
 		if(componentClass == null)
 		{
-			Debug.Log("Script definition not found. Consider re compiling");
+			trace("Script definition not found. Consider re compiling");
 			return null;
 		}
 		else if(Type.getSuperClass(componentClass) != Component)
 		{
-			Debug.Log("Applied script is not extending blendhx.Component");
+			trace("Applied script is not extending blendhx.Component");
 			return null;
 		}
 		

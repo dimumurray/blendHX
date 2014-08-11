@@ -26,11 +26,11 @@ class TexturePropertiesLoader
 		if( isPowerOfTwo(width) && isPowerOfTwo(height))
 			onComplete( this );
 		else
-			Debug.Log("Non power of 2");
+			trace("Non power of 2");
 	}
 	private function onError( e:IOErrorEvent )
 	{
-		Debug.Log("File corrupt");
+		trace("File corrupt");
 	}
 	private inline function isPowerOfTwo(n:Int):Bool
 	{

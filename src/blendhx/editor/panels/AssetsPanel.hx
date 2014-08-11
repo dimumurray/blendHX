@@ -82,13 +82,15 @@ class AssetsPanel extends Panel
 		}
 			
 		var renamedFile:File = rightClickedFile.parent.resolvePath( renameInput.value );
-
+		//dont rename if it's a folder and contians files
 		if( rightClickedFile.isDirectory && rightClickedFile.getDirectoryListing().length>0)
 			return;
+		//don't rename if it want's in fact renamed at all
 		else if( getLocalURL(rightClickedFile) ==  getLocalURL(renamedFile)  )
 			return;
+		//don't rename if a file with the same name already exists on the hard drive
 		else if (renamedFile.exists)
-			Debug.Log("A file with the new name already exists");
+			trace("A file with the new name already exists");
 		else
 		{
 			Assets.MoveAsset( getLocalURL(rightClickedFile), getLocalURL(renamedFile) );

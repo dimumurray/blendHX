@@ -45,15 +45,19 @@ class Process extends EventDispatcher
 		process.addEventListener(ProgressEvent.STANDARD_ERROR_DATA, onProcessErrorData);
 		process.addEventListener(NativeProcessExitEvent.EXIT, onProcessExit);
 	}
-	public function startProcess(args:Vector<String>, file:File)
+	public function startProcess(args:Vector<String>, file:File, workingDirectory:File= null)
 	{
 		if (isRunning())
 		{
-			Debug.Log("There is another process running");
+			trace("There is another process running");
 			return;
 		}
 
 		var nativeProcessStartupInfo:NativeProcessStartupInfo = new NativeProcessStartupInfo();
+		if(workingDirectory!= null)
+		{
+			nativeProcessStartupInfo.workingDirectory = workingDirectory;
+		}
 		nativeProcessStartupInfo.arguments = args;
 		nativeProcessStartupInfo.executable = file;
 
@@ -62,13 +66,13 @@ class Process extends EventDispatcher
 		{
 			process.start(nativeProcessStartupInfo);
 		} catch (e:IllegalOperationError) {
-			Debug.Log("Illegal Operation: " + e.toString());
+			trace("Illegal Operation: " + e.toString());
 			cleanup();
 		} catch (ae:ArgumentError) {
-			Debug.Log("Argument Error: " + ae.toString());
+			trace("Argument Error: " + ae.toString());
 			cleanup();
 		} catch (e:Error) {
-			Debug.Log("Try Error: " + e.toString());
+			trace("Try Error: " + e.toString());
 			cleanup();
 		}
 	}
@@ -99,7 +103,7 @@ class Process extends EventDispatcher
 			
 		}
 		var errorData:String = process.standardError.readUTFBytes(process.standardError.bytesAvailable);
-		Debug.Log("process error:"+errorData);
+		trace("process error:"+errorData);
 		cleanup();
 	}
 	

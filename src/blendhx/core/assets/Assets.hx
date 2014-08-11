@@ -5,7 +5,6 @@ import haxe.xml.Fast;
 import blendhx.editor.Progressbar;
 import blendhx.editor.data.IO;
 import blendhx.editor.data.UserScripts;
-import blendhx.editor.Debug;
 
 import flash.display.Loader;
 import flash.display.LoaderInfo;
@@ -69,8 +68,8 @@ class Assets
 		ldr.removeEventListener(Event.COMPLETE, loadXMLComplete);
 		ldr.removeEventListener(IOErrorEvent.IO_ERROR, loadXMLError);
 		ldr = null;
-		Debug.Log("Critical Error. assets.xml is not found. Ask for help through website");
-		Debug.Log(e.text);
+		trace("Critical Error. assets.xml is not found. Ask for help through website", 0xff0000);
+		trace(e.text, 0xff0000);
 	}
 	
 	
@@ -78,8 +77,8 @@ class Assets
 	{
 		xml = Xml.parse(e.target.data);
 		var fast = new Fast(xml.firstElement());
-		var length:UInt=10;
-		
+		var length:UInt= blendhx.editor.data.AS3XMLHelper.GetAssetsLength( xml.toString() );
+		trace(length);
 		//show the progressbar untill everything is laoded
 		Progressbar.getInstance().show(false, "Loading", onAssetsReady);
 		Progressbar.getInstance().totalJobs = length;
@@ -176,6 +175,7 @@ class Assets
 			{
 				materials.remove(material);
 				material.destroy();
+				IO.DeleteCasheFile(material.casheURL);
 				return;
 			}
 		}
@@ -185,6 +185,7 @@ class Assets
 			{
 				textures.remove(texture);
 				texture.destroy();
+				IO.DeleteCasheFile(texture.casheURL);
 				return;
 			}
 		}
@@ -194,6 +195,7 @@ class Assets
 			{
 				meshes.remove(mesh);
 				mesh.destroy();
+				IO.DeleteCasheFile(mesh.casheURL);
 				return;
 			}
 		}
@@ -219,7 +221,7 @@ class Assets
 		}
 
 		if(sourceURL != "" && sourceURL != "null")
-			Debug.Log("Texture " + sourceURL +" not found.");
+			trace("Texture " + sourceURL +" not found.", 0xff6600);
 		return null;
 
 	}
@@ -236,7 +238,7 @@ class Assets
 		}
 
 		if(sourceURL != "" && sourceURL != "null")
-			Debug.Log("Mesh " + sourceURL +" not found.");
+			trace("Mesh " + sourceURL +" not found.", 0xff6600);
 
 		return null;
 
@@ -254,7 +256,7 @@ class Assets
 		}
 
 		if(sourceURL != "" && sourceURL != "null")
-			Debug.Log("Material " + sourceURL +" not found.");
+			trace("Material " + sourceURL +" not found.", 0xff6600);
 		return null;
 
 	}

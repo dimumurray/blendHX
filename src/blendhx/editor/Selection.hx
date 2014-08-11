@@ -84,7 +84,7 @@ class Selection
 	
 		if(uiElement != null && e!= null &&e.target!= uiElement )
 		{
-			Debug.Log(e.target);
+			trace(e.target);
 			uiElement.unfocus();
 			uiElement = null;
 		}
@@ -141,7 +141,7 @@ class Selection
 		if( isHierarchyItem() )
 			return hierarchyItem.entity;
 					
-		Debug.Log("No Entity is selected");
+		trace("No Entity is selected");
 		return null;
 	}
 	
@@ -158,7 +158,7 @@ class Selection
 		if(hierarchyItem != null)
 			return hierarchyItem;
 		
-		Debug.Log("No hierarchy item is selected");
+		trace("No hierarchy item is selected");
 		return null;
 	}
 

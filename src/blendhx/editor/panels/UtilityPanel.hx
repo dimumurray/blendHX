@@ -66,18 +66,18 @@ class UtilityPanel extends Panel
 		urlLoader.addEventListener(Event.COMPLETE, loadCompleteHandler);
 		urlLoader.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
 		urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
-		var urlRequest:URLRequest = new URLRequest(Assets.casheDirectory.resolvePath("data.bin").nativePath ) ;
+		var urlRequest:URLRequest = new URLRequest(Assets.casheDirectory.resolvePath("entities.bin").nativePath ) ;
 		urlLoader.load(urlRequest);
 	}
 	
 	private function onIOError(e:IOErrorEvent):Void
 	{
-		Debug.Log("data.bin Not Found");
+		trace("data.bin Not Found");
 	}
 	
 	private function saveCompleteHandler(e:Event)
 	{
-		Debug.Log("saved");
+		trace("saved");
 	}
 
 	private function loadCompleteHandler(event:Event)

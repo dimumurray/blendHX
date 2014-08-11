@@ -3,7 +3,6 @@ package blendhx.core.systems;
 import blendhx.core.components.Camera;
 import blendhx.core.assets.Mesh;
 import blendhx.core.components.*;
-import blendhx.editor.Debug;
 import blendhx.core.shaders.DefaultShader;
 import hxsl.Shader;
 import flash.events.ErrorEvent;
@@ -55,7 +54,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
 
     function context3DError(e:ErrorEvent)
     {
-    	Debug.Log(e.text);
+    	trace(e.text);
     }
 
     function initContext3D(e:Event)
@@ -72,7 +71,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
 
     function onError(e:ErrorEvent)
     {
-    	Debug.Log(e.text);
+    	trace(e.text);
     }
 
     public function update()
@@ -107,7 +106,7 @@ class RenderingSystem extends EventDispatcher implements ISystem
     		} catch(e:Error) {
     			if (shaderError != e.message) {
     				shaderError = e.message;
-    				Debug.Log(shaderError);
+    				trace(shaderError);
     			};
     			shader.unbind(context3D);
     			shader = defaultShader;

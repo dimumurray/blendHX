@@ -1,6 +1,5 @@
 package blendhx.core.components;
 
-import blendhx.editor.Debug;
 /*
 Entitys contain components, a simple composition pattern
  */
@@ -104,7 +103,7 @@ class Entity extends Component
 				existingChildClass = Std.string( existingChild );
 				if( childClass ==  existingChildClass )
 				{
-					Debug.Log("You can't add same component twice: "+this.name +","+ existingChild +", "+ child);
+					trace("You can't add same component twice: "+this.name +","+ existingChild +", "+ child);
 					child.destroy();
 					return;
 				}

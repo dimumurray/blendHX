@@ -1,7 +1,6 @@
 package blendhx.core.assets;
 
 import blendhx.core.systems.RenderingSystem;
-import blendhx.editor.Debug;
 import flash.events.IOErrorEvent;
 import flash.errors.Error;
 import flash.net.URLRequest;
@@ -69,7 +68,7 @@ class MeshLoader
 	private function onIOError(e:IOErrorEvent):Void
 	{
 		destroy();
-		Debug.Log(e.text);
+		trace(e.text);
 	}
 	
 	private function destroy()

@@ -1,7 +1,6 @@
 package blendhx.core.assets;
 
 import blendhx.core.Utils;
-import blendhx.editor.Debug;
 import blendhx.editor.data.UserScripts;
 import blendhx.editor.data.AS3DefinitionHelper;
 import hxsl.Shader;
