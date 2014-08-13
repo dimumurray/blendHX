@@ -29,9 +29,17 @@ class Project
 	{
 		onProjectOpen = callBack;
 		var projectDirectory:File;
-		var bytes:ByteArray;
+		var bytes:ByteArray = null;
 		var projectDirectory:File;
-		bytes = flash.data.EncryptedLocalStore.getItem("projectDirectory");
+		
+		try
+		{
+			bytes = flash.data.EncryptedLocalStore.getItem("projectDirectory");
+		}
+		catch(e:Dynamic)
+		{
+			EncryptedLocalStore.reset();
+		}
 		
 		if(bytes!=null)
 		{

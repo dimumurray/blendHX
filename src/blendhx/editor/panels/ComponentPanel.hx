@@ -1,4 +1,5 @@
 package blendhx.editor.panels;
+import flash.Lib;
 import blendhx.editor.data.UserScripts;
 import blendhx.core.Utils;
 
@@ -28,7 +29,7 @@ class ComponentPanel extends Panel
 	public function new(title:String) 
 	{
 		super(title, Space.SPACE_WIDTH, true);
-		addEventListener(flash.events.Event.ENTER_FRAME, getValues);
+		//addEventListener(flash.events.Event.ENTER_FRAME, getValues);
 		
 	}
 	
@@ -60,7 +61,7 @@ class ComponentPanel extends Panel
 				case "Entity":
 					input = new ObjectInput(FileType.ENTITY, 2, 2, input_y, setValues, this);
 				case "Color":
-					input = new TextInput( "0xffffff77", 2, 2, input_y, setValues, this);
+					input = new TextInput( "0xffffffff", 2, 2, input_y, setValues, this);
 				case "String":
 					input = new TextInput( "text", 2, 2, input_y, setValues, this);
 				default:
@@ -68,7 +69,6 @@ class ComponentPanel extends Panel
 			}
 			input_y += 30;
 			property_inputs.push(input);
-			getValues(null);
 		}
 	}
 	
@@ -100,12 +100,12 @@ class ComponentPanel extends Panel
 	
 	public function setValues()
 	{
+		
 		if (parent == null || hostComponent==null )
 			return;
 		
-		var propertieslength:Int = Std.int( hostComponentProperties.length / 2 );
-		
-		var length:Int = Std.int( property_inputs.length / 2 );
+		var propertieslength:Int = Std.int( property_inputs.length / 2 );
+		var length:Int = Std.int( hostComponentProperties.length / 2 );
 		
 		//when inputs are created, this is called unfairly, that shouldnt. we wont resume when loop at createInputs is still running
 		if( length != propertieslength)
@@ -117,24 +117,25 @@ class ComponentPanel extends Panel
 			hostComponent.properties.set( hostComponentProperties[i*2] , value );
 			Reflect.setField(hostComponent, hostComponentProperties[i*2], value);
 		}
+
+		
 	}
-	
-	
-	private function getValues(_) 
+
+
+	private function getValues(_)
 	{
+		trace("get");
 		if (parent == null || hostComponent==null )
 			return;
-		
-		var editorProperties:Array<String> = hostComponentProperties;
+
 		var length:Int = Std.int( property_inputs.length / 2 );
 		for (i in 0...length)
 		{
-			 
-			var value = hostComponent.properties.get( editorProperties[i*2] );
+			var value = hostComponent.properties.get( hostComponentProperties[i*2] );
 			property_inputs[i*2+1].value = value;
 		}
 	}
-	
+
 	override public function resize()
 	{
 		if ( parent == null || hostComponent == null)

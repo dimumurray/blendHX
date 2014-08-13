@@ -94,14 +94,8 @@ class NumberInput extends UIElement
 	private function onKeyDown(e:KeyboardEvent)
 	{
 		if (e.keyCode == Keyboard.ENTER)
-		{
 			unfocus();
-			
-		}
-		if (!editing)
-		{
-			updateValue();
-		}
+		
 	}
 	
 	override public function focus()

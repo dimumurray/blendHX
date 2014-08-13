@@ -1,4 +1,5 @@
 package blendhx.editor.panels;
+import flash.text.TextFieldType;
 import flash.text.TextField;
 
 import blendhx.editor.spaces.*;
@@ -12,8 +13,6 @@ import flash.text.TextFieldAutoSize;
  */
 class ConsolePanel extends Panel
 {
-	
-	
 	public var log_textfield:TextField;
 	
 	private static var instance:ConsolePanel;
@@ -46,6 +45,7 @@ class ConsolePanel extends Panel
 		t.width = 170;
 		t.height = _height;
 		t.selectable = true;
+		t.type = TextFieldType.INPUT;
 		t.y = Space.GetSpace(Space.HEADER)._height;
 		t.text = "Log console initialized. Use trace(object:Dynamic, color:UInt=0xa0a0a0) to use.\n";
 		addChild(t);

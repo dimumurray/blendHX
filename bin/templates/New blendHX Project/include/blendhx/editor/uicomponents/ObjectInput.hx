@@ -75,8 +75,12 @@ class ObjectInput extends UIElement
 		
 		value = param;
 		text = param.toString();
+		if(text == "[object Entity]")
+			text = param.name;
 		label.text = param.toString();
-		onChange();
+		if(label.text == "[object Entity]")
+			label.text = param.name;
+		
 		
 		return param; 
 	}
@@ -116,6 +120,8 @@ class ObjectInput extends UIElement
 		value =  hostObject.dragValue;
 		label.text = hostObject.dragText;
 		drawBox(over, null);
+		
+		onChange();
 	}
 
 	
