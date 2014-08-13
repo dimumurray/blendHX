@@ -3,7 +3,6 @@ package blendhx.core.components;
 
 class Component
 {
-	public var editorProperties:Array<String> = [];
 	public var properties:Map<String, Dynamic> = new Map<String, Dynamic>();
 	
 	public var enabled:Bool = true;
@@ -12,7 +11,6 @@ class Component
 	public var transform:Transform;
 	@:isVar public var parent(get, set):Entity;
 	
-	public function updateProperties(values:Array<Dynamic>){}
 	public function update():Void{}
 	public function initilize():Void{}
 	public function uninitilize():Void{}

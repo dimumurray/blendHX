@@ -1,4 +1,6 @@
 package blendhx.editor.panels;
+import blendhx.editor.data.UserScripts;
+import blendhx.core.Utils;
 
 import blendhx.core.components.Component;
 import blendhx.editor.uicomponents.UIElement;
@@ -12,7 +14,7 @@ import blendhx.editor.Selection;
 import blendhx.editor.uicomponents.*;
 import blendhx.editor.spaces.Space;
 
-
+import haxe.rtti.Meta;
 /**
 
  * GPL
@@ -20,13 +22,16 @@ import blendhx.editor.spaces.Space;
  */
 class ComponentPanel extends Panel
 {
-	var property_inputs:Array<UIElement> = [];
+	private var hostComponentProperties:Array<String> = [];
+	private var property_inputs:Array<UIElement> = [];
 	
 	public function new(title:String) 
 	{
 		super(title, Space.SPACE_WIDTH, true);
 		addEventListener(flash.events.Event.ENTER_FRAME, getValues);
+		
 	}
+	
 	
 	public function createInputs()
 	{
@@ -37,20 +42,21 @@ class ComponentPanel extends Panel
 		}
 		property_inputs = [];
 	
-		var editorProperties:Array<String> = hostComponent.editorProperties;
-		var length:Int = Std.int( editorProperties.length / 2 );
+		hostComponentProperties = getMetaDataProperties();
+
+		var length:Int = Std.int( hostComponentProperties.length / 2 );
 		var input_y:Int = 30;
 		var input:UIElement;
 		
 		for (i in 0...length)
 		{
-			input = new Label(editorProperties[i*2]+":", 1, 2, input_y, this);
+			input = new Label(hostComponentProperties[i*2]+":", 1, 2, input_y, this);
 			property_inputs.push(input);
 	
-			switch ( editorProperties[ (i*2) +1] )
+			switch ( hostComponentProperties[ (i*2) +1] )
 			{
 				case "Float":
-					input = new NumberInput(editorProperties[i*2], 2, 2, input_y, setValues, this, NumberInput.ROUND_BOTH);
+					input = new NumberInput(hostComponentProperties[i*2], 2, 2, input_y, setValues, this, NumberInput.ROUND_BOTH);
 				case "Entity":
 					input = new ObjectInput(FileType.ENTITY, 2, 2, input_y, setValues, this);
 				case "Color":
@@ -66,13 +72,39 @@ class ComponentPanel extends Panel
 		}
 	}
 	
+	//helper function to create editor properties out of meta data tags attached to the host component
+	private function getMetaDataProperties():Array<String>
+	{
+		var properties:Array<String> = [];
+		var classDef:Class<Dynamic> = blendhx.editor.data.AS3DefinitionHelper.getClass(UserScripts.userScriptsDomain, hostComponent);
+		if(classDef != null)
+		{
+
+			var editor = Meta.getFields(classDef);
+			var editorString = Std.string( editor );
+
+			var editorObjects = editorString.split(", ");
+
+			for (s in editorObjects)
+			{
+				s = StringTools.replace(s, "{ ", "");
+				var fieldName = s.substring(0, s.indexOf(" : "));
+				var fieldType = s.substring(s.lastIndexOf(" : [")+4, s.lastIndexOf("]"));
+				properties.push(fieldName);
+				properties.push(fieldType);
+			}
+		}
+		return properties;
+	}
+	 
+	
 	public function setValues()
 	{
 		if (parent == null || hostComponent==null )
 			return;
 		
-		var propertieslength:Int = Std.int( hostComponent.editorProperties.length / 2 );
-		var values:Array<Dynamic> = [];
+		var propertieslength:Int = Std.int( hostComponentProperties.length / 2 );
+		
 		var length:Int = Std.int( property_inputs.length / 2 );
 		
 		//when inputs are created, this is called unfairly, that shouldnt. we wont resume when loop at createInputs is still running
@@ -82,11 +114,9 @@ class ComponentPanel extends Panel
 		for (i in 0...length)
 		{
 			var value = property_inputs[ (i*2) +1].value;
-			hostComponent.properties.set( hostComponent.editorProperties[i*2] , value );
-			values.push(value);
+			hostComponent.properties.set( hostComponentProperties[i*2] , value );
+			Reflect.setField(hostComponent, hostComponentProperties[i*2], value);
 		}
-		var component:Component = cast hostComponent;
-		component.updateProperties(values);
 	}
 	
 	
@@ -95,7 +125,7 @@ class ComponentPanel extends Panel
 		if (parent == null || hostComponent==null )
 			return;
 		
-		var editorProperties:Array<String> = hostComponent.editorProperties;
+		var editorProperties:Array<String> = hostComponentProperties;
 		var length:Int = Std.int( property_inputs.length / 2 );
 		for (i in 0...length)
 		{
@@ -104,14 +134,21 @@ class ComponentPanel extends Panel
 			property_inputs[i*2+1].value = value;
 		}
 	}
-
+	
 	override public function resize()
 	{
 		if ( parent == null || hostComponent == null)
 			return;
 		
 		super.resize();
-		createInputs();
-		getValues(null);
+		//call these more expensive methods only if there has been a change in the host component
+		if( hasHostComponentChanged() )
+		{
+			createInputs();
+			getValues(null);
+		}
+		
 	}
+
+	
 }

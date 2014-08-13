@@ -71,6 +71,8 @@ class Panel extends Sprite
 	//resize elements inside
 	public function resize()
 	{
+		
+		
 		if(y>50)
 			redrawHeaderLine();
 		drawRemoveButton();
@@ -242,5 +244,16 @@ class Panel extends Sprite
 		
 		return param;
 	}
-
+	
+	//returns true if the host component variable has changed since last time this method was called
+	//used by extending classes, so they won't recreate their UI elements according to the host component if the host hasn't even changed, you see
+	private var previoushostComponent:Component = null;
+	public function hasHostComponentChanged():Bool
+	{
+		var hasChange:Bool = true;
+		if(previoushostComponent == hostComponent)
+			hasChange = false;
+		previoushostComponent = hostComponent;
+		return hasChange;
+	}
 }
