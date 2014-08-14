@@ -143,71 +143,8 @@
             ]
             ,"activeLine" : 4
         }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\ComponentPanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 119
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\Panel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 225
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\data\\UserScripts.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 0
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\panels\\ConsolePanel.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 43
-        }
-        ,{
-             "path" : "src\\blendhx\\core\\components\\Component.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 11
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\uicomponents\\NumberInput.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 151
-        }
-        ,{
-             "path" : "src\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
-            ,"useTabs" : true
-            ,"indentSize" : 4
-            ,"foldedRegions" : [
-
-            ]
-            ,"activeLine" : 70
-        }
     ]
-    ,"activeFile" : "src\\blendhx\\editor\\uicomponents\\ObjectInput.hx"
+    ,"activeFile" : "src\\blendhx\\editor\\panels\\AssetsPanel.hx"
     ,"openFLTarget" : null
     ,"openFLBuildMode" : "Debug"
     ,"runActionType" : null

@@ -73,7 +73,7 @@ protected var _rawColorsBuffer:Vector.<Number>;
 
 
 // the class constructor - where everything begins
-public function ObjParser(ObjBytes:ByteArray, scale:Number = 1, dataIsZxy:Boolean = false, textureFlip:Boolean = false)
+public function ObjParser(ObjBytes:ByteArray, scale:Number = 1, dataIsZxy:Boolean = false, textureFlip:Boolean = true)
 {
 	_vertexDataIsZxy = dataIsZxy;
 	_mirrorUv = textureFlip;

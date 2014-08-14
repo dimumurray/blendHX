@@ -187,7 +187,7 @@ class AssetsPanel extends Panel
 	private function onItemClick(fileItem:FileItem)
 	{
 		
-		trace( currentDirectory.resolvePath(fileItem.fileName).nativePath);
+		
 		if ( fileItem.type == FileType.FOLDER )
 			currentDirectory = currentDirectory.resolvePath(fileItem.fileName);	
 		else if ( fileItem.type == FileType.BACK )

@@ -60,7 +60,7 @@ class MeshLoader
 	}
 	private function parseObj(bytes:ByteArray):Void
 	{
-		var myObjMesh:ObjParser = new ObjParser(bytes);
+		var myObjMesh:ObjParser = new ObjParser(bytes, 1);
 		meshIndexData = myObjMesh.GetIndexData();
 		meshVertexData = myObjMesh.GetVertexData(true, false, false);
 	}
