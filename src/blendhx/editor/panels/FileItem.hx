@@ -1,8 +1,8 @@
 package blendhx.editor.panels;
-import flash.system.ApplicationDomain;
-import flash.events.Event;
-import flash.events.ErrorEvent;
-import flash.errors.Error;
+import openfl.system.ApplicationDomain;
+import openfl.events.Event;
+import openfl.events.ErrorEvent;
+import openfl.errors.Error;
 
 import blendhx.editor.Selection;
 import blendhx.core.*;
@@ -13,16 +13,16 @@ import blendhx.editor.uicomponents.*;
 import blendhx.editor.panels.*;
 import blendhx.editor.spaces.Space;
 import blendhx.editor.assets.FileType;
-import flash.filesystem.File;
-import flash.text.GridFitType;
-import flash.text.AntiAliasType;
-import flash.text.TextFieldAutoSize;
-import flash.geom.Matrix;
-import flash.display.BitmapData;
-import flash.display.Sprite;
-import flash.display.Graphics;
-import flash.text.TextFormatAlign;
-import flash.events.MouseEvent;
+import openfl.filesystem.File;
+import openfl.text.GridFitType;
+import openfl.text.AntiAliasType;
+import openfl.text.TextFieldAutoSize;
+import openfl.geom.Matrix;
+import openfl.display.BitmapData;
+import openfl.display.Sprite;
+import openfl.display.Graphics;
+import openfl.text.TextFormatAlign;
+import openfl.events.MouseEvent;
 
 /**
 * @author 

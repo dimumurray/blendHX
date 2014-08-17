@@ -1,18 +1,18 @@
 package blendhx.core.assets;
 
 import blendhx.core.systems.RenderingSystem;
-import flash.events.IOErrorEvent;
-import flash.errors.Error;
-import flash.net.URLRequest;
-import flash.net.URLLoaderDataFormat;
-import flash.net.URLLoader;
-import flash.utils.ByteArray;
-import flash.display3D.Context3D;
-import flash.Vector;
-import flash.display3D.IndexBuffer3D;
-import flash.display3D.VertexBuffer3D;
+import openfl.events.IOErrorEvent;
+import openfl.errors.Error;
+import openfl.net.URLRequest;
+import openfl.net.URLLoaderDataFormat;
+import openfl.net.URLLoader;
+import openfl.utils.ByteArray;
+import openfl.display3D.Context3D;
+import openfl.Vector;
+import openfl.display3D.IndexBuffer3D;
+import openfl.display3D.VertexBuffer3D;
 import blendhx.editor.data.ObjParser;
-import flash.events.Event;
+import openfl.events.Event;
 
 //manages parsing OBJ's
 //instantiated only by IO.ImportOBJ() and never used again

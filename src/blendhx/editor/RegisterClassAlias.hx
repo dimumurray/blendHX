@@ -12,8 +12,8 @@ class RegisterClassAlias
 	public static function Register() 
 	{
 		haxe.remoting.AMFConnection.registerClassAlias("haxe.ds.StringMap", haxe.ds.StringMap);
-		haxe.remoting.AMFConnection.registerClassAlias("flash.geom.Matrix3D", flash.geom.Matrix3D);
-		haxe.remoting.AMFConnection.registerClassAlias("flash.geom.Vector3D", flash.geom.Vector3D);
+		haxe.remoting.AMFConnection.registerClassAlias("openfl.geom.Matrix3D", openfl.geom.Matrix3D);
+		haxe.remoting.AMFConnection.registerClassAlias("openfl.geom.Vector3D", openfl.geom.Vector3D);
 		
 		
 		haxe.remoting.AMFConnection.registerClassAlias("com.adobe.utils.PerspectiveMatrix3D4",  com.adobe.utils.PerspectiveMatrix3D);

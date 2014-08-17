@@ -6,19 +6,19 @@ import blendhx.editor.Progressbar;
 import blendhx.editor.data.IO;
 import blendhx.editor.data.UserScripts;
 
-import flash.display.Loader;
-import flash.display.LoaderInfo;
-import flash.display3D.textures.Texture;
-import flash.utils.ByteArray;
-import flash.net.URLLoaderDataFormat;
-import flash.net.URLRequest;
-import flash.net.URLLoader;
-import flash.system.SecurityDomain;
-import flash.system.ApplicationDomain;
-import flash.system.LoaderContext;
-import flash.events.Event;
-import flash.events.IOErrorEvent;
-import flash.filesystem.File;
+import openfl.display.Loader;
+import openfl.display.LoaderInfo;
+import openfl.display3D.textures.Texture;
+import openfl.utils.ByteArray;
+import openfl.net.URLLoaderDataFormat;
+import openfl.net.URLRequest;
+import openfl.net.URLLoader;
+import openfl.system.SecurityDomain;
+import openfl.system.ApplicationDomain;
+import openfl.system.LoaderContext;
+import openfl.events.Event;
+import openfl.events.IOErrorEvent;
+import openfl.filesystem.File;
 
 
 class Assets

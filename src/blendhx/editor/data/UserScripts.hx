@@ -1,19 +1,19 @@
 package blendhx.editor.data;
 import hxsl.Shader;
 
-import flash.utils.ByteArray;
-import flash.net.URLLoaderDataFormat;
-import flash.net.URLLoader;
-import flash.net.URLRequest;
-import flash.system.SecurityDomain;
-import flash.display.LoaderInfo;
-import flash.system.ApplicationDomain;
-import flash.system.LoaderContext;
-import flash.display.Loader;
-import flash.filesystem.File;
-import flash.Vector;
-import flash.events.Event;
-import flash.events.IOErrorEvent;
+import openfl.utils.ByteArray;
+import openfl.net.URLLoaderDataFormat;
+import openfl.net.URLLoader;
+import openfl.net.URLRequest;
+import openfl.system.SecurityDomain;
+import openfl.display.LoaderInfo;
+import openfl.system.ApplicationDomain;
+import openfl.system.LoaderContext;
+import openfl.display.Loader;
+import openfl.filesystem.File;
+import openfl.Vector;
+import openfl.events.Event;
+import openfl.events.IOErrorEvent;
 
 import blendhx.core.Utils;
 import blendhx.core.components.Component;

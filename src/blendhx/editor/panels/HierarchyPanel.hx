@@ -1,6 +1,6 @@
 package blendhx.editor.panels;
-import flash.text.TextFieldAutoSize;
-import flash.system.ApplicationDomain;
+import openfl.text.TextFieldAutoSize;
+import openfl.system.ApplicationDomain;
 
 import blendhx.core.Utils;
 import blendhx.core.components.Entity;
@@ -12,8 +12,8 @@ import blendhx.core.*;
 import blendhx.editor.spaces.*;
 import blendhx.editor.panels.*;
 import blendhx.core.components.*;
-import flash.events.Event;
-import flash.display.Graphics;
+import openfl.events.Event;
+import openfl.display.Graphics;
 
 
 /**

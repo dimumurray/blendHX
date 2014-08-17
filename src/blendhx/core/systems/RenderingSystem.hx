@@ -5,20 +5,20 @@ import blendhx.core.assets.Mesh;
 import blendhx.core.components.*;
 import blendhx.core.shaders.DefaultShader;
 import hxsl.Shader;
-import flash.events.ErrorEvent;
-import flash.errors.Error;
-import flash.display3D.Context3DProfile;
-import flash.display3D.Context3DRenderMode;
-import flash.events.Event;
-import flash.events.EventDispatcher;
-import flash.display3D.Context3DTriangleFace;
-import flash.display3D.Context3DCompareMode;
-import flash.display3D.Context3D;
-import flash.display.Stage3D;
-import flash.display.Stage;
-import flash.display3D.Context3DBlendFactor;
-import flash.Lib;
-import flash.system.ApplicationDomain;
+import openfl.events.ErrorEvent;
+import openfl.errors.Error;
+import openfl.display3D.Context3DProfile;
+import openfl.display3D.Context3DRenderMode;
+import openfl.events.Event;
+import openfl.events.EventDispatcher;
+import openfl.display3D.Context3DTriangleFace;
+import openfl.display3D.Context3DCompareMode;
+import openfl.display3D.Context3D;
+import openfl.display.Stage3D;
+import openfl.display.Stage;
+import openfl.display3D.Context3DBlendFactor;
+import openfl.Lib;
+import openfl.system.ApplicationDomain;
 
 class RenderingSystem extends EventDispatcher implements ISystem
 {

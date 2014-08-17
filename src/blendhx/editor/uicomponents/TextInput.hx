@@ -1,24 +1,24 @@
 package blendhx.editor.uicomponents;
-import flash.events.TimerEvent;
-import flash.utils.Timer;
+import openfl.events.TimerEvent;
+import openfl.utils.Timer;
 
 import blendhx.editor.panels.Panel;
 import blendhx.core.*;
-import flash.Lib;
-import flash.ui.Keyboard;
-import flash.events.KeyboardEvent;
-import flash.text.TextFieldType;
-import flash.events.Event;
-import flash.display.DisplayObjectContainer;
+import openfl.Lib;
+import openfl.ui.Keyboard;
+import openfl.events.KeyboardEvent;
+import openfl.text.TextFieldType;
+import openfl.events.Event;
+import openfl.display.DisplayObjectContainer;
 
-import flash.events.MouseEvent;
-import flash.geom.Matrix;
-import flash.display.GradientType;
-import flash.text.TextFormatAlign;
-import flash.text.TextFormat;
-import flash.display.Graphics;
-import flash.text.TextField;
-import flash.display.Sprite;
+import openfl.events.MouseEvent;
+import openfl.geom.Matrix;
+import openfl.display.GradientType;
+import openfl.text.TextFormatAlign;
+import openfl.text.TextFormat;
+import openfl.display.Graphics;
+import openfl.text.TextField;
+import openfl.display.Sprite;
 
 /*
 a text input in fact is used for entering String values by user, why should i document this?
@@ -106,7 +106,7 @@ class TextInput extends UIElement
 	override public function focus()
 	{
 		super.focus();
-		flash.Lib.current.stage.focus = label;
+		openfl.Lib.current.stage.focus = label;
 		editing = true;
 		label.text = value;
 		label.setSelection(0, label.length);

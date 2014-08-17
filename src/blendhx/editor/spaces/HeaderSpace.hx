@@ -1,12 +1,12 @@
 package blendhx.editor.spaces;
 import blendhx.editor.uicomponents.ImageButton;
 import blendhx.core.Scene;
-import flash.text.TextFieldAutoSize;
-import flash.display.Bitmap;
+import openfl.text.TextFieldAutoSize;
+import openfl.display.Bitmap;
 import blendhx.editor.assets.*;
-import flash.Lib;
+import openfl.Lib;
 import blendhx.editor.uicomponents.Label;
-import flash.display.Graphics;
+import openfl.display.Graphics;
 import blendhx.editor.panels.Panel;
 import blendhx.editor.Progressbar;
 import blendhx.editor.panels.*;

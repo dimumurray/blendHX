@@ -1,21 +1,21 @@
 package blendhx.editor.data;
 
-import flash.desktop.NativeApplication;
-import flash.desktop.NativeProcess;
-import flash.desktop.NativeProcessStartupInfo;
-import flash.desktop.NativeApplication;
-import flash.errors.ArgumentError;
-import flash.errors.Error;
-import flash.events.ProgressEvent;
-import flash.events.NativeProcessExitEvent;
-import flash.errors.IllegalOperationError;
-import flash.events.EventDispatcher;
-import flash.events.Event;
+import openfl.desktop.NativeApplication;
+import openfl.desktop.NativeProcess;
+import openfl.desktop.NativeProcessStartupInfo;
+import openfl.desktop.NativeApplication;
+import openfl.errors.ArgumentError;
+import openfl.errors.Error;
+import openfl.events.ProgressEvent;
+import openfl.events.NativeProcessExitEvent;
+import openfl.errors.IllegalOperationError;
+import openfl.events.EventDispatcher;
+import openfl.events.Event;
 
-import flash.filesystem.File;
-import flash.display.Stage;
-import flash.desktop.NotificationType;
-import flash.Vector;
+import openfl.filesystem.File;
+import openfl.display.Stage;
+import openfl.desktop.NotificationType;
+import openfl.Vector;
 
 import blendhx.editor.Progressbar;
 

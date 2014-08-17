@@ -1,10 +1,10 @@
 package blendhx.editor.data;
-import flash.events.EventDispatcher;
-import flash.events.IOErrorEvent;
-import flash.filesystem.*;
-import flash.display.Loader;
-import flash.utils.ByteArray;
-import flash.events.Event;
+import openfl.events.EventDispatcher;
+import openfl.events.IOErrorEvent;
+import openfl.filesystem.*;
+import openfl.display.Loader;
+import openfl.utils.ByteArray;
+import openfl.events.Event;
 /**
 
  * GPL

@@ -1,7 +1,7 @@
 package blendhx.editor.panels;
-import flash.display.Sprite;
-import flash.display.BitmapData;
-import flash.events.MouseEvent;
+import openfl.display.Sprite;
+import openfl.display.BitmapData;
+import openfl.events.MouseEvent;
 import blendhx.editor.Selection;
 /**
 

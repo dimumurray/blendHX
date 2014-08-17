@@ -1,14 +1,14 @@
 package blendhx.editor;
 import blendhx.editor.uicomponents.UIElement;
-import flash.geom.Point;
-import flash.geom.Rectangle;
-import flash.display.BitmapData;
-import flash.display.Bitmap;
-import flash.display.Graphics;
-import flash.display.Sprite;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
+import openfl.display.BitmapData;
+import openfl.display.Bitmap;
+import openfl.display.Graphics;
+import openfl.display.Sprite;
 
-import flash.Lib;
-import flash.events.MouseEvent;
+import openfl.Lib;
+import openfl.events.MouseEvent;
 import blendhx.editor.assets.FileType;
 import blendhx.editor.spaces.Space;
 import blendhx.core.components.Entity;

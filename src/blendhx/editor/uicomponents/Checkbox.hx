@@ -1,13 +1,13 @@
 package blendhx.editor.uicomponents;
-import flash.display.Graphics;
-import flash.geom.Matrix;
+import openfl.display.Graphics;
+import openfl.geom.Matrix;
 
 import blendhx.editor.panels.Panel;
 import blendhx.editor.assets.*;
-import flash.display.BitmapData;
-import flash.events.MouseEvent;
-import flash.text.TextFieldAutoSize;
-import flash.text.TextFormatAlign;
+import openfl.display.BitmapData;
+import openfl.events.MouseEvent;
+import openfl.text.TextFieldAutoSize;
+import openfl.text.TextFormatAlign;
 /**
 
  * GPL

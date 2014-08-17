@@ -1,11 +1,11 @@
 package blendhx.core.assets;
 
 import blendhx.core.systems.RenderingSystem;
-import flash.display3D.IndexBuffer3D;
-import flash.display3D.VertexBuffer3D;
-import flash.display3D.Context3D;
-import flash.utils.ByteArray;
-import flash.Vector;
+import openfl.display3D.IndexBuffer3D;
+import openfl.display3D.VertexBuffer3D;
+import openfl.display3D.Context3D;
+import openfl.utils.ByteArray;
+import openfl.Vector;
 
 
 

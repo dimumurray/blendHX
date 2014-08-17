@@ -1,8 +1,8 @@
 package blendhx.core;
-import flash.utils.ByteArray;
+import openfl.utils.ByteArray;
 
 #if flash
-import flash.system.System;
+import openfl.system.System;
 #end
 
 import blendhx.editor.GridFloor;

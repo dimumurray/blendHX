@@ -3,17 +3,17 @@ package blendhx.core.assets;
 import blendhx.core.systems.RenderingSystem;
 import blendhx.editor.*;
 
-import flash.events.IOErrorEvent;
-import flash.events.ErrorEvent;
-import flash.errors.Error;
-import flash.net.URLRequest;
-import flash.net.URLLoaderDataFormat;
-import flash.net.URLLoader;
-import flash.utils.ByteArray;
-import flash.display3D.textures.Texture;
-import flash.display3D.Context3DTextureFormat;
-import flash.display3D.Context3D;
-import flash.events.Event;
+import openfl.events.IOErrorEvent;
+import openfl.events.ErrorEvent;
+import openfl.errors.Error;
+import openfl.net.URLRequest;
+import openfl.net.URLLoaderDataFormat;
+import openfl.net.URLLoader;
+import openfl.utils.ByteArray;
+import openfl.display3D.textures.Texture;
+import openfl.display3D.Context3DTextureFormat;
+import openfl.display3D.Context3D;
+import openfl.events.Event;
 
 //instantiated by Asset.loadTextures and IO.convertToATF
 class TextureLoader

@@ -1,6 +1,6 @@
 package blendhx.editor;
-import flash.geom.Vector3D;
-import flash.system.ApplicationDomain;
+import openfl.geom.Vector3D;
+import openfl.system.ApplicationDomain;
 import blendhx.core.assets.Assets;
 
 import blendhx.core.components.Entity;

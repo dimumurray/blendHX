@@ -1,12 +1,12 @@
 package blendhx.editor;
 import blendhx.editor.spaces.Space;
-import flash.display.Sprite;
-import flash.display.Graphics;
-import flash.events.Event;
-import flash.text.TextFormatAlign;
+import openfl.display.Sprite;
+import openfl.display.Graphics;
+import openfl.events.Event;
+import openfl.text.TextFormatAlign;
 import blendhx.editor.uicomponents.SimpleTextField;
 
-import flash.display.*;
+import openfl.display.*;
 import blendhx.editor.assets.*;
 
 /**

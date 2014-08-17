@@ -1,6 +1,6 @@
 package blendhx.editor.assets;
 
-import flash.text.Font;
+import openfl.text.Font;
 /**
 
  * GPL

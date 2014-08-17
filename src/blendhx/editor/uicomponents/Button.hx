@@ -3,15 +3,15 @@ package blendhx.editor.uicomponents;
 import blendhx.editor.panels.Panel;
 import blendhx.core.*;
 
-import flash.display.DisplayObjectContainer;
-import flash.events.MouseEvent;
-import flash.geom.Matrix;
-import flash.display.GradientType;
-import flash.text.TextFormatAlign;
-import flash.text.TextFormat;
-import flash.display.Graphics;
-import flash.text.TextField;
-import flash.display.Sprite;
+import openfl.display.DisplayObjectContainer;
+import openfl.events.MouseEvent;
+import openfl.geom.Matrix;
+import openfl.display.GradientType;
+import openfl.text.TextFormatAlign;
+import openfl.text.TextFormat;
+import openfl.display.Graphics;
+import openfl.text.TextField;
+import openfl.display.Sprite;
 
 /**
 * @author 

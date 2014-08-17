@@ -7,7 +7,7 @@
 package blendhx.core.shaders;
 
 import blendhx.core.assets.*;
-import flash.geom.Matrix3D;
+import openfl.geom.Matrix3D;
 import hxsl.Shader;
 
 class WireFrameShader extends Shader

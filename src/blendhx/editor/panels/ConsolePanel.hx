@@ -1,13 +1,13 @@
 package blendhx.editor.panels;
-import flash.text.TextFieldType;
-import flash.text.TextField;
+import openfl.text.TextFieldType;
+import openfl.text.TextField;
 
 import blendhx.editor.spaces.*;
 
-import flash.text.TextField;
-import flash.text.TextFormatAlign;
-import flash.text.TextFormat;
-import flash.text.TextFieldAutoSize;
+import openfl.text.TextField;
+import openfl.text.TextFormatAlign;
+import openfl.text.TextFormat;
+import openfl.text.TextFieldAutoSize;
 /**
 * @author 
  */

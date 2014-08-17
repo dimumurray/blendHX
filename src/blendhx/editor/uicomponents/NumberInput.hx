@@ -2,20 +2,20 @@ package blendhx.editor.uicomponents;
 
 import blendhx.core.*;
 import blendhx.editor.panels.Panel;
-import flash.ui.Keyboard;
-import flash.events.KeyboardEvent;
-import flash.text.TextFieldType;
-import flash.events.Event;
-import flash.display.DisplayObjectContainer;
+import openfl.ui.Keyboard;
+import openfl.events.KeyboardEvent;
+import openfl.text.TextFieldType;
+import openfl.events.Event;
+import openfl.display.DisplayObjectContainer;
 
-import flash.events.MouseEvent;
-import flash.geom.Matrix;
-import flash.display.GradientType;
-import flash.text.TextFormatAlign;
-import flash.text.TextFormat;
-import flash.display.Graphics;
-import flash.text.TextField;
-import flash.display.Sprite;
+import openfl.events.MouseEvent;
+import openfl.geom.Matrix;
+import openfl.display.GradientType;
+import openfl.text.TextFormatAlign;
+import openfl.text.TextFormat;
+import openfl.display.Graphics;
+import openfl.text.TextField;
+import openfl.display.Sprite;
 
 /*
 so flexible numver input, in that it have many multiple visual representations based on Static valies set upon instantiation 
@@ -102,7 +102,7 @@ class NumberInput extends UIElement
 	{
 		super.focus();
 		
-		flash.Lib.current.stage.focus = label;
+		openfl.Lib.current.stage.focus = label;
 		editing = true;
 		label.text = Utils.PrintFloat(value, 2);
 		label.selectable = true;

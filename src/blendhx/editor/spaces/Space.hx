@@ -3,12 +3,12 @@ package blendhx.editor.spaces;
 
 import blendhx.editor.panels.*;
 import blendhx.core.*;
-import flash.Lib;
-import flash.geom.Rectangle;
-import flash.accessibility.Accessibility;
-import flash.display.Graphics;
-import flash.display.Sprite;
-import flash.display.Stage;
+import openfl.Lib;
+import openfl.geom.Rectangle;
+import openfl.accessibility.Accessibility;
+import openfl.display.Graphics;
+import openfl.display.Sprite;
+import openfl.display.Stage;
 
 /**
 * @author 

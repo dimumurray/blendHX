@@ -1,5 +1,5 @@
 package blendhx.editor.panels;
-import flash.Lib;
+import openfl.Lib;
 import blendhx.editor.data.UserScripts;
 import blendhx.core.Utils;
 
@@ -29,7 +29,7 @@ class ComponentPanel extends Panel
 	public function new(title:String) 
 	{
 		super(title, Space.SPACE_WIDTH, true);
-		//addEventListener(flash.events.Event.ENTER_FRAME, getValues);
+		//addEventListener(openfl.events.Event.ENTER_FRAME, getValues);
 		
 	}
 	

@@ -1,17 +1,17 @@
 package blendhx.editor;
-import flash.net.URLRequest;
+import openfl.net.URLRequest;
 import blendhx.editor.panels.AssetsPanel;
-import flash.errors.Error;
+import openfl.errors.Error;
 import blendhx.editor.spaces.Space;
 import blendhx.core.components.Entity;
 
-import flash.events.Event;
-import flash.Lib;
-import flash.filesystem.File;
-import flash.desktop.NativeApplication;
-import flash.display.NativeWindow;
-import flash.display.NativeMenu;
-import flash.display.NativeMenuItem;
+import openfl.events.Event;
+import openfl.Lib;
+import openfl.filesystem.File;
+import openfl.desktop.NativeApplication;
+import openfl.display.NativeWindow;
+import openfl.display.NativeMenu;
+import openfl.display.NativeMenuItem;
 
 import blendhx.core.components.*;
 import blendhx.editor.panels.*;

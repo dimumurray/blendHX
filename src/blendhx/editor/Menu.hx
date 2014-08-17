@@ -3,13 +3,13 @@ import blendhx.editor.spaces.Space;
 
 import blendhx.core.components.*;
 import blendhx.editor.panels.*;
-import flash.Lib;
+import openfl.Lib;
 import blendhx.editor.uicomponents.*;
-import flash.desktop.NativeApplication;
-import flash.display.NativeWindow;
-import flash.display.NativeMenu;
-import flash.display.NativeMenuItem;
-import flash.events.Event;
+import openfl.desktop.NativeApplication;
+import openfl.display.NativeWindow;
+import openfl.display.NativeMenu;
+import openfl.display.NativeMenuItem;
+import openfl.events.Event;
 /*
 
 

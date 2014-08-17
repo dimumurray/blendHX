@@ -1,8 +1,8 @@
 package blendhx.editor.panels;
-import flash.Vector;
+import openfl.Vector;
 
-import flash.system.ApplicationDomain;
-import flash.Lib;
+import openfl.system.ApplicationDomain;
+import openfl.Lib;
 
 import blendhx.editor.Selection;
 import blendhx.core.components.Component;

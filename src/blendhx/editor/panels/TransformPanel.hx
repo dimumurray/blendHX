@@ -1,6 +1,6 @@
 package blendhx.editor.panels;
-import flash.events.Event;
-import flash.Vector;
+import openfl.events.Event;
+import openfl.Vector;
 
 import blendhx.editor.Selection;
 import blendhx.editor.uicomponents.*;
@@ -8,9 +8,9 @@ import blendhx.editor.assets.FileType;
 import blendhx.core.*;
 import blendhx.core.components.Transform;
 import blendhx.editor.spaces.Space;
-import flash.geom.Vector3D;
-import flash.geom.Matrix3D;
-import flash.text.TextFormatAlign;
+import openfl.geom.Vector3D;
+import openfl.geom.Matrix3D;
+import openfl.text.TextFormatAlign;
 
 /**
 * @author 

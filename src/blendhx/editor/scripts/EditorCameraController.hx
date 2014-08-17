@@ -4,13 +4,13 @@ import blendhx.core.components.Transform;
 import blendhx.core.components.Entity;
 import blendhx.core.components.*;
 
-import flash.geom.Vector3D;
-import flash.ui.Keyboard;
-import flash.utils.Timer;
-import flash.events.TimerEvent;
-import flash.events.KeyboardEvent;
-import flash.events.Event;
-import flash.events.MouseEvent;
+import openfl.geom.Vector3D;
+import openfl.ui.Keyboard;
+import openfl.utils.Timer;
+import openfl.events.TimerEvent;
+import openfl.events.KeyboardEvent;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
 
 class EditorCameraController extends Component
 {
@@ -26,11 +26,11 @@ class EditorCameraController extends Component
 	//constructer called at start up
 	override public function new()
 	{
-		flash.Lib.current.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-		flash.Lib.current.stage.addEventListener(MouseEvent.MIDDLE_MOUSE_DOWN, oMiddleDown);
-		flash.Lib.current.stage.addEventListener(MouseEvent.MIDDLE_MOUSE_UP, oMiddleUp);
-		flash.Lib.current.stage.addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
-		flash.Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		openfl.Lib.current.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+		openfl.Lib.current.stage.addEventListener(MouseEvent.MIDDLE_MOUSE_DOWN, oMiddleDown);
+		openfl.Lib.current.stage.addEventListener(MouseEvent.MIDDLE_MOUSE_UP, oMiddleUp);
+		openfl.Lib.current.stage.addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+		openfl.Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		
 		angleX = 30;
 		angleY = -30;
@@ -123,11 +123,11 @@ class EditorCameraController extends Component
 	//called when the parent gameobject is destroyed
 	override public function destroy():Void
 	{
-		flash.Lib.current.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-		flash.Lib.current.stage.removeEventListener(MouseEvent.MIDDLE_MOUSE_DOWN, oMiddleDown);
-		flash.Lib.current.stage.removeEventListener(MouseEvent.MIDDLE_MOUSE_UP, oMiddleUp);
-		flash.Lib.current.stage.removeEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
-		flash.Lib.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		openfl.Lib.current.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+		openfl.Lib.current.stage.removeEventListener(MouseEvent.MIDDLE_MOUSE_DOWN, oMiddleDown);
+		openfl.Lib.current.stage.removeEventListener(MouseEvent.MIDDLE_MOUSE_UP, oMiddleUp);
+		openfl.Lib.current.stage.removeEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+		openfl.Lib.current.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		//base class destroy call once after your own cleanup
 		super.destroy();
 	}

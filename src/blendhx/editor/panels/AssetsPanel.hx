@@ -1,11 +1,11 @@
 package blendhx.editor.panels;
-import flash.text.TextFieldAutoSize;
+import openfl.text.TextFieldAutoSize;
 import blendhx.editor.uicomponents.TextInput;
 import blendhx.core.assets.Assets;
 
-import flash.errors.IllegalOperationError;
-import flash.errors.Error;
-import flash.events.ErrorEvent;
+import openfl.errors.IllegalOperationError;
+import openfl.errors.Error;
+import openfl.events.ErrorEvent;
 import blendhx.core.components.Entity;
 import blendhx.editor.uicomponents.Button;
 import blendhx.editor.assets.FileType;
@@ -15,9 +15,9 @@ import blendhx.core.*;
 import blendhx.editor.spaces.*;
 import blendhx.editor.panels.*;
 import blendhx.core.components.*;
-import flash.events.Event;
-import flash.display.Graphics;
-import flash.filesystem.File;
+import openfl.events.Event;
+import openfl.display.Graphics;
+import openfl.filesystem.File;
 
 /**
 * @author 

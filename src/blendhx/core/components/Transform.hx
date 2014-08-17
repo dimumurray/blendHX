@@ -1,7 +1,7 @@
 package blendhx.core.components;
 
-import flash.geom.Vector3D;
-import flash.geom.Matrix3D;
+import openfl.geom.Vector3D;
+import openfl.geom.Matrix3D;
 
 /**
 * @author 

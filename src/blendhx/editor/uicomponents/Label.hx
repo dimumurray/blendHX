@@ -1,9 +1,9 @@
 package blendhx.editor.uicomponents;
-import flash.text.TextFieldAutoSize;
+import openfl.text.TextFieldAutoSize;
 
 import blendhx.editor.panels.Panel;
 import blendhx.core.*;
-import flash.text.TextFormatAlign;
+import openfl.text.TextFormatAlign;
 
 /**
 * @author 

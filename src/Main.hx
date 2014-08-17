@@ -1,5 +1,5 @@
 package;
-import flash.utils.ByteArray;
+import openfl.utils.ByteArray;
 import blendhx.editor.panels.AssetsPanel;
 import blendhx.editor.Selection;
 
@@ -13,13 +13,13 @@ import blendhx.core.systems.*;
 import blendhx.core.components.*;
 import blendhx.editor.Project;
 
-import flash.system.Capabilities;
-import flash.desktop.NativeApplication;
-import flash.display.StageAlign;
-import flash.filesystem.File;
-import flash.display.Stage;
-import flash.display.StageScaleMode;
-import flash.events.Event;
+import openfl.system.Capabilities;
+import openfl.desktop.NativeApplication;
+import openfl.display.StageAlign;
+import openfl.filesystem.File;
+import openfl.display.Stage;
+import openfl.display.StageScaleMode;
+import openfl.events.Event;
 
 class Main extends Entity
 {
@@ -58,7 +58,7 @@ class Main extends Entity
 
     function initStage()
     {
-    	stage = flash.Lib.current.stage;
+    	stage = openfl.Lib.current.stage;
     	stage.scaleMode = StageScaleMode.NO_SCALE;
     	stage.align = StageAlign.TOP_LEFT;
     	stage.addEventListener(Event.RESIZE, onApplicationResize);

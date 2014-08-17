@@ -6,21 +6,21 @@ import blendhx.editor.panels.HierarchyItem;
 import blendhx.editor.panels.Panel;
 import blendhx.editor.panels.DragableItem;
 import blendhx.core.*;
-import flash.Lib;
-import flash.ui.Keyboard;
-import flash.events.KeyboardEvent;
-import flash.text.TextFieldType;
-import flash.events.Event;
-import flash.display.DisplayObjectContainer;
-import flash.display.BitmapData;
-import flash.events.MouseEvent;
-import flash.geom.Matrix;
-import flash.display.GradientType;
-import flash.text.TextFormatAlign;
-import flash.text.TextFormat;
-import flash.display.Graphics;
-import flash.text.TextField;
-import flash.display.Sprite;
+import openfl.Lib;
+import openfl.ui.Keyboard;
+import openfl.events.KeyboardEvent;
+import openfl.text.TextFieldType;
+import openfl.events.Event;
+import openfl.display.DisplayObjectContainer;
+import openfl.display.BitmapData;
+import openfl.events.MouseEvent;
+import openfl.geom.Matrix;
+import openfl.display.GradientType;
+import openfl.text.TextFormatAlign;
+import openfl.text.TextFormat;
+import openfl.display.Graphics;
+import openfl.text.TextField;
+import openfl.display.Sprite;
 
 /*
 This special UIElement let's user drag and drop Draggable items as the value

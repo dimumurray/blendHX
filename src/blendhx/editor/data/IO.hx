@@ -1,16 +1,16 @@
 package blendhx.editor.data;
 
-import flash.Lib;
-import flash.display.BitmapData;
-import flash.display.Loader;
-import flash.utils.Endian;
-import flash.Vector;
-import flash.utils.CompressionAlgorithm;
-import flash.filesystem.File;
-import flash.filesystem.*;
-import flash.utils.ByteArray;
-import flash.net.FileReference;
-import flash.events.Event;
+import openfl.Lib;
+import openfl.display.BitmapData;
+import openfl.display.Loader;
+import openfl.utils.Endian;
+import openfl.Vector;
+import openfl.utils.CompressionAlgorithm;
+import openfl.filesystem.File;
+import openfl.filesystem.*;
+import openfl.utils.ByteArray;
+import openfl.net.FileReference;
+import openfl.events.Event;
 
 import blendhx.core.assets.TextureLoader;
 import blendhx.core.assets.Mesh;

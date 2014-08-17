@@ -1,14 +1,14 @@
 package blendhx.editor.uicomponents;
 
-import flash.text.Font;
+import openfl.text.Font;
 import blendhx.editor.assets.EditorFont;
 import blendhx.core.*;
-import flash.text.TextFormatAlign;
-import flash.text.GridFitType;
-import flash.text.AntiAliasType;
-import flash.text.TextField;
-import flash.text.TextFormat;
-import flash.text.TextFieldAutoSize;
+import openfl.text.TextFormatAlign;
+import openfl.text.GridFitType;
+import openfl.text.AntiAliasType;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
+import openfl.text.TextFieldAutoSize;
 
 
 class SimpleTextField extends TextField

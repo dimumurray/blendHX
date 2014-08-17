@@ -1,15 +1,15 @@
 package blendhx.editor.panels;
 import blendhx.editor.data.IO;
-import flash.net.FileFilter;
+import openfl.net.FileFilter;
 
-import flash.display.Graphics;
-import flash.filesystem.File;
-import flash.Lib;
-import flash.desktop.NativeApplication;
-import flash.display.NativeWindow;
-import flash.display.NativeMenu;
-import flash.display.NativeMenuItem;
-import flash.events.Event;
+import openfl.display.Graphics;
+import openfl.filesystem.File;
+import openfl.Lib;
+import openfl.desktop.NativeApplication;
+import openfl.display.NativeWindow;
+import openfl.display.NativeMenu;
+import openfl.display.NativeMenuItem;
+import openfl.events.Event;
 
 import blendhx.editor.RightClickMenu;
 import blendhx.editor.uicomponents.UIElement;

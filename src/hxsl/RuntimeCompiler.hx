@@ -152,7 +152,7 @@ class RuntimeCompiler {
 						var a = [];
 						for( i in 0...size ) {
 							var v = paramsData == null ? 0 : paramsData[i + index];
-							#if !flash if( v == null ) v = 0; #end
+							#if !openfl.if( v == null ) v = 0; #end
 							a.push(v);
 						}
 						return a.length == 1 ? CFloat(a[0]) : CFloats(a);

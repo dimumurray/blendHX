@@ -1,7 +1,7 @@
 package blendhx.editor.panels;
 import blendhx.editor.assets.FileType;
-import flash.display.Bitmap;
-import flash.text.TextFieldAutoSize;
+import openfl.display.Bitmap;
+import openfl.text.TextFieldAutoSize;
 
 
 import blendhx.core.*;
@@ -11,12 +11,12 @@ import blendhx.editor.assets.*;
 import blendhx.editor.uicomponents.*;
 import blendhx.editor.panels.*;
 import blendhx.editor.spaces.Space;
-import flash.geom.Matrix;
-import flash.display.BitmapData;
-import flash.display.Sprite;
-import flash.display.Graphics;
-import flash.text.TextFormatAlign;
-import flash.events.MouseEvent;
+import openfl.geom.Matrix;
+import openfl.display.BitmapData;
+import openfl.display.Sprite;
+import openfl.display.Graphics;
+import openfl.text.TextFormatAlign;
+import openfl.events.MouseEvent;
 
 /**
 * @author 

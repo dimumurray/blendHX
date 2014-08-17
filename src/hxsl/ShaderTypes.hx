@@ -28,9 +28,9 @@ typedef Texture = h3d.mat.Texture;
 typedef Vector = h3d.Vector;
 typedef Matrix = h3d.Matrix;
 #else
-typedef Texture = flash.display3D.textures.TextureBase;
-typedef Vector = flash.geom.Vector3D;
-typedef Matrix = flash.geom.Matrix3D;
+typedef Texture = openfl.display3D.textures.TextureBase;
+typedef Vector = openfl.geom.Vector3D;
+typedef Matrix = openfl.geom.Matrix3D;
 #end
 
 typedef FixedArray<T,Const> = Array<T>;

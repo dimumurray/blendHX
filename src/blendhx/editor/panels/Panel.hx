@@ -1,5 +1,5 @@
 package blendhx.editor.panels;
-import flash.text.TextFieldAutoSize;
+import openfl.text.TextFieldAutoSize;
 
 import blendhx.core.components.Transform;
 import blendhx.core.components.Component;
@@ -7,10 +7,10 @@ import blendhx.editor.Selection;
 import blendhx.editor.uicomponents.*;
 import blendhx.editor.spaces.*;
 import blendhx.core.*;
-import flash.events.MouseEvent;
-import flash.display.Graphics;
-import flash.text.TextFormatAlign;
-import flash.display.Sprite;
+import openfl.events.MouseEvent;
+import openfl.display.Graphics;
+import openfl.text.TextFormatAlign;
+import openfl.display.Sprite;
 import blendhx.editor.data.AS3DefinitionHelper;
 
 /**

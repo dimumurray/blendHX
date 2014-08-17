@@ -1,10 +1,10 @@
 package blendhx.editor.panels;
 
-import flash.display.BitmapData;
-import flash.display.Graphics;
-import flash.geom.Matrix;
-import flash.display.Sprite;
-import flash.events.MouseEvent;
+import openfl.display.BitmapData;
+import openfl.display.Graphics;
+import openfl.geom.Matrix;
+import openfl.display.Sprite;
+import openfl.events.MouseEvent;
 import blendhx.editor.assets.Images.RemoveImage;
 import blendhx.editor.assets.*;
 

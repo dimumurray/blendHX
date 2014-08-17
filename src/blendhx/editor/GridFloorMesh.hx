@@ -1,6 +1,6 @@
 package blendhx.editor;
 import blendhx.core.assets.Assets;
-import flash.Vector;
+import openfl.Vector;
 import blendhx.core.assets.Mesh;
 
 /**

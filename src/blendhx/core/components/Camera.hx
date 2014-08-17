@@ -1,8 +1,8 @@
 package blendhx.core.components;
-import flash.geom.Vector3D;
+import openfl.geom.Vector3D;
 import blendhx.core.Scene;
 
-import flash.geom.Matrix3D;
+import openfl.geom.Matrix3D;
 import com.adobe.utils.PerspectiveMatrix3D;
 
 

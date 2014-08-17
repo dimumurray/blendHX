@@ -2,7 +2,7 @@ package blendhx.editor.uicomponents;
 
 import blendhx.editor.panels.Panel;
 import blendhx.core.*;
-import flash.display.Sprite;
+import openfl.display.Sprite;
 
 
 /*

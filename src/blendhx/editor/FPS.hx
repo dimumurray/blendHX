@@ -2,9 +2,9 @@ package blendhx.editor;
 
 import blendhx.editor.uicomponents.*;
 import blendhx.core.*;
-import flash.text.TextFormatAlign;
+import openfl.text.TextFormatAlign;
 import haxe.Timer;
-import flash.events.Event;
+import openfl.events.Event;
 
 class FPS extends SimpleTextField
 {

@@ -7,12 +7,12 @@ import blendhx.core.Scene;
 import blendhx.editor.spaces.Space;
 import blendhx.core.assets.Assets;
 
-import flash.net.*;
-import flash.events.*;
-import flash.utils.ByteArray;
-import flash.filesystem.*;
-import flash.desktop.NativeApplication;
-import flash.data.EncryptedLocalStore;
+import openfl.net.*;
+import openfl.events.*;
+import openfl.utils.ByteArray;
+import openfl.filesystem.*;
+import openfl.desktop.NativeApplication;
+import openfl.data.EncryptedLocalStore;
 
 /**
 
@@ -34,7 +34,7 @@ class Project
 		
 		try
 		{
-			bytes = flash.data.EncryptedLocalStore.getItem("projectDirectory");
+			bytes = openfl.data.EncryptedLocalStore.getItem("projectDirectory");
 		}
 		catch(e:Dynamic)
 		{
@@ -75,7 +75,7 @@ class Project
 		bytes = new ByteArray();
 		bytes.writeObject(projectDirectory.nativePath);
 		bytes.position = 0;
-		flash.data.EncryptedLocalStore.setItem("projectDirectory", bytes);
+		openfl.data.EncryptedLocalStore.setItem("projectDirectory", bytes);
 
 		var newProjectTemplate:File = File.applicationDirectory.resolvePath("templates/New blendHX Project");
 		newProjectTemplate.addEventListener(Event.COMPLETE, onNewProjectCopied);

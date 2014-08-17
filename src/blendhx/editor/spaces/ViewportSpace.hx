@@ -4,15 +4,15 @@ import blendhx.core.systems.RenderingSystem;
 import blendhx.core.*;
 import blendhx.core.components.Camera;
 import blendhx.editor.uicomponents.*;
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.display3D.Context3DTriangleFace;
-import flash.display3D.Context3DCompareMode;
-import flash.display3D.Context3D;
-import flash.display.Stage3D;
-import flash.display.Stage;
-import flash.display3D.Context3DBlendFactor;
-import flash.text.TextFormatAlign;
+import openfl.events.Event;
+import openfl.events.MouseEvent;
+import openfl.display3D.Context3DTriangleFace;
+import openfl.display3D.Context3DCompareMode;
+import openfl.display3D.Context3D;
+import openfl.display.Stage3D;
+import openfl.display.Stage;
+import openfl.display3D.Context3DBlendFactor;
+import openfl.text.TextFormatAlign;
 
 /**
 * @author 

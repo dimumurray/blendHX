@@ -22,9 +22,9 @@
  * IN THE SOFTWARE.
  */
 package hxsl;
-import flash.system.ApplicationDomain;
+import openfl.system.ApplicationDomain;
 
-import flash.geom.Matrix3D;
+import openfl.geom.Matrix3D;
 
 import hxsl.Data;
 import haxe.ds.Vector;
@@ -37,7 +37,7 @@ class ShaderInstance {
 	public var bits : Int;
 	public var lengths : Array<Array<Int>>;
 	
-	public var program : flash.display3D.Program3D;
+	public var program : openfl.display3D.Program3D;
 
 	public var bufferFormat : Int;
 	public var bufferNames : Array<String>;
@@ -391,7 +391,7 @@ class Shader{
 					#if (haxe_ver >= 3.1)
 					return Std.instance(x,Array);
 					#elseif flash
-					return flash.Lib.as(x,Array);
+					return openfl.Lib.as(x,Array);
 					#else
 					return Std.is(x,Array) ? cast x : null;
 					#end
@@ -437,27 +437,27 @@ class Shader{
 	
 	#if !h3d
 	
-	public function bind( ctx : flash.display3D.Context3D, buffer : flash.display3D.VertexBuffer3D) {
+	public function bind( ctx : openfl.display3D.Context3D, buffer : openfl.display3D.VertexBuffer3D) {
 		var i = getInstance();
 		if( i.program == null ) {
 			var vdata = i.vertexBytes.getData();
 			var fdata = i.fragmentBytes.getData();
-			vdata.endian = flash.utils.Endian.LITTLE_ENDIAN;
-			fdata.endian = flash.utils.Endian.LITTLE_ENDIAN;
+			vdata.endian = openfl.utils.Endian.LITTLE_ENDIAN;
+			fdata.endian = openfl.utils.Endian.LITTLE_ENDIAN;
 			i.program = ctx.createProgram();
 			i.program.upload(vdata,fdata);
 		}
 		ctx.setProgram(i.program);
-		ctx.setProgramConstantsFromVector(flash.display3D.Context3DProgramType.VERTEX, 0, i.vertexVars.toData());
-		ctx.setProgramConstantsFromVector(flash.display3D.Context3DProgramType.FRAGMENT, 0, i.fragmentVars.toData());
+		ctx.setProgramConstantsFromVector(openfl.display3D.Context3DProgramType.VERTEX, 0, i.vertexVars.toData());
+		ctx.setProgramConstantsFromVector(openfl.display3D.Context3DProgramType.FRAGMENT, 0, i.fragmentVars.toData());
 		for( k in 0...i.textures.length )
 			ctx.setTextureAt(k, i.textures.get(k));
 		var FORMAT = [
-			flash.display3D.Context3DVertexBufferFormat.BYTES_4,
-			flash.display3D.Context3DVertexBufferFormat.FLOAT_1,
-			flash.display3D.Context3DVertexBufferFormat.FLOAT_2,
-			flash.display3D.Context3DVertexBufferFormat.FLOAT_3,
-			flash.display3D.Context3DVertexBufferFormat.FLOAT_4,
+			openfl.display3D.Context3DVertexBufferFormat.BYTES_4,
+			openfl.display3D.Context3DVertexBufferFormat.FLOAT_1,
+			openfl.display3D.Context3DVertexBufferFormat.FLOAT_2,
+			openfl.display3D.Context3DVertexBufferFormat.FLOAT_3,
+			openfl.display3D.Context3DVertexBufferFormat.FLOAT_4,
 		];
 		var pos = 0, offset = 0;
 		var bits = i.bufferFormat;
@@ -471,7 +471,7 @@ class Shader{
 		}
 	}
 	
-	public function unbind( ctx : flash.display3D.Context3D ) {
+	public function unbind( ctx : openfl.display3D.Context3D ) {
 		var i = instance;
 		if( i == null )
 			return;
