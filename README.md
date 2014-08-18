@@ -1,10 +1,8 @@
-BrashHX
-=======
-######A Unity-esque game creation system.
-
+#BrashHX
+####A Unity-esque game creation system.
 Fork of [mehdadoo]'s [blendHX].
 
-#####Based on 
+####Based on 
 - [Blender] 
 - [Richard Lord]'s [Ash Framework] 
 - and built using [Haxe]/[OpenFl].
@@ -15,13 +13,14 @@ The intent is to substitute the Unity-based Entity/Component architecture of [bl
 Hence: 
 "Blender" + "Ash" + "Haxe" = "BrashHX"
 
-Like its progenitor this project is highly experimental at the moment
-___
-###Features planned
+Like its progenitor this project is highly experimental at the moment.
+
+***
+####Features planned
 * Ash Framework integration
 * TBD
 
-###License
+####License
 MIT
 
 
