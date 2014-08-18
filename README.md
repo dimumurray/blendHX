@@ -1,21 +1,35 @@
-This project is highly experimental at the moment
-![alt text](http://igloo.ir/blendHX.PNG)
-Get the latest build:
-https://github.com/mehdadoo/blendHX/raw/master/binaries/blendHX_v0.5.exe
+BrashHX
+=======
+######A Unity-esque game creation system.
 
-Created with Haxe, a game engine and IDE on top of AIR capabilities.
+Fork of [mehdadoo]'s [blendHX].
 
-Features planned:
+#####Based on 
+- [Blender] 
+- [Richard Lord]'s [Ash Framework] 
+- and built using [Haxe]/[OpenFl].
 
-	prefabs
-	
-	light, physics, audio subsystem
-	
-	actionscript support
-	
-	blender lightmapper integration
-	
-	static and dynamic batching
-	
-	build to mobile, desktop, web
 
+The intent is to substitute the Unity-based Entity/Component architecture of [blendHX] with the [haxe port] of [Richard Lord]'s [Ash framework]. 
+
+Hence: 
+"Blender" + "Ash" + "Haxe" = "BrashHX"
+
+Like its progenitor this project is highly experimental at the moment
+___
+###Features planned
+* Ash Framework integration
+* TBD
+
+###License
+MIT
+
+
+[Blender]:http://www.blender.org/
+[mehdadoo]:https://github.com/mehdadoo
+[blendHX]:https://github.com/mehdadoo/blendHX
+[haxe port]:https://github.com/nadako/Ash-HaXe
+[Richard Lord]:http://www.richardlord.net/blog/what-is-an-entity-framework
+[Ash framework]:http://www.ashframework.org/
+[Haxe]:http://haxe.org/
+[OpenFl]:http://www.openfl.org/
